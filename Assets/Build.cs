@@ -1,77 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
-public class Build : MonoBehaviour
+ 
+public class BuildSystem : MonoBehaviour
 {
     public Transform shootingPoint;
     public GameObject blockObject;
-
-    public Transform vehicle;
-
+ 
+    public Transform parent;
+ 
     public Color normalColor;
     public Color highlightedColor;
-
-    GameObject lastHighlightedBlock;
-
+ 
+    GameObject lastHightlightedBlock;
+ 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Place(blockObject);
+            BuildBlock(blockObject);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            Remove();
+            DestroyBlock();
         }
-        // Highlight(); // just copy pasted from youtube, not working
+        HighlightBlock();
     }
-
-    void Place(GameObject block)
+ 
+    void BuildBlock(GameObject block)
     {
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hit))
+        if(Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
         {
-            Vector3 normal = hit.transform.position - hit.point;
-            Vector3 snappedNormal = new Vector3(Mathf.RoundToInt(hit.normal.x), Mathf.RoundToInt(hit.normal.y), Mathf.RoundToInt(hit.normal.z));
-            Vector3 spawnPosition = hit.transform.position + snappedNormal;
-            GameObject newBlock = Instantiate(block, spawnPosition, hit.transform.rotation, vehicle);
-            if (hit.transform.tag == "Block")
+ 
+            if(hitInfo.transform.tag == "Block")
             {
-                hit.collider.AddComponent<FixedJoint>().connectedBody = newBlock.GetComponent<Rigidbody>();
+                Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x + hitInfo.normal.x/2), Mathf.RoundToInt(hitInfo.point.y + hitInfo.normal.y / 2), Mathf.RoundToInt(hitInfo.point.z + hitInfo.normal.z /2));
+                GameObject newBlock = Instantiate(block, spawnPosition, Quaternion.identity, parent);
+                newBlock.AddComponent<FixedJoint>().connectedBody = hitInfo.collider.GetComponent<Rigidbody>();
+            }
+            else
+            {
+                Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x), Mathf.RoundToInt(hitInfo.point.y), Mathf.RoundToInt(hitInfo.point.z));
+                Instantiate(block, spawnPosition, Quaternion.identity, parent);
             }
         }
     }
-
-    void Remove()
-    {
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hit))
-        {
-            if (hit.transform.tag == "Block")
-            {
-                Destroy(hit.transform.gameObject);
-            }
-        }
-    }
-
-    void Highlight()
+ 
+    void DestroyBlock()
     {
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
         {
             if (hitInfo.transform.tag == "Block")
             {
-                if (lastHighlightedBlock == null)
+                Destroy(hitInfo.transform.gameObject);
+            }
+        }
+    }
+ 
+    void HighlightBlock()
+    {
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
+        {
+            if (hitInfo.transform.tag == "Block")
+            {
+                if(lastHightlightedBlock == null)
                 {
-                    lastHighlightedBlock = hitInfo.transform.gameObject;
+                    lastHightlightedBlock = hitInfo.transform.gameObject;
                     hitInfo.transform.gameObject.GetComponent<Renderer>().material.color = highlightedColor;
                 }
-                else if (lastHighlightedBlock != hitInfo.transform.gameObject)
+                else if (lastHightlightedBlock != hitInfo.transform.gameObject)
                 {
-                    lastHighlightedBlock.GetComponent<Renderer>().material.color = normalColor;
+                    lastHightlightedBlock.GetComponent<Renderer>().material.color = normalColor;
                     hitInfo.transform.gameObject.GetComponent<Renderer>().material.color = highlightedColor;
-                    lastHighlightedBlock = hitInfo.transform.gameObject;
+                    lastHightlightedBlock = hitInfo.transform.gameObject;
                 }
             }
         }
     }
 }
+ 
