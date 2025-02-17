@@ -24,7 +24,7 @@ public class BuildSystem : MonoBehaviour
         {
             DestroyBlock();
         }
-        HighlightBlock();
+        // HighlightBlock();
     }
  
     void BuildBlock(GameObject block)
