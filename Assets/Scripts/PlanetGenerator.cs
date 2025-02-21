@@ -12,6 +12,13 @@ public class PlanetGenerator : MonoBehaviour
         GeneratePlanet();
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R)) {
+            GeneratePlanet();
+        }
+    }
+
     public void GeneratePlanet()
     {
         if (m_PlanetMesh)
@@ -19,7 +26,10 @@ public class PlanetGenerator : MonoBehaviour
 
         planet = new Planet();
         planet.InitAsIcosohedron();
-        planet.Subdivide(2);
+        planet.Subdivide(3);
+        planet.CalculateNeighbors();
+
+        AddTerrainFeatures();
 
         m_PlanetMesh = new GameObject("Planet Mesh");
         MeshRenderer surfaceRenderer = m_PlanetMesh.AddComponent<MeshRenderer>();
@@ -41,9 +51,9 @@ public class PlanetGenerator : MonoBehaviour
             indices[i * 3 + 0] = i * 3 + 0;
             indices[i * 3 + 1] = i * 3 + 1;
             indices[i * 3 + 2] = i * 3 + 2;
-            vertices[i * 3 + 0] = planet.m_Vertices[poly.m_Vertices[0]] * 10f;
-            vertices[i * 3 + 1] = planet.m_Vertices[poly.m_Vertices[1]] * 10f;
-            vertices[i * 3 + 2] = planet.m_Vertices[poly.m_Vertices[2]] * 10f;
+            vertices[i * 3 + 0] = planet.m_Vertices[poly.m_Vertices[0]] * 20f;
+            vertices[i * 3 + 1] = planet.m_Vertices[poly.m_Vertices[1]] * 20f;
+            vertices[i * 3 + 2] = planet.m_Vertices[poly.m_Vertices[2]] * 20f;
 
             Color32 polyColor = Color32.Lerp(sandLight, sandDark, Random.Range(0.0f, 1.0f));
             colors[i * 3 + 0] = polyColor;
@@ -66,4 +76,21 @@ public class PlanetGenerator : MonoBehaviour
         MeshCollider terrainCollider = m_PlanetMesh.AddComponent<MeshCollider>();
         terrainCollider.sharedMesh = terrainMesh;
     }
+    private void AddTerrainFeatures()
+{
+    int numFeatures = 10; // Number of terrain variations
+    for (int i = 0; i < numFeatures; i++)
+    {
+        // Pick a random location on the planet
+        Vector3 randomCenter = Random.onUnitSphere;
+        float randomRadius = Random.Range(0.1f, 0.3f); // Random region size
+        PolySet selectedPolys = planet.GetPolysInSphere(randomCenter, randomRadius, planet.m_Polygons);
+
+        if (selectedPolys.Count > 0)
+        {
+            float extrudeAmount = Random.Range(-0.2f, 0.5f); // - for oceans, + for hills
+            planet.Extrude(selectedPolys, extrudeAmount);
+        }
+    }
+}
 }

@@ -115,4 +115,136 @@ public class Planet
         cache.Add (key, ret);
         return ret;
     }
+
+    public void CalculateNeighbors() {
+        foreach(Polygon poly in m_Polygons) {
+            foreach(Polygon other_poly in m_Polygons) {
+                if (poly == other_poly) {
+                    continue;
+                }
+                if (poly.IsNeighborOf(other_poly)) {
+                    poly.m_Neighbors.Add(other_poly);
+                }
+            }
+        }
+    }
+
+    public List<int> CloneVertices(List<int> old_verts)
+    {
+        List<int> new_verts = new List<int>();
+        foreach(int old_vert in old_verts) 
+        {
+            Vector3 cloned_vert = m_Vertices [old_vert];
+            new_verts.Add(m_Vertices.Count);
+            m_Vertices.Add(cloned_vert);
+        }
+        return new_verts;
+    }
+
+    public PolySet StitchPolys(PolySet polys)
+    {
+      PolySet stichedPolys = new PolySet();
+      var edgeSet       = polys.CreateEdgeSet();
+      var originalVerts = edgeSet.GetUniqueVertices();
+      var newVerts      = CloneVertices(originalVerts);
+      edgeSet.Split(originalVerts, newVerts);
+      foreach (Edge edge in edgeSet)
+      {
+        // Create new polys along the stitched edge. These
+        // will connect the original poly to its former
+        // neighbor.
+        var stitch_poly1 = new Polygon(edge.m_OuterVerts[0],
+                                       edge.m_OuterVerts[1],
+                                       edge.m_InnerVerts[0]);
+        var stitch_poly2 = new Polygon(edge.m_OuterVerts[1],
+                                       edge.m_InnerVerts[1],
+                                       edge.m_InnerVerts[0]);
+        // Add the new stitched faces as neighbors to
+        // the original Polys.
+        edge.m_InnerPoly.ReplaceNeighbor(edge.m_OuterPoly,
+                                         stitch_poly2);
+        edge.m_OuterPoly.ReplaceNeighbor(edge.m_InnerPoly,
+                                         stitch_poly1);
+        m_Polygons.Add(stitch_poly1);
+        m_Polygons.Add(stitch_poly2);
+        stichedPolys.Add(stitch_poly1);
+        stichedPolys.Add(stitch_poly2);
+      }
+      //Swap to the new vertices on the inner polys.
+      foreach (Polygon poly in polys)
+      {
+        for (int i = 0; i < 3; i++)
+        {
+          int vert_id = poly.m_Vertices[i];
+          if (!originalVerts.Contains(vert_id))
+            continue;
+          
+          int vert_index = originalVerts.IndexOf(vert_id);
+          poly.m_Vertices[i] = newVerts[vert_index];
+        }
+      }
+    return stichedPolys;
+  }
+
+  public PolySet Extrude(PolySet polys, float height)
+  {
+    PolySet stitchedPolys = StitchPolys(polys);
+    List<int> verts = polys.GetUniqueVertices();
+    // Take each vertex in this list of polys, and push it
+    // away from the center of the Planet by the height
+    // parameter.
+    foreach (int vert in verts)
+    {
+      Vector3 v = m_Vertices[vert];
+      v = v.normalized * (v.magnitude + height);
+      m_Vertices[vert] = v;
+    }
+    return stitchedPolys;
+  }
+
+  public PolySet Inset(PolySet polys, float interpolation)
+  {
+    PolySet stitchedPolys = StitchPolys(polys);
+    List<int> verts = polys.GetUniqueVertices();
+    //Calculate the average center of all the vertices
+    //in these Polygons.
+    Vector3 center = Vector3.zero;
+    foreach (int vert in verts)
+      center += m_Vertices[vert];
+    center /= verts.Count;
+    // Pull each vertex towards the center, then correct
+    // it's height so that it's as far from the center of
+    // the planet as it was before.
+    foreach (int vert in verts)
+    {
+      Vector3 v = m_Vertices[vert];
+      float height = v.magnitude;
+      v = Vector3.Lerp(v, center, interpolation);
+      v = v.normalized * height;
+      m_Vertices[vert] = v;
+    }
+    return stitchedPolys;
+  }
+
+  public PolySet GetPolysInSphere(Vector3 center, 
+                                  float radius, 
+                                  IEnumerable<Polygon> source)
+  {
+    PolySet newSet = new PolySet();
+    foreach(Polygon p in source)
+    {
+      foreach(int vertexIndex in p.m_Vertices)
+      {
+        float distanceToSphere = Vector3.Distance(center,
+                                 m_Vertices[vertexIndex]);
+ 
+        if (distanceToSphere <= radius)
+        {
+          newSet.Add(p);
+          break;
+        }
+      }
+    }
+    return newSet;
+  }
 }
