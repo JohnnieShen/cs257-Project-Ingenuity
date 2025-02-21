@@ -52,10 +52,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: CommandModule
       objectReference: {fileID: 0}
+    - target: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2042000350234640884, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
     - {fileID: 2224510065003955398, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4692160778141232579, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 6208895225176698992, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 7893241473562172268, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 3949908128748781125, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 7815539817502389367, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 4634152893480308299, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 3678939158581781980, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+    - {fileID: 7446290743480563555, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3614666414008085153, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       insertIndex: -1

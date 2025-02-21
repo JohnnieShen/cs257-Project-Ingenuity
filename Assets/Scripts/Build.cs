@@ -20,11 +20,7 @@ public class BuildSystem : MonoBehaviour
     public Color highlightedColor;
  
     GameObject lastHightlightedBlock;
- 
-    private void Start()
-    {
-        SetText();
-    }
+    public LayerMask rayCastLayers;
  
     private void Update()
     {
@@ -58,7 +54,7 @@ public class BuildSystem : MonoBehaviour
                 currentBlockIndex = availableBuildingBlocks.Length - 1;
             }
         }
-        Debug.Log(currentBlockIndex);
+        // Debug.Log(currentBlockIndex);
         currentBlock = availableBuildingBlocks[currentBlockIndex];
         SetText();
     }
@@ -71,19 +67,19 @@ public class BuildSystem : MonoBehaviour
  
     void BuildBlock(GameObject block)
     {
-        if(Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
+        if(Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, rayCastLayers))
         {
- 
-            if(hitInfo.transform.tag == "Block")
+            if (hitInfo.collider.gameObject.layer == 6)
             {
                 Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x + hitInfo.normal.x/2), Mathf.RoundToInt(hitInfo.point.y + hitInfo.normal.y / 2), Mathf.RoundToInt(hitInfo.point.z + hitInfo.normal.z /2));
                 GameObject newBlock = Instantiate(block, spawnPosition, Quaternion.identity, parent);
-                newBlock.AddComponent<FixedJoint>().connectedBody = hitInfo.collider.GetComponent<Rigidbody>();
+                newBlock.AddComponent<FixedJoint>().connectedBody = hitInfo.collider.GetComponent<ConnectionPoint>().body;
             }
             else
             {
-                Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x), Mathf.RoundToInt(hitInfo.point.y), Mathf.RoundToInt(hitInfo.point.z));
-                Instantiate(block, spawnPosition, Quaternion.identity, parent);
+                // Do nothing
+                // Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x), Mathf.RoundToInt(hitInfo.point.y), Mathf.RoundToInt(hitInfo.point.z));
+                // Instantiate(block, spawnPosition, Quaternion.identity, parent);
             }
         }
     }
