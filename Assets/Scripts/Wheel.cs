@@ -20,12 +20,21 @@ public class Wheel : MonoBehaviour
 
     private Quaternion neutralRotation;
     private float currentSteerAngle = 0f;
+    public bool invertSteering = false;
 
     void Start()
     {
         if (isTurnWheel)
         {
             neutralRotation = transform.localRotation;
+            if (transform.parent != null)
+            {
+                float parentLocalZ = transform.parent.localPosition.z;
+                if (parentLocalZ < 0.4f)
+                {
+                    invertSteering = true;
+                }
+            }
         }
     }
 
@@ -35,11 +44,11 @@ public class Wheel : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {
-                currentSteerAngle -= rotationSpeed * Time.deltaTime;
+                currentSteerAngle += (invertSteering ? rotationSpeed : -rotationSpeed) * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                currentSteerAngle += rotationSpeed * Time.deltaTime;
+                currentSteerAngle += (invertSteering ? -rotationSpeed : rotationSpeed) * Time.deltaTime;
             }
             else
             {
