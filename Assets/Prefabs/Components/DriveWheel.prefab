@@ -18,7 +18,15 @@ PrefabInstance:
       objectReference: {fileID: 4619296434302728546}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: accelForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
+      propertyPath: isDriveWheel
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
+      propertyPath: springStrength
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6607950156750792071, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6607950156750792071, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6607950156750792071, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: m_LocalPosition.z

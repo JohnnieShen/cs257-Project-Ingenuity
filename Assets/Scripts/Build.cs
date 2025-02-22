@@ -21,6 +21,10 @@ public class BuildSystem : MonoBehaviour
  
     GameObject lastHightlightedBlock;
     public LayerMask rayCastLayers;
+    
+
+    [Header("References")]
+    [SerializeField] private Transform commandModule;
  
     private void Update()
     {
@@ -71,9 +75,24 @@ public class BuildSystem : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.layer == 6)
             {
-                Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x + hitInfo.normal.x/2), Mathf.RoundToInt(hitInfo.point.y + hitInfo.normal.y / 2), Mathf.RoundToInt(hitInfo.point.z + hitInfo.normal.z /2));
-                GameObject newBlock = Instantiate(block, spawnPosition, Quaternion.identity, parent);
-                newBlock.AddComponent<FixedJoint>().connectedBody = hitInfo.collider.GetComponent<ConnectionPoint>().body;
+                Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point);
+                Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal);
+
+                Vector3 localSpawn = new Vector3(
+                    Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
+                    Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
+                    Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
+                );
+
+                GameObject newBlock = Instantiate(block, commandModule);
+                newBlock.transform.localPosition = localSpawn;
+                newBlock.transform.localRotation = Quaternion.identity;
+
+                ConnectionPoint cp = hitInfo.collider.GetComponent<ConnectionPoint>();
+                if (cp != null)
+                {
+                    newBlock.AddComponent<FixedJoint>().connectedBody = cp.body;
+                }
             }
             else
             {

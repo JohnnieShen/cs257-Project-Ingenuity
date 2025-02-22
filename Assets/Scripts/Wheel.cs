@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wheel : MonoBehaviour
@@ -13,24 +11,44 @@ public class Wheel : MonoBehaviour
     public float tireMass;
     public float accelForce;
     public float rotationSpeed;
+    public float steeringReturnSpeed = 2f;
+    public float maxSteeringAngle = 45f;
     public GameObject tire;
 
-    // Start is called before the first frame update
+    public bool isDriveWheel = false;
+    public bool isTurnWheel = false;
+
+    private Quaternion neutralRotation;
+    private float currentSteerAngle = 0f;
+
     void Start()
     {
-
+        if (isTurnWheel)
+        {
+            neutralRotation = transform.localRotation;
+        }
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (isTurnWheel)
         {
-            transform.Rotate(0, -rotationSpeed * Time.deltaTime, 0);
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                currentSteerAngle -= rotationSpeed * Time.deltaTime;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                currentSteerAngle += rotationSpeed * Time.deltaTime;
+            }
+            else
+            {
+                currentSteerAngle = Mathf.Lerp(currentSteerAngle, 0f, steeringReturnSpeed * Time.deltaTime);
+            }
 
-        if (Input.GetKey(KeyCode.E))
-        {
-            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            currentSteerAngle = Mathf.Clamp(currentSteerAngle, -maxSteeringAngle, maxSteeringAngle);
+
+            transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
         }
     }
 
@@ -49,10 +67,17 @@ public class Wheel : MonoBehaviour
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
             float springForce = springOffset * springStrength - springVel * springDamper;
             float steeringForce = tireMass * desiredAccel;
-            rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * accelForce);
 
-            // render tire
-            tire.transform.position = hit.point + springDir / 2;
+            float driveInput = 0f;
+            if (isDriveWheel)
+            {
+                driveInput = Input.GetAxis("Vertical");
+            }
+            float driveForce = accelForce * driveInput;
+
+            rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
+
+            tire.transform.position = hit.point + springDir * 0.5f;
         }
         else
         {

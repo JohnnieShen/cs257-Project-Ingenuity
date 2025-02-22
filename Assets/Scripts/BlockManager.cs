@@ -24,15 +24,37 @@ public class BlockManager : MonoBehaviour
     {
         blocks.Remove(block);
     }
-
-    void Update()
+    public void EnableVehiclePhysics()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        foreach (Hull block in blocks)
         {
-            foreach (Hull block in blocks)
+            Rigidbody rb = block.GetComponent<Rigidbody>();
+            if(rb != null)
             {
-                block.GetComponent<Rigidbody>().isKinematic = false;
+                rb.isKinematic = false;
             }
         }
     }
+
+    public void DisableVehiclePhysics()
+    {
+        foreach (Hull block in blocks)
+        {
+            Rigidbody rb = block.GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.isKinematic = true;
+            }
+        }
+    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Return))
+    //     {
+    //         foreach (Hull block in blocks)
+    //         {
+    //             block.GetComponent<Rigidbody>().isKinematic = false;
+    //         }
+    //     }
+    // }
 }

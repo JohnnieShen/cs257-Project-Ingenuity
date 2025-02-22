@@ -1,0 +1,83 @@
+using UnityEngine;
+using System.Collections;
+
+public class ModeSwitcher : MonoBehaviour
+{
+    public enum Mode { Build, Drive }
+    public Mode currentMode = Mode.Build;
+
+    public GameObject player;
+
+    // public GameObject vehicle;
+    public GameObject driveCameraPivot;
+    public Transform vehicleRoot;
+    public float buildModeHeight = 5f;
+    public float elevateDuration = 1f;
+    
+    void Start()
+    {
+        SetMode(currentMode);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            currentMode = (currentMode == Mode.Build) ? Mode.Drive : Mode.Build;
+            SetMode(currentMode);
+        }
+    }
+
+    void SetMode(Mode mode)
+    {
+        if (mode == Mode.Build)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            if(player != null) player.SetActive(true);
+            // if(buildCamera != null) buildCamera.gameObject.SetActive(true);
+
+            // if(vehicle != null) vehicle.SetActive(false);
+            if(driveCameraPivot != null) driveCameraPivot.SetActive(false);
+
+            if(BlockManager.instance != null)
+            {
+                BlockManager.instance.DisableVehiclePhysics();
+            }
+            if (vehicleRoot != null)
+            {
+                StopAllCoroutines();
+                StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration));
+            }
+        }
+        else if (mode == Mode.Drive)
+        {
+            // if(vehicle != null) vehicle.SetActive(true);
+            if(driveCameraPivot != null) driveCameraPivot.SetActive(true);
+
+            if(player != null) player.SetActive(false);
+            // if(buildCamera != null) buildCamera.gameObject.SetActive(false);
+
+            if(BlockManager.instance != null)
+            {
+                BlockManager.instance.EnableVehiclePhysics();
+            }
+        }
+    }
+    IEnumerator ElevateVehicle(float targetHeight, float duration)
+    {
+        float elapsed = 0f;
+        Vector3 startPos = vehicleRoot.position;
+        Vector3 endPos   = new Vector3(startPos.x, targetHeight, startPos.z);
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            vehicleRoot.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+
+        vehicleRoot.position = endPos;
+    }
+}

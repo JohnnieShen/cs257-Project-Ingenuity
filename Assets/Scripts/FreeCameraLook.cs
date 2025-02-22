@@ -58,8 +58,8 @@ public class FreeCameraLook : Pivot {
 
 	void OnDisable()
 	{
-        Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
+        // Cursor.lockState = CursorLockMode.None;
+		// Cursor.visible = true;
     }
 
 	protected override void Follow (float deltaTime)
