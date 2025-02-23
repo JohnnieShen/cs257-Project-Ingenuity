@@ -22,6 +22,8 @@ public class BuildSystem : MonoBehaviour
     GameObject lastHightlightedBlock;
     public LayerMask rayCastLayers;
     
+    public Material previewMaterial;
+    private GameObject previewBlock;
 
     [Header("References")]
     [SerializeField] private Transform commandModule;
@@ -37,6 +39,7 @@ public class BuildSystem : MonoBehaviour
             DestroyBlock();
         }
         ChangeCurrentBlock();
+        // UpdatePreview();
     }
  
     void ChangeCurrentBlock()
@@ -49,7 +52,7 @@ public class BuildSystem : MonoBehaviour
             {
                 currentBlockIndex = 0;
             }
-        }else if(scroll < 0)
+        } else if(scroll < 0)
         {
             currentBlockIndex--;
             if (currentBlockIndex < 0)
@@ -59,6 +62,11 @@ public class BuildSystem : MonoBehaviour
         }
         currentBlock = availableBuildingBlocks[currentBlockIndex];
         SetText();
+        if (previewBlock != null)
+        {
+            Destroy(previewBlock);
+            previewBlock = null;
+        }
     }
  
     void SetText()
@@ -82,7 +90,7 @@ public class BuildSystem : MonoBehaviour
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
                 
-                GameObject newBlock = Instantiate(blockPrefab, parent);
+                GameObject newBlock = Instantiate(blockPrefab, commandModule);
                 newBlock.transform.localPosition = localSpawn;
                 newBlock.transform.localRotation = Quaternion.identity;
                 
@@ -190,6 +198,73 @@ public class BuildSystem : MonoBehaviour
                 lastHightlightedBlock.GetComponent<Renderer>().material.color = normalColor;
                 lastHightlightedBlock = null;
             }
+        }
+    }
+     void UpdatePreview()
+    {
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, rayCastLayers))
+        {
+            if (hitInfo.collider.gameObject.layer == 6)
+            {
+                Vector3 localPoint = commandModule.InverseTransformPoint(hitInfo.point);
+                Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal);
+
+                Vector3 localSpawn = new Vector3(
+                    Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
+                    Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
+                    Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
+                );
+
+                if (previewBlock == null)
+                {
+                    previewBlock = Instantiate(currentBlock.BlockObject, parent);
+                    RemovePhysicsComponents(previewBlock);
+                    ApplyPreviewMaterial(previewBlock);
+                }
+                previewBlock.transform.localPosition = localSpawn;
+                previewBlock.transform.localRotation = Quaternion.identity;
+                previewBlock.SetActive(true);
+            }
+            else
+            {
+                if (previewBlock != null)
+                {
+                    previewBlock.SetActive(false);
+                }
+            }
+        }
+        else
+        {
+            if (previewBlock != null)
+            {
+                previewBlock.SetActive(false);
+            }
+        }
+    }
+
+    void RemovePhysicsComponents(GameObject obj)
+    {
+        foreach (Collider col in obj.GetComponentsInChildren<Collider>())
+        {
+            Destroy(col);
+        }
+        Rigidbody rb = obj.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Destroy(rb);
+        }
+        foreach (FixedJoint joint in obj.GetComponents<FixedJoint>())
+        {
+            Destroy(joint);
+        }
+    }
+
+    void ApplyPreviewMaterial(GameObject obj)
+    {
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in renderers)
+        {
+            rend.material = previewMaterial;
         }
     }
 }
