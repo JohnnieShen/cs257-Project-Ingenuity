@@ -11,6 +11,7 @@ public class ModeSwitcher : MonoBehaviour
     // public GameObject vehicle;
     public GameObject driveCameraPivot;
     public Transform vehicleRoot;
+    public Transform drivingCamera;
     public float buildModeHeight = 5f;
     public float elevateDuration = 1f;
     
@@ -34,7 +35,14 @@ public class ModeSwitcher : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            if(player != null) player.SetActive(true);
+            if (player != null)
+            {
+                player.SetActive(true);
+                if(drivingCamera != null)
+                {
+                    player.transform.position = drivingCamera.position;
+                }
+            }
             // if(buildCamera != null) buildCamera.gameObject.SetActive(true);
 
             // if(vehicle != null) vehicle.SetActive(false);
@@ -68,7 +76,7 @@ public class ModeSwitcher : MonoBehaviour
     {
         float elapsed = 0f;
         Vector3 startPos = vehicleRoot.position;
-        Vector3 endPos   = new Vector3(startPos.x, targetHeight, startPos.z);
+        Vector3 endPos   = new Vector3(startPos.x, startPos.y+targetHeight, startPos.z);
 
         while (elapsed < duration)
         {
