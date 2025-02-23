@@ -56,6 +56,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: connectionPoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[1].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[1].z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2042000350234640884, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
     - {fileID: 2224510065003955398, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}

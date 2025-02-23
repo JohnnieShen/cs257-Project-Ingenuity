@@ -67,9 +67,9 @@ public class BuildSystem : MonoBehaviour
     }
    
  
-    void BuildBlock(GameObject block)
+    void BuildBlock(GameObject blockPrefab)
     {
-        if(Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, rayCastLayers))
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, rayCastLayers))
         {
             if (hitInfo.collider.gameObject.layer == 6)
             {
@@ -82,48 +82,63 @@ public class BuildSystem : MonoBehaviour
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
                 
-                GameObject newBlock = Instantiate(block, parent);
+                GameObject newBlock = Instantiate(blockPrefab, parent);
                 newBlock.transform.localPosition = localSpawn;
                 newBlock.transform.localRotation = Quaternion.identity;
-    
-                // ConnectionPoint cp = hitInfo.collider.GetComponent<ConnectionPoint>();
-                // if (cp != null)
-                // {
-                //     FixedJoint cpJoint = newBlock.AddComponent<FixedJoint>();
-                //     cpJoint.connectedBody = cp.body;
-                //     Debug.Log("Connected new block with ConnectionPoint from hit block.");
-                // }
-    
+                
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
+                
                 Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
-                Vector3Int[] neighborOffsets = new Vector3Int[]
+                // Debug.Log("Spawn grid coordinate: " + spawnPosInt);
+                
+                Hull newHull = newBlock.GetComponent<Hull>();
+                if(newHull != null)
                 {
-                    new Vector3Int( 1, 0, 0),
-                    new Vector3Int(-1, 0, 0),
-                    new Vector3Int( 0, 1, 0),
-                    new Vector3Int( 0,-1, 0),
-                    new Vector3Int( 0, 0, 1),
-                    new Vector3Int( 0, 0,-1)
-                };
-    
-                foreach (var offset in neighborOffsets)
-                {
-                    Vector3Int neighborPos = spawnPosInt + offset;
-                    // if (ShouldConnect(neighborPos, spawnPosInt))
-                    // {
-                    if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
+                    foreach (Vector3Int offset in newHull.validConnectionOffsets)
                     {
-                        newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                        Vector3Int neighborPos = spawnPosInt + offset;
+                        // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
+                        if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
+                        {
+                            Hull neighborHull = neighborRb.GetComponent<Hull>();
+                            if (neighborHull != null)
+                            {
+                                Vector3Int oppositeOffset = -offset;
+                                if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
+                                {
+                                    newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                                    // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
+                                }
+                                // else
+                                // {
+                                //     Debug.Log($"Neighbor at {neighborPos} does not allow connection at offset {oppositeOffset}.");
+                                // }
+                            }
+                            // else
+                            // {
+                            //     Debug.LogWarning("Neighbor found at " + neighborPos + " has no Hull component.");
+                            // }
+                        }
+                        // else
+                        // {
+                        //     Debug.Log("No neighbor found at " + neighborPos + ".");
+                        // }
                     }
                 }
-    
+                // else
+                // {
+                //     Debug.LogWarning("New block has no Hull component. Skipping connection logic.");
+                // }
+                
                 if (BlockManager.instance != null)
                 {
                     BlockManager.instance.AddBlock(spawnPosInt, newBlockRb);
+                    // Debug.Log("Registered new block at grid coordinate: " + spawnPosInt);
                 }
             }
         }
     }
+
 
  
     bool ShouldConnect(Vector3Int neighborPos, Vector3Int spawnPos)

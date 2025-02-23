@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hull : MonoBehaviour
 {
+    public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
+    public List<Vector3Int> validConnectionOffsets = new List<Vector3Int>();
     void Start()
     {
         if (BlockManager.instance != null)
@@ -17,6 +19,15 @@ public class Hull : MonoBehaviour
             else
             {
                 Debug.LogError("Hull has no Rigidbody component!", gameObject);
+            }
+        }
+        connectionPoints.AddRange(GetComponentsInChildren<ConnectionPoint>());
+        Rigidbody myRb = GetComponent<Rigidbody>();
+        if (myRb != null)
+        {
+            foreach (ConnectionPoint cp in connectionPoints)
+            {
+                cp.body = myRb;
             }
         }
     }

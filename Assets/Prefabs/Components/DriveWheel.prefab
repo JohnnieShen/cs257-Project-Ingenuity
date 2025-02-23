@@ -138,6 +138,38 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Block
       objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[1].x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[2].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[2].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[3].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[3].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: validConnectionOffsets.Array.data[4].z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

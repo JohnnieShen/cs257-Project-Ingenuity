@@ -186,6 +186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5654fa136fa7a9c02bc365d77c142466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectionPoints: []
+  validConnectionOffsets:
+  - {x: 1, y: 0, z: 0}
+  - {x: -1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: -1}
 --- !u!1001 &250456455718026234
 PrefabInstance:
   m_ObjectHideFlags: 0
