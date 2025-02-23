@@ -36,7 +36,6 @@ public class BuildSystem : MonoBehaviour
         {
             DestroyBlock();
         }
-        // HighlightBlock();
         ChangeCurrentBlock();
     }
  
@@ -58,7 +57,6 @@ public class BuildSystem : MonoBehaviour
                 currentBlockIndex = availableBuildingBlocks.Length - 1;
             }
         }
-        // Debug.Log(currentBlockIndex);
         currentBlock = availableBuildingBlocks[currentBlockIndex];
         SetText();
     }
@@ -77,39 +75,79 @@ public class BuildSystem : MonoBehaviour
             {
                 Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point);
                 Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal);
-
+                
                 Vector3 localSpawn = new Vector3(
                     Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
-
-                GameObject newBlock = Instantiate(block, commandModule);
+                
+                GameObject newBlock = Instantiate(block, parent);
                 newBlock.transform.localPosition = localSpawn;
                 newBlock.transform.localRotation = Quaternion.identity;
-
-                ConnectionPoint cp = hitInfo.collider.GetComponent<ConnectionPoint>();
-                if (cp != null)
+    
+                // ConnectionPoint cp = hitInfo.collider.GetComponent<ConnectionPoint>();
+                // if (cp != null)
+                // {
+                //     FixedJoint cpJoint = newBlock.AddComponent<FixedJoint>();
+                //     cpJoint.connectedBody = cp.body;
+                //     Debug.Log("Connected new block with ConnectionPoint from hit block.");
+                // }
+    
+                Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
+                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
+                Vector3Int[] neighborOffsets = new Vector3Int[]
                 {
-                    newBlock.AddComponent<FixedJoint>().connectedBody = cp.body;
+                    new Vector3Int( 1, 0, 0),
+                    new Vector3Int(-1, 0, 0),
+                    new Vector3Int( 0, 1, 0),
+                    new Vector3Int( 0,-1, 0),
+                    new Vector3Int( 0, 0, 1),
+                    new Vector3Int( 0, 0,-1)
+                };
+    
+                foreach (var offset in neighborOffsets)
+                {
+                    Vector3Int neighborPos = spawnPosInt + offset;
+                    // if (ShouldConnect(neighborPos, spawnPosInt))
+                    // {
+                    if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
+                    {
+                        newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                    }
+                }
+    
+                if (BlockManager.instance != null)
+                {
+                    BlockManager.instance.AddBlock(spawnPosInt, newBlockRb);
                 }
             }
-            else
-            {
-                // Do nothing
-                // Vector3 spawnPosition = new Vector3(Mathf.RoundToInt(hitInfo.point.x), Mathf.RoundToInt(hitInfo.point.y), Mathf.RoundToInt(hitInfo.point.z));
-                // Instantiate(block, spawnPosition, Quaternion.identity, parent);
-            }
         }
+    }
+
+ 
+    bool ShouldConnect(Vector3Int neighborPos, Vector3Int spawnPos)
+    {
+        if(neighborPos.x < spawnPos.x) return true;
+        if(neighborPos.x > spawnPos.x) return false;
+        if(neighborPos.y < spawnPos.y) return true;
+        if(neighborPos.y > spawnPos.y) return false;
+        return neighborPos.z < spawnPos.z;
     }
  
     void DestroyBlock()
     {
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
         {
-            if (hitInfo.transform.tag == "Block")
+            if (hitInfo.transform.CompareTag("Block"))
             {
+                Vector3 localPos = commandModule.InverseTransformPoint(hitInfo.transform.position);
+                Vector3Int localPosInt = Vector3Int.RoundToInt(localPos);
                 Destroy(hitInfo.transform.gameObject);
+                if (BlockManager.instance != null)
+                {
+                    BlockManager.instance.RemoveBlock(localPosInt);
+                }
             }
         }
     }

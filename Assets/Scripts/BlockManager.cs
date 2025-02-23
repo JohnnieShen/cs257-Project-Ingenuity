@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockManager : MonoBehaviour
 {
     public static BlockManager instance;
-    public List<Hull> blocks;
+    public Dictionary<Vector3Int, Rigidbody> blocks = new Dictionary<Vector3Int, Rigidbody>();
 
     private void Awake()
     {
@@ -15,21 +15,35 @@ public class BlockManager : MonoBehaviour
             Debug.LogError("Duplicated BlockManager", gameObject);
     }
 
-    public void AddBlock(Hull block)
+    public void AddBlock(Vector3Int localPos, Rigidbody blockRb)
     {
-        blocks.Add(block);
+        // foreach (var block in blocks)
+        // {
+        //     Debug.Log("Block at " + block.Key + " with Rigidbody " + block.Value);
+        // }
+        if (!blocks.ContainsKey(localPos))
+        {
+            blocks.Add(localPos, blockRb);
+        }
     }
 
-    public void RemoveBlock(Hull block)
+    public bool TryGetBlockAt(Vector3Int localPos, out Rigidbody blockRb)
     {
-        blocks.Remove(block);
+        return blocks.TryGetValue(localPos, out blockRb);
+    }
+
+    public void RemoveBlock(Vector3Int localPos)
+    {
+        if (blocks.ContainsKey(localPos))
+        {
+            blocks.Remove(localPos);
+        }
     }
     public void EnableVehiclePhysics()
     {
-        foreach (Hull block in blocks)
+        foreach (Rigidbody rb in blocks.Values)
         {
-            Rigidbody rb = block.GetComponent<Rigidbody>();
-            if(rb != null)
+            if (rb != null)
             {
                 rb.isKinematic = false;
             }
@@ -38,10 +52,9 @@ public class BlockManager : MonoBehaviour
 
     public void DisableVehiclePhysics()
     {
-        foreach (Hull block in blocks)
+        foreach (Rigidbody rb in blocks.Values)
         {
-            Rigidbody rb = block.GetComponent<Rigidbody>();
-            if(rb != null)
+            if (rb != null)
             {
                 rb.isKinematic = true;
             }
