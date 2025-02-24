@@ -21,6 +21,7 @@ public class Wheel : MonoBehaviour
     private Quaternion neutralRotation;
     private float currentSteerAngle = 0f;
     public bool invertSteering = false;
+    public float tireRadius = 0.3f;
 
     void Start()
     {
@@ -87,6 +88,10 @@ public class Wheel : MonoBehaviour
             rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
 
             tire.transform.position = hit.point + springDir * 0.5f;
+            float forwardSpeed = Vector3.Dot(rigidBody.velocity, transform.forward);
+            float distanceTraveled = forwardSpeed * Time.fixedDeltaTime;
+            float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
+            tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
         }
         else
         {

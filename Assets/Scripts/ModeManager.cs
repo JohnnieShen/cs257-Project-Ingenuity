@@ -4,7 +4,7 @@ using System.Collections;
 public class ModeSwitcher : MonoBehaviour
 {
     public enum Mode { Build, Drive }
-    public Mode currentMode = Mode.Build;
+    public Mode currentMode = Mode.Drive;
 
     public GameObject player;
 

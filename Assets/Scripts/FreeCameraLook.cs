@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using System;
 //using UnityEditor;
 
 public class FreeCameraLook : Pivot {
+	public static event Action OnFire;
 
+	public static FreeCameraLook instance;
 	[SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float turnSpeed = 1.5f;
 	[SerializeField] private float turnsmoothing = .1f;
@@ -14,6 +17,8 @@ public class FreeCameraLook : Pivot {
 	[SerializeField] private float zoomSmoothFactor = 5f;
 	[SerializeField] private LayerMask terrainLayerMask;
 	[SerializeField] private float collisionOffset = 0.5f;
+
+	public Transform aimTarget;
 
 	private float targetZoom = 10f;
 	private float currentZoom = 10f;
@@ -28,8 +33,7 @@ public class FreeCameraLook : Pivot {
 	private float smoothY = 0;
 	private float smoothXvelocity = 0;
 	private float smoothYvelocity = 0;
-
-
+	private bool isFiring = false;
 	protected override void Awake()
 	{
 		base.Awake();
@@ -40,6 +44,15 @@ public class FreeCameraLook : Pivot {
 		cam = GetComponentInChildren<Camera>().transform;
 		pivot = cam.parent;
 		targetZoom = currentZoom;
+		if (instance == null)
+            instance = this;
+        else
+            Debug.LogError("Duplicated FreeCam", gameObject);
+		if (aimTarget == null) {
+            GameObject aimTargetGO = new GameObject("AimTarget");
+            aimTarget = aimTargetGO.transform;
+            Debug.Log("aimTarget was not assigned. A new AimTarget GameObject has been created.");
+        }
 	}
 	
 	// Update is called once per frame
@@ -49,11 +62,24 @@ public class FreeCameraLook : Pivot {
 
 		HandleRotationMovement();
 		HandleZoom();
-
+		UpdateTarget();
 		// if (lockCursor && Input.GetMouseButtonUp (0))
 		// {
         //     Cursor.lockState = CursorLockMode.Confined;
 		// }
+		if (Input.GetMouseButtonDown(0))
+        {
+            isFiring = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            isFiring = false;
+        }
+
+        if (isFiring)
+        {
+            OnFire?.Invoke();
+        }
 	}
 
 	void OnDisable()
@@ -67,7 +93,16 @@ public class FreeCameraLook : Pivot {
 		transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
 
 	}
-
+	private void UpdateTarget() {
+		Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+		Vector3 targetTargetPosition;
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, terrainLayerMask))
+        {
+            targetTargetPosition = hit.point; 
+			aimTarget.position = Vector3.Lerp(aimTarget.position, targetTargetPosition, Time.deltaTime * 10f);
+        }
+		
+    }
 	void HandleRotationMovement()
 	{
 		float x = Input.GetAxis("Mouse X");

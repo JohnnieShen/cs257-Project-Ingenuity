@@ -9,4 +9,5 @@ public class Block : ScriptableObject
     public GameObject BlockObject;
     public string ItemsNeededForBuildingBlock;
     public int AmountOfItemNeeded;
+    public bool isSideMountable;
 }

@@ -222,6 +222,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &143273437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143273438}
+  m_Layer: 0
+  m_Name: AimTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &143273438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143273437}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -22.179499, y: -1.913109e-17, z: 8.615877}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &234743491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -826,8 +857,9 @@ MonoBehaviour:
   zoomSmoothFactor: 5
   terrainLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   collisionOffset: 0.5
+  aimTarget: {fileID: 143273438}
   lockCursor: 0
 --- !u!4 &1587305647
 Transform:
@@ -1052,7 +1084,7 @@ GameObject:
   - component: {fileID: 2046059701}
   - component: {fileID: 2046059700}
   - component: {fileID: 2046059699}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1216,6 +1248,14 @@ PrefabInstance:
       propertyPath: previewMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 260cfbcaf4361b042b13bdce4b6820e9, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: 'availableBuildingBlocks.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
     - target: {fileID: 8186827679668893897, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1241,4 +1281,5 @@ SceneRoots:
   - {fileID: 2371058033125279448}
   - {fileID: 1949989228}
   - {fileID: 840757991}
+  - {fileID: 143273438}
   - {fileID: 1587305647}

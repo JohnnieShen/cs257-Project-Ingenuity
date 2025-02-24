@@ -92,7 +92,23 @@ public class BuildSystem : MonoBehaviour
                 
                 GameObject newBlock = Instantiate(blockPrefab, commandModule);
                 newBlock.transform.localPosition = localSpawn;
-                newBlock.transform.localRotation = Quaternion.identity;
+                if (currentBlock.isSideMountable)
+                {
+                    if (Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up)) > 10f)
+                    {
+                        Quaternion adjustment = Quaternion.FromToRotation(newBlock.transform.up, hitInfo.normal);
+                        newBlock.transform.rotation = adjustment * newBlock.transform.rotation;
+                        newBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation;
+                    }
+                    else
+                    {
+                        newBlock.transform.localRotation = Quaternion.identity;
+                    }
+                }
+                else
+                {
+                    newBlock.transform.localRotation = Quaternion.identity;
+                }
                 
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
                 
@@ -104,14 +120,20 @@ public class BuildSystem : MonoBehaviour
                 {
                     foreach (Vector3Int offset in newHull.validConnectionOffsets)
                     {
-                        Vector3Int neighborPos = spawnPosInt + offset;
+                        Vector3 rotatedOffset = newBlock.transform.localRotation * (Vector3)offset;
+                        Vector3Int rotatedOffsetInt = new Vector3Int(
+                            Mathf.RoundToInt(rotatedOffset.x),
+                            Mathf.RoundToInt(rotatedOffset.y),
+                            Mathf.RoundToInt(rotatedOffset.z)
+                        );
+                        Vector3Int neighborPos = spawnPosInt + rotatedOffsetInt;
                         // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
                         if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
                         {
                             Hull neighborHull = neighborRb.GetComponent<Hull>();
                             if (neighborHull != null)
                             {
-                                Vector3Int oppositeOffset = -offset;
+                                Vector3Int oppositeOffset = -rotatedOffsetInt;
                                 if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
                                 {
                                     newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
