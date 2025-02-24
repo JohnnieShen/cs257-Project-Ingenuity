@@ -93,16 +93,41 @@ public class FreeCameraLook : Pivot {
 		transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
 
 	}
-	private void UpdateTarget() {
-		Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-		Vector3 targetTargetPosition;
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, terrainLayerMask))
-        {
-            targetTargetPosition = hit.point; 
-			aimTarget.position = Vector3.Lerp(aimTarget.position, targetTargetPosition, Time.deltaTime * 10f);
-        }
+	private void UpdateTarget() 
+	{
+		Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+		Debug.DrawRay(forwardRay.origin, forwardRay.direction * 1000f, Color.red, 0.1f);
+
+		int aimLayer = LayerMask.NameToLayer("Aim");
+		if (aimLayer == -1)
+		{
+			Debug.LogError("Layer 'Aim' does not exist in Project Settings > Tags and Layers.");
+			return;
+		}
+		int aimMask = 1 << aimLayer;
+		int combinedMask = terrainLayerMask | aimMask;
+
+		if (Physics.Raycast(forwardRay, out RaycastHit forwardHit, 1000f, combinedMask, QueryTriggerInteraction.Collide))
+		{
+			aimTarget.position = Vector3.Lerp(aimTarget.position, forwardHit.point, Time.deltaTime * 10f);
+		}
+		else
+		{
+			Vector3 behindPos = forwardRay.origin - forwardRay.direction * 100f;
+			Ray backwardRay = new Ray(behindPos, forwardRay.direction);
+
+			Debug.DrawRay(backwardRay.origin, backwardRay.direction * 200f, Color.blue, 0.1f);
+
+			if (Physics.Raycast(backwardRay, out RaycastHit backwardHit, 200f, aimMask, QueryTriggerInteraction.Collide))
+			{
+				aimTarget.position = Vector3.Lerp(aimTarget.position, -backwardHit.point, Time.deltaTime * 10f);
+			}
+		}
+	}
+
+
 		
-    }
+    
 	void HandleRotationMovement()
 	{
 		float x = Input.GetAxis("Mouse X");
