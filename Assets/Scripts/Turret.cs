@@ -16,10 +16,13 @@ public class Turret : MonoBehaviour
     [SerializeField] private float reloadTime = 2f;
     [SerializeField] private float damage = 10f;
     [SerializeField] private int magazineSize = 5;
+    [Header("Obstacle Check Settings")]
+    [SerializeField] private float checkDistance = 100f;
 
     private int currentAmmo;
     private float nextFireTime = 0f;
     private bool isReloading = false;
+    private bool isBlocked = false;
 
     void Start()
     {
@@ -45,6 +48,7 @@ public class Turret : MonoBehaviour
     {
         if (aimTarget == null)
             return;
+        CheckIfBlocked();
     }
     void OnEnable()
     {
@@ -64,6 +68,10 @@ public class Turret : MonoBehaviour
         if (currentAmmo <= 0)
         {
             StartCoroutine(Reload());
+            return;
+        }
+        if (isBlocked)
+        {
             return;
         }
 
@@ -123,5 +131,28 @@ public class Turret : MonoBehaviour
         constraint.weight = 1f;
         data.sourceObjects = sources;
         constraint.data = data;
+    }
+
+    private void CheckIfBlocked()
+    {
+        if (shootPoint == null) 
+        {
+            isBlocked = false;
+            return;
+        }
+
+        Ray ray = new Ray(shootPoint.position, shootPoint.forward);
+        if (Physics.Raycast(ray, out RaycastHit hit, checkDistance))
+        {
+            // Debug.Log("Hit object: " + hit.collider.name);
+            Debug.DrawRay(ray.origin, ray.direction * checkDistance, Color.red);
+            if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("ConnectionPoint")||hit.collider.CompareTag("Core"))
+            {
+                isBlocked = true;
+                return;
+            }
+        }
+
+        isBlocked = false;
     }
 }

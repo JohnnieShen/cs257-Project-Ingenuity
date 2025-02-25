@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Core
       objectReference: {fileID: 0}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: connectionPoints.Array.size
