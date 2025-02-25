@@ -105,23 +105,15 @@ public class FreeCameraLook : Pivot {
 			return;
 		}
 		int aimMask = 1 << aimLayer;
-		int combinedMask = terrainLayerMask | aimMask;
 
-		if (Physics.Raycast(forwardRay, out RaycastHit forwardHit, 1000f, combinedMask, QueryTriggerInteraction.Collide))
+		RaycastHit hit;
+		if (Physics.Raycast(forwardRay, out hit, 1000f, aimMask, QueryTriggerInteraction.Collide))
 		{
-			aimTarget.position = Vector3.Lerp(aimTarget.position, forwardHit.point, Time.deltaTime * 10f);
+			aimTarget.position = Vector3.Lerp(aimTarget.position, hit.point, Time.deltaTime * 10f);
 		}
 		else
 		{
-			Vector3 behindPos = forwardRay.origin - forwardRay.direction * 100f;
-			Ray backwardRay = new Ray(behindPos, forwardRay.direction);
-
-			Debug.DrawRay(backwardRay.origin, backwardRay.direction * 200f, Color.blue, 0.1f);
-
-			if (Physics.Raycast(backwardRay, out RaycastHit backwardHit, 200f, aimMask, QueryTriggerInteraction.Collide))
-			{
-				aimTarget.position = Vector3.Lerp(aimTarget.position, -backwardHit.point, Time.deltaTime * 10f);
-			}
+			aimTarget.position = forwardRay.origin + forwardRay.direction * 1000f;
 		}
 	}
 
