@@ -18,6 +18,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private int magazineSize = 5;
     [Header("Obstacle Check Settings")]
     [SerializeField] private float checkDistance = 100f;
+    public LineRenderer blockedLine;
 
     private int currentAmmo;
     private float nextFireTime = 0f;
@@ -42,6 +43,12 @@ public class Turret : MonoBehaviour
             rigs.Build();
 
         currentAmmo = magazineSize;
+        if (blockedLine != null)
+        {
+            blockedLine.startWidth = 0.05f;
+            blockedLine.endWidth = 0.05f;
+            blockedLine.enabled = false;
+        }
     }
 
     void Update()
@@ -148,11 +155,20 @@ public class Turret : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * checkDistance, Color.red);
             if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("ConnectionPoint")||hit.collider.CompareTag("Core"))
             {
+                if (blockedLine != null)
+                {
+                    blockedLine.enabled = true;
+                    blockedLine.positionCount = 2;
+                    blockedLine.SetPosition(0, shootPoint.position);
+                    blockedLine.SetPosition(1, hit.point);
+                }
                 isBlocked = true;
                 return;
             }
         }
 
         isBlocked = false;
+        if (blockedLine != null)
+            blockedLine.enabled = false;
     }
 }
