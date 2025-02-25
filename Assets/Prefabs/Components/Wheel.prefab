@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6607950156750792071}
   - component: {fileID: 4521524471250326909}
+  - component: {fileID: 9106322844310475174}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -54,7 +55,36 @@ MonoBehaviour:
   tireMass: 1
   accelForce: 0
   rotationSpeed: 0
+  steeringReturnSpeed: 2
+  maxSteeringAngle: 45
   tire: {fileID: 4024345409444059436}
+  isDriveWheel: 0
+  isTurnWheel: 0
+  invertSteering: 0
+  tireRadius: 0.3
+--- !u!136 &9106322844310475174
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298478482896970253}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4024345409444059436
 GameObject:
   m_ObjectHideFlags: 0

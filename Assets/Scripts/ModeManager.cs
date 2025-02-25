@@ -76,16 +76,21 @@ public class ModeSwitcher : MonoBehaviour
     {
         float elapsed = 0f;
         Vector3 startPos = vehicleRoot.position;
-        Vector3 endPos   = new Vector3(startPos.x, startPos.y+targetHeight, startPos.z);
+        Vector3 endPos = new Vector3(startPos.x, startPos.y + targetHeight, startPos.z);
+        Quaternion startRot = vehicleRoot.localRotation;
+        Quaternion endRot = Quaternion.identity;
+        Debug.Log("Rotating vehicle from " + startRot + " to " + endRot);
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
             vehicleRoot.position = Vector3.Lerp(startPos, endPos, t);
+            vehicleRoot.localRotation = Quaternion.Slerp(startRot, endRot, t);
             yield return null;
         }
 
         vehicleRoot.position = endPos;
+        vehicleRoot.localRotation = endRot;
     }
 }
