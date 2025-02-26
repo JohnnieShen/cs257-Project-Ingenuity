@@ -23,6 +23,7 @@ Inspiration
 We plan to take inspiration from the general gameplay loop of TerraTech, where the player is able to explore an open-ish world and scavenge for new building blocks of their vehicle. However, we plan on having “levels” instead of a big open world so that the project is going to scale a bit better and we could add more mechanics and elements into different levels. We also plan on adding more engaging gameplay other than exploration, for example roguelike mechanics.
 
 **Slay the Spire**
+![Slay the Spire](Images/slaythespire.png)
 
 “Slay the Spire is a game in which you climb The Spire, ascending its floors through three acts, encountering many enemies, bosses, and events along the way. The paths through each act all lead to a final floor where a challenging boss encounter awaits. The content of each floor and the available paths through each act are procedurally-generated, so each run will be a different experience.”
 
@@ -35,34 +36,35 @@ Players will explore an alien planet from a third-person perspective, controllin
 A customization inventory system will allow players to part swap on the fly, which rewards creativity, while an in-game map provides navigation assistance. 
 
 Control-wise, the game will feature control schemes similar to other arcade-style vehicle driving/third-person shooter games such as *Robocraft*.
+![Robocraft](Images/robocraft.png)
 
 ## Development Plan
 
 ### Project Checkpoint 1-2: Basic Mechanics and Scripting (Ch 5-9)
 
-Sketch out a rough idea of what parts of your game you will implement for the next submission, Project Checkpoint 1-2: Basic Mechanics and Scripting involving Unity textbook Chapters 5 through 9. You will come back to update this for each submission based on which things you've accomplished and which need to be prioritized next. This will help you practice thinking ahead as well as reflecting on the progress you've made throughout the semester.
+~~Sketch out a rough idea of what parts of your game you will implement for the next submission, Project Checkpoint 1-2: Basic Mechanics and Scripting involving Unity textbook Chapters 5 through 9. You will come back to update this for each submission based on which things you've accomplished and which need to be prioritized next. This will help you practice thinking ahead as well as reflecting on the progress you've made throughout the semester.
 
-Our initial goal will be to implement basic car and tire physics mechanics into our game. One approach to this is treating cars as a single rigid body attached to 4 additional rigid bodies which represent the wheels. The forces will be acting on the wheels, and consist of three major components:
+~~Our initial goal will be to implement basic car and tire physics mechanics into our game. One approach to this is treating cars as a single rigid body attached to 4 additional rigid bodies which represent the wheels. The forces will be acting on the wheels, and consist of three major components:
 
-1. **Suspension**  
-   - Based on classical spring mechanics, with an added damping force to account for an infinite oscillation.  
-   - A basic calculation would be:  
+1. ~~**Suspension**  
+   - ~~Based on classical spring mechanics, with an added damping force to account for an infinite oscillation.  
+   - ~~A basic calculation would be:  
      ```math
      Force = (Offset × Strength) - (Velocity × Damping)
      ```
 
-2. **Acceleration**  
-   - Depends on the amount of applied torque.  
-   - Depending on the current direction of steering, different acceleration limits will be hit.  
-   - A basic implementation is to set a top speed value, and then based on the applied torque, follow a semi-Gaussian distribution for situational acceleration limits.
+2. ~~**Acceleration**  
+   - ~~Depends on the amount of applied torque.  
+   - ~~Depending on the current direction of steering, different acceleration limits will be hit.  
+   - ~~A basic implementation is to set a top speed value, and then based on the applied torque, follow a semi-Gaussian distribution for situational acceleration limits.
 
-3. **Steering**  
-   - Two different components to velocity:
-     - The direction the tires are facing.
-     - The direction perpendicular to that.
-   - Steering arises from that perpendicular direction, and in order to provide a sense of traction/steering, a counteracting opposite velocity is needed.  
-   - Depending on the magnitude of this opposite velocity, the amount of sliding will be adjusted.
+3. ~~**Steering**  
+   - ~~Two different components to velocity:
+     - ~~The direction the tires are facing.
+     - ~~The direction perpendicular to that.
+   - ~~Steering arises from that perpendicular direction, and in order to provide a sense of traction/steering, a counteracting opposite velocity is needed.  
+   - ~~Depending on the magnitude of this opposite velocity, the amount of sliding will be adjusted.
 
-A higher-reaching goal will be to work on a basic implementation for the car-building mechanic. 
+~~A higher-reaching goal will be to work on a basic implementation for the car-building mechanic. 
 
-Possibly adding in some “parts” that can be added onto the car and a simple UI selection screen for those parts.
+~~Possibly adding in some “parts” that can be added onto the car and a simple UI selection screen for those parts.
