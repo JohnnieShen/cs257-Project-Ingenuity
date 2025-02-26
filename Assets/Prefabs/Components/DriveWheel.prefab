@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 4619296434302728546}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: accelForce
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: isDriveWheel

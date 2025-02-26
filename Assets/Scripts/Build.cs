@@ -25,6 +25,8 @@ public class BuildSystem : MonoBehaviour
     public Material previewMaterial;
     private GameObject previewBlock;
 
+    public float break_force;
+
     [Header("References")]
     [SerializeField] private Transform commandModule;
  
@@ -136,7 +138,10 @@ public class BuildSystem : MonoBehaviour
                                 Vector3Int oppositeOffset = -rotatedOffsetInt;
                                 if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
                                 {
-                                    newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                                    var joint = newBlock.AddComponent<FixedJoint>();
+                                    joint.connectedBody = neighborRb;
+                                    joint.breakForce = break_force;
+
                                     // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                 }
                                 // else

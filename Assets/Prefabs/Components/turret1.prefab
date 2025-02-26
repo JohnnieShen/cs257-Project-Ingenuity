@@ -230,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 5265900070476832369}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0436}
+  m_LocalPosition: {x: -0, y: 0, z: -0.1739}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -693,7 +693,7 @@ MonoBehaviour:
   topArmAim: {fileID: 2343672454876531094}
   gunAim: {fileID: 1423184359962775420}
   shootPoint: {fileID: 3142191892951490519}
-  projectilePrefab: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+  projectilePrefab: {fileID: 4993977969286212304, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
   fireRate: 2
   reloadTime: 2
   damage: 10
