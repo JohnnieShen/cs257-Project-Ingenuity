@@ -67,7 +67,7 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
    - ~~Steering arises from that perpendicular direction, and in order to provide a sense of traction/steering, a counteracting opposite velocity is needed.~~  
    - ~~Depending on the magnitude of this opposite velocity, the amount of sliding will be adjusted.~~
 
-~~A higher-reaching goal will be to work on a basic implementation for the car-building mechanic.~~~~ 
+~~A higher-reaching goal will be to work on a basic implementation for the car-building mechanic.~~
 
 ~~Possibly adding in some “parts” that can be added onto the car and a simple UI selection screen for those parts.~~
 
@@ -79,9 +79,9 @@ There were three main areas we completed that we did not plan on:
     - Johnny made blender models for each of our parts (hull, command module, turret, wheel)
     - We still do not have textures and are just using basic colors which we hope to improve
 2. Turrets
-    _ We implemented the turret piece which attaches to a block. The turret armature is fully articulated and animated to point towards the player’s cursor. It currently shoots rigidbody bullets before having to reload.
+    - We implemented the turret piece which attaches to a block. The turret armature is fully articulated and animated to point towards the player’s cursor. It currently shoots rigidbody bullets before having to reload.
 3. Mode switching
-    -We implemented build mode and drive mode as well as different camera controls and transitions for each.
+    - We implemented build mode and drive mode as well as different camera controls and transitions for each.
 
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
@@ -110,15 +110,15 @@ To summarize:
 
 Going into this checkpoint, based on our feedback, our main goals were to implement a rudimentary vehicle building system, focusing on core mechanics and systems over polishing. We started out with a primitive block-building system utilizing proxy geometry in place of more-developed assets, inspired by the mechanics of established games such as Minecraft. As per our initial plan, we worked on establishing a more stylized physics system to give the game a more satisfying feel.
 
-![Initial block building system utilizing primitive shapes and physics.](primitivephysics.png)
+![Initial block building system utilizing primitive shapes and physics.](Images/primitivephysics.png)
 
 #### Assets
 
 A couple assets were created using the 3D Blender Engine, to add some more detail to our mechanics.
 
-![Base connecting block asset modeled in Blender](blenderhull.png)
+![Base connecting block asset modeled in Blender](Images/blenderhull.png)
 
-![Car wheel asset modeled in Blender](blenderwheel.png)
+![Car wheel asset modeled in Blender](Images/blenderwheel.png)
 
 #### Further Development of Vehicle Building and Additional Features
 
@@ -126,9 +126,9 @@ At this point in time, we had a simplified version of input control implemented,
 
 Later, we implemented a more polished version of the initial system, by adding color-indicated blocks for the various parts of the car, as well as imported some additional assets, establishing a centralized control panel block for the player to build off of. At this point, we also utilized Unity’s new input system to integrate a more user-friendly input experience. We also began working on developing additional features such as turrets for eventually when an established gameplay loop is developed. So far, we have implemented drive mode and build mode along with four components to experiment with: hull, drive wheels, turn wheels and turrets.
 
-![Polished block-building system with color indicators](buildsystem.png)
+![Polished block-building system with color indicators](Images/buildsystem.png)
 
-![Example user constructed car with advanced physics](car.png)
+![Example user constructed car with advanced physics](Images/car.png)
 
 In build mode, the player can move in the xy-plane using WASD or the arrow keys. The player can also hover up or down using space for up and shift for down. These are similar to the Minecraft creative mode controls.
 
@@ -145,16 +145,16 @@ In drive mode, the player can accelerate either forwards or backwards using W/S.
 
 Building was implemented by using a raycast from the camera until a block is hit. Then, the normal of the collision is computed and a new block is instantiated at an integer offset from that location. Additionally, a fixed joint component is added between the new and old block. During build mode, all blocks are marked as kinematic. However, the player can press “b” to toggle build mode and transition into drive mode. When this occurs, the block manager iterates through each block and enables the physics causing the car to fall. When build mode is entered again, the physics are turned off and the car levitates back up to a build height allowing the player to access all angles of the vehicle.
 
-![Turret asset modeled in Blender](blenderturret.png)
+![Turret asset modeled in Blender](Images/blenderturret.png)
 
-![Turret tracking system demonstration](turrettracking.png)
+![Turret tracking system demonstration](Images/turrettracking.png)
 
 A first iteration model for the turret is modelled up and rigged in Blender. Model is imported to Unity to use with the Animation Rigging package to allow Unity to use inverse kinetics to calculate how the turret should behave when the aiming location changes. In this version, the turret follows a target location decided by a raycast from the camera. If there are obstacles along the way, e.g. other blocks, the turrets will emit a line rendered by a line renderer as a visual cue that it is blocked and won’t shoot. 
 
 An early-stage procedural world generation was also created utilizing an icosahedron-mesh that has size and sub-division flexibility. A new physics system was developed to allow for planet-centric gravity rather than Unity’s default Rigidbody logic.
 
-![Base planet](world1.png)
+![Base planet](Images/world1.png)
 
-![First procedurally generated through the use of randomized extrusion and indentation of different regions](world2.png)
+![First procedurally generated through the use of randomized extrusion and indentation of different regions](Images/world2.png)
 
-![Second procedurally generated through the use of randomized extrusion and indentation of different regions](world3.png)
+![Second procedurally generated through the use of randomized extrusion and indentation of different regions](Images/world3.png)
