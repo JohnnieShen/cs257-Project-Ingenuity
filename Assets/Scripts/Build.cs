@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
- 
+using UnityEngine.InputSystem;
 public class BuildSystem : MonoBehaviour
 {
     public Block[] availableBuildingBlocks;
@@ -28,51 +28,127 @@ public class BuildSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform commandModule;
  
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (InputManager.instance != null)
         {
-            BuildBlock(currentBlock.BlockObject);
+            InputManager.instance.GetBuildBuildAction().performed += OnBuildPerformed;
+            InputManager.instance.GetBuildRemoveAction().performed += OnRemovePerformed;
+            InputManager.instance.GetBuildScrollAction().performed += OnScrollPerformed;
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            DestroyBlock();
-        }
-        ChangeCurrentBlock();
-        // UpdatePreview();
     }
- 
-    void ChangeCurrentBlock()
+
+    private void OnDisable()
     {
-        float scroll = Input.mouseScrollDelta.y;
-        if(scroll > 0)
+        if (InputManager.instance != null)
+        {
+            InputManager.instance.GetBuildBuildAction().performed -= OnBuildPerformed;
+            InputManager.instance.GetBuildRemoveAction().performed -= OnRemovePerformed;
+            InputManager.instance.GetBuildScrollAction().performed -= OnScrollPerformed;
+        }
+    }
+    private void Start()
+    {
+        if (availableBuildingBlocks != null && availableBuildingBlocks.Length > 0)
+        {
+            currentBlockIndex = 0;
+            currentBlock = availableBuildingBlocks[currentBlockIndex];
+            SetText();
+        }
+    }
+    // private void Update()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         BuildBlock(currentBlock.BlockObject);
+    //     }
+    //     if (Input.GetMouseButtonDown(1))
+    //     {
+    //         DestroyBlock();
+    //     }
+    //     ChangeCurrentBlock();
+    //     // UpdatePreview();
+    // }
+ 
+    private void OnBuildPerformed(InputAction.CallbackContext ctx)
+    {
+        if (currentBlock == null || currentBlock.BlockObject == null)
+        {
+            Debug.LogWarning("No block selected yet!");
+            return;
+        }
+        BuildBlock(currentBlock.BlockObject);
+    }
+
+    private void OnRemovePerformed(InputAction.CallbackContext ctx)
+    {
+        DestroyBlock();
+    }
+
+    private void OnScrollPerformed(InputAction.CallbackContext ctx)
+    {
+        Vector2 scrollValue = ctx.ReadValue<Vector2>();
+        float scroll = scrollValue.y;
+
+        if (scroll > 0)
         {
             currentBlockIndex++;
-            if (currentBlockIndex > availableBuildingBlocks.Length - 1)
-            {
+            if (currentBlockIndex >= availableBuildingBlocks.Length)
                 currentBlockIndex = 0;
-            }
-        } else if(scroll < 0)
+        }
+        else if (scroll < 0)
         {
             currentBlockIndex--;
             if (currentBlockIndex < 0)
-            {
                 currentBlockIndex = availableBuildingBlocks.Length - 1;
-            }
         }
+
         currentBlock = availableBuildingBlocks[currentBlockIndex];
         SetText();
+
         if (previewBlock != null)
         {
             Destroy(previewBlock);
             previewBlock = null;
         }
     }
- 
+
     void SetText()
     {
-        blockNameText.text = currentBlock.BlockName + "\n" + currentBlock.AmountOfItemNeeded + " x " + currentBlock.ItemsNeededForBuildingBlock;
+        if (blockNameText != null && currentBlock != null)
+        {
+            blockNameText.text = currentBlock.BlockName 
+                + "\n" + currentBlock.AmountOfItemNeeded 
+                + " x " + currentBlock.ItemsNeededForBuildingBlock;
+        }
     }
+    // void ChangeCurrentBlock()
+    // {
+    //     float scroll = Input.mouseScrollDelta.y;
+    //     if(scroll > 0)
+    //     {
+    //         currentBlockIndex++;
+    //         if (currentBlockIndex > availableBuildingBlocks.Length - 1)
+    //         {
+    //             currentBlockIndex = 0;
+    //         }
+    //     } else if(scroll < 0)
+    //     {
+    //         currentBlockIndex--;
+    //         if (currentBlockIndex < 0)
+    //         {
+    //             currentBlockIndex = availableBuildingBlocks.Length - 1;
+    //         }
+    //     }
+    //     currentBlock = availableBuildingBlocks[currentBlockIndex];
+    //     SetText();
+    //     if (previewBlock != null)
+    //     {
+    //         Destroy(previewBlock);
+    //         previewBlock = null;
+    //     }
+    // }
+ 
    
  
     void BuildBlock(GameObject blockPrefab)

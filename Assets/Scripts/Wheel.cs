@@ -41,15 +41,24 @@ public class Wheel : MonoBehaviour
 
     void Update()
     {
+        if (InputManager.instance == null) return;
+
+        Vector2 moveValue = Vector2.zero;
+        if (InputManager.instance.GetDriveMoveAction() != null)
+        {
+            moveValue = InputManager.instance.GetDriveMoveAction().ReadValue<Vector2>();
+        }
+
+        float steerInput = moveValue.x;
+        float driveInput = moveValue.y;
+
         if (isTurnWheel)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (Mathf.Abs(steerInput) > 0.1f)
             {
-                currentSteerAngle += (invertSteering ? rotationSpeed : -rotationSpeed) * Time.deltaTime;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                currentSteerAngle += (invertSteering ? -rotationSpeed : rotationSpeed) * Time.deltaTime;
+                float direction = (steerInput > 0f) ? 1f : -1f;
+                float sign = invertSteering ? -1f : 1f;
+                currentSteerAngle += sign * direction * rotationSpeed * Time.deltaTime;
             }
             else
             {
@@ -57,7 +66,6 @@ public class Wheel : MonoBehaviour
             }
 
             currentSteerAngle = Mathf.Clamp(currentSteerAngle, -maxSteeringAngle, maxSteeringAngle);
-
             transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
         }
     }

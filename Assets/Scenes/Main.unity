@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22246474, y: 7.510906, z: 23.844007}
+  m_LocalPosition: {x: 8.514553, y: 570.5198, z: 813.4137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,6 +331,8 @@ GameObject:
   m_Component:
   - component: {fileID: 527780855}
   - component: {fileID: 527780854}
+  - component: {fileID: 527780856}
+  - component: {fileID: 527780857}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -372,6 +374,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527780856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527780853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 4b691b3024725cf478ba10382e47f29c, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Build
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &527780857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527780853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badfd687839a1b94085e74bdbcee4f1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 4b691b3024725cf478ba10382e47f29c, type: 3}
 --- !u!1 &573142016
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,11 +970,11 @@ MonoBehaviour:
   target: {fileID: 1562183983}
   autoTargetPlayer: 1
   moveSpeed: 5
-  turnSpeed: 1.5
+  turnSpeed: 0.7
   turnsmoothing: 0.1
   tiltMax: 75
   tiltMin: 45
-  zoomSpeed: 10
+  zoomSpeed: 3
   minZoom: 5
   maxZoom: 30
   zoomSmoothFactor: 5
@@ -1334,6 +1379,10 @@ PrefabInstance:
       propertyPath: 'availableBuildingBlocks.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
+    - target: {fileID: 6672819349101815036, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: mouseSensitivity
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8186827679668893897, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: m_IsActive
       value: 0

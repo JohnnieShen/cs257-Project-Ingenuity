@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 //using UnityEditor;
-
+using UnityEngine.InputSystem;
 public class FreeCameraLook : Pivot {
 	public static event Action OnFire;
 
@@ -54,6 +54,40 @@ public class FreeCameraLook : Pivot {
             Debug.Log("aimTarget was not assigned. A new AimTarget GameObject has been created.");
         }
 	}
+	private void OnEnable()
+    {
+        if (InputManager.instance != null && InputManager.instance.GetDriveShootAction() != null)
+        {
+            InputManager.instance.GetDriveShootAction().performed += OnFireStarted;
+            InputManager.instance.GetDriveShootAction().canceled  += OnFireCanceled;
+        }
+		if (InputManager.instance != null && InputManager.instance.GetDriveScrollAction() != null)
+		{
+			InputManager.instance.GetDriveScrollAction().performed += OnScrollPerformed;
+		}
+    }
+
+    private void OnDisable()
+    {
+        if (InputManager.instance != null && InputManager.instance.GetDriveShootAction() != null)
+        {
+            InputManager.instance.GetDriveShootAction().performed -= OnFireStarted;
+            InputManager.instance.GetDriveShootAction().canceled  -= OnFireCanceled;
+        }
+		if (InputManager.instance != null && InputManager.instance.GetDriveScrollAction() != null)
+		{
+			InputManager.instance.GetDriveScrollAction().performed -= OnScrollPerformed;
+		}
+    }
+
+	void OnFireStarted(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        isFiring = true;
+    }
+    void OnFireCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        isFiring = false;
+    }
 	
 	// Update is called once per frame
 	protected override	void Update ()
@@ -82,11 +116,6 @@ public class FreeCameraLook : Pivot {
         }
 	}
 
-	void OnDisable()
-	{
-        // Cursor.lockState = CursorLockMode.None;
-		// Cursor.visible = true;
-    }
 
 	protected override void Follow (float deltaTime)
 	{
@@ -121,41 +150,47 @@ public class FreeCameraLook : Pivot {
 		
     
 	void HandleRotationMovement()
+    {
+        Vector2 lookVal = Vector2.zero;
+        if (InputManager.instance != null && InputManager.instance.GetDriveLookAction() != null)
+        {
+            lookVal = InputManager.instance.GetDriveLookAction().ReadValue<Vector2>();
+        }
+
+        float x = lookVal.x;
+        float y = lookVal.y;
+
+        if (turnsmoothing > 0)
+        {
+            smoothX = Mathf.SmoothDamp(smoothX, x, ref smoothXvelocity, turnsmoothing);
+            smoothY = Mathf.SmoothDamp(smoothY, y, ref smoothYvelocity, turnsmoothing);
+        }
+        else
+        {
+            smoothX = x;
+            smoothY = y;
+        }
+
+        lookAngle += smoothX * turnSpeed;
+        transform.rotation = Quaternion.Euler(0f, lookAngle, 0f);
+
+        tiltAngle -= smoothY * turnSpeed;
+        tiltAngle = Mathf.Clamp(tiltAngle, -tiltMin, tiltMax);
+        pivot.localRotation = Quaternion.Euler(tiltAngle, 0f, 0f);
+    }
+
+    private void OnScrollPerformed(InputAction.CallbackContext ctx)
 	{
-		float x = Input.GetAxis("Mouse X");
-		float y = Input.GetAxis("Mouse Y");
+		Vector2 scrollValue = ctx.ReadValue<Vector2>();
+		// Debug.Log("ScrollPerformed: " + scrollValue);
+		float scroll = scrollValue.y;
 
-		if (turnsmoothing > 0)
-		{
-			smoothX = Mathf.SmoothDamp (smoothX, x, ref smoothXvelocity, turnsmoothing);
-			smoothY = Mathf.SmoothDamp (smoothY, y, ref smoothYvelocity, turnsmoothing);
-				} 
-		else
-		{
-			smoothX = x;
-			smoothY = y;
-				}
-		lookAngle += smoothX * turnSpeed;
-
-		transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
-
-		tiltAngle -= smoothY * turnSpeed;
-		tiltAngle = Mathf.Clamp (tiltAngle, -tiltMin, tiltMax);
-
-		pivot.localRotation = Quaternion.Euler(tiltAngle,0,0);
+		targetZoom -= scroll * zoomSpeed;
+		targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
 	}
-	private void HandleZoom()
+	void HandleZoom()
 	{
-		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		if (Mathf.Abs(scroll) > 0.001f)
-		{
-			targetZoom -= scroll * zoomSpeed;
-			targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
-		}
-
 		currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomSmoothFactor);
-		
-		cam.localPosition = new Vector3(0, 0, -currentZoom);
+		cam.localPosition = new Vector3(0f, 0f, -currentZoom);
 	}
-
 }

@@ -22,7 +22,10 @@ public class ModeSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if ((InputManager.instance.GetBuildSwapModeAction()  != null &&
+             InputManager.instance.GetBuildSwapModeAction().triggered) ||
+            (InputManager.instance.GetDriveSwapModeAction()  != null &&
+             InputManager.instance.GetDriveSwapModeAction().triggered))
         {
             currentMode = (currentMode == Mode.Build) ? Mode.Drive : Mode.Build;
             SetMode(currentMode);
@@ -33,6 +36,7 @@ public class ModeSwitcher : MonoBehaviour
     {
         if (mode == Mode.Build)
         {
+            InputManager.instance.EnableBuildMap();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             if (player != null)
@@ -60,6 +64,7 @@ public class ModeSwitcher : MonoBehaviour
         }
         else if (mode == Mode.Drive)
         {
+            InputManager.instance.EnableDriveMap();
             // if(vehicle != null) vehicle.SetActive(true);
             if(driveCameraPivot != null) driveCameraPivot.SetActive(true);
 
