@@ -16,7 +16,7 @@ Inspiration
 ## Inspiration games
 
 **TerraTech**
-![TerraTech](images/terratech.png)
+![TerraTech](Images/terratech.png)
 
 "TerraTech is an open-world, sandbox adventure game, where you design and build your own creations through a mix of crafting, combat and discovery. Design vehicles from a huge library of blocks. Scavenge, craft and buy new parts to survive and become the ultimate planetary prospector."
 
