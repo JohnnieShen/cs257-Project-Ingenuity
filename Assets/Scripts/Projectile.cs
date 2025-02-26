@@ -2,25 +2,23 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 20f;
+    [SerializeField] private float launchForce;
     private float damage;
     public float timeToDestroy;
 
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
+        GetComponent<Rigidbody>().AddRelativeForce(0, 0, launchForce);
     }
+
     public void SetDamage(float dmg)
     {
-        damage = dmg;
+        //damage = dmg;
     }
 
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
-    }
-
-    void OnTriggerEnter(Collider other) {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
