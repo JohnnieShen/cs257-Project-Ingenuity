@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     public float stateUpdateInterval = 0.5f;
     public float patrolPointWaitTime = 2f;
     public float fleeHealthThreshold = 0.3f;
+    public float patrolTimeout = 10f;
 
     [Header("References")]
     public Transform playerTarget;
@@ -24,7 +25,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float patrolWaitTimer;
     private bool hasLineOfSight;
     private float maxTotalHealth;
-
+    private float patrolTimer;
     void Start()
     {
         patrolCenter = transform.position;
@@ -115,13 +116,17 @@ public class EnemyAI : MonoBehaviour
 
     void PatrolBehavior()
     {
-        if (Vector3.Distance(transform.position, enemyMovement.targetPosition.position) < enemyMovement.arrivalDistance)
+        patrolTimer += Time.deltaTime;
+        if (Vector3.Distance(transform.position, enemyMovement.targetPosition.position) < enemyMovement.arrivalDistance || 
+        patrolTimer >= patrolTimeout)
         {
             patrolWaitTimer += Time.deltaTime;
+            
             if (patrolWaitTimer >= patrolPointWaitTime)
             {
                 SetRandomPatrolPoint();
                 patrolWaitTimer = 0;
+                patrolTimer = 0;
             }
         }
     }
@@ -166,8 +171,20 @@ public class EnemyAI : MonoBehaviour
 
         RaycastHit hit;
         Vector3 direction = (playerTarget.position - transform.position).normalized;
-        hasLineOfSight = Physics.Raycast(transform.position, direction, out hit, detectionRange) 
-                        && hit.transform == playerTarget;
+        bool hitDetected = Physics.Raycast(transform.position, direction, out hit, detectionRange);
+
+        if (hitDetected)
+        {
+            Debug.Log("Hit object: " + hit.collider.name);
+            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core");
+            
+            Debug.DrawLine(transform.position, hit.point, hasLineOfSight ? Color.green : Color.red);
+        }
+        else
+        {
+            hasLineOfSight = false;
+            Debug.DrawRay(transform.position, direction * detectionRange, Color.gray);
+        }
     }
 
     void HandleHealthChanged(float currentTotalHealth)

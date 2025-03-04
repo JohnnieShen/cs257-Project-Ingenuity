@@ -346,7 +346,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.959766, y: 551.27386, z: 825.29663}
+  m_LocalPosition: {x: 52.106804, y: 538.7523, z: 832.8705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -724,11 +724,12 @@ MonoBehaviour:
   stateUpdateInterval: 1
   patrolPointWaitTime: 2
   fleeHealthThreshold: 0.3
+  patrolTimeout: 10
   playerTarget: {fileID: 1562183983}
   enemyMovement: {fileID: 889063646}
   enemyTurret: {fileID: 1841736920}
   healthSystem: {fileID: 889063652}
-  patrolWaitTimer: 0
+  patrolWaitTimer: 5
 --- !u!114 &889063652
 MonoBehaviour:
   m_ObjectHideFlags: 0
