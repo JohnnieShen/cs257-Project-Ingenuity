@@ -10,4 +10,5 @@ public class Block : ScriptableObject
     public string ItemsNeededForBuildingBlock;
     public int AmountOfItemNeeded;
     public bool isSideMountable;
+    public float blockHealth;
 }

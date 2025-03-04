@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour
 {
+    [Header("AI Overrides")]
+    public float driveInput = 0f;
+    public float accelForceMultiplier = 1f;
     public Rigidbody rigidBody;
     public float suspensionRestDist;
     public float springStrength;
@@ -17,9 +20,10 @@ public class Wheel : MonoBehaviour
 
     public bool isDriveWheel = false;
     public bool isTurnWheel = false;
+    public bool isAI = false;
 
     private Quaternion neutralRotation;
-    private float currentSteerAngle = 0f;
+    public float currentSteerAngle = 0f;
     public bool invertSteering = false;
     public float tireRadius = 0.3f;
 
@@ -41,6 +45,7 @@ public class Wheel : MonoBehaviour
 
     void Update()
     {
+        if (isAI) return;
         if (InputManager.instance == null) return;
 
         Vector2 moveValue = Vector2.zero;
@@ -73,8 +78,10 @@ public class Wheel : MonoBehaviour
     void FixedUpdate()
     {
         Ray ray = new Ray(transform.position, -transform.up);
+        Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
         {
+            // Debug.Log("Hit detected.");
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
             Vector3 accelDir = transform.forward;
@@ -89,9 +96,23 @@ public class Wheel : MonoBehaviour
             float driveInput = 0f;
             if (isDriveWheel)
             {
-                driveInput = Input.GetAxis("Vertical");
+                if (isAI)
+                {
+                    driveInput = this.driveInput;
+                }
+                else
+                {
+                    // Original player input
+                    
+                    driveInput = Input.GetAxis("Vertical");
+                    
+                }
             }
-            float driveForce = accelForce * driveInput;
+            if (isAI && isTurnWheel)
+            {
+                ApplySteering(currentSteerAngle);
+            }
+            float driveForce = accelForce * accelForceMultiplier * driveInput;
 
             rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
 
@@ -103,7 +124,19 @@ public class Wheel : MonoBehaviour
         }
         else
         {
+            // Debug.Log("No hit detected.");
             tire.transform.localPosition = -transform.up;
         }
+    }
+    private void ApplySteering(float targetAngle)
+    {
+        currentSteerAngle = Mathf.Lerp(
+            currentSteerAngle, 
+            targetAngle, 
+            Time.fixedDeltaTime * steeringReturnSpeed
+        );
+        
+        currentSteerAngle = Mathf.Clamp(currentSteerAngle, -maxSteeringAngle, maxSteeringAngle);
+        transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
     }
 }

@@ -6,9 +6,11 @@ public class Hull : MonoBehaviour
 {
     public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
     public List<Vector3Int> validConnectionOffsets = new List<Vector3Int>();
+    private bool isAIVehicle = false;
     void Start()
     {
-        if (BlockManager.instance != null)
+        isAIVehicle = GetComponentInParent<EnemyMovement>() != null;
+        if (!isAIVehicle && BlockManager.instance != null)
         {
             Vector3Int gridPos = Vector3Int.RoundToInt(transform.localPosition);
             Rigidbody rb = GetComponent<Rigidbody>();
@@ -34,7 +36,7 @@ public class Hull : MonoBehaviour
 
     void OnDestroy()
     {
-        if (BlockManager.instance != null)
+        if (!isAIVehicle && BlockManager.instance != null)
         {
             Vector3Int gridPos = Vector3Int.RoundToInt(transform.localPosition);
             BlockManager.instance.RemoveBlock(gridPos);

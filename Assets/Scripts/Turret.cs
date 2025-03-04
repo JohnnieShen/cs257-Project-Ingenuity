@@ -23,7 +23,7 @@ public class Turret : MonoBehaviour
     private int currentAmmo;
     private float nextFireTime = 0f;
     private bool isReloading = false;
-    private bool isBlocked = false;
+    public bool isBlocked = false;
 
     void Start()
     {
@@ -67,7 +67,7 @@ public class Turret : MonoBehaviour
         FreeCameraLook.OnFire -= HandleFireEvent;
     }
 
-    private void HandleFireEvent()
+    public void HandleFireEvent()
     {
         if (isReloading)
             return;

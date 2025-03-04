@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: validConnectionOffsets.Array.data[4].z
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 8180979509448436958, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: blockType
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fa3fbbca552c332b8cdd4c44daf2698, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
