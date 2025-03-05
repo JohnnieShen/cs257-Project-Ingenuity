@@ -206,20 +206,23 @@ public class BuildSystem : MonoBehaviour
                         // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
                         if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
                         {
-                            Hull neighborHull = neighborRb.GetComponent<Hull>();
-                            if (neighborHull != null)
-                            {
-                                Vector3Int oppositeOffset = -rotatedOffsetInt;
-                                if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
+                            if (neighborRb != null) {
+                                Hull neighborHull = neighborRb.GetComponent<Hull>();
+                                if (neighborHull != null)
                                 {
-                                    newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
-                                    // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
+                                    Vector3Int oppositeOffset = -rotatedOffsetInt;
+                                    if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
+                                    {
+                                        newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                                        // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
+                                    }
+                                    // else
+                                    // {
+                                    //     Debug.Log($"Neighbor at {neighborPos} does not allow connection at offset {oppositeOffset}.");
+                                    // }
                                 }
-                                // else
-                                // {
-                                //     Debug.Log($"Neighbor at {neighborPos} does not allow connection at offset {oppositeOffset}.");
-                                // }
                             }
+                            
                             // else
                             // {
                             //     Debug.LogWarning("Neighbor found at " + neighborPos + " has no Hull component.");

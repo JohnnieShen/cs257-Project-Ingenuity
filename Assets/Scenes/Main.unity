@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 105.23257, y: 534.638, z: 830.51746}
+  m_LocalPosition: {x: 31.20029, y: 550.8716, z: 826.0821}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -970,8 +970,8 @@ MonoBehaviour:
   target: {fileID: 1562183983}
   autoTargetPlayer: 1
   moveSpeed: 5
-  turnSpeed: 0.7
-  turnsmoothing: 0.1
+  turnSpeed: 0.6
+  turnsmoothing: 0.2
   tiltMax: 75
   tiltMin: 45
   zoomSpeed: 3

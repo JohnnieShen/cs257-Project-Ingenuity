@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         BlockHealth blockHealth = other.GetComponent<BlockHealth>();
-        if (blockHealth != null)
+        Debug.Log("Projectile hit: " + other.name+" "+other.tag);
+        if (blockHealth != null && other.CompareTag("EnemyBlock"))
         {
             blockHealth.TakeDamage(damage);
             Destroy(gameObject);
