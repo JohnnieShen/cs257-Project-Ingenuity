@@ -88,10 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962c2fc61c2b3ea4e9abd37d3612e692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableBuildingBlocks:
-  - {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  - {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
-  - {fileID: 11400000, guid: 7fa3fbbca552c332b8cdd4c44daf2698, type: 2}
   blockNameText: {fileID: 0}
   shootingPoint: {fileID: 6956690515355897235}
   parent: {fileID: 0}
@@ -100,6 +96,18 @@ MonoBehaviour:
   rayCastLayers:
     serializedVersion: 2
     m_Bits: 65
+  previewMaterial: {fileID: 0}
+  availableBuildingBlocks:
+  - Block: {fileID: 0}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 0}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 0}
+    CurrentCount: 0
+    MaxStack: 99
+  commandModule: {fileID: 0}
 --- !u!1 &4728704058645965606
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +278,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
