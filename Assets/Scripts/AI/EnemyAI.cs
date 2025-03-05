@@ -175,7 +175,7 @@ public class EnemyAI : MonoBehaviour
 
         if (hitDetected)
         {
-            Debug.Log("Hit object: " + hit.collider.name);
+            // Debug.Log("Hit object: " + hit.collider.name);
             hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core");
             
             Debug.DrawLine(transform.position, hit.point, hasLineOfSight ? Color.green : Color.red);

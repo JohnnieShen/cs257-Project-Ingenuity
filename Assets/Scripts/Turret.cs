@@ -153,7 +153,7 @@ public class Turret : MonoBehaviour
         {
             // Debug.Log("Hit object: " + hit.collider.name);
             Debug.DrawRay(ray.origin, ray.direction * checkDistance, Color.red);
-            if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("ConnectionPoint")||hit.collider.CompareTag("Core"))
+            if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("Core"))
             {
                 if (blockedLine != null)
                 {

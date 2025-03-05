@@ -16,5 +16,10 @@ public class BlockHealth : MonoBehaviour
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         OnDamaged?.Invoke();
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Block destroyed "+gameObject.name);
+            Destroy(gameObject);
+        }
     }
 }
