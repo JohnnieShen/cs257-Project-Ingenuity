@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 public class BuildSystem : MonoBehaviour
 {
-    public Block[] availableBuildingBlocks;
+    // public Block[] availableBuildingBlocks;
     int currentBlockIndex = 0;
  
     Block currentBlock;
@@ -24,6 +24,9 @@ public class BuildSystem : MonoBehaviour
     
     public Material previewMaterial;
     private GameObject previewBlock;
+    public BlockInventory[] availableBuildingBlocks;
+    private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
+    private List<Block> availableBlocksList = new List<Block>();
 
     [Header("References")]
     [SerializeField] private Transform commandModule;
@@ -49,13 +52,51 @@ public class BuildSystem : MonoBehaviour
     }
     private void Start()
     {
+        InitializeInventory();
         if (availableBuildingBlocks != null && availableBuildingBlocks.Length > 0)
         {
             currentBlockIndex = 0;
-            currentBlock = availableBuildingBlocks[currentBlockIndex];
+            currentBlock = availableBuildingBlocks[currentBlockIndex].Block;
             SetText();
         }
     }
+
+    void InitializeInventory()
+    {
+        foreach (BlockInventory ib in availableBuildingBlocks)
+        {
+            blockInventory[ib.Block] = ib;
+            if (ib.CurrentCount > 0)
+            {
+                availableBlocksList.Add(ib.Block);
+            }
+        }
+        UpdateAvailableBlocks();
+    }
+
+    void UpdateAvailableBlocks()
+    {
+        availableBlocksList.Clear();
+        foreach (BlockInventory ib in availableBuildingBlocks)
+        {
+            if (ib.CurrentCount > 0)
+            {
+                availableBlocksList.Add(ib.Block);
+            }
+        }
+        
+        if (availableBlocksList.Count > 0)
+        {
+            currentBlockIndex = Mathf.Clamp(currentBlockIndex, 0, availableBlocksList.Count - 1);
+            currentBlock = availableBlocksList[currentBlockIndex];
+        }
+        else
+        {
+            currentBlock = null;
+        }
+        SetText();
+    }
+
     // private void Update()
     // {
     //     if (Input.GetMouseButtonDown(0))
@@ -103,7 +144,7 @@ public class BuildSystem : MonoBehaviour
                 currentBlockIndex = availableBuildingBlocks.Length - 1;
         }
 
-        currentBlock = availableBuildingBlocks[currentBlockIndex];
+        currentBlock = availableBuildingBlocks[currentBlockIndex].Block;
         SetText();
 
         if (previewBlock != null)
@@ -117,9 +158,7 @@ public class BuildSystem : MonoBehaviour
     {
         if (blockNameText != null && currentBlock != null)
         {
-            blockNameText.text = currentBlock.BlockName 
-                + "\n" + currentBlock.AmountOfItemNeeded 
-                + " x " + currentBlock.ItemsNeededForBuildingBlock;
+            blockNameText.text = $"{currentBlock.BlockName} ({blockInventory[currentBlock].CurrentCount}/{blockInventory[currentBlock].MaxStack})\n" ;
         }
     }
     // void ChangeCurrentBlock()
@@ -153,6 +192,11 @@ public class BuildSystem : MonoBehaviour
  
     void BuildBlock(GameObject blockPrefab)
     {
+        if (currentBlock == null || blockInventory[currentBlock].CurrentCount <= 0)
+        {
+            Debug.LogWarning("No blocks remaining of this type!");
+            return;
+        }
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, rayCastLayers))
         {
             if (hitInfo.collider.gameObject.layer == 6)
@@ -194,6 +238,7 @@ public class BuildSystem : MonoBehaviour
                 Hull newHull = newBlock.GetComponent<Hull>();
                 if(newHull != null)
                 {
+                    newHull.sourceBlock = currentBlock;
                     foreach (Vector3Int offset in newHull.validConnectionOffsets)
                     {
                         Vector3 rotatedOffset = newBlock.transform.localRotation * (Vector3)offset;
@@ -214,6 +259,11 @@ public class BuildSystem : MonoBehaviour
                                     if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
                                     {
                                         newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                                        Vector3Int newBlockPos = Vector3Int.RoundToInt(localSpawn);
+                                        BlockManager.instance.AddConnection(newBlockPos, neighborPos);
+                                        blockInventory[currentBlock].CurrentCount--;
+                                        UpdateAvailableBlocks();
+                                        
                                         // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                     }
                                     // else
@@ -265,6 +315,19 @@ public class BuildSystem : MonoBehaviour
         {
             if (hitInfo.transform.CompareTag("Block"))
             {
+                Hull hull = hitInfo.transform.GetComponent<Hull>();
+                if (hull != null && hull.sourceBlock != null)
+                {
+                    if (blockInventory.ContainsKey(hull.sourceBlock))
+                    {
+                        blockInventory[hull.sourceBlock].CurrentCount++;
+                        blockInventory[hull.sourceBlock].CurrentCount = Mathf.Min(
+                            blockInventory[hull.sourceBlock].CurrentCount,
+                            blockInventory[hull.sourceBlock].MaxStack
+                        );
+                        UpdateAvailableBlocks();
+                    }
+                }
                 Vector3 localPos = commandModule.InverseTransformPoint(hitInfo.transform.position);
                 Vector3Int localPosInt = Vector3Int.RoundToInt(localPos);
                 Destroy(hitInfo.transform.gameObject);
@@ -368,5 +431,13 @@ public class BuildSystem : MonoBehaviour
             rend.material = previewMaterial;
         }
     }
+}
+
+[System.Serializable]
+public class BlockInventory
+{
+    public Block Block;
+    public int CurrentCount;
+    public int MaxStack = 99;
 }
  

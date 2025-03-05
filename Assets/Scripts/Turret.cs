@@ -50,9 +50,31 @@ public class Turret : MonoBehaviour
             blockedLine.enabled = false;
         }
     }
+    private void DisableAimConstraints()
+    {
+        SetConstraintWeight(baseAim, 0f);
+        SetConstraintWeight(topArmAim, 0f);
+        SetConstraintWeight(gunAim, 0f);
+        RigBuilder rigs = GetComponent<RigBuilder>();
+        if (rigs != null)
+            rigs.Build();
+    }
 
+    private void SetConstraintWeight(MultiAimConstraint constraint, float weight)
+    {
+        if (constraint != null)
+            constraint.weight = weight;
+    }
     void Update()
     {
+        Hull hull = GetComponent<Hull>();
+        if (hull != null && hull.canPickup)
+        {
+            if (blockedLine != null)
+                blockedLine.enabled = false;
+            DisableAimConstraints();
+            return;
+        }
         if (aimTarget == null)
             return;
         CheckIfBlocked();
@@ -69,6 +91,9 @@ public class Turret : MonoBehaviour
 
     public void HandleFireEvent()
     {
+        Hull hull = GetComponent<Hull>();
+        if (hull != null && hull.canPickup)
+            return;
         if (isReloading)
             return;
 

@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     private bool hasLineOfSight;
     private float maxTotalHealth;
     private float patrolTimer;
+    private GameObject patrolTargetObject;
     void Start()
     {
         patrolCenter = transform.position;
@@ -37,7 +38,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (healthSystem != null)
             healthSystem.OnHealthChanged.AddListener(HandleHealthChanged);
-        
+        if (enemyMovement.targetPosition == null)
+        {
+            patrolTargetObject = new GameObject("EnemyNavigationTarget");
+            enemyMovement.targetPosition = patrolTargetObject.transform;
+        }
         SetRandomPatrolPoint();
     }
 
@@ -133,7 +138,7 @@ public class EnemyAI : MonoBehaviour
 
     void ChaseBehavior()
     {
-        enemyMovement.targetPosition = playerTarget;
+        enemyMovement.targetPosition.position = playerTarget.position;
     }
 
     void AttackBehavior()
@@ -194,6 +199,39 @@ public class EnemyAI : MonoBehaviour
         if (healthPercentage <= fleeHealthThreshold && currentState != AIState.Flee)
         {
             currentState = AIState.Flee;
+        }
+    }
+
+    public void InitializeVehicleStructure()
+    {
+        Hull[] blocks = GetComponentsInChildren<Hull>();
+        foreach (Hull block in blocks)
+        {
+            Vector3Int localPos = Vector3Int.RoundToInt(
+                transform.InverseTransformPoint(block.transform.position)
+            );
+            EnemyBlockManager.instance.RegisterBlock(this, localPos, block.GetComponent<Rigidbody>());
+        }
+        BuildConnectionGraph();
+    }
+
+    private void BuildConnectionGraph()
+    {
+        foreach (var blockEntry in EnemyBlockManager.instance.GetBlocksForVehicle(this))
+        {
+            Rigidbody rb = blockEntry.Value;
+            FixedJoint[] joints = rb.GetComponents<FixedJoint>();
+            
+            foreach (FixedJoint joint in joints)
+            {
+                if (joint.connectedBody != null)
+                {
+                    Vector3Int connectedPos = Vector3Int.RoundToInt(
+                        transform.InverseTransformPoint(joint.connectedBody.transform.position)
+                    );
+                    EnemyBlockManager.instance.AddConnection(this, blockEntry.Key, connectedPos);
+                }
+            }
         }
     }
 

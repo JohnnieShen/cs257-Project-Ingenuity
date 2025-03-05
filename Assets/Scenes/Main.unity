@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.20029, y: 550.8716, z: 826.0821}
+  m_LocalPosition: {x: 24.800236, y: 554.7445, z: 823.7451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1093,6 +1093,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1888209019}
   - component: {fileID: 1888209018}
+  - component: {fileID: 1888209020}
   m_Layer: 0
   m_Name: BlockManager
   m_TagString: Untagged
@@ -1127,6 +1128,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1888209020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888209017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a497890f455940e47a5176a9bc88c533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1949989225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1392,46 @@ PrefabInstance:
       propertyPath: 'availableBuildingBlocks.Array.data[3]'
       value: 
       objectReference: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: 'availableBuildingBlocks.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: efa40dbe531bb3f428e6f1a01223ef7e, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[0].Block
+      value: 
+      objectReference: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[1].Block
+      value: 
+      objectReference: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[2].Block
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fa3fbbca552c332b8cdd4c44daf2698, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[3].Block
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[3].MaxStack
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[0].CurrentCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[1].CurrentCount
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[2].CurrentCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[3].CurrentCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6672819349101815036, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: mouseSensitivity
       value: 30

@@ -45,6 +45,9 @@ public class Wheel : MonoBehaviour
 
     void Update()
     {
+        Hull hull = GetComponentInParent<Hull>();
+        if (hull != null && hull.canPickup)
+            return;
         if (isAI) return;
         if (InputManager.instance == null) return;
 
@@ -77,6 +80,13 @@ public class Wheel : MonoBehaviour
 
     void FixedUpdate()
     {
+        Hull hull = GetComponentInParent<Hull>();
+        if (hull != null && hull.canPickup)
+        {
+            driveInput = 0f;
+            currentSteerAngle = 0f;
+            return;
+        }
         Ray ray = new Ray(transform.position, -transform.up);
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
