@@ -60,6 +60,7 @@ public class Hull : MonoBehaviour
                 parentAI.transform.InverseTransformPoint(transform.position)
             );
             EnemyBlockManager.instance.RemoveBlock(parentAI, localPos);
+            EnemyBlockManager.instance.RemoveConnections(parentAI, localPos);
         }
     }
 }
