@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1748204318403293195}
   - component: {fileID: 4128075961110800830}
   - component: {fileID: 2679968965681074781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101c5508604e27d4cb2e9213616cf9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsEnemyProjectile: 0
   launchForce: 200
   damage: 10
   timeToDestroy: 30

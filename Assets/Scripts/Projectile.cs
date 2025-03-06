@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public bool IsEnemyProjectile = false;
     public float launchForce;
     public float damage = 10f;
     public float timeToDestroy = 10f;

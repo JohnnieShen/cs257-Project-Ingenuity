@@ -21,6 +21,7 @@ public class BuildSystem : MonoBehaviour
  
     GameObject lastHightlightedBlock;
     public LayerMask rayCastLayers;
+    public LayerMask shieldLayer;
     
     public Material previewMaterial;
     private GameObject previewBlock;
@@ -197,8 +198,10 @@ public class BuildSystem : MonoBehaviour
             Debug.LogWarning("No blocks remaining of this type!");
             return;
         }
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, rayCastLayers))
+        LayerMask combinedMask = rayCastLayers & ~shieldLayer;
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
         {
+            // Debug.Log("raycast hitting"+hitInfo.collider.gameObject.name);
             if (hitInfo.collider.gameObject.layer == 6)
             {
                 Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point);
@@ -209,7 +212,12 @@ public class BuildSystem : MonoBehaviour
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
-                
+                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
+                if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(spawnPosInt, out _))
+                {
+                    Debug.LogWarning("Cannot build - grid position already occupied!");
+                    return;
+                }
                 GameObject newBlock = Instantiate(blockPrefab, commandModule);
                 newBlock.transform.localPosition = localSpawn;
                 if (currentBlock.isSideMountable)
@@ -232,7 +240,7 @@ public class BuildSystem : MonoBehaviour
                 
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
                 
-                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
+                // Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
                 // Debug.Log("Spawn grid coordinate: " + spawnPosInt);
                 
                 Hull newHull = newBlock.GetComponent<Hull>();
@@ -311,7 +319,8 @@ public class BuildSystem : MonoBehaviour
  
     void DestroyBlock()
     {
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
+        LayerMask combinedMask = rayCastLayers & ~shieldLayer;
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
         {
             if (hitInfo.transform.CompareTag("Block"))
             {

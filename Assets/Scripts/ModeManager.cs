@@ -44,7 +44,7 @@ public class ModeSwitcher : MonoBehaviour
                 player.SetActive(true);
                 if(drivingCamera != null)
                 {
-                    player.transform.position = drivingCamera.position;
+                    player.transform.position = drivingCamera.position + new Vector3(0f, 6f, 0f);
                 }
             }
             // if(buildCamera != null) buildCamera.gameObject.SetActive(true);
@@ -84,7 +84,7 @@ public class ModeSwitcher : MonoBehaviour
         Vector3 endPos = new Vector3(startPos.x, startPos.y + targetHeight, startPos.z);
         Quaternion startRot = vehicleRoot.localRotation;
         Quaternion endRot = Quaternion.identity;
-        Debug.Log("Rotating vehicle from " + startRot + " to " + endRot);
+        // Debug.Log("Rotating vehicle from " + startRot + " to " + endRot);
 
         while (elapsed < duration)
         {
