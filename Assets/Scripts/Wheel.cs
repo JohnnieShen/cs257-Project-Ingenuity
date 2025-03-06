@@ -87,55 +87,65 @@ public class Wheel : MonoBehaviour
             currentSteerAngle = 0f;
             return;
         }
+
         Ray ray = new Ray(transform.position, -transform.up);
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+        bool isGrounded = Physics.Raycast(ray, out RaycastHit hit, maxDistance);
+
+        if (isGrounded)
         {
-            // Debug.Log("Hit detected.");
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
             Vector3 accelDir = transform.forward;
+            
             float springOffset = suspensionRestDist - hit.distance;
             float springVel = Vector3.Dot(springDir, rigidBody.velocity);
             float steeringVel = Vector3.Dot(steeringDir, rigidBody.velocity);
+            
             float desiredVelChange = -steeringVel * tireGripFactor;
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
+            
             float springForce = springOffset * springStrength - springVel * springDamper;
             float steeringForce = tireMass * desiredAccel;
 
             float driveInput = 0f;
             if (isDriveWheel)
             {
-                if (isAI)
-                {
-                    driveInput = this.driveInput;
-                }
-                else
-                {
-                    // Original player input
-                    
-                    driveInput = Input.GetAxis("Vertical");
-                    
-                }
+                driveInput = isAI ? this.driveInput : Input.GetAxis("Vertical");
             }
+
             if (isAI && isTurnWheel)
             {
                 ApplySteering(currentSteerAngle);
             }
-            float driveForce = accelForce * accelForceMultiplier * driveInput;
 
+            float driveForce = accelForce * accelForceMultiplier * driveInput;
             rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
 
             tire.transform.position = hit.point + springDir * 0.5f;
-            float forwardSpeed = Vector3.Dot(rigidBody.velocity, transform.forward);
-            float distanceTraveled = forwardSpeed * Time.fixedDeltaTime;
-            float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
-            tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
         }
         else
         {
-            // Debug.Log("No hit detected.");
-            tire.transform.localPosition = -transform.up;
+            Vector3 springDir = transform.up;
+            Vector3 maxExtendedPos = transform.position - springDir * maxDistance;
+            tire.transform.position = maxExtendedPos + springDir * 0.5f;
+        }
+
+        float forwardSpeed;
+        if (isDriveWheel)
+        {
+            if (isGrounded)
+            {
+                forwardSpeed = Vector3.Dot(rigidBody.velocity, transform.forward);
+            }
+            else
+            {
+                forwardSpeed = driveInput * accelForce * 0.1f;
+            }
+
+            float distanceTraveled = forwardSpeed * Time.fixedDeltaTime;
+            float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
+            tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
         }
     }
     private void ApplySteering(float targetAngle)
