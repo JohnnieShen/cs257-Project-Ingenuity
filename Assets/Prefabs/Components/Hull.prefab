@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5654fa136fa7a9c02bc365d77c142466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectionPoints: []
   validConnectionOffsets:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
@@ -195,6 +194,8 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
+  canPickup: 0
+  sourceBlock: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
 --- !u!114 &8180979509448436958
 MonoBehaviour:
   m_ObjectHideFlags: 0

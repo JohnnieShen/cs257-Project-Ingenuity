@@ -21,9 +21,22 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        BlockHealth blockHealth = other.GetComponent<BlockHealth>();
-        Debug.Log("Projectile hit: " + other.name+" "+other.tag);
-        if (blockHealth != null && other.CompareTag("EnemyBlock"))
+        Debug.Log("Projectile hit: " + other.name + " " + other.tag);
+        BlockHealth blockHealth = null;
+
+        if (other.CompareTag("EnemyBlock"))
+        {
+            blockHealth = other.GetComponent<BlockHealth>();
+        }
+        else if (other.CompareTag("ConnectionPoint"))
+        {
+            if (other.transform.parent != null && other.transform.parent.parent != null)
+            {
+                blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+            }
+        }
+
+        if (blockHealth != null)
         {
             blockHealth.TakeDamage(damage);
             Destroy(gameObject);

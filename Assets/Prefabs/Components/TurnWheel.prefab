@@ -61,6 +61,10 @@ PrefabInstance:
       value: Block
       objectReference: {fileID: 0}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: sourceBlock
+      value: 
+      objectReference: {fileID: 11400000, guid: 7fa3fbbca552c332b8cdd4c44daf2698, type: 2}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: validConnectionOffsets.Array.size
       value: 5
       objectReference: {fileID: 0}

@@ -322,7 +322,7 @@ public class BuildSystem : MonoBehaviour
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
         {
-            if (hitInfo.transform.CompareTag("Block"))
+            if (hitInfo.transform.CompareTag("Block") || (hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup))
             {
                 Hull hull = hitInfo.transform.GetComponent<Hull>();
                 if (hull != null && hull.sourceBlock != null)

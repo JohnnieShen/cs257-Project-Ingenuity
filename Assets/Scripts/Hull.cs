@@ -56,11 +56,13 @@ public class Hull : MonoBehaviour
         }
         if (parentAI != null)
         {
+            Debug.Log("Removing block from AI");
             Vector3Int localPos = Vector3Int.RoundToInt(
                 parentAI.transform.InverseTransformPoint(transform.position)
             );
             EnemyBlockManager.instance.RemoveBlock(parentAI, localPos);
             EnemyBlockManager.instance.RemoveConnections(parentAI, localPos);
+            EnemyBlockManager.instance.ValidateStructure(parentAI);
         }
     }
 }

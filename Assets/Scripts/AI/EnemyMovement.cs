@@ -88,7 +88,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 wheel.driveInput = currentDriveInput;
                 float effectiveForce = wheel.accelForce * currentDriveInput;
-                if (rb != null) {
+                if (rb != null && wheel != null) {
                     rb.AddForceAtPosition(
                         wheel.transform.forward * effectiveForce,
                         wheel.transform.position,
