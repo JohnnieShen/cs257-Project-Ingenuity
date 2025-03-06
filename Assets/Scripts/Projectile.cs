@@ -23,18 +23,45 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log("Projectile hit: " + other.name + " " + other.tag);
         BlockHealth blockHealth = null;
-
-        if (other.CompareTag("EnemyBlock"))
+        if (IsEnemyProjectile)
         {
-            blockHealth = other.GetComponent<BlockHealth>();
-        }
-        else if (other.CompareTag("ConnectionPoint"))
-        {
-            if (other.transform.parent != null && other.transform.parent.parent != null)
+            if (other.CompareTag("Block"))
             {
-                blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                blockHealth = other.GetComponent<BlockHealth>();
+            }
+            else if (other.CompareTag("ConnectionPoint"))
+            {
+                if (other.transform.parent != null && other.transform.parent.parent != null)
+                {
+                    blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                }
             }
         }
+        else
+        {
+            if (other.CompareTag("EnemyBlock"))
+            {
+                blockHealth = other.GetComponent<BlockHealth>();
+            }
+            else if (other.CompareTag("ConnectionPoint"))
+            {
+                if (other.transform.parent != null && other.transform.parent.parent != null)
+                {
+                    blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                }
+            }
+        }
+        // if (other.CompareTag("EnemyBlock"))
+        // {
+        //     blockHealth = other.GetComponent<BlockHealth>();
+        // }
+        // else if (other.CompareTag("ConnectionPoint"))
+        // {
+        //     if (other.transform.parent != null && other.transform.parent.parent != null)
+        //     {
+        //         blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+        //     }
+        // }
 
         if (blockHealth != null)
         {

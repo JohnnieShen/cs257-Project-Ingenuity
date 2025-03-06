@@ -24,10 +24,23 @@ public class Turret : MonoBehaviour
     private float nextFireTime = 0f;
     private bool isReloading = false;
     public bool isBlocked = false;
+    public bool isAI = false;
+    // public Transform aimTransform;
 
     void Start()
     {
-        aimTarget = FreeCameraLook.instance?.aimTarget;
+        // aimTarget = FreeCameraLook.instance?.aimTarget;
+        EnemyAI enemyAI = GetComponentInParent<EnemyAI>();
+         if (enemyAI != null && enemyAI.aimTransform != null)
+        {
+            aimTarget = enemyAI.aimTransform;
+            isAI = true;
+        }
+        else
+        {
+            aimTarget = FreeCameraLook.instance?.aimTarget;
+            isAI = false;
+        }
         if (aimTarget == null)
         {
             Debug.LogWarning("Turret target not assigned in FreeCameraLook or FreeCameraLook instance is missing.");
@@ -176,19 +189,29 @@ public class Turret : MonoBehaviour
         Ray ray = new Ray(shootPoint.position, shootPoint.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, checkDistance))
         {
-            // Debug.Log("Hit object: " + hit.collider.name);
-            Debug.DrawRay(ray.origin, ray.direction * checkDistance, Color.red);
-            if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("Core"))
-            {
-                if (blockedLine != null)
+            if (!isAI) {
+                // Debug.Log("Hit object: " + hit.collider.name);
+                Debug.DrawRay(ray.origin, ray.direction * checkDistance, Color.red);
+                if (hit.collider.CompareTag("Block")||hit.collider.CompareTag("Core"))
                 {
-                    blockedLine.enabled = true;
-                    blockedLine.positionCount = 2;
-                    blockedLine.SetPosition(0, shootPoint.position);
-                    blockedLine.SetPosition(1, hit.point);
+                    if (blockedLine != null)
+                    {
+                        blockedLine.enabled = true;
+                        blockedLine.positionCount = 2;
+                        blockedLine.SetPosition(0, shootPoint.position);
+                        blockedLine.SetPosition(1, hit.point);
+                    }
+                    isBlocked = true;
+                    return;
                 }
-                isBlocked = true;
-                return;
+            }
+            else
+            {
+                if (hit.collider.CompareTag("EnemyBlock"))
+                {
+                    isBlocked = true;
+                    return;
+                }
             }
         }
 

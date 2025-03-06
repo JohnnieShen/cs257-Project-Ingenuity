@@ -8,6 +8,8 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
 
     float xRotation = 0f;
+    float yRotation = 0f;
+    public float rotationSmoothTime = 10f;
 
     void Update()
     {
@@ -25,10 +27,16 @@ public class MouseLook : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        yRotation += mouseX;
+
+        Quaternion targetCameraRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        Quaternion targetPlayerRotation = Quaternion.Euler(0f, yRotation, 0f);
+
+        // transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetCameraRotation, rotationSmoothTime * Time.deltaTime);
         if (playerBody != null)
         {
-            playerBody.Rotate(Vector3.up * mouseX);
+            playerBody.rotation = Quaternion.Slerp(playerBody.rotation, targetPlayerRotation, rotationSmoothTime * Time.deltaTime);
         }
     }
 }

@@ -69,9 +69,11 @@ public class ShieldGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Debug.Log("Shield hit: " + other.name + " " + other.tag);
         Projectile projectile = other.GetComponent<Projectile>();
         if(projectile != null && projectile.IsEnemyProjectile)
         {
+            // Debug.Log("Shield hit by enemy projectile");
             currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.damage, 0);
             lastDamageTime = Time.time;
             

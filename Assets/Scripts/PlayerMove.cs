@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public CharacterController controller;
-
     public float speed = 12f;
+    
+    public float smoothingSpeed = 10f;
+    public Transform moveCenter;
+    public float movementRadius = 10f;
+    private Vector3 currentMove = Vector3.zero;
 
-    // Update is called once per frame
     void Update()
     {
         if (InputManager.instance == null) return;
@@ -32,7 +35,18 @@ public class PlayerMove : MonoBehaviour
             y -= 1;
         }
 
-        Vector3 move = transform.right * x + transform.up * y + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
+        Vector3 targetMove = transform.right * x + transform.up * y + transform.forward * z;
+        currentMove = Vector3.Lerp(currentMove, targetMove, smoothingSpeed * Time.deltaTime);
+
+        controller.Move(currentMove * speed * Time.deltaTime);
+
+        if (moveCenter != null)
+        {
+            Vector3 offset = transform.position - moveCenter.position;
+            if (offset.magnitude > movementRadius)
+            {
+                transform.position = moveCenter.position + offset.normalized * movementRadius;
+            }
+        }
     }
 }

@@ -27,6 +27,8 @@ public class EnemyAI : MonoBehaviour
     private float maxTotalHealth;
     private float patrolTimer;
     private GameObject patrolTargetObject;
+    public LayerMask enemyLayer;
+    public Transform aimTransform;
     void Start()
     {
         patrolCenter = transform.position;
@@ -143,7 +145,14 @@ public class EnemyAI : MonoBehaviour
 
     void AttackBehavior()
     {
-        enemyMovement.targetPosition = playerTarget;
+        if (playerTarget != null && aimTransform != null)
+        {
+            Vector3 aimOffset = new Vector3(0, 0f, 0);
+            aimTransform.position = playerTarget.position + aimOffset;
+        }
+
+        // enemyMovement.targetPosition.position = playerTarget.position;
+
         if (enemyTurret != null && !enemyTurret.isBlocked)
         {
             enemyTurret.HandleFireEvent();
@@ -169,24 +178,34 @@ public class EnemyAI : MonoBehaviour
         
         enemyMovement.targetPosition.position = newTarget;
     }
-
     void UpdateLineOfSight()
     {
-        if (playerTarget == null) return;
+        // if (playerTarget == null)
+        // {
+        //     Debug.LogWarning("Player target is null, cannot compute line of sight.");
+        //     return;
+        // }
 
-        RaycastHit hit;
         Vector3 direction = (playerTarget.position - transform.position).normalized;
-        bool hitDetected = Physics.Raycast(transform.position, direction, out hit, detectionRange);
+        LayerMask mask = ~enemyLayer;
+
+        // Debug.Log("Raycasting from " + transform.position + " towards " + playerTarget.position + " with direction " + direction);
+        RaycastHit hit;
+        bool hitDetected = Physics.Raycast(transform.position, direction, out hit, detectionRange, mask);
 
         if (hitDetected)
         {
-            // Debug.Log("Hit object: " + hit.collider.name);
-            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core");
-            
+            // Debug.Log("Raycast hit: " + hit.collider.name + " (Tag: " + hit.collider.tag + ") at distance: " + hit.distance);
+            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core") || (hit.collider.CompareTag("ConnectionPoint") && (hit.collider.transform.parent.parent.CompareTag("Block")||hit.collider.transform.parent.parent.CompareTag("Core")));
+
+            if (!hasLineOfSight)
+                // Debug.Log("Hit object does not have the required tag (Block/Core).");
+
             Debug.DrawLine(transform.position, hit.point, hasLineOfSight ? Color.green : Color.red);
         }
         else
         {
+            // Debug.Log("Raycast did not hit any object within detection range.");
             hasLineOfSight = false;
             Debug.DrawRay(transform.position, direction * detectionRange, Color.gray);
         }

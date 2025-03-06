@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     public float currentDriveInput;
     public float currentSteerInput;
+    
     void Start()
     {
         foreach (Wheel wheel in wheels)
@@ -84,6 +85,10 @@ public class EnemyMovement : MonoBehaviour
     {
         foreach (Wheel wheel in wheels)
         {
+            if (wheel == null) continue;
+            Hull hull = wheel.GetComponentInParent<Hull>();
+            if (hull != null && hull.canPickup)
+                continue;
             if (wheel.isDriveWheel)
             {
                 wheel.driveInput = currentDriveInput;
