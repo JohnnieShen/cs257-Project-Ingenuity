@@ -10,7 +10,7 @@ public class EnemyVehicleStructure {
 public class EnemyBlockManager : MonoBehaviour
 {
     public static EnemyBlockManager instance;
-    private Dictionary<EnemyAI, EnemyVehicleStructure> vehicles = new Dictionary<EnemyAI, EnemyVehicleStructure>();
+    public Dictionary<EnemyAI, EnemyVehicleStructure> vehicles = new Dictionary<EnemyAI, EnemyVehicleStructure>();
     private bool isValidating = false;
 
     private void Awake()

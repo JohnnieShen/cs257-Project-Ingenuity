@@ -179,4 +179,28 @@ public class BlockManager : MonoBehaviour
         blocks.Remove(pos);
         RemoveConnections(pos);
     }
+
+    public void recalculateConnections()
+    {
+        blockConnections.Clear();
+
+        foreach (var blockEntry in blocks)
+        {
+            Rigidbody rb = blockEntry.Value;
+            FixedJoint[] joints = rb.GetComponents<FixedJoint>();
+            
+            foreach (FixedJoint joint in joints)
+            {
+                if (joint.connectedBody != null)
+                {
+                    Vector3Int connectedPos = Vector3Int.RoundToInt(
+                        transform.InverseTransformPoint(joint.connectedBody.transform.position)
+                    );
+                    AddConnection(blockEntry.Key, connectedPos);
+                }
+            }
+        }
+
+        ValidateStructure();
+    }
 }

@@ -76,6 +76,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2738726859395720095}
   speed: 12
+  smoothingSpeed: 10
+  moveCenter: {fileID: 0}
+  movementRadius: 10
 --- !u!114 &6179468425478502006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockNameText: {fileID: 0}
+  breakForce: 500
   shootingPoint: {fileID: 6956690515355897235}
   parent: {fileID: 0}
   normalColor: {r: 1, g: 0, b: 0, a: 0}
@@ -96,6 +100,9 @@ MonoBehaviour:
   rayCastLayers:
     serializedVersion: 2
     m_Bits: 65
+  shieldLayer:
+    serializedVersion: 2
+    m_Bits: 0
   previewMaterial: {fileID: 0}
   availableBuildingBlocks:
   - Block: {fileID: 0}
@@ -215,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 500
   playerBody: {fileID: 4076314670103501140}
+  rotationSmoothTime: 10
 --- !u!1 &8186827679668893897
 GameObject:
   m_ObjectHideFlags: 0

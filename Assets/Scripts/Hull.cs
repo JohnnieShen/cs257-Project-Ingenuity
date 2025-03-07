@@ -65,4 +65,16 @@ public class Hull : MonoBehaviour
             EnemyBlockManager.instance.ValidateStructure(parentAI);
         }
     }
+
+    void OnJointBreak(float breakForce)
+    {
+        if (isAIVehicle)
+        {
+            GetComponentInParent<EnemyAI>().BuildConnectionGraph();
+        }
+        else
+        {
+            BlockManager.instance.recalculateConnections();
+        }
+    }
 }
