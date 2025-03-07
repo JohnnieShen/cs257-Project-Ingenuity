@@ -74,7 +74,7 @@ public class ShieldGenerator : MonoBehaviour
         if(projectile != null && projectile.IsEnemyProjectile)
         {
             // Debug.Log("Shield hit by enemy projectile");
-            currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.damage, 0);
+            currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
             lastDamageTime = Time.time;
             
             Destroy(projectile.gameObject);

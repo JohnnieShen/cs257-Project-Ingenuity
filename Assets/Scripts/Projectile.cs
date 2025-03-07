@@ -4,7 +4,8 @@ public class Projectile : MonoBehaviour
 {
     public bool IsEnemyProjectile = false;
     public float launchForce;
-    public float damage = 10f;
+    public float ballisticDamage = 10f;
+    public float energyDamage = 10f;
     public float timeToDestroy = 10f;
 
     private Rigidbody rb;
@@ -15,9 +16,10 @@ public class Projectile : MonoBehaviour
         rb.AddRelativeForce(0, 0, launchForce, ForceMode.Impulse);
         Destroy(gameObject, timeToDestroy);
     }
-    public void SetDamage(float dmg)
+    public void SetDamage(float ballisticDmg, float energyDmg)
     {
-        damage = dmg;
+        ballisticDamage = ballisticDmg;
+        energyDamage = energyDmg;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -65,7 +67,7 @@ public class Projectile : MonoBehaviour
 
         if (blockHealth != null)
         {
-            blockHealth.TakeDamage(damage);
+            blockHealth.TakeDamage(ballisticDamage);
             Destroy(gameObject);
         }
     }

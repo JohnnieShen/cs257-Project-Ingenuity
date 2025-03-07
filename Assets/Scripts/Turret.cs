@@ -13,7 +13,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float reloadTime = 2f;
-    [SerializeField] private float damage = 10f;
+    [SerializeField] private float ballisticDamage = 10f;
+    [SerializeField] private float energyDamage = 10f;
     [SerializeField] private int magazineSize = 5;
     [Header("Obstacle Check Settings")]
     [SerializeField] private float checkDistance = 100f;
@@ -136,7 +137,7 @@ public class Turret : MonoBehaviour
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
             {
-                projScript.SetDamage(damage);
+                projScript.SetDamage(ballisticDamage, energyDamage);
             }
         }
         else
