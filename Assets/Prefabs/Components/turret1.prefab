@@ -692,9 +692,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd438ebb3563b394799a18ac816a2f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseAim: {fileID: 6513803658767753251}
-  topArmAim: {fileID: 2343672454876531094}
-  gunAim: {fileID: 1423184359962775420}
+  aimConstraints:
+  - {fileID: 6513803658767753251}
+  - {fileID: 2343672454876531094}
+  - {fileID: 1423184359962775420}
   shootPoint: {fileID: 3142191892951490519}
   projectilePrefab: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
   fireRate: 2
@@ -704,6 +705,7 @@ MonoBehaviour:
   checkDistance: 100
   blockedLine: {fileID: 4119698650289512280}
   isBlocked: 0
+  isAI: 0
 --- !u!114 &6366130342008382150
 MonoBehaviour:
   m_ObjectHideFlags: 0

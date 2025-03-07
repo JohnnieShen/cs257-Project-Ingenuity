@@ -61,6 +61,13 @@ public class ModeSwitcher : MonoBehaviour
                 StopAllCoroutines();
                 StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration));
             }
+            if (EnemyBlockManager.instance != null)
+            {
+                foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
+                {
+                    enemy.enabled = false;
+                }
+            }
         }
         else if (mode == Mode.Drive)
         {
@@ -74,6 +81,13 @@ public class ModeSwitcher : MonoBehaviour
             if(BlockManager.instance != null)
             {
                 BlockManager.instance.EnableVehiclePhysics();
+            }
+            if (EnemyBlockManager.instance != null)
+            {
+                foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
+                {
+                    enemy.enabled = true;
+                }
             }
         }
     }

@@ -166,4 +166,7 @@ public class EnemyBlockManager : MonoBehaviour
         }
         return Enumerable.Empty<KeyValuePair<Vector3Int, Rigidbody>>();
     }
+    public IEnumerable<EnemyAI> GetEnemyVehicles() {
+        return vehicles.Keys;
+    }
 }

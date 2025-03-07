@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] private MultiAimConstraint baseAim;
-    [SerializeField] private MultiAimConstraint topArmAim;
-    [SerializeField] private MultiAimConstraint gunAim;
+    [SerializeField] private List<MultiAimConstraint> aimConstraints = new List<MultiAimConstraint>();
 
     private Transform aimTarget;
     [Header("Shooting Settings")]
@@ -47,9 +46,10 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        SetConstraintTarget(baseAim, aimTarget);
-        SetConstraintTarget(topArmAim, aimTarget);
-        SetConstraintTarget(gunAim, aimTarget);
+        foreach (MultiAimConstraint constraint in aimConstraints)
+        {
+            SetConstraintTarget(constraint, aimTarget);
+        }
 
         RigBuilder rigs = GetComponent<RigBuilder>();
         if (rigs != null)
@@ -65,9 +65,10 @@ public class Turret : MonoBehaviour
     }
     private void DisableAimConstraints()
     {
-        SetConstraintWeight(baseAim, 0f);
-        SetConstraintWeight(topArmAim, 0f);
-        SetConstraintWeight(gunAim, 0f);
+        foreach (MultiAimConstraint constraint in aimConstraints)
+        {
+            SetConstraintWeight(constraint, 0f);
+        }
         RigBuilder rigs = GetComponent<RigBuilder>();
         if (rigs != null)
             rigs.Build();
