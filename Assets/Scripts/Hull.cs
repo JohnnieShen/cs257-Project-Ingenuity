@@ -68,6 +68,12 @@ public class Hull : MonoBehaviour
 
     void OnJointBreak(float breakForce)
     {
+        StartCoroutine(DelayedRecalculate());   
+    }
+
+    private IEnumerator DelayedRecalculate()
+    {
+        yield return null;
         if (isAIVehicle)
         {
             GetComponentInParent<EnemyAI>().BuildConnectionGraph();

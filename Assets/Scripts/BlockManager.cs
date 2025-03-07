@@ -186,16 +186,18 @@ public class BlockManager : MonoBehaviour
 
         foreach (var blockEntry in blocks)
         {
+            // Debug.Log("Checking block at " + blockEntry.Key);
             Rigidbody rb = blockEntry.Value;
             FixedJoint[] joints = rb.GetComponents<FixedJoint>();
-            
+            // Debug.Log("Found " + joints.Length + " connections");
             foreach (FixedJoint joint in joints)
             {
-                if (joint.connectedBody != null)
+                if (joint == null!= null && joint.connectedBody != null)
                 {
                     Vector3Int connectedPos = Vector3Int.RoundToInt(
                         transform.InverseTransformPoint(joint.connectedBody.transform.position)
                     );
+                    // Debug.Log("Connected from "+blockEntry.Key+ " to " + connectedPos);
                     AddConnection(blockEntry.Key, connectedPos);
                 }
             }
