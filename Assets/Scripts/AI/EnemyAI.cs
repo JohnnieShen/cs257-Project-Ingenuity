@@ -234,8 +234,9 @@ public class EnemyAI : MonoBehaviour
         BuildConnectionGraph();
     }
 
-    private void BuildConnectionGraph()
+    public void BuildConnectionGraph()
     {
+        EnemyBlockManager.instance.vehicles[this].blockConnections.Clear();
         foreach (var blockEntry in EnemyBlockManager.instance.GetBlocksForVehicle(this))
         {
             Rigidbody rb = blockEntry.Value;

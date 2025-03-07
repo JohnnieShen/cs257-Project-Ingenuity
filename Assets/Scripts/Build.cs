@@ -10,6 +10,7 @@ public class BuildSystem : MonoBehaviour
  
     Block currentBlock;
     public TMP_Text blockNameText;
+    public int breakForce;
  
     public Transform shootingPoint;
     GameObject blockObject;
@@ -266,7 +267,11 @@ public class BuildSystem : MonoBehaviour
                                     Vector3Int oppositeOffset = -rotatedOffsetInt;
                                     if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
                                     {
-                                        newBlock.AddComponent<FixedJoint>().connectedBody = neighborRb;
+                                        // Add joint
+                                        var joint = newBlock.AddComponent<FixedJoint>();
+                                        joint.connectedBody = neighborRb;
+                                        joint.breakForce = breakForce;
+
                                         Vector3Int newBlockPos = Vector3Int.RoundToInt(localSpawn);
                                         BlockManager.instance.AddConnection(newBlockPos, neighborPos);
                                         blockInventory[currentBlock].CurrentCount--;
