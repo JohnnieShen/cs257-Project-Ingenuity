@@ -96,11 +96,15 @@ public class Turret : MonoBehaviour
     }
     void OnEnable()
     {
+        if (isAI)
+            return;
         FreeCameraLook.OnFire += HandleFireEvent;
     }
 
     void OnDisable()
     {
+        if (isAI)
+            return;
         FreeCameraLook.OnFire -= HandleFireEvent;
     }
 

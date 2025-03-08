@@ -31,6 +31,18 @@ public class EnemyAI : MonoBehaviour
     public Transform aimTransform;
     void Start()
     {
+        if (playerTarget == null)
+        {
+            GameObject coreObject = GameObject.FindWithTag("Core");
+            if (coreObject != null)
+            {
+                playerTarget = coreObject.transform;
+            }
+            else
+            {
+                Debug.LogWarning("No Core found");
+            }
+        }
         patrolCenter = transform.position;
         InitializeAI();
         maxTotalHealth = healthSystem.CalculateMaxHealth();

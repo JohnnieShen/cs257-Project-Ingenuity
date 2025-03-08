@@ -17,4 +17,4 @@ MonoBehaviour:
   ItemsNeededForBuildingBlock: 
   AmountOfItemNeeded: 0
   isSideMountable: 0
-  blockHealth: 500
+  blockHealth: 100

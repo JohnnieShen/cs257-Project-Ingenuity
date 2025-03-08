@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ModeSwitcher : MonoBehaviour
 {
+    public static ModeSwitcher instance;
     public enum Mode { Build, Drive }
     public Mode currentMode = Mode.Drive;
 
@@ -14,7 +15,18 @@ public class ModeSwitcher : MonoBehaviour
     public Transform drivingCamera;
     public float buildModeHeight = 5f;
     public float elevateDuration = 1f;
-    
+    public bool canManuallySwitchMode = true;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     void Start()
     {
         SetMode(currentMode);
@@ -22,17 +34,23 @@ public class ModeSwitcher : MonoBehaviour
 
     void Update()
     {
-        if ((InputManager.instance.GetBuildSwapModeAction()  != null &&
-             InputManager.instance.GetBuildSwapModeAction().triggered) ||
-            (InputManager.instance.GetDriveSwapModeAction()  != null &&
-             InputManager.instance.GetDriveSwapModeAction().triggered))
+        if (
+            canManuallySwitchMode &&
+            (
+                (InputManager.instance.GetBuildSwapModeAction() != null &&
+                InputManager.instance.GetBuildSwapModeAction().triggered) 
+                ||
+                (InputManager.instance.GetDriveSwapModeAction() != null &&
+                InputManager.instance.GetDriveSwapModeAction().triggered)
+            )
+        )
         {
             currentMode = (currentMode == Mode.Build) ? Mode.Drive : Mode.Build;
             SetMode(currentMode);
         }
     }
 
-    void SetMode(Mode mode)
+    public void SetMode(Mode mode)
     {
         if (mode == Mode.Build)
         {
@@ -65,7 +83,10 @@ public class ModeSwitcher : MonoBehaviour
             {
                 foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
                 {
-                    enemy.enabled = false;
+                    if (enemy != null)
+                    {
+                        enemy.enabled = false;
+                    }
                 }
             }
         }
@@ -86,7 +107,10 @@ public class ModeSwitcher : MonoBehaviour
             {
                 foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
                 {
-                    enemy.enabled = true;
+                    if (enemy != null)
+                    {
+                        enemy.enabled = true;
+                    }
                 }
             }
         }
