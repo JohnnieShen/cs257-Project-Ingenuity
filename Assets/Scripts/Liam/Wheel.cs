@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wheel : MonoBehaviour
@@ -41,6 +42,13 @@ public class Wheel : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Initialize(bool enabled, float driveInput, float currentSteerAngle)
+    {
+        this.enabled = enabled;
+        this.driveInput = driveInput;
+        this.currentSteerAngle = currentSteerAngle;
     }
 
     void Update()

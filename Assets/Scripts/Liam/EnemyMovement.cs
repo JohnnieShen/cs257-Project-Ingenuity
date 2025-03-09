@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
 
     public float currentDriveInput;
     public float currentSteerInput;
-    
+
     void Start()
     {
         foreach (Wheel wheel in wheels)
@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
 
         Vector3 toTarget = targetPosition.position - transform.position;
         float distanceToTarget = toTarget.magnitude;
-        
+
         Vector3 localTargetDir = transform.InverseTransformDirection(toTarget.normalized);
         currentSteerInput = Mathf.Clamp(localTargetDir.x * steeringSharpness, -1f, 1f);
 
@@ -47,12 +47,12 @@ public class EnemyMovement : MonoBehaviour
 
         if (shouldReverse) return -maxSpeed * 0.5f;
         if (distance < arrivalDistance) return 0f;
-        
+
         if (distance < slowDownRadius)
         {
             return Mathf.Lerp(0, maxSpeed, distance / slowDownRadius);
         }
-        
+
         return maxSpeed;
     }
 
@@ -76,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
             // Debug.Log("Applying braking");
             Vector3 brakeDirection = -rb.velocity.normalized;
             float brakePower = Mathf.Lerp(1f, 0f, distanceToTarget / slowDownRadius);
-            
+
             rb.AddForce(brakeDirection * brakeStrength * brakePower, ForceMode.Acceleration);
         }
     }
@@ -93,7 +93,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 wheel.driveInput = currentDriveInput;
                 float effectiveForce = wheel.accelForce * currentDriveInput;
-                if (rb != null && wheel != null) {
+                if (rb != null && wheel != null)
+                {
                     rb.AddForceAtPosition(
                         wheel.transform.forward * effectiveForce,
                         wheel.transform.position,
@@ -106,8 +107,8 @@ public class EnemyMovement : MonoBehaviour
             {
                 float steerAngle = currentSteerInput * wheel.maxSteeringAngle;
                 wheel.currentSteerAngle = Mathf.Lerp(
-                    wheel.currentSteerAngle, 
-                    steerAngle, 
+                    wheel.currentSteerAngle,
+                    steerAngle,
                     Time.fixedDeltaTime * wheel.steeringReturnSpeed
                 );
             }

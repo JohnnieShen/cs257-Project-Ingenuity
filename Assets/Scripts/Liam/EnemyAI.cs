@@ -136,11 +136,11 @@ public class EnemyAI : MonoBehaviour
     void PatrolBehavior()
     {
         patrolTimer += Time.deltaTime;
-        if (Vector3.Distance(transform.position, enemyMovement.targetPosition.position) < enemyMovement.arrivalDistance || 
+        if (Vector3.Distance(transform.position, enemyMovement.targetPosition.position) < enemyMovement.arrivalDistance ||
         patrolTimer >= patrolTimeout)
         {
             patrolWaitTimer += Time.deltaTime;
-            
+
             if (patrolWaitTimer >= patrolPointWaitTime)
             {
                 SetRandomPatrolPoint();
@@ -181,13 +181,13 @@ public class EnemyAI : MonoBehaviour
     {
         Vector2 randomPoint = Random.insideUnitCircle * patrolRange;
         Vector3 newTarget = patrolCenter + new Vector3(randomPoint.x, 0, randomPoint.y);
-        
+
         if (enemyMovement.targetPosition == null)
         {
             GameObject tempTarget = new GameObject("PatrolTarget");
             enemyMovement.targetPosition = tempTarget.transform;
         }
-        
+
         enemyMovement.targetPosition.position = newTarget;
     }
     void UpdateLineOfSight()
@@ -208,12 +208,12 @@ public class EnemyAI : MonoBehaviour
         if (hitDetected)
         {
             // Debug.Log("Raycast hit: " + hit.collider.name + " (Tag: " + hit.collider.tag + ") at distance: " + hit.distance);
-            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core") || (hit.collider.CompareTag("ConnectionPoint") && (hit.collider.transform.parent.parent.CompareTag("Block")||hit.collider.transform.parent.parent.CompareTag("Core")));
+            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core") || (hit.collider.CompareTag("ConnectionPoint") && (hit.collider.transform.parent.parent.CompareTag("Block") || hit.collider.transform.parent.parent.CompareTag("Core")));
 
             if (!hasLineOfSight)
                 // Debug.Log("Hit object does not have the required tag (Block/Core).");
 
-            Debug.DrawLine(transform.position, hit.point, hasLineOfSight ? Color.green : Color.red);
+                Debug.DrawLine(transform.position, hit.point, hasLineOfSight ? Color.green : Color.red);
         }
         else
         {
@@ -226,7 +226,7 @@ public class EnemyAI : MonoBehaviour
     void HandleHealthChanged(float currentTotalHealth)
     {
         float healthPercentage = currentTotalHealth / maxTotalHealth;
-    
+
         if (healthPercentage <= fleeHealthThreshold && currentState != AIState.Flee)
         {
             currentState = AIState.Flee;
@@ -253,7 +253,7 @@ public class EnemyAI : MonoBehaviour
         {
             Rigidbody rb = blockEntry.Value;
             FixedJoint[] joints = rb.GetComponents<FixedJoint>();
-            
+
             foreach (FixedJoint joint in joints)
             {
                 if (joint.connectedBody != null)
@@ -274,7 +274,7 @@ public class EnemyAI : MonoBehaviour
         Gizmos.color = Color.green;
         if (enemyMovement?.targetPosition != null)
             Gizmos.DrawSphere(enemyMovement.targetPosition.position, 0.5f);
-        
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
         Gizmos.color = Color.yellow;

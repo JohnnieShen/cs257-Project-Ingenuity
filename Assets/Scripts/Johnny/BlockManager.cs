@@ -162,9 +162,7 @@ public class BlockManager : MonoBehaviour
                 Wheel wheel = rb.GetComponent<Wheel>();
                 if (wheel != null)
                 {
-                    wheel.enabled = false;
-                    wheel.driveInput = 0f;
-                    wheel.currentSteerAngle = 0f;
+                    wheel.Initialize(false, 0f, 0f);
                 }
 
                 Turret turret = rb.GetComponent<Turret>();
