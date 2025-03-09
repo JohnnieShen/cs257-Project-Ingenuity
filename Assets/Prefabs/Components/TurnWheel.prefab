@@ -97,6 +97,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f04fdb5debbce8651be21a9fdd4a26b5, type: 2}
+    - target: {fileID: 2760213025787200911, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3614666414008085153, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -227,24 +231,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1955014587071136461}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
-      propertyPath: accelForce
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: isTurnWheel
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
-      propertyPath: isDriveWheel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: rotationSpeed
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4521524471250326909, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
-      propertyPath: springStrength
-      value: 300
+      propertyPath: steeringReturnSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6607950156750792071, guid: 59fcec256b5b1f04fae5f17d2e0df973, type: 3}
       propertyPath: m_LocalPosition.x

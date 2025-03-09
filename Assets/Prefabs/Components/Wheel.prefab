@@ -50,7 +50,7 @@ MonoBehaviour:
   accelForceMultiplier: 1
   rigidBody: {fileID: 0}
   suspensionRestDist: 1
-  springStrength: 100
+  springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
