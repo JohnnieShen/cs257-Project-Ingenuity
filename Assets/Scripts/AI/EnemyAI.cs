@@ -135,15 +135,15 @@ public class EnemyAI : MonoBehaviour
 
     void PatrolBehavior()
     {
-        patrolTimer += Time.deltaTime;
+        patrolTimer += Time.deltaTime; // Increment the patrol timer.
         if (Vector3.Distance(transform.position, enemyMovement.targetPosition.position) < enemyMovement.arrivalDistance || 
-        patrolTimer >= patrolTimeout)
+        patrolTimer >= patrolTimeout) // If we are within the arrival distance of the target position or the patrol timer has exceeded the patrol timeout.
         {
-            patrolWaitTimer += Time.deltaTime;
+            patrolWaitTimer += Time.deltaTime; // Increment the patrol wait timer.
             
-            if (patrolWaitTimer >= patrolPointWaitTime)
+            if (patrolWaitTimer >= patrolPointWaitTime) // If we have waited until the patrol wait timer times out
             {
-                SetRandomPatrolPoint();
+                SetRandomPatrolPoint(); // Set a new random patrol point.
                 patrolWaitTimer = 0;
                 patrolTimer = 0;
             }
@@ -152,33 +152,37 @@ public class EnemyAI : MonoBehaviour
 
     void ChaseBehavior()
     {
-        enemyMovement.targetPosition.position = playerTarget.position;
+        enemyMovement.targetPosition.position = playerTarget.position; // Set the target position to the player's position.
     }
 
     void AttackBehavior()
     {
-        if (playerTarget != null && aimTransform != null)
+        if (playerTarget != null && aimTransform != null) // If the player target and aim transform of this AI are not null.
         {
             Vector3 aimOffset = new Vector3(0, 0f, 0);
-            aimTransform.position = playerTarget.position + aimOffset;
+            aimTransform.position = playerTarget.position + aimOffset; // Set the aim transform position to the player's position.
         }
 
         // enemyMovement.targetPosition.position = playerTarget.position;
 
         if (enemyTurret != null && !enemyTurret.isBlocked)
         {
-            enemyTurret.HandleFireEvent();
+            enemyTurret.HandleFireEvent(); // Handle the fire event of the enemy turret.
+
+            // TODO handle the case with multiple turrets, create a lisf for turrets and iterate through them
         }
     }
 
     void FleeBehavior()
     {
+        // Set the target position to the opposite direction of the player.
         Vector3 fleeDirection = (transform.position - playerTarget.position).normalized;
         enemyMovement.targetPosition.position = transform.position + fleeDirection * detectionRange;
     }
 
     void SetRandomPatrolPoint()
     {
+        // Set a random point within the patrol range.
         Vector2 randomPoint = Random.insideUnitCircle * patrolRange;
         Vector3 newTarget = patrolCenter + new Vector3(randomPoint.x, 0, randomPoint.y);
         
@@ -187,9 +191,11 @@ public class EnemyAI : MonoBehaviour
             GameObject tempTarget = new GameObject("PatrolTarget");
             enemyMovement.targetPosition = tempTarget.transform;
         }
-        
+        // Set the target position to the new target.
         enemyMovement.targetPosition.position = newTarget;
     }
+
+    // Update the line of sight of the AI to the player.
     void UpdateLineOfSight()
     {
         // if (playerTarget == null)
@@ -198,17 +204,17 @@ public class EnemyAI : MonoBehaviour
         //     return;
         // }
 
-        Vector3 direction = (playerTarget.position - transform.position).normalized;
-        LayerMask mask = ~enemyLayer;
+        Vector3 direction = (playerTarget.position - transform.position).normalized; // Calculate the direction to the player.
+        LayerMask mask = ~enemyLayer; // Create a layer mask to ignore the enemy layer, so that it doesn't hit the enemy's blocks.
 
         // Debug.Log("Raycasting from " + transform.position + " towards " + playerTarget.position + " with direction " + direction);
         RaycastHit hit;
         bool hitDetected = Physics.Raycast(transform.position, direction, out hit, detectionRange, mask);
 
-        if (hitDetected)
+        if (hitDetected) // If the raycast hit an object.
         {
             // Debug.Log("Raycast hit: " + hit.collider.name + " (Tag: " + hit.collider.tag + ") at distance: " + hit.distance);
-            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core") || (hit.collider.CompareTag("ConnectionPoint") && (hit.collider.transform.parent.parent.CompareTag("Block")||hit.collider.transform.parent.parent.CompareTag("Core")));
+            hasLineOfSight = hit.collider.CompareTag("Block") || hit.collider.CompareTag("Core") || (hit.collider.CompareTag("ConnectionPoint") && (hit.collider.transform.parent.parent.CompareTag("Block")||hit.collider.transform.parent.parent.CompareTag("Core"))); // Check if the hit object has the required tag (Block/Core).
 
             if (!hasLineOfSight)
                 // Debug.Log("Hit object does not have the required tag (Block/Core).");

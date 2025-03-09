@@ -194,49 +194,52 @@ public class BuildSystem : MonoBehaviour
  
     void BuildBlock(GameObject blockPrefab)
     {
-        if (currentBlock == null || blockInventory[currentBlock].CurrentCount <= 0)
+        if (currentBlock == null || blockInventory[currentBlock].CurrentCount <= 0) // No blocks remaining of this type
         {
             Debug.LogWarning("No blocks remaining of this type!");
             return;
         }
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask)) // Raycast hit something that is a block
         {
             // Debug.Log("raycast hitting"+hitInfo.collider.gameObject.name);
-            if (hitInfo.collider.gameObject.layer == 6)
+
+            // 1. Instantiating the block
+
+            if (hitInfo.collider.gameObject.layer == 6) // Hit a block
             {
-                Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point);
-                Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal);
+                Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point); // Convert hit point to local space
+                Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal); // Convert hit normal to local space
                 
-                Vector3 localSpawn = new Vector3(
+                Vector3 localSpawn = new Vector3( // Calculate spawn position
                     Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
-                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
-                if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(spawnPosInt, out _))
+                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn); // Convert spawn position to grid space
+                if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(spawnPosInt, out _)) // Check if grid position is already occupied
                 {
                     Debug.LogWarning("Cannot build - grid position already occupied!");
                     return;
                 }
-                GameObject newBlock = Instantiate(blockPrefab, commandModule);
-                newBlock.transform.localPosition = localSpawn;
-                if (currentBlock.isSideMountable)
+                GameObject newBlock = Instantiate(blockPrefab, commandModule); // Instantiate new block as child of command module
+                newBlock.transform.localPosition = localSpawn; // Set local position of new block
+                if (currentBlock.isSideMountable) // If the block is sidemountable (as set in the block scriptable object)
                 {
-                    if (Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up)) > 10f)
+                    if (Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up)) > 10f) // If it hit something that is not the top of some block
                     {
-                        Quaternion adjustment = Quaternion.FromToRotation(newBlock.transform.up, hitInfo.normal);
-                        newBlock.transform.rotation = adjustment * newBlock.transform.rotation;
-                        newBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation;
+                        Quaternion adjustment = Quaternion.FromToRotation(newBlock.transform.up, hitInfo.normal); // Calculate rotation adjustment
+                        newBlock.transform.rotation = adjustment * newBlock.transform.rotation; // Apply rotation adjustment
+                        newBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation; // Convert rotation to local space
                     }
                     else
                     {
-                        newBlock.transform.localRotation = Quaternion.identity;
+                        newBlock.transform.localRotation = Quaternion.identity; // In the ccase of hitting the top of a block, set rotation to identity
                     }
                 }
                 else
                 {
-                    newBlock.transform.localRotation = Quaternion.identity;
+                    newBlock.transform.localRotation = Quaternion.identity; // If the block is not sidemountable, set rotation to identity
                 }
                 
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
@@ -244,28 +247,30 @@ public class BuildSystem : MonoBehaviour
                 // Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
                 // Debug.Log("Spawn grid coordinate: " + spawnPosInt);
                 
+                // 2. Creating joints and connections
+
                 Hull newHull = newBlock.GetComponent<Hull>();
                 if(newHull != null)
                 {
-                    newHull.sourceBlock = currentBlock;
-                    foreach (Vector3Int offset in newHull.validConnectionOffsets)
+                    newHull.sourceBlock = currentBlock; // Set the source block of the new block to the current selected block
+                    foreach (Vector3Int offset in newHull.validConnectionOffsets) // Iterate over valid connection offsets of the new block as set in the block scriptable object
                     {
-                        Vector3 rotatedOffset = newBlock.transform.localRotation * (Vector3)offset;
-                        Vector3Int rotatedOffsetInt = new Vector3Int(
+                        Vector3 rotatedOffset = newBlock.transform.localRotation * (Vector3)offset; // Rotate the offset to match the block's rotation (if sidemountable)
+                        Vector3Int rotatedOffsetInt = new Vector3Int( // Round the rotated offset to integer values
                             Mathf.RoundToInt(rotatedOffset.x),
                             Mathf.RoundToInt(rotatedOffset.y),
                             Mathf.RoundToInt(rotatedOffset.z)
                         );
-                        Vector3Int neighborPos = spawnPosInt + rotatedOffsetInt;
+                        Vector3Int neighborPos = spawnPosInt + rotatedOffsetInt; // Calculate the position of the neighbor block
                         // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
-                        if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb))
+                        if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb)) // If neighbor exist
                         {
                             if (neighborRb != null) {
                                 Hull neighborHull = neighborRb.GetComponent<Hull>();
                                 if (neighborHull != null)
                                 {
-                                    Vector3Int oppositeOffset = -rotatedOffsetInt;
-                                    if (neighborHull.validConnectionOffsets.Contains(oppositeOffset))
+                                    Vector3Int oppositeOffset = -rotatedOffsetInt; // Calculate the opposite offset
+                                    if (neighborHull.validConnectionOffsets.Contains(oppositeOffset)) // If the neighbor has a valid offset at the current position too
                                     {
                                         // Add joint
                                         var joint = newBlock.AddComponent<FixedJoint>();
@@ -275,7 +280,7 @@ public class BuildSystem : MonoBehaviour
                                         Vector3Int newBlockPos = Vector3Int.RoundToInt(localSpawn);
                                         BlockManager.instance.AddConnection(newBlockPos, neighborPos);
                                         blockInventory[currentBlock].CurrentCount--;
-                                        UpdateAvailableBlocks();
+                                        UpdateAvailableBlocks(); // TODO Should not do this here
                                         
                                         // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                     }
@@ -304,7 +309,7 @@ public class BuildSystem : MonoBehaviour
                 
                 if (BlockManager.instance != null)
                 {
-                    BlockManager.instance.AddBlock(spawnPosInt, newBlockRb);
+                    BlockManager.instance.AddBlock(spawnPosInt, newBlockRb); // Register the new block in the block manager
                     // Debug.Log("Registered new block at grid coordinate: " + spawnPosInt);
                 }
             }

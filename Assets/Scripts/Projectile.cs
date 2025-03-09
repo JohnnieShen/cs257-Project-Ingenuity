@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
             {
                 blockHealth = other.GetComponent<BlockHealth>();
             }
-            else if (other.CompareTag("ConnectionPoint"))
+            else if (other.CompareTag("ConnectionPoint")) // TODO: This hits self too
             {
                 if (other.transform.parent != null && other.transform.parent.parent != null)
                 {
@@ -45,7 +45,7 @@ public class Projectile : MonoBehaviour
             {
                 blockHealth = other.GetComponent<BlockHealth>();
             }
-            else if (other.CompareTag("ConnectionPoint"))
+            else if (other.CompareTag("ConnectionPoint")) // TODO: This hits self too
             {
                 if (other.transform.parent != null && other.transform.parent.parent != null)
                 {
