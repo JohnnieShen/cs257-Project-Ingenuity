@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b49fdb179b4564e458b6db9f35b063c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  driveInput: 0
+  accelForceMultiplier: 1
   rigidBody: {fileID: 0}
   suspensionRestDist: 1
-  springStrength: 100
+  springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
@@ -60,6 +62,8 @@ MonoBehaviour:
   tire: {fileID: 4024345409444059436}
   isDriveWheel: 0
   isTurnWheel: 0
+  isAI: 0
+  currentSteerAngle: 0
   invertSteering: 0
   tireRadius: 0.3
 --- !u!136 &9106322844310475174
