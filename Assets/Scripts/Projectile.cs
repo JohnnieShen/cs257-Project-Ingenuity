@@ -27,15 +27,18 @@ public class Projectile : MonoBehaviour
         BlockHealth blockHealth = null;
         if (IsEnemyProjectile)
         {
-            if (other.CompareTag("Block"))
+            if (other.CompareTag("Block") || other.CompareTag("Core"))
             {
                 blockHealth = other.GetComponent<BlockHealth>();
             }
-            else if (other.CompareTag("ConnectionPoint")) // TODO: This hits self too
+            else if (other.CompareTag("ConnectionPoint"))
             {
                 if (other.transform.parent != null && other.transform.parent.parent != null)
                 {
-                    blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                    if (other.transform.parent.parent.CompareTag("Block") || other.transform.parent.parent.CompareTag("Core"))
+                    {
+                        blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                    }
                 }
             }
         }
@@ -45,11 +48,14 @@ public class Projectile : MonoBehaviour
             {
                 blockHealth = other.GetComponent<BlockHealth>();
             }
-            else if (other.CompareTag("ConnectionPoint")) // TODO: This hits self too
+            else if (other.CompareTag("ConnectionPoint"))
             {
                 if (other.transform.parent != null && other.transform.parent.parent != null)
                 {
-                    blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                    if (other.transform.parent.parent.CompareTag("EnemyBlock"))
+                    {
+                        blockHealth = other.transform.parent.parent.GetComponent<BlockHealth>();
+                    }
                 }
             }
         }

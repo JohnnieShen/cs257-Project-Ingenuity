@@ -459,4 +459,3 @@ public class BlockInventory
     public int CurrentCount;
     public int MaxStack = 99;
 }
- 
