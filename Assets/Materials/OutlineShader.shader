@@ -70,15 +70,13 @@ Shader "Hidden/Edge Detection"
                 float2 uv = IN.texcoord;
                 float2 texel_size = float2(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y);
                 
-                // Generate 4 diagonally placed samples.
-                const float half_width_f = floor(_OutlineThickness * 0.5);
-                const float half_width_c = ceil(_OutlineThickness * 0.5);
-
+                float half_width = _OutlineThickness * 0.5;
+                
                 float2 uvs[4];
-                uvs[0] = uv + texel_size * float2(half_width_f, half_width_c) * float2(-1, 1);  // top left
-                uvs[1] = uv + texel_size * float2(half_width_c, half_width_c) * float2(1, 1);   // top right
-                uvs[2] = uv + texel_size * float2(half_width_f, half_width_f) * float2(-1, -1); // bottom left
-                uvs[3] = uv + texel_size * float2(half_width_c, half_width_f) * float2(1, -1);  // bottom right
+                uvs[0] = uv + texel_size * float2(half_width, half_width) * float2(-1, 1);  // top left
+                uvs[1] = uv + texel_size * float2(half_width, half_width) * float2(1, 1);   // top right
+                uvs[2] = uv + texel_size * float2(half_width, half_width) * float2(-1, -1); // bottom left
+                uvs[3] = uv + texel_size * float2(half_width, half_width) * float2(1, -1);  // bottom right
                 
                 float3 normal_samples[4];
                 float depth_samples[4], luminance_samples[4];
