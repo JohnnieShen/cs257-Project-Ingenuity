@@ -254,7 +254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: availableBuildingBlocks.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: 'availableBuildingBlocks.Array.data[3]'
@@ -289,6 +289,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[6].Block
+      value: 
+      objectReference: {fileID: 11400000, guid: c63fd7d0e8a4d7c419282422049c0de4, type: 2}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: availableBuildingBlocks.Array.data[3].MaxStack
       value: 99
       objectReference: {fileID: 0}
@@ -298,6 +302,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: availableBuildingBlocks.Array.data[5].MaxStack
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[6].MaxStack
       value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
@@ -322,6 +330,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: availableBuildingBlocks.Array.data[5].CurrentCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: availableBuildingBlocks.Array.data[6].CurrentCount
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6672819349101815036, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
@@ -587,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 556790567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.022514, y: 562.9044, z: 821.18335}
+  m_LocalPosition: {x: -23.44805, y: 568.9715, z: 827.029}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -994,7 +1006,7 @@ Transform:
   m_GameObject: {fileID: 856457730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.83, z: 0}
+  m_LocalPosition: {x: 0, y: 19.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13770,7 +13782,7 @@ Transform:
   m_GameObject: {fileID: 1379108818}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.83, z: 0}
+  m_LocalPosition: {x: 0, y: 19.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
