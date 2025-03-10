@@ -210,7 +210,28 @@ public class BuildSystem : MonoBehaviour
             {
                 Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point); // Convert hit point to local space
                 Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal); // Convert hit normal to local space
-                
+                float angleWithUp = Vector3.Angle(
+                    hitInfo.normal,
+                    commandModule.TransformDirection(Vector3.up)
+                );
+                bool isTopSurface = (angleWithUp < 30f);
+                bool isBottomSurface = (angleWithUp > 150f);
+                bool isSideSurface = (!isTopSurface && !isBottomSurface);
+                if (isTopSurface && !currentBlock.isTopMountable)
+                {
+                    Debug.LogWarning("This block cannot be top-mounted!");
+                    return;
+                }
+                if (isBottomSurface && !currentBlock.isBottomMountable)
+                {
+                    Debug.LogWarning("This block cannot be bottom-mounted!");
+                    return;
+                }
+                if (isSideSurface && !currentBlock.isSideMountable)
+                {
+                    Debug.LogWarning("This block cannot be side-mounted!");
+                    return;
+                }
                 Vector3 localSpawn = new Vector3( // Calculate spawn position
                     Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
@@ -224,22 +245,26 @@ public class BuildSystem : MonoBehaviour
                 }
                 GameObject newBlock = Instantiate(blockPrefab, commandModule); // Instantiate new block as child of command module
                 newBlock.transform.localPosition = localSpawn; // Set local position of new block
-                if (currentBlock.isSideMountable) // If the block is sidemountable (as set in the block scriptable object)
+                if (isSideSurface)
                 {
-                    if (Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up)) > 10f) // If it hit something that is not the top of some block
-                    {
-                        Quaternion adjustment = Quaternion.FromToRotation(newBlock.transform.up, hitInfo.normal); // Calculate rotation adjustment
-                        newBlock.transform.rotation = adjustment * newBlock.transform.rotation; // Apply rotation adjustment
-                        newBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation; // Convert rotation to local space
-                    }
-                    else
-                    {
-                        newBlock.transform.localRotation = Quaternion.identity; // In the ccase of hitting the top of a block, set rotation to identity
-                    }
+                    Quaternion adjustment = Quaternion.FromToRotation(
+                        newBlock.transform.TransformDirection(currentBlock.attachDirection),
+                        hitInfo.normal
+                    );
+                    newBlock.transform.rotation = adjustment * newBlock.transform.rotation;
+                    newBlock.transform.localRotation =
+                        Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation;
                 }
                 else
                 {
-                    newBlock.transform.localRotation = Quaternion.identity; // If the block is not sidemountable, set rotation to identity
+                    if (isTopSurface)
+                    {
+                        newBlock.transform.localRotation = Quaternion.identity;
+                    }
+                    else
+                    {
+                        newBlock.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                    }
                 }
                 
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();

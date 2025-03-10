@@ -237,11 +237,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: validConnectionOffsets.Array.size
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: validConnectionOffsets.Array.data[0].x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: validConnectionOffsets.Array.data[1].x

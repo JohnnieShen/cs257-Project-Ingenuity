@@ -16,5 +16,8 @@ MonoBehaviour:
   BlockObject: {fileID: 2325821719734306567, guid: ab5e4b4f6417eb8759bdd7ce880e272a, type: 3}
   ItemsNeededForBuildingBlock: 
   AmountOfItemNeeded: 0
-  isSideMountable: 0
+  isTopMountable: 0
+  isSideMountable: 1
+  isBottomMountable: 0
+  attachDirection: {x: 1, y: 0, z: 0}
   blockHealth: 200
