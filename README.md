@@ -73,34 +73,62 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Additions
 
-There were three main areas we completed that we did not plan on:
+~~There were three main areas we completed that we did not plan on:~~
 
-1. 3D models
-    - Johnny made blender models for each of our parts (hull, command module, turret, wheel)
-    - We still do not have textures and are just using basic colors which we hope to improve
-2. Turrets
-    - We implemented the turret piece which attaches to a block. The turret armature is fully articulated and animated to point towards the player’s cursor. It currently shoots rigidbody bullets before having to reload.
-3. Mode switching
-    - We implemented build mode and drive mode as well as different camera controls and transitions for each.
+1. ~~3D models~~
+    - ~~Johnny made blender models for each of our parts (hull, command module, turret, wheel)~~
+    - ~~We still do not have textures and are just using basic colors which we hope to improve~~
+2. ~~Turrets~~
+    - ~~We implemented the turret piece which attaches to a block. The turret armature is fully articulated and animated to point towards the player’s cursor. It currently shoots rigidbody bullets before having to reload.~~
+3. ~~Mode switching~~
+    - ~~We implemented build mode and drive mode as well as different camera controls and transitions for each.~~
 
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
-For the next submission, we would like to improve on our 3D models by adding textures. This will allow us to make blocks with different strengths or properties in addition to visual differences. We would also want to create more models for the blocks e.g. different cannon designs for different types, shield generator, armor blocks etc. We would also want to create assets for props on the terrain and a better terrain in general. 
+~~For the next submission, we would like to improve on our 3D models by adding textures. This will allow us to make blocks with different strengths or properties in addition to visual differences. We would also want to create more models for the blocks e.g. different cannon designs for different types, shield generator, armor blocks etc. We would also want to create assets for props on the terrain and a better terrain in general. ~~
 
-We would also want to improve the shooting aspect of the game, for the next milestone, a conservative estimate would be to have a stationary enemy that the player can shoot at and eventually destroy, and a more optimistic estimate would be a primitive enemy AI that would allow some interaction. We would also want to improve the depth of the gunplay by e.g. introducing more damage types (e.g. energy vs ballistic) and an energy shield. 
+~~We would also want to improve the shooting aspect of the game, for the next milestone, a conservative estimate would be to have a stationary enemy that the player can shoot at and eventually destroy, and a more optimistic estimate would be a primitive enemy AI that would allow some interaction. We would also want to improve the depth of the gunplay by e.g. introducing more damage types (e.g. energy vs ballistic) and an energy shield. ~~
 
-Game element wise we also want to incorporate a looting game loop where parts will be scattered around and the player has to use a certain block to “vacuum” it up and put it on in the building mode.
+~~Game element wise we also want to incorporate a looting game loop where parts will be scattered around and the player has to use a certain block to “vacuum” it up and put it on in the building mode.~~
 
-We would also like to work on world generation and 3D models for the environment the player drives around in. Jay has worked on a primitive version of procedural generation of the terrain and we would want to keep working on it and incorporate this into the game. This is tentative as we are unsure whether it would work well performance wise.
+~~We would also like to work on world generation and 3D models for the environment the player drives around in. Jay has worked on a primitive version of procedural generation of the terrain and we would want to keep working on it and incorporate this into the game. This is tentative as we are unsure whether it would work well performance wise.~~
 
-To summarize:
+~~To summarize:~~
 
-- More 3D models, texture and improve terrain
-- Incorporate the actual asset for the wheel and replace current placeholder asset
-- Enemy target (Tentative: primitive enemy AI)
-- Better, more in depth gunplay and shooting mechanics
-- Looting
-- Tentative: Procedural generation of terrain
+- ~~More 3D models, texture and improve terrain~~
+- ~~Incorporate the actual asset for the wheel and replace current placeholder asset~~
+- ~~Enemy target (Tentative: primitive enemy AI)~~
+- ~~Better, more in depth gunplay and shooting mechanics~~
+- ~~Looting~~
+- ~~Tentative: Procedural generation of terrain~~
+
+### Additions
+
+- Visual Effects
+  - We implemented a shader for achieving a toon-style shading effect, and also a post processing script for highlighting the edges of objects to give the game a more stylized look. We are currently experimenting with the visual designs and may scrap or change this in the future.
+- Better blocks management
+  - We implemented a connectivity system for checking if a block is still attached to the core, and if not we mark it as fallen off, it is then disabled and the player can pick it up.
+- Arena gamemode
+  - Since our main game loop is not fleshed out yet, we have implemented an arena game mode, where the player has to fight waves of enemies, upgrade their vehicle and survive the longest. We made this to be a testing ground for tuning the enemy AI and combat feels in general, but this is also fully playable and customizable.
+- Particle Effects
+  - Working with Unity’s Particle Systems, as well as the Shader and Visual Effects Graphs to bring together a more cohesive and visually appealing shooting system. By adding a muzzle flash / explosion for the base turret as well as a laser gun (in progress) for the energy turret, we aimed to strengthen the visual quality of our game.
+
+### Project Part 3: Visual Effects
+
+For the next submission, we would like to work more on the level design of the game to make it look more fleshed out. In the main open world game mode, we would like to enlarge the playable area and add more points of interest to promote exploration for the player. We would also like to do a simple implementation of a mission board/checklist and some simple quests to push towards the final goal of having a linear progression in an open world. 
+
+We would also want to keep on implementing more interesting blocks in general. One type of weapon we have started to work out towards the end of this milestone was physics based weapons (e.g. think a wrecking ball), we are yet to work out the quirks of the physics system, but we believe that once we have this implemented we would greatly improve the fun factor of the game. We also want to look into making blocks that work essentially as an addon to the vehicle, which doesn’t do anything directly, but gives the player power ups and bonuses. One example could be an engine block, where all attached wheels get a 20% boost in acceleration. 
+
+For the visual parts, we would want to keep working on the visual design of the game. In the current vision, we plan on making the game low poly and with a cartoonish style. This is kinda there but would require more modeling and tuning of the shaders. We also want to actually start implementing textures into the game as we believe that they would greatly elevate the look. 
+
+Last but not the least, we plan to add more variety to the enemy archetypes. Right now we only have one enemy prefab that we can spawn and it is more of an AI demo more than anything else. We plan on implementing a separate scene as an enemy prefab builder that would finish the configurations on the fly and accelerate the enemy building process. 
+
+- Improve level design, points of interests, quest checklist / tracking system, quests
+- More blocks, bug fixes related to physics based damage, add-on blocks
+- Improve visual design, upgrade shaders and textures, flesh out what we want the final design to look
+- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible)
+- Better UI (Tentative)
+
 
 ## Development
 
@@ -160,3 +188,40 @@ An early-stage procedural world generation was also created utilizing an icosahe
 ![Second procedurally generated through the use of randomized extrusion and indentation of different regions](Images/world3.png)
 
 As per the comments made for the last submission, we have started working on this submission with the intention of it being a proof of concept for the vehicle building system. We only started adding in features after having a MVP for the building mechanic and physics simulation, just as we are told to do. As for the advice of not integrating assets into the the game and to use proxies when starting, we started by using proxies in the prototyping stage, as shown in the first picture of this segment. However, we switched to using actual assets once we have gone past that stage, the justification being that the effort of replacing proxies with actual assets might outweigh the effort we could save by not doing it. We also thought that it would be a good idea to start making some assets as a way to visually prototype what the game would look like once developed, and work on the art direction along the way. The last justification would be that the assets we are currently using are all fairly simple, and some of the elements (e.g. base plate aka. the connector of blocks) could be and need to be reused in future assets to ensure standardization, so it would be beneficial to make it as early as possible. As for the procedual generation of the world, we are currently working on it as a way to explore whether the option would be feasible, and we will either use it or drop it in the future. 
+
+### Project Part 2:
+We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game. 
+![Primitive Laser](Images/terrainpreview.png)
+Assets:
+Fantasy Skybox - https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353 
+
+Low Poly Assets - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052 
+
+Wanting to develop our weapons systems further and improve upon the fundamentals taught in the textbook, we work with both Visual Effects and Shading crafts (and the associated scripting) in order to add some VFX for the turrets. An initial particle system was created for the base turret, adding a small explosion / muzzle flash to enhance the look and feel of the shooting systems. Another more advanced particle system we are working to implement is for the energy turret, to get a highly stylized laser which requires some external art/modeling softwares (primitive version shown below).
+![](Images/shootfx.png)
+![](Images/primitivelaser.png)
+
+AI:
+
+As outlined above, we have implemented the first iteration of the enemy AI system and have tuned it to a point where it feels good for now. The AI will use the same block structure as the player and behave similarly. We still need to tune the AI to make it fun and fresh to fight every time.
+
+![](Images/aipreview.png)
+Gizmos showing the AI controller and different ranges for detection, attack etc.
+
+Shader and post effects:
+For a stylized almost cartoonish look, we have implemented a shader graph for a toon effect and a post processing pass for an outline effect. The result looks something like the following. For now, the main issue is the aliasing we have seen with the outline effect, which we might need to solve somehow down the road.
+
+![](Images/tooneffects.png)
+
+### Instructions for Testing the Project
+_Instructions for Base Game_
+In the Terrain scene, after launching the scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
+
+![](Images/terraintoonfx.png)
+
+Once you’ve built a vehicle that you are satisfied with, you can press “B”. This will shift from “Build Mode” to “Play Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
+
+Instructions for Arena Gamemode
+Overall the controls are similar to what they are in the main game mode. The only difference is that the player is not allowed to manually switch between build and drive mode, instead the player must fight off a wave of enemies in drive mode before being switched back to build mode.
+
+When launching the game, you will be put into build mode, where you need to build up a vehicle that you would use to beat the enemies. Once ready, you could press Enter and go into battle. A certain number of enemies will be spawned around you and in the same control scheme as above you need to defeat them, once done you will be put back into build mode automatically. Once back into build mode, you can pick up the reward blocks that spawned around using right mouse click while aiming at it. There will be a timer for you to upgrade the vehicle and once the timer runs out you will be spawned into battle again. You can also press Enter again to skip the timer.
