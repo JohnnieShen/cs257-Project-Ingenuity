@@ -1013,7 +1013,6 @@
     "m_OutputNode": {
         "m_Id": ""
     },
-    "m_SubDatas": [],
     "m_ActiveTargets": [
         {
             "m_Id": "c6e665ca2240461db38c0b37d9d510ae"
@@ -2190,7 +2189,7 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "isMainTexture": false,
@@ -3061,7 +3060,7 @@
     },
     "m_SourceType": 0,
     "m_FunctionName": "ToonShading",
-    "m_FunctionSource": "e50f0455bed2681439e33cbca5660ce3",
+    "m_FunctionSource": "80736b7b91739c4409ee58c6755824d2",
     "m_FunctionBody": "Enter function body here..."
 }
 
@@ -3185,7 +3184,7 @@
     "m_StageCapability": 3,
     "m_BareResource": false,
     "m_Texture": {
-        "m_SerializedTexture": "",
+        "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
     "m_DefaultType": 0
@@ -5117,6 +5116,8 @@
     "m_AlphaClip": false,
     "m_CastShadows": true,
     "m_ReceiveShadows": true,
+    "m_AdditionalMotionVectorMode": 0,
+    "m_AlembicMotionVectors": false,
     "m_SupportsLODCrossFade": false,
     "m_CustomEditorGUI": "",
     "m_SupportVFX": false
