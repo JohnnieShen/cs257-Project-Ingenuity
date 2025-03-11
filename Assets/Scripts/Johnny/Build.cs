@@ -254,6 +254,7 @@ public class BuildSystem : MonoBehaviour
                     newBlock.transform.rotation = adjustment * newBlock.transform.rotation;
                     newBlock.transform.localRotation =
                         Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation;
+                    newBlock.transform.localRotation *= Quaternion.Euler(0, 180, 0);
                 }
                 else
                 {
