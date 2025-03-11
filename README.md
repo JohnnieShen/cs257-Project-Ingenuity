@@ -85,9 +85,9 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Project Part 2: 3D Scenes and Models (Ch 3+4, 10)
 
-~~For the next submission, we would like to improve on our 3D models by adding textures. This will allow us to make blocks with different strengths or properties in addition to visual differences. We would also want to create more models for the blocks e.g. different cannon designs for different types, shield generator, armor blocks etc. We would also want to create assets for props on the terrain and a better terrain in general. ~~
+~~For the next submission, we would like to improve on our 3D models by adding textures. This will allow us to make blocks with different strengths or properties in addition to visual differences. We would also want to create more models for the blocks e.g. different cannon designs for different types, shield generator, armor blocks etc. We would also want to create assets for props on the terrain and a better terrain in general.~~
 
-~~We would also want to improve the shooting aspect of the game, for the next milestone, a conservative estimate would be to have a stationary enemy that the player can shoot at and eventually destroy, and a more optimistic estimate would be a primitive enemy AI that would allow some interaction. We would also want to improve the depth of the gunplay by e.g. introducing more damage types (e.g. energy vs ballistic) and an energy shield. ~~
+~~We would also want to improve the shooting aspect of the game, for the next milestone, a conservative estimate would be to have a stationary enemy that the player can shoot at and eventually destroy, and a more optimistic estimate would be a primitive enemy AI that would allow some interaction. We would also want to improve the depth of the gunplay by e.g. introducing more damage types (e.g. energy vs ballistic) and an energy shield.~~
 
 ~~Game element wise we also want to incorporate a looting game loop where parts will be scattered around and the player has to use a certain block to “vacuum” it up and put it on in the building mode.~~
 
@@ -215,13 +215,18 @@ For a stylized almost cartoonish look, we have implemented a shader graph for a 
 
 ### Instructions for Testing the Project
 _Instructions for Base Game_
+
 In the Terrain scene, after launching the scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
 
 ![](Images/terraintoonfx.png)
 
 Once you’ve built a vehicle that you are satisfied with, you can press “B”. This will shift from “Build Mode” to “Play Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
 
-Instructions for Arena Gamemode
+_Instructions for Arena Gamemode_
+
 Overall the controls are similar to what they are in the main game mode. The only difference is that the player is not allowed to manually switch between build and drive mode, instead the player must fight off a wave of enemies in drive mode before being switched back to build mode.
 
 When launching the game, you will be put into build mode, where you need to build up a vehicle that you would use to beat the enemies. Once ready, you could press Enter and go into battle. A certain number of enemies will be spawned around you and in the same control scheme as above you need to defeat them, once done you will be put back into build mode automatically. Once back into build mode, you can pick up the reward blocks that spawned around using right mouse click while aiming at it. There will be a timer for you to upgrade the vehicle and once the timer runs out you will be spawned into battle again. You can also press Enter again to skip the timer.
+
+### Known bugs
+- When some noncore block on AI vehicle gets destroys, the strucural validation calculation is faulty, causing the AI to fall apart.
