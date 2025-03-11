@@ -50,11 +50,12 @@ public class ModeSwitcher : MonoBehaviour
         }
     }
 
+    // Set the mode of the game
     public void SetMode(Mode mode)
     {
         if (mode == Mode.Build)
         {
-            InputManager.instance.EnableBuildMap();
+            InputManager.instance.EnableBuildMap(); // Switching to the build input map
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             if (player != null)
@@ -62,34 +63,35 @@ public class ModeSwitcher : MonoBehaviour
                 player.SetActive(true);
                 if(drivingCamera != null)
                 {
-                    player.transform.position = drivingCamera.position + new Vector3(0f, 6f, 0f);
+                    player.transform.position = drivingCamera.position + new Vector3(0f, 6f, 0f); // Set the player position to the driving camera position
                 }
             }
             // if(buildCamera != null) buildCamera.gameObject.SetActive(true);
 
             // if(vehicle != null) vehicle.SetActive(false);
-            if(driveCameraPivot != null) driveCameraPivot.SetActive(false);
+            if(driveCameraPivot != null) driveCameraPivot.SetActive(false); // Disable the drive camera
 
             if(BlockManager.instance != null)
             {
-                BlockManager.instance.DisableVehiclePhysics();
+                BlockManager.instance.DisableVehiclePhysics(); // Disable the vehicle physics
             }
             if (vehicleRoot != null)
             {
                 StopAllCoroutines();
-                StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration));
+                StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration)); // Elevate the vehicle to +5f on the y-axis
             }
             if (EnemyBlockManager.instance != null)
             {
                 foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
                 {
-                    if (enemy != null)
+                    if (enemy != null) // For enemies that are registered and still alive
                     {
-                        enemy.enabled = false;
+                        enemy.enabled = false; // Disable all enemy AI
                     }
                 }
             }
         }
+        // Vice versa
         else if (mode == Mode.Drive)
         {
             InputManager.instance.EnableDriveMap();

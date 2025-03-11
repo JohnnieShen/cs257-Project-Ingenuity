@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 54.375587, y: 588.42993, z: 798.9942}
+  m_LocalPosition: {x: 216.72159, y: 758.4968, z: 608.4427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -762,9 +762,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f795491c6625024fafdfca4e4783ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveDuration: 60
-  intermissionTime: 60
-  numberOfEnemiesToSpawn: 1
+  waveDuration: 120
+  intermissionTime: 120
+  numberOfEnemiesToSpawn: 2
   spawnCenter: {fileID: 1567605929}
   spawnRadius: 20
   enemyPrefabs:
@@ -850,7 +850,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1720,7 +1720,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2268,7 +2268,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3185,7 +3185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3635,6 +3635,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 840757991}
+    - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+      propertyPath: breakForce
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
       propertyPath: blockNameText
       value: 

@@ -9,6 +9,9 @@ public class Block : ScriptableObject
     public GameObject BlockObject;
     public string ItemsNeededForBuildingBlock;
     public int AmountOfItemNeeded;
+    public bool isTopMountable;
     public bool isSideMountable;
+    public bool isBottomMountable;
+    public Vector3 attachDirection = Vector3.down;
     public float blockHealth;
 }

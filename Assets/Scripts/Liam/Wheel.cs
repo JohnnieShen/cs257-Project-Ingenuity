@@ -27,6 +27,9 @@ public class Wheel : MonoBehaviour
     public float currentSteerAngle = 0f;
     public bool invertSteering = false;
     public float tireRadius = 0.3f;
+    private bool isLeftSide = false;
+    private Quaternion originalNeutral;
+    
 
     void Start()
     {
@@ -42,6 +45,12 @@ public class Wheel : MonoBehaviour
                 }
             }
         }
+    }
+    void OnEnable()
+    {
+        neutralRotation = transform.localRotation;
+        originalNeutral = neutralRotation;
+        isLeftSide = (transform.localPosition.x < 0f);
     }
 
     public void Initialize(bool enabled, float driveInput, float currentSteerAngle)
@@ -74,6 +83,7 @@ public class Wheel : MonoBehaviour
             {
                 float direction = (steerInput > 0f) ? 1f : -1f;
                 float sign = invertSteering ? -1f : 1f;
+                sign = isLeftSide ? -sign : sign;
                 currentSteerAngle += sign * direction * rotationSpeed * Time.deltaTime;
             }
             else
@@ -104,7 +114,7 @@ public class Wheel : MonoBehaviour
         {
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
-            Vector3 accelDir = transform.forward;
+            Vector3 accelDir = transform.parent.parent.forward;
             
             float springOffset = suspensionRestDist - hit.distance;
             float springVel = Vector3.Dot(springDir, rigidBody.velocity);
