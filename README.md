@@ -216,6 +216,8 @@ For a stylized almost cartoonish look, we have implemented a shader graph for a 
 ### Instructions for Testing the Project
 _Instructions for Base Game_
 
+Load into the Terrain scene.
+
 In the Terrain scene, after launching the scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
 
 ![](Images/terraintoonfx.png)
@@ -223,6 +225,8 @@ In the Terrain scene, after launching the scene you will see a floating Command 
 Once you’ve built a vehicle that you are satisfied with, you can press “B”. This will shift from “Build Mode” to “Play Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
 
 _Instructions for Arena Gamemode_
+
+Load into the Arena scene.
 
 Overall the controls are similar to what they are in the main game mode. The only difference is that the player is not allowed to manually switch between build and drive mode, instead the player must fight off a wave of enemies in drive mode before being switched back to build mode.
 
