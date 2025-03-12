@@ -5,35 +5,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerLook : MonoBehaviour
 {
-    // Variables for moving
-    Vector3 move;
-    [SerializeField] float moveSpeed;
-
     // Variables for looking
     Vector2 look;
-    [SerializeField] float lookSpeed;
+    [SerializeField] float sensitivity;
 
     // Variables for camera
     [SerializeField] Transform cameraTransform;
     float cameraRotation; // Local copy of cameraTransform.eulerAngles.x clamped into the range [-90, 90]
 
-    public void OnMove(InputValue value)
-    {
-        move = value.Get<Vector3>() * moveSpeed;
-    }
-
     public void OnLook(InputValue value)
     {
-        look = value.Get<Vector2>() * lookSpeed;
+        look = value.Get<Vector2>() * sensitivity;
     }
 
     void Update()
     {
-        // Translate player
-        transform.Translate(move.x * Time.deltaTime, move.y * Time.deltaTime, move.z * Time.deltaTime);
-
         // Rotate player left or right
         transform.Rotate(0f, look.x * Time.deltaTime, 0f);
 

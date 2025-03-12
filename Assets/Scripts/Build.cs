@@ -9,6 +9,7 @@ public class PlayerBuild : MonoBehaviour
 {
     [SerializeField] Transform cameraTransform;
     [SerializeField] GameObject[] inventory;
+    [SerializeField] CommandModule commandModule;
     int index;
     public void OnBuild()
     {
@@ -32,12 +33,17 @@ public class PlayerBuild : MonoBehaviour
             }
 
             // Calculate coordinates of the new block
-            Vector3 localNormal = block.transform.InverseTransformDirection(hit.normal);
+            Vector3 localNormal = block.commandModule.buildTransform.InverseTransformDirection(hit.normal);
             Vector3Int coordinates = block.coordinates + new Vector3Int(Mathf.RoundToInt(localNormal.x), Mathf.RoundToInt(localNormal.y), Mathf.RoundToInt(localNormal.z));
 
             // Add the new block
             block.commandModule.Add(coordinates, inventory[index]);
         }
+    }
+
+    public void OnMode()
+    {
+        commandModule.EnablePhysics();
     }
 
     public void OnCollect()
@@ -91,6 +97,6 @@ public class PlayerBuild : MonoBehaviour
 
     public void OnSwitch(InputValue value)
     {
-        index = mod(index + (int) value.Get<Vector2>().y, inventory.Length);
+        index = mod(index + 1, inventory.Length);
     }
 }
