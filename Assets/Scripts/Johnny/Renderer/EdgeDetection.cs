@@ -81,6 +81,7 @@ public class EdgeDetection : ScriptableRendererFeature
     /// </summary>
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
+        if (renderingData.cameraData.isSceneViewCamera) return;
         // Don't render for some views.
         if (renderingData.cameraData.cameraType is CameraType.Preview or CameraType.Reflection) return;
         

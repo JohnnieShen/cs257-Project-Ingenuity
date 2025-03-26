@@ -38,17 +38,17 @@ Shader "Hidden/Edge Detection"
             // Edge detection kernel that works by taking the sum of the squares of the differences between diagonally adjacent pixels (Roberts Cross).
             float RobertsCross(float3 samples[4])
             {
-                const float3 difference_1 = samples[1] - samples[2];
-                const float3 difference_2 = samples[0] - samples[3];
-                return sqrt(dot(difference_1, difference_1) + dot(difference_2, difference_2));
+                float3 d1 = samples[1] - samples[2];
+                float3 d2 = samples[0] - samples[3];
+                return sqrt(dot(d1, d1) + dot(d2, d2));
             }
 
             // The same kernel logic as above, but for a single-value instead of a vector3.
             float RobertsCross(float samples[4])
             {
-                const float difference_1 = samples[1] - samples[2];
-                const float difference_2 = samples[0] - samples[3];
-                return sqrt(difference_1 * difference_1 + difference_2 * difference_2);
+                float d1 = samples[1] - samples[2];
+                float d2 = samples[0] - samples[3];
+                return sqrt(d1 * d1 + d2 * d2);
             }
             
             // Helper function to sample scene normals remapped from [-1, 1] range to [0, 1].
@@ -61,49 +61,55 @@ Shader "Hidden/Edge Detection"
             float SampleSceneLuminance(float2 uv)
             {
                 float3 color = SampleSceneColor(uv);
-                return color.r * 0.3 + color.g * 0.59 + color.b * 0.11;
+                return dot(color, float3(0.3, 0.59, 0.11));
             }
 
             half4 frag(Varyings IN) : SV_TARGET
             {
                 // Screen-space coordinates which we will use to sample.
                 float2 uv = IN.texcoord;
-                float2 texel_size = float2(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y);
+                
+                #if defined(UNITY_UV_STARTS_AT_TOP)
+                    uv.y = 1.0 - uv.y;
+                #endif
+
+                float2 texelSize = float2(1.0 / _ScreenParams.x, 1.0 / _ScreenParams.y);
                 
                 float half_width = _OutlineThickness * 0.5;
                 
                 float2 uvs[4];
-                uvs[0] = uv + texel_size * float2(half_width, half_width) * float2(-1, 1);  // top left
-                uvs[1] = uv + texel_size * float2(half_width, half_width) * float2(1, 1);   // top right
-                uvs[2] = uv + texel_size * float2(half_width, half_width) * float2(-1, -1); // bottom left
-                uvs[3] = uv + texel_size * float2(half_width, half_width) * float2(1, -1);  // bottom right
+                uvs[0] = uv + texelSize * float2(-half_width,  half_width);
+                uvs[1] = uv + texelSize * float2( half_width,  half_width);
+                uvs[2] = uv + texelSize * float2(-half_width, -half_width);
+                uvs[3] = uv + texelSize * float2( half_width, -half_width);
                 
-                float3 normal_samples[4];
-                float depth_samples[4], luminance_samples[4];
-                
-                for (int i = 0; i < 4; i++) {
-                    depth_samples[i] = SampleSceneDepth(uvs[i]);
-                    normal_samples[i] = SampleSceneNormalsRemapped(uvs[i]);
-                    luminance_samples[i] = SampleSceneLuminance(uvs[i]);
+                float3 normalSamples[4];
+                float depthSamples[4];
+                float luminanceSamples[4];
+
+                for (int i = 0; i < 4; i++)
+                {
+                    depthSamples[i]      = SampleSceneDepth(uvs[i]);
+                    normalSamples[i]     = SampleSceneNormalsRemapped(uvs[i]);
+                    luminanceSamples[i]  = SampleSceneLuminance(uvs[i]);
                 }
                 
                 // Apply edge detection kernel on the samples to compute edges.
-                float edge_depth = RobertsCross(depth_samples);
-                float edge_normal = RobertsCross(normal_samples);
-                float edge_luminance = RobertsCross(luminance_samples);
+                float edgeDepth      = RobertsCross(depthSamples);
+                float edgeNormal     = RobertsCross(normalSamples);
+                float edgeLuminance  = RobertsCross(luminanceSamples);
                 
                 // Threshold the edges (discontinuity must be above certain threshold to be counted as an edge). The sensitivities are hardcoded here.
-                float depth_threshold = 1 / 200.0f;
-                edge_depth = edge_depth > depth_threshold ? 1 : 0;
-                
-                float normal_threshold = 1 / 4.0f;
-                edge_normal = edge_normal > normal_threshold ? 1 : 0;
-                
-                float luminance_threshold = 1 / 0.5f;
-                edge_luminance = edge_luminance > luminance_threshold ? 1 : 0;
+                float depthThreshold      = 1.0 / 200.0;
+                float normalThreshold     = 1.0 / 4.0;
+                float luminanceThreshold  = 1.0 / 0.5;
+
+                edgeDepth     = (edgeDepth     > depthThreshold)     ? 1 : 0;
+                edgeNormal    = (edgeNormal    > normalThreshold)    ? 1 : 0;
+                edgeLuminance = (edgeLuminance > luminanceThreshold) ? 1 : 0;
                 
                 // Combine the edges from depth/normals/luminance using the max operator.
-                float edge = max(edge_depth, max(edge_normal, edge_luminance));
+                float edge = max(edgeDepth, max(edgeNormal, edgeLuminance));
                 
                 // Color the edge with a custom color.
                 return edge * _OutlineColor;
