@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 7268098879640390657}
   - component: {fileID: 4230438358584782244}
   - component: {fileID: -9090235136797335134}
+  - component: {fileID: 5510845863400624465}
   - component: {fileID: 6133929856875658326}
+  - component: {fileID: 607378743363332206}
   - component: {fileID: 2563163056239309620}
   - component: {fileID: 2464568084828182269}
   - component: {fileID: 153128048628967220}
@@ -96,6 +98,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 30
   cameraTransform: {fileID: 7241487552207277507}
+--- !u!114 &5510845863400624465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934283577564730816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac86bef97fbc5b4889d29502a1b9c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraTransform: {fileID: 7241487552207277507}
+  inventory: {fileID: 607378743363332206}
+  vehicle: {fileID: 0}
+  commandModule: {fileID: 0}
 --- !u!114 &6133929856875658326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,11 +127,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 7241487552207277507}
-  inventory:
+  inventory: {fileID: 607378743363332206}
+  vehicle: {fileID: 0}
+--- !u!114 &607378743363332206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3934283577564730816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1f067ccef93c640981ea17f7c2eed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
   - {fileID: 8664133814074725093, guid: e750b30487ce470438be5f8a09235e23, type: 3}
   - {fileID: 3394638363398936712, guid: ebedc9bf4d456a1459f5b13518ef8889, type: 3}
   - {fileID: 6110892110929326520, guid: 18905e5b955bc3447abbc1191fae1c25, type: 3}
-  commandModule: {fileID: 0}
 --- !u!33 &2563163056239309620
 MeshFilter:
   m_ObjectHideFlags: 0

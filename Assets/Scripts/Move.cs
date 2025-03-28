@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-public class PlayerMove : MonoBehaviour
+public class Move : MonoBehaviour
 {
     // Variables for moving
     Vector3 move;

@@ -5,15 +5,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public CommandModule commandModule;
+    public Vehicle vehicle;
     public Vector3Int coordinates;
-
-    public void Initialize(CommandModule commandModule, Vector3Int coordinates)
-    {
-        this.commandModule = commandModule;
-        this.coordinates = coordinates;
-        commandModule.blocks[coordinates.x, coordinates.y, coordinates.z] = this;
-    }
     public int connectionStrength; // TODO: implement without public
     [SerializeField] Vector3Int[] connectionsArray; // used to instantiate connections since sets cannot be serialized
     public HashSet<Vector3Int> connections; // TODO: implement without public 

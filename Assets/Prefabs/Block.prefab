@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb477b2d04340324cbe5fda5ca3a9130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commandModule: {fileID: 0}
+  vehicle: {fileID: 0}
   coordinates: {x: 0, y: 0, z: 0}
   connectionStrength: 1000
   connectionsArray:

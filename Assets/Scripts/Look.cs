@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-public class PlayerLook : MonoBehaviour
+public class Look : MonoBehaviour
 {
     // Variables for looking
     Vector2 look;
