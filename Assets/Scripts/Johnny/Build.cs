@@ -243,7 +243,7 @@ public class BuildSystem : MonoBehaviour
                     Debug.LogWarning("Cannot build - grid position already occupied!");
                     return;
                 }
-                GameObject newBlock = Instantiate(blockPrefab, commandModule); // Instantiate new block as child of command module
+                GameObject newBlock = Instantiate(blockPrefab, parent); // Instantiate new block as child of command module
                 newBlock.transform.localPosition = localSpawn; // Set local position of new block
                 if (isSideSurface)
                 {

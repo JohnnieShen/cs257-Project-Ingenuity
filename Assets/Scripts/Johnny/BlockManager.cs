@@ -217,7 +217,7 @@ public class BlockManager : MonoBehaviour
             // Debug.Log("Found " + joints.Length + " connections");
             foreach (FixedJoint joint in joints)
             {
-                if (joint == null!= null && joint.connectedBody != null)
+                if (joint != null && joint.connectedBody != null)
                 {
                     Vector3Int connectedPos = Vector3Int.RoundToInt(
                         transform.InverseTransformPoint(joint.connectedBody.transform.position) // Get the connected block's position in local space
