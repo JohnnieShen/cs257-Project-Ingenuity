@@ -247,7 +247,7 @@ Transform:
   m_GameObject: {fileID: 143273437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.63752, y: 668.07733, z: 735.533}
+  m_LocalPosition: {x: 5.595222, y: 581.6088, z: 805.6823}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -686,7 +686,7 @@ MonoBehaviour:
   currentMode: 0
   player: {fileID: 460703626}
   driveCameraPivot: {fileID: 1587305645}
-  vehicleRoot: {fileID: 1562183983}
+  vehicleRoot: {fileID: 840757991}
   drivingCamera: {fileID: 1587305647}
   buildModeHeight: 5
   elevateDuration: 0.5
@@ -2626,7 +2626,7 @@ Transform:
   m_GameObject: {fileID: 1567605928}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 100, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
