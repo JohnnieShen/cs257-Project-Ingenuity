@@ -29,7 +29,7 @@ public class Wheel : MonoBehaviour
     public float tireRadius = 0.3f;
     private bool isLeftSide = false;
     private Quaternion originalNeutral;
-    
+    private Transform probeCoreTransform;
 
     void Start()
     {
@@ -42,6 +42,21 @@ public class Wheel : MonoBehaviour
                 if (parentLocalZ < 0.4f)
                 {
                     invertSteering = true;
+                }
+            }
+        }
+        if (transform.parent != null)
+        {
+            Transform grandParentObject = transform.parent.parent;
+            if (grandParentObject != null)
+            {
+                foreach (Transform sibling in grandParentObject)
+                {
+                    if (sibling != transform.parent && sibling.CompareTag("Core"))
+                    {
+                        probeCoreTransform = sibling;
+                        break;
+                    }
                 }
             }
         }
@@ -73,7 +88,7 @@ public class Wheel : MonoBehaviour
         {
             moveValue = InputManager.instance.GetDriveMoveAction().ReadValue<Vector2>();
         }
-
+        Debug.Log(moveValue);
         float steerInput = moveValue.x;
         float driveInput = moveValue.y;
 
@@ -114,7 +129,7 @@ public class Wheel : MonoBehaviour
         {
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
-            Vector3 accelDir = transform.parent.parent.forward;
+            Vector3 accelDir = probeCoreTransform.forward;
             
             float springOffset = suspensionRestDist - hit.distance;
             float springVel = Vector3.Dot(springDir, rigidBody.velocity);
