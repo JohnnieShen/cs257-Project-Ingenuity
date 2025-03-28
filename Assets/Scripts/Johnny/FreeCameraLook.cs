@@ -19,6 +19,9 @@ public class FreeCameraLook : Pivot {
 	[SerializeField] private float collisionOffset = 0.5f;
 
 	public Transform aimTarget;
+	public Transform commandModule;
+    public LayerMask rayCastLayers;
+    public LayerMask shieldLayer;
 
 	private float targetZoom = 10f;
 	private float currentZoom = 10f;
@@ -114,6 +117,12 @@ public class FreeCameraLook : Pivot {
         {
             OnFire?.Invoke();
         }
+		Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+        Hull hoveredHull = FindHoveredHull(forwardRay);
+		if (Input.GetKeyDown(KeyCode.F) && hoveredHull != null)
+		{
+			PickupBlock(hoveredHull);
+		}
 	}
 
 
@@ -193,4 +202,30 @@ public class FreeCameraLook : Pivot {
 		currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomSmoothFactor);
 		cam.localPosition = new Vector3(0f, 0f, -currentZoom);
 	}
+	private Hull FindHoveredHull(Ray ray)
+    {
+        LayerMask combinedMask = rayCastLayers & ~shieldLayer;
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f, combinedMask))
+        {
+			// Debug.Log("Hit: " + hitInfo.transform.name);
+            if (hitInfo.transform.CompareTag("Block") ||
+               (hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup))
+            {
+                return hitInfo.transform.GetComponent<Hull>();
+            }
+        }
+        return null;
+    }
+	private void PickupBlock(Hull hull)
+    {
+        if (hull == null || hull.sourceBlock == null) {
+			// Debug.LogWarning("Hull or sourceBlock is null. Cannot pick up block.");
+			return;
+		}
+
+        BlockInventoryManager.instance.AddBlock(hull.sourceBlock, 1);
+		//Remove blocks from manager here?
+
+        Destroy(hull.gameObject);
+    }
 }

@@ -52,11 +52,15 @@ public class Wheel : MonoBehaviour
             {
                 foreach (Transform sibling in grandParentObject)
                 {
-                    if (sibling != transform.parent && sibling.CompareTag("Core"))
+                    if ((sibling != transform.parent && sibling.CompareTag("Core"))||(sibling != transform.parent && sibling.name == "CommandModule"))
                     {
                         probeCoreTransform = sibling;
                         break;
                     }
+                }
+                if ((grandParentObject != transform.parent && grandParentObject.CompareTag("Core"))||(grandParentObject != transform.parent && grandParentObject.name == "CommandModule"))
+                {
+                    probeCoreTransform = grandParentObject;
                 }
             }
         }

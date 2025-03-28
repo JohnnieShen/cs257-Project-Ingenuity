@@ -26,8 +26,8 @@ public class BuildSystem : MonoBehaviour
     
     public Material previewMaterial;
     private GameObject previewBlock;
-    public BlockInventory[] availableBuildingBlocks;
-    private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
+    // public BlockInventory[] availableBuildingBlocks;
+    // private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
     private List<Block> availableBlocksList = new List<Block>();
 
     [Header("References")]
@@ -54,50 +54,51 @@ public class BuildSystem : MonoBehaviour
     }
     private void Start()
     {
-        InitializeInventory();
-        if (availableBuildingBlocks != null && availableBuildingBlocks.Length > 0)
+        // InitializeInventory();
+        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
+        if (allBlocks != null && allBlocks.Length > 0)
         {
             currentBlockIndex = 0;
-            currentBlock = availableBuildingBlocks[currentBlockIndex].Block;
+            currentBlock = allBlocks[currentBlockIndex].Block;
             SetText();
         }
     }
 
-    void InitializeInventory()
-    {
-        foreach (BlockInventory ib in availableBuildingBlocks)
-        {
-            blockInventory[ib.Block] = ib;
-            if (ib.CurrentCount > 0)
-            {
-                availableBlocksList.Add(ib.Block);
-            }
-        }
-        UpdateAvailableBlocks();
-    }
+    // void InitializeInventory()
+    // {
+    //     foreach (BlockInventory ib in availableBuildingBlocks)
+    //     {
+    //         blockInventory[ib.Block] = ib;
+    //         if (ib.CurrentCount > 0)
+    //         {
+    //             availableBlocksList.Add(ib.Block);
+    //         }
+    //     }
+    //     UpdateAvailableBlocks();
+    // }
 
-    void UpdateAvailableBlocks()
-    {
-        availableBlocksList.Clear();
-        foreach (BlockInventory ib in availableBuildingBlocks)
-        {
-            if (ib.CurrentCount > 0)
-            {
-                availableBlocksList.Add(ib.Block);
-            }
-        }
+    // void UpdateAvailableBlocks()
+    // {
+    //     availableBlocksList.Clear();
+    //     foreach (BlockInventory ib in availableBuildingBlocks)
+    //     {
+    //         if (ib.CurrentCount > 0)
+    //         {
+    //             availableBlocksList.Add(ib.Block);
+    //         }
+    //     }
         
-        if (availableBlocksList.Count > 0)
-        {
-            currentBlockIndex = Mathf.Clamp(currentBlockIndex, 0, availableBlocksList.Count - 1);
-            currentBlock = availableBlocksList[currentBlockIndex];
-        }
-        else
-        {
-            currentBlock = null;
-        }
-        SetText();
-    }
+    //     if (availableBlocksList.Count > 0)
+    //     {
+    //         currentBlockIndex = Mathf.Clamp(currentBlockIndex, 0, availableBlocksList.Count - 1);
+    //         currentBlock = availableBlocksList[currentBlockIndex];
+    //     }
+    //     else
+    //     {
+    //         currentBlock = null;
+    //     }
+    //     SetText();
+    // }
 
     // private void Update()
     // {
@@ -133,20 +134,23 @@ public class BuildSystem : MonoBehaviour
         Vector2 scrollValue = ctx.ReadValue<Vector2>();
         float scroll = scrollValue.y;
 
+        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
+        if (allBlocks == null || allBlocks.Length == 0) return;
+
         if (scroll > 0)
         {
             currentBlockIndex++;
-            if (currentBlockIndex >= availableBuildingBlocks.Length)
+            if (currentBlockIndex >= allBlocks.Length)
                 currentBlockIndex = 0;
         }
         else if (scroll < 0)
         {
             currentBlockIndex--;
             if (currentBlockIndex < 0)
-                currentBlockIndex = availableBuildingBlocks.Length - 1;
+                currentBlockIndex = allBlocks.Length - 1;
         }
 
-        currentBlock = availableBuildingBlocks[currentBlockIndex].Block;
+        currentBlock = allBlocks[currentBlockIndex].Block;
         SetText();
 
         if (previewBlock != null)
@@ -160,7 +164,13 @@ public class BuildSystem : MonoBehaviour
     {
         if (blockNameText != null && currentBlock != null)
         {
-            blockNameText.text = $"{currentBlock.BlockName} ({blockInventory[currentBlock].CurrentCount}/{blockInventory[currentBlock].MaxStack})\n" ;
+            int currentCount = BlockInventoryManager.instance.GetBlockCount(currentBlock);
+
+            blockNameText.text = $"{currentBlock.BlockName} ({currentCount})\n";
+        }
+        else if (blockNameText != null)
+        {
+            blockNameText.text = "No Block Selected";
         }
     }
     // void ChangeCurrentBlock()
@@ -194,7 +204,8 @@ public class BuildSystem : MonoBehaviour
  
     void BuildBlock(GameObject blockPrefab)
     {
-        if (currentBlock == null || blockInventory[currentBlock].CurrentCount <= 0) // No blocks remaining of this type
+        int count = BlockInventoryManager.instance.GetBlockCount(currentBlock);
+        if (currentBlock == null || count <= 0) // No blocks remaining of this type
         {
             Debug.LogWarning("No blocks remaining of this type!");
             return;
@@ -305,8 +316,8 @@ public class BuildSystem : MonoBehaviour
 
                                         Vector3Int newBlockPos = Vector3Int.RoundToInt(localSpawn);
                                         BlockManager.instance.AddConnection(newBlockPos, neighborPos);
-                                        blockInventory[currentBlock].CurrentCount--;
-                                        UpdateAvailableBlocks(); // TODO Should not do this here
+                                        BlockInventoryManager.instance.TryConsumeBlock(currentBlock, 1);
+                                        SetText();
                                         
                                         // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                     }
@@ -363,15 +374,8 @@ public class BuildSystem : MonoBehaviour
                 Hull hull = hitInfo.transform.GetComponent<Hull>();
                 if (hull != null && hull.sourceBlock != null)
                 {
-                    if (blockInventory.ContainsKey(hull.sourceBlock))
-                    {
-                        blockInventory[hull.sourceBlock].CurrentCount++;
-                        blockInventory[hull.sourceBlock].CurrentCount = Mathf.Min(
-                            blockInventory[hull.sourceBlock].CurrentCount,
-                            blockInventory[hull.sourceBlock].MaxStack
-                        );
-                        UpdateAvailableBlocks();
-                    }
+                    BlockInventoryManager.instance.AddBlock(hull.sourceBlock, 1);
+                    SetText();
                 }
                 Vector3 localPos = commandModule.InverseTransformPoint(hitInfo.transform.position);
                 Vector3Int localPosInt = Vector3Int.RoundToInt(localPos);
@@ -478,10 +482,10 @@ public class BuildSystem : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class BlockInventory
-{
-    public Block Block;
-    public int CurrentCount;
-    public int MaxStack = 99;
-}
+// [System.Serializable]
+// public class BlockInventory
+// {
+//     public Block Block;
+//     public int CurrentCount;
+//     public int MaxStack = 99;
+// }
