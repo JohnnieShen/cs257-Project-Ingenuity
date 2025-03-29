@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         // TODO
         if (block.vehicle)
         {
-            block.vehicle.blocks[block.coordinates.x, block.coordinates.y, block.coordinates.z] = null;
+            block.vehicle.blocks.Remove(block.coordinates);
         }
         Destroy(block.gameObject);
     }

@@ -6,30 +6,30 @@ using UnityEngine.InputSystem.HID;
 public class Vehicle : MonoBehaviour
 {
     public GameObject authority;
-    public Block[,,] blocks;
-    [SerializeField] public Transform buildTransform; // Make sure the transform lies in the corner of the build area such that it extends towards the positive octant
+    public Dictionary<Vector3Int, Block> blocks;
+    public Block commandModule;
 
     void Awake()
     {
         // Instantiate blocks
-        BoxCollider buildArea = buildTransform.gameObject.GetComponent<BoxCollider>();
-        blocks = new Block[(int) buildArea.size.x, (int) buildArea.size.y, (int) buildArea.size.z];
+        blocks = new Dictionary<Vector3Int, Block>();
+        blocks.Add(Vector3Int.zero, commandModule);
     }
 
     public void Add(Vector3Int coordinates, Vector3Int orientation, GameObject prefab)
     {
-        // Check if coordinates are out of bounds
-        if (coordinates.x < 0 || coordinates.x >= blocks.GetLength(0) || coordinates.y < 0 || coordinates.y >= blocks.GetLength(1) || coordinates.z < 0 || coordinates.z >= blocks.GetLength(2))
-        {
-            Debug.LogWarning("Exceeded build area");
-            return;
-        }
+        //// Check if coordinates are out of bounds
+        //if (coordinates.x < 0 || coordinates.x >= blocks.GetLength(0) || coordinates.y < 0 || coordinates.y >= blocks.GetLength(1) || coordinates.z < 0 || coordinates.z >= blocks.GetLength(2))
+        //{
+        //    Debug.LogWarning("Exceeded build area");
+        //    return;
+        //}
 
         // Instantiate block
-        Block block = Instantiate(prefab, buildTransform.TransformPoint(coordinates), buildTransform.rotation, transform).GetComponent<Block>();
+        Block block = Instantiate(prefab, commandModule.transform.TransformPoint(coordinates), commandModule.transform.rotation, transform).GetComponent<Block>();
         block.vehicle = this;
         block.coordinates = coordinates;
-        blocks[coordinates.x, coordinates.y, coordinates.z] = block;
+        blocks.Add(coordinates, block);
     }
 
     //// TODO: implement these
@@ -39,34 +39,19 @@ public class Vehicle : MonoBehaviour
 
     public void EnablePhysics()
     {
-        print("here");
         // Compute joints
-        foreach (Transform child in transform)
+        foreach ((_, Block block) in blocks)
         {
-            Block block = child.GetComponent<Block>();
-
             // Find adjacent blocks with compatible connections
-            HashSet<Block> connectedBlocks = new HashSet<Block>();
             foreach (Vector3Int connection in block.connections)
             {
-                Vector3Int otherCoordinates = block.coordinates + connection;
-                if (otherCoordinates.x < 0 || otherCoordinates.x >= blocks.GetLength(0) || otherCoordinates.y < 0 || otherCoordinates.y >= blocks.GetLength(1) || otherCoordinates.z < 0 || otherCoordinates.z >= blocks.GetLength(2))
+                if (blocks.TryGetValue(block.coordinates + connection, out Block otherBlock) && otherBlock.connections.Contains(-connection))
                 {
-                    continue;
+                    // Add joint to each with break force equal to the sum of the connection strength parameters
+                    FixedJoint joint = block.gameObject.AddComponent<FixedJoint>();
+                    joint.connectedBody = otherBlock.gameObject.GetComponent<Rigidbody>();
+                    joint.breakForce = block.connectionStrength + otherBlock.connectionStrength;
                 }
-                Block otherBlock = blocks[otherCoordinates.x, otherCoordinates.y, otherCoordinates.z];
-                if (otherBlock && otherBlock.connections.Contains(-connection))
-                {
-                    connectedBlocks.Add(otherBlock);
-                }
-            }
-
-            // Add joint to each with break force equal to the sum of the connection strength parameters
-            foreach (Block connectedBlock in connectedBlocks)
-            {
-                FixedJoint joint = block.gameObject.AddComponent<FixedJoint>();
-                joint.connectedBody = connectedBlock.gameObject.GetComponent<Rigidbody>();
-                joint.breakForce = block.connectionStrength + connectedBlock.connectionStrength;
             }
 
             // Enable physics
