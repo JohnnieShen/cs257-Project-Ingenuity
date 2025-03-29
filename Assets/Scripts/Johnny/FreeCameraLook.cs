@@ -208,8 +208,8 @@ public class FreeCameraLook : Pivot {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f, combinedMask))
         {
 			// Debug.Log("Hit: " + hitInfo.transform.name);
-            if (hitInfo.transform.CompareTag("Block") ||
-               (hitInfo.transform.CompareTag("EnemyBlock")) && hitInfo.transform.GetComponent<Hull>().canPickup)
+            if ((hitInfo.transform.CompareTag("Block") ||
+               hitInfo.transform.CompareTag("EnemyBlock")) && hitInfo.transform.GetComponent<Hull>().canPickup)
             {
                 return hitInfo.transform.GetComponent<Hull>();
             }
