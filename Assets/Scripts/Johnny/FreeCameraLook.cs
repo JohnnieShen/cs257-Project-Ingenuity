@@ -209,7 +209,7 @@ public class FreeCameraLook : Pivot {
         {
 			// Debug.Log("Hit: " + hitInfo.transform.name);
             if (hitInfo.transform.CompareTag("Block") ||
-               (hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup))
+               (hitInfo.transform.CompareTag("EnemyBlock")) && hitInfo.transform.GetComponent<Hull>().canPickup)
             {
                 return hitInfo.transform.GetComponent<Hull>();
             }
