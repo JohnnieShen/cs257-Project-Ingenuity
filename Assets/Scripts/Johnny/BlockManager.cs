@@ -247,7 +247,7 @@ public class BlockManager : MonoBehaviour
                     Vector3Int connectedPos = Vector3Int.RoundToInt(
                         gridOrigin.InverseTransformPoint(joint.connectedBody.transform.position) // Get the connected block's position in local space
                     );
-                    // Debug.Log("Connected from " + blockEntry.Key + " to " + connectedPos);
+                    // Debug.Log("Connected from " + lockEntry.Key + " to " + connectedPos);
                     AddConnection(blockEntry.Key, connectedPos); // Add the connection to the directory
                 }
             }
