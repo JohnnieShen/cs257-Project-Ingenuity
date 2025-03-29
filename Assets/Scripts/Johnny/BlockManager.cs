@@ -12,6 +12,7 @@ public class BlockManager : MonoBehaviour
     // ^^^ Key is the position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
     // ^^^ Value is a list of Vector3Int positions of the connected blocks. Each entry in the list is a connection from the key block to the connected block.
     private bool isValidating = false;
+    public Transform gridOrigin;
     private void Awake()
     {
         if (instance == null)
@@ -80,6 +81,27 @@ public class BlockManager : MonoBehaviour
             blockConnections.Remove(position);
         }
     }
+    public void CleanupBrokenJoints()
+    {
+        foreach (var blockEntry in blocks)
+        {
+            Rigidbody rb = blockEntry.Value;
+            if (rb == null) continue;
+
+            FixedJoint[] joints = rb.GetComponents<FixedJoint>();
+            foreach (FixedJoint joint in joints)
+            {
+                if (joint == null ||
+                    joint.connectedBody == null ||
+                    joint.connectedBody.gameObject == null ||
+                    joint.connectedBody.Equals(null))
+                {
+                    Destroy(joint);
+                }
+            }
+        }
+    }
+
 
     // Enable or disable the physics of all blocks in the vehicle
     // Only effects the player vehicle blocks, not AI since those are stored in a different manager.
@@ -168,6 +190,7 @@ public class BlockManager : MonoBehaviour
     {
         if (blocks.TryGetValue(pos, out Rigidbody rb)) // If the block is in the blocks directory
         {
+            if (rb == null) return;
             rb.isKinematic = false; // Enable physics on the block
             FixedJoint[] joints = rb.GetComponents<FixedJoint>();
             foreach (FixedJoint joint in joints)
@@ -213,21 +236,29 @@ public class BlockManager : MonoBehaviour
         {
             // Debug.Log("Checking block at " + blockEntry.Key);
             Rigidbody rb = blockEntry.Value;
+            if (rb == null) continue;
             FixedJoint[] joints = rb.GetComponents<FixedJoint>();
             // Debug.Log("Found " + joints.Length + " connections");
             foreach (FixedJoint joint in joints)
             {
+                // Debug.Log("Joint found at " + blockEntry.Key + " connected to " + joint.connectedBody.transform.position);
                 if (joint != null && joint.connectedBody != null)
                 {
                     Vector3Int connectedPos = Vector3Int.RoundToInt(
-                        transform.InverseTransformPoint(joint.connectedBody.transform.position) // Get the connected block's position in local space
+                        gridOrigin.InverseTransformPoint(joint.connectedBody.transform.position) // Get the connected block's position in local space
                     );
-                    // Debug.Log("Connected from "+blockEntry.Key+ " to " + connectedPos);
+                    // Debug.Log("Connected from " + blockEntry.Key + " to " + connectedPos);
                     AddConnection(blockEntry.Key, connectedPos); // Add the connection to the directory
                 }
             }
         }
 
         ValidateStructure();
+    }
+    public IEnumerator DelayedRecalculateConnections()
+    {
+        yield return null;
+        CleanupBrokenJoints();
+        recalculateConnections();
     }
 }

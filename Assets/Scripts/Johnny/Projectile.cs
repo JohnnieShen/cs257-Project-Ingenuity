@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Projectile hit: " + other.name + " " + other.tag);
+        // Debug.Log("Projectile hit: " + other.name + " " + other.tag);
         BlockHealth blockHealth = null;
         if (IsEnemyProjectile)
         {

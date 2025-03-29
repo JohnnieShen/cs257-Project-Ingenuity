@@ -49,10 +49,14 @@ public class Hull : MonoBehaviour
     {
         if (!isAIVehicle && BlockManager.instance != null)
         {
-            BlockManager.instance.ValidateStructure();
+            // BlockManager.instance.ValidateStructure();
             Vector3Int gridPos = Vector3Int.RoundToInt(transform.localPosition);
             BlockManager.instance.RemoveBlock(gridPos);
             BlockManager.instance.RemoveConnections(gridPos);
+            // BlockManager.instance.CleanupBrokenJoints();
+            // BlockManager.instance.recalculateConnections();
+            
+            BlockManager.instance.StartCoroutine(BlockManager.instance.DelayedRecalculateConnections());
         }
         if (parentAI != null)
         {

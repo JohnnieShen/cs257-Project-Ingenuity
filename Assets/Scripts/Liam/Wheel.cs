@@ -92,7 +92,7 @@ public class Wheel : MonoBehaviour
         {
             moveValue = InputManager.instance.GetDriveMoveAction().ReadValue<Vector2>();
         }
-        Debug.Log(moveValue);
+        // Debug.Log(moveValue);
         float steerInput = moveValue.x;
         float driveInput = moveValue.y;
 
