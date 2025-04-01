@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: DriveWheel
   m_EditorClassIdentifier: 
   BlockName: Wheel
-  BlockObject: {fileID: 2325821719734306567, guid: ab5e4b4f6417eb8759bdd7ce880e272a, type: 3}
+  BlockObject: {fileID: 2325821719734306567, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+  PreviewObject: {fileID: 2325821719734306567, guid: ab5e4b4f6417eb8759bdd7ce880e272a, type: 3}
   ItemsNeededForBuildingBlock: 
   AmountOfItemNeeded: 0
   isTopMountable: 0

@@ -30,6 +30,7 @@ public class BuildSystem : MonoBehaviour
     public Material previewMaterial;
     private GameObject previewBlock;
     private Quaternion previewBlockOriginalRotation;
+    private int rotationOffsetCount = 0;
     // public BlockInventory[] availableBuildingBlocks;
     // private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
     private List<Block> availableBlocksList = new List<Block>();
@@ -44,6 +45,7 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildBuildAction().performed += OnBuildPerformed;
             InputManager.instance.GetBuildRemoveAction().performed += OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed += OnScrollPerformed;
+            InputManager.instance.GetBuildRotateAction().performed += OnRotatePerformed;
         }
     }
 
@@ -54,6 +56,7 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildBuildAction().performed -= OnBuildPerformed;
             InputManager.instance.GetBuildRemoveAction().performed -= OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed -= OnScrollPerformed;
+            InputManager.instance.GetBuildRotateAction().performed -= OnRotatePerformed;
         }
     }
     private void Start()
@@ -167,6 +170,11 @@ public class BuildSystem : MonoBehaviour
             Destroy(previewBlock);
             previewBlock = null;
         }
+    }
+
+    private void OnRotatePerformed(InputAction.CallbackContext ctx)
+    {
+        rotationOffsetCount = (rotationOffsetCount + 1) % 4;
     }
 
     void SetText()
@@ -292,7 +300,7 @@ public class BuildSystem : MonoBehaviour
                         newBlock.transform.localRotation = Quaternion.Euler(180, 0, 0);
                     }
                 }
-                
+                // newBlock.transform.localRotation *= Quaternion.Euler(0, 90f * rotationOffsetCount, 0);
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
                 
                 // Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
@@ -470,6 +478,7 @@ public class BuildSystem : MonoBehaviour
                 {
                     previewBlock.transform.localRotation = isTopSurface ? Quaternion.identity : Quaternion.Euler(180, 0, 0);
                 }
+                // previewBlock.transform.localRotation *= Quaternion.Euler(0, 90f * rotationOffsetCount, 0);
                 previewBlock.SetActive(true);
             }
             else

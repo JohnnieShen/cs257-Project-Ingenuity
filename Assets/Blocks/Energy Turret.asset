@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlockName: Energy Turret
   BlockObject: {fileID: 9005498339358512627, guid: 75314b552bd6f3349a5422546f80bc5a, type: 3}
+  PreviewObject: {fileID: 9005498339358512627, guid: 5e4ac12b4666f2a4faec1f1ef9be265a, type: 3}
   ItemsNeededForBuildingBlock: 
   AmountOfItemNeeded: 0
   isTopMountable: 1

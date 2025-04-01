@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlockName: Hull
   BlockObject: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+  PreviewObject: {fileID: 5049604137013132266, guid: 88398177f5568024ba80f6548c3a5e4c, type: 3}
   ItemsNeededForBuildingBlock: 
   AmountOfItemNeeded: 0
   isTopMountable: 1
