@@ -13,6 +13,8 @@ public class ModeSwitcher : MonoBehaviour
     public GameObject driveCameraPivot;
     public Transform vehicleRoot;
     public Transform drivingCamera;
+    public GameObject buildUI;
+    public GameObject driveUI;
     public float buildModeHeight = 5f;
     public float elevateDuration = 1f;
     public bool canManuallySwitchMode = true;
@@ -55,6 +57,8 @@ public class ModeSwitcher : MonoBehaviour
     {
         if (mode == Mode.Build)
         {
+            if (buildUI != null) buildUI.SetActive(true);
+            if (driveUI != null) driveUI.SetActive(false);
             InputManager.instance.EnableBuildMap(); // Switching to the build input map
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -94,6 +98,8 @@ public class ModeSwitcher : MonoBehaviour
         // Vice versa
         else if (mode == Mode.Drive)
         {
+            if (buildUI != null) buildUI.SetActive(false);
+            if (driveUI != null) driveUI.SetActive(true);
             InputManager.instance.EnableDriveMap();
             // if(vehicle != null) vehicle.SetActive(true);
             if(driveCameraPivot != null) driveCameraPivot.SetActive(true);

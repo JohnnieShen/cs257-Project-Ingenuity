@@ -24,6 +24,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private float ballisticDamage = 10f;
     [SerializeField] private float energyDamage = 10f;
     [SerializeField] private int magazineSize = 5;
+    [Header("Visual Effects")]
+    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private ParticleSystem muzzleSpark;
     [Header("Obstacle Check Settings")]
     [SerializeField] private float checkDistance = 100f;
     public LineRenderer blockedLine;
@@ -33,6 +36,8 @@ public class Turret : MonoBehaviour
     private bool isReloading = false;
     public bool isBlocked = false;
     public bool isAI = false;
+    public bool isEnergy;
+    public int ammoCost;
     // public Transform aimTransform;
 
     void Start()
@@ -134,9 +139,28 @@ public class Turret : MonoBehaviour
         if (isReloading) // If the turret is reloading, don't fire.
             return;
 
-        if (currentAmmo <= 0) // If the turret is out of ammo, reload.
+        if (VehicleResourceManager.Instance != null)
         {
-            StartCoroutine(Reload());
+            if (isEnergy)
+            {
+                if (VehicleResourceManager.Instance.energyAmmoCount < ammoCost)
+                {
+                    Debug.Log("Not enough energy ammo");
+                    return;
+                }
+            }
+            else // Ballistic turret.
+            {
+                if (VehicleResourceManager.Instance.ballisticAmmoCount < ammoCost)
+                {
+                    Debug.Log("Not enough ballistic ammo");
+                    return;
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning("VehicleResourceManager instance not found");
             return;
         }
         if (isBlocked) // If the turret is blocked, don't fire.
@@ -163,25 +187,37 @@ public class Turret : MonoBehaviour
             {
                 projScript.SetDamage(ballisticDamage, energyDamage);
             }
+            VehicleResourceManager.Instance.OnTurretFired(isEnergy, ammoCost);
         }
         else
         {
             Debug.LogWarning("Projectile prefab or shoot point is not assigned.");
         }
-
-        currentAmmo--;
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.transform.position = shootPoint.position;
+            muzzleFlash.transform.rotation = shootPoint.rotation;
+            muzzleFlash.Play();
+        }
+        if (muzzleSpark != null)
+        {
+            muzzleSpark.transform.position = shootPoint.position;
+            muzzleSpark.transform.rotation = shootPoint.rotation;
+            muzzleSpark.Play();
+        }
+        // currentAmmo--;
     }
 
     // Coroutine to reload the turret, set isReloading to true, wait for reloadTime, then set currentAmmo to magazineSize and isReloading to false.
-    private IEnumerator Reload()
-    {
-        isReloading = true;
-        Debug.Log("Reloading...");
-        yield return new WaitForSeconds(reloadTime);
-        currentAmmo = magazineSize;
-        isReloading = false;
-        Debug.Log("Reload complete.");
-    }
+    // private IEnumerator Reload()
+    // {
+    //     isReloading = true;
+    //     Debug.Log("Reloading...");
+    //     yield return new WaitForSeconds(reloadTime);
+    //     currentAmmo = magazineSize;
+    //     isReloading = false;
+    //     Debug.Log("Reload complete.");
+    // }
 
     // Set the target of the MultiAimConstraint to the new target.
     private void SetConstraintTarget(MultiAimConstraint constraint, Transform newTarget)

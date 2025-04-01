@@ -76,11 +76,13 @@ public class BlockInventoryManager : MonoBehaviour
 
         if (blockInventory.TryGetValue(block, out var entry))
         {
+            // Debug.Log($"Adding {amount} of {block.BlockName} to inventory. Current: {entry.CurrentCount}, Max: {entry.MaxStack}");
             entry.CurrentCount = Mathf.Min(entry.CurrentCount + amount, entry.MaxStack);
             blockInventory[block] = entry; 
         }
         else
         {
+            // Debug.Log($"Adding new block {block.BlockName} to inventory with amount {amount}.");
             BlockInventory newEntry = new BlockInventory()
             {
                 Block = block,

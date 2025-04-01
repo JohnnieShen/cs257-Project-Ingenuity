@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class BuildSystem : MonoBehaviour
 {
     // public Block[] availableBuildingBlocks;
@@ -10,6 +11,7 @@ public class BuildSystem : MonoBehaviour
  
     Block currentBlock;
     public TMP_Text blockNameText;
+    public Image blockUIImage;
     public int breakForce;
  
     public Transform shootingPoint;
@@ -167,10 +169,14 @@ public class BuildSystem : MonoBehaviour
             int currentCount = BlockInventoryManager.instance.GetBlockCount(currentBlock);
 
             blockNameText.text = $"{currentBlock.BlockName} ({currentCount})\n";
+            if (blockUIImage != null)
+                blockUIImage.sprite = currentBlock.uiSprite;
         }
         else if (blockNameText != null)
         {
             blockNameText.text = "No Block Selected";
+            if (blockUIImage != null)
+                blockUIImage.sprite = null;
         }
     }
     // void ChangeCurrentBlock()
@@ -369,7 +375,7 @@ public class BuildSystem : MonoBehaviour
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
         {
-            if (hitInfo.transform.CompareTag("Block") || (hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup))
+            if (hitInfo.transform.CompareTag("Block") || ((hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup)))
             {
                 Hull hull = hitInfo.transform.GetComponent<Hull>();
                 if (hull != null && hull.sourceBlock != null)

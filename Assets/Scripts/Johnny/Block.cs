@@ -14,4 +14,5 @@ public class Block : ScriptableObject
     public bool isBottomMountable;
     public Vector3 attachDirection = Vector3.down;
     public float blockHealth;
+    public Sprite uiSprite;
 }

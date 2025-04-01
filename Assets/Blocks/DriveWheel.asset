@@ -21,3 +21,4 @@ MonoBehaviour:
   isBottomMountable: 0
   attachDirection: {x: -1, y: 0, z: 0}
   blockHealth: 200
+  uiSprite: {fileID: 21300000, guid: 48687174bb12ac546b69ee09abc6af21, type: 3}
