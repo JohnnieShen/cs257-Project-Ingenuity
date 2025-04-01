@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
+  - {fileID: 2100000, guid: 48dd62240d9ed7748b1e73177a93eb9d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,7 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsEnemyProjectile: 0
   launchForce: 100
-  damage: 10
+  ballisticDamage: 10
+  energyDamage: 10
   timeToDestroy: 30
 --- !u!54 &2679968965681074781
 Rigidbody:

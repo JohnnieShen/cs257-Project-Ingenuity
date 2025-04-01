@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class VehicleResourceManager : MonoBehaviour
 {
@@ -8,9 +9,13 @@ public class VehicleResourceManager : MonoBehaviour
     public int energyAmmoCount = 30;
     public int maxBallisticAmmo = 50;
     public int maxEnergyAmmo = 30;
+    public float energyRechargeDelay = 3f;
+    public float energyRechargeRate = 1f;
 
     public Slider ballisticAmmoSlider;
     public Slider energyAmmoSlider;
+    private float lastEnergyShotTime = 0f;
+    private Coroutine energyRechargeCoroutine = null;
 
     void Awake()
     {
@@ -35,6 +40,14 @@ public class VehicleResourceManager : MonoBehaviour
             energyAmmoSlider.value = energyAmmoCount;
         }
     }
+    void Update()
+    {
+        if (energyAmmoCount < maxEnergyAmmo && energyRechargeCoroutine == null &&
+            Time.time - lastEnergyShotTime >= energyRechargeDelay)
+        {
+            energyRechargeCoroutine = StartCoroutine(EnergyRechargeRoutine());
+        }
+    }
 
     public void OnTurretFired(bool isEnergy, int ammoCost)
     {
@@ -42,6 +55,12 @@ public class VehicleResourceManager : MonoBehaviour
         {
             energyAmmoCount = Mathf.Max(energyAmmoCount - ammoCost, 0);
             UpdateEnergyAmmoUI();
+            lastEnergyShotTime = Time.time;
+            if (energyRechargeCoroutine != null)
+            {
+                StopCoroutine(energyRechargeCoroutine);
+                energyRechargeCoroutine = null;
+            }
         }
         else
         {
@@ -78,5 +97,15 @@ public class VehicleResourceManager : MonoBehaviour
         {
             energyAmmoSlider.value = energyAmmoCount;
         }
+    }
+    private IEnumerator EnergyRechargeRoutine()
+    {
+        while (energyAmmoCount < maxEnergyAmmo)
+        {
+            energyAmmoCount++;
+            UpdateEnergyAmmoUI();
+            yield return new WaitForSeconds(1f / energyRechargeRate);
+        }
+        energyRechargeCoroutine = null;
     }
 }

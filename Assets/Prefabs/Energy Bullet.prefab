@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4128075961110800830}
   - component: {fileID: 2679968965681074781}
   m_Layer: 10
-  m_Name: Enemy Bullet
+  m_Name: Energy Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48dd62240d9ed7748b1e73177a93eb9d, type: 2}
+  - {fileID: 2100000, guid: 46f26011c21a3fe4cb2171c569f32f4b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 101c5508604e27d4cb2e9213616cf9e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsEnemyProjectile: 1
-  launchForce: 200
+  IsEnemyProjectile: 0
+  launchForce: 100
   ballisticDamage: 10
   energyDamage: 10
   timeToDestroy: 30
