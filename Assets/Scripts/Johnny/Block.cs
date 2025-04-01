@@ -8,11 +8,14 @@ public class Block : ScriptableObject
     public string BlockName;
     public GameObject BlockObject;
     public GameObject PreviewObject;
-    public string ItemsNeededForBuildingBlock;
-    public int AmountOfItemNeeded;
+    // public string ItemsNeededForBuildingBlock;
+    // public int AmountOfItemNeeded;
     public bool isTopMountable;
     public bool isSideMountable;
     public bool isBottomMountable;
+    public bool isCraftable;
+    public int cost;
+    public int recycleBonus;
     public Vector3 attachDirection = Vector3.down;
     public float blockHealth;
     public Sprite uiSprite;
