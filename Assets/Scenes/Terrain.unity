@@ -793,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 556790567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.792854, y: 594.89056, z: 805.4465}
+  m_LocalPosition: {x: 26.646948, y: 599.39386, z: 806.2407}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1754,16 +1754,16 @@ MonoBehaviour:
     MaxStack: 99
   - Block: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
     CurrentCount: 10
-    MaxStack: 0
+    MaxStack: 99
   - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
     CurrentCount: 5
-    MaxStack: 0
+    MaxStack: 99
   - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
     CurrentCount: 5
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
     CurrentCount: 5
-    MaxStack: 0
+    MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
   m_ObjectHideFlags: 0
