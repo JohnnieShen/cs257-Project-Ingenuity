@@ -13,7 +13,7 @@ public class ShieldGenerator : MonoBehaviour
     private SphereCollider shieldCollider;
     private MeshRenderer shieldRenderer;
     private float lastDamageTime;
-    private bool isShieldActive = true;
+    // private bool isShieldActive = true;
 
     private void Awake()
     {
@@ -88,7 +88,7 @@ public class ShieldGenerator : MonoBehaviour
 
     private void DeactivateShield()
     {
-        isShieldActive = false;
+        // isShieldActive = false;
         shieldRenderer.enabled = false;
         shieldCollider.enabled = false;
 
@@ -98,7 +98,7 @@ public class ShieldGenerator : MonoBehaviour
     private void ReactivateShield()
     {
         currentShieldHealth = maxShieldHealth;
-        isShieldActive = true;
+        // isShieldActive = true;
         shieldRenderer.enabled = true;
         shieldCollider.enabled = true;
     }

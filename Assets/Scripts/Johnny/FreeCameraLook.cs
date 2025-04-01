@@ -16,7 +16,7 @@ public class FreeCameraLook : Pivot {
 	[SerializeField] private float maxZoom = 30f;
 	[SerializeField] private float zoomSmoothFactor = 5f;
 	[SerializeField] private LayerMask terrainLayerMask;
-	[SerializeField] private float collisionOffset = 0.5f;
+	// [SerializeField] private float collisionOffset = 0.5f;
 
 	public Transform aimTarget;
 	public Transform commandModule;
@@ -25,7 +25,7 @@ public class FreeCameraLook : Pivot {
 
 	private float targetZoom = 10f;
 	private float currentZoom = 10f;
-	[SerializeField] private bool lockCursor = false;
+	// [SerializeField] private bool lockCursor = false;
 
 	private float lookAngle;
 	private float tiltAngle;

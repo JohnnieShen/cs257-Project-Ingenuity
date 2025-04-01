@@ -136,6 +136,10 @@ public class Wheel : MonoBehaviour
             Vector3 accelDir = probeCoreTransform.forward;
             
             float springOffset = suspensionRestDist - hit.distance;
+            if (rigidBody == null)
+            {
+                return;
+            }
             float springVel = Vector3.Dot(springDir, rigidBody.velocity);
             float steeringVel = Vector3.Dot(steeringDir, rigidBody.velocity);
             

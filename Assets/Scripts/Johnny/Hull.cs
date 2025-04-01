@@ -10,8 +10,13 @@ public class Hull : MonoBehaviour
     private bool isAIVehicle = false;
     public bool canPickup = false;
     public Block sourceBlock;
+    public bool isPreview = false;
     void Start()
     {
+        if(isPreview)
+        {
+            return;
+        }
         isAIVehicle = GetComponentInParent<EnemyMovement>() != null;
         if (!isAIVehicle && BlockManager.instance != null)
         {
@@ -47,6 +52,10 @@ public class Hull : MonoBehaviour
     
     void OnDestroy()
     {
+        if (isPreview)
+        {
+            return;
+        }
         if (!isAIVehicle && BlockManager.instance != null)
         {
             // BlockManager.instance.ValidateStructure();
@@ -72,6 +81,10 @@ public class Hull : MonoBehaviour
 
     void OnJointBreak(float breakForce)
     {
+        if (isPreview)
+        {
+            return;
+        }
         StartCoroutine(DelayedRecalculate());   
     }
 

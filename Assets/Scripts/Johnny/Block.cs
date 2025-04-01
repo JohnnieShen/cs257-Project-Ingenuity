@@ -7,6 +7,7 @@ public class Block : ScriptableObject
 {
     public string BlockName;
     public GameObject BlockObject;
+    public GameObject PreviewObject;
     public string ItemsNeededForBuildingBlock;
     public int AmountOfItemNeeded;
     public bool isTopMountable;

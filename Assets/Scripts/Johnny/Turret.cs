@@ -20,7 +20,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform shootPoint;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float reloadTime = 2f;
+    // [SerializeField] private float reloadTime = 2f;
     [SerializeField] private float ballisticDamage = 10f;
     [SerializeField] private float energyDamage = 10f;
     [SerializeField] private int magazineSize = 5;

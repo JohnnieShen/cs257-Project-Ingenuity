@@ -25,9 +25,11 @@ public class BuildSystem : MonoBehaviour
     GameObject lastHightlightedBlock;
     public LayerMask rayCastLayers;
     public LayerMask shieldLayer;
+    public LayerMask previewIgnoreLayers;
     
     public Material previewMaterial;
     private GameObject previewBlock;
+    private Quaternion previewBlockOriginalRotation;
     // public BlockInventory[] availableBuildingBlocks;
     // private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
     private List<Block> availableBlocksList = new List<Block>();
@@ -115,6 +117,11 @@ public class BuildSystem : MonoBehaviour
     //     ChangeCurrentBlock();
     //     // UpdatePreview();
     // }
+
+    private void Update()
+    {
+        UpdatePreview();
+    }
  
     private void OnBuildPerformed(InputAction.CallbackContext ctx)
     {
@@ -217,7 +224,8 @@ public class BuildSystem : MonoBehaviour
             return;
         }
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask)) // Raycast hit something that is a block
+        LayerMask combinedMask_preview = combinedMask & ~previewIgnoreLayers;
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask_preview)) // Raycast hit something that is a block
         {
             // Debug.Log("raycast hitting"+hitInfo.collider.gameObject.name);
 
@@ -419,9 +427,11 @@ public class BuildSystem : MonoBehaviour
             }
         }
     }
-     void UpdatePreview()
+    void UpdatePreview()
     {
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, rayCastLayers))
+        LayerMask effectiveMask = rayCastLayers & ~shieldLayer;
+        effectiveMask = effectiveMask & ~previewIgnoreLayers;
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, effectiveMask))
         {
             if (hitInfo.collider.gameObject.layer == 6)
             {
@@ -436,12 +446,30 @@ public class BuildSystem : MonoBehaviour
 
                 if (previewBlock == null)
                 {
-                    previewBlock = Instantiate(currentBlock.BlockObject, parent);
+                    previewBlock = Instantiate(currentBlock.PreviewObject, parent);
+                    previewBlockOriginalRotation = previewBlock.transform.rotation;
                     RemovePhysicsComponents(previewBlock);
-                    ApplyPreviewMaterial(previewBlock);
                 }
                 previewBlock.transform.localPosition = localSpawn;
-                previewBlock.transform.localRotation = Quaternion.identity;
+
+                float angleWithUp = Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up));
+                bool isTopSurface = angleWithUp < 30f;
+                bool isBottomSurface = angleWithUp > 150f;
+                bool isSideSurface = !isTopSurface && !isBottomSurface;
+
+                if (isSideSurface)
+                {
+                    previewBlock.transform.rotation = previewBlockOriginalRotation;
+                    Vector3 worldAttachDir = previewBlock.transform.TransformDirection(currentBlock.attachDirection);
+                    Quaternion adjustment = Quaternion.FromToRotation(worldAttachDir, hitInfo.normal);
+                    previewBlock.transform.rotation = adjustment * previewBlock.transform.rotation;
+                    previewBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * previewBlock.transform.rotation;
+                    previewBlock.transform.localRotation *= Quaternion.Euler(0, 180, 0);
+                }
+                else
+                {
+                    previewBlock.transform.localRotation = isTopSurface ? Quaternion.identity : Quaternion.Euler(180, 0, 0);
+                }
                 previewBlock.SetActive(true);
             }
             else
