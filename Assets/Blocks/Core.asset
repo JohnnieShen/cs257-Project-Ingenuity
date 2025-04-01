@@ -20,5 +20,4 @@ MonoBehaviour:
   isSideMountable: 0
   isBottomMountable: 0
   attachDirection: {x: 0, y: -1, z: 0}
-  blockHealth: 10000
   blockHealth: 200
