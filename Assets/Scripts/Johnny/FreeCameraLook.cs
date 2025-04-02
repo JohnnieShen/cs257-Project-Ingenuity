@@ -133,7 +133,9 @@ public class FreeCameraLook : Pivot {
 	}
 	private void UpdateTarget() 
 	{
-		Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+		Vector3 centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
+		Ray forwardRay = cam.ScreenPointToRay(centerScreen);
+		// Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 		Debug.DrawRay(forwardRay.origin, forwardRay.direction * 1000f, Color.red, 0.1f);
 
 		int aimLayer = LayerMask.NameToLayer("Aim");
