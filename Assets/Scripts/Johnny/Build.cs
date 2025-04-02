@@ -270,37 +270,31 @@ public class BuildSystem : MonoBehaviour
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
-                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn); // Convert spawn position to grid space
-                if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(spawnPosInt, out _)) // Check if grid position is already occupied
-                {
-                    Debug.LogWarning("Cannot build - grid position already occupied!");
-                    return;
-                }
+                Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
+                Vector3 spawnWorldPos = commandModule.TransformPoint(localSpawn);
+                Vector3 spawnInParentSpace = parent.InverseTransformPoint(spawnWorldPos);
+                // Vector3 spawnInParentSpace = parent.InverseTransformPoint(commandModule.TransformPoint(localSpawn));
                 GameObject newBlock = Instantiate(blockPrefab, parent); // Instantiate new block as child of command module
-                newBlock.transform.localPosition = localSpawn; // Set local position of new block
+                newBlock.transform.localPosition = spawnInParentSpace; // Set local position of new block
+                Quaternion newBlockWorldRotation = Quaternion.identity;
                 if (isSideSurface)
                 {
-                    Quaternion adjustment = Quaternion.FromToRotation(
-                        newBlock.transform.TransformDirection(currentBlock.attachDirection),
-                        hitInfo.normal
-                    );
-                    newBlock.transform.rotation = adjustment * newBlock.transform.rotation;
-                    newBlock.transform.localRotation =
-                        Quaternion.Inverse(commandModule.rotation) * newBlock.transform.rotation;
-                    newBlock.transform.localRotation *= Quaternion.Euler(0, 180, 0);
+                    Vector3 blockAttachDir_world = commandModule.TransformDirection(currentBlock.attachDirection);
+                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, hitInfo.normal);
+                    newBlockWorldRotation = toNormal_world * commandModule.rotation;
+                    newBlockWorldRotation *= Quaternion.Euler(0f, 180f, 0f);
                 }
                 else
                 {
-                    if (isTopSurface)
+                    newBlockWorldRotation = commandModule.rotation;
+                    if (isBottomSurface)
                     {
-                        newBlock.transform.localRotation = Quaternion.identity;
-                    }
-                    else
-                    {
-                        newBlock.transform.localRotation = Quaternion.Euler(180, 0, 0);
+                        newBlockWorldRotation *= Quaternion.Euler(180f, 0f, 0f);
                     }
                 }
                 // newBlock.transform.localRotation *= Quaternion.Euler(0, 90f * rotationOffsetCount, 0);
+                Quaternion finalLocalRotation = Quaternion.Inverse(parent.rotation) * newBlockWorldRotation;
+                newBlock.transform.localRotation = finalLocalRotation;
                 Rigidbody newBlockRb = newBlock.GetComponent<Rigidbody>();
                 
                 // Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
@@ -314,13 +308,16 @@ public class BuildSystem : MonoBehaviour
                     newHull.sourceBlock = currentBlock; // Set the source block of the new block to the current selected block
                     foreach (Vector3Int offset in newHull.validConnectionOffsets) // Iterate over valid connection offsets of the new block as set in the block scriptable object
                     {
-                        Vector3 rotatedOffset = newBlock.transform.localRotation * (Vector3)offset; // Rotate the offset to match the block's rotation (if sidemountable)
-                        Vector3Int rotatedOffsetInt = new Vector3Int( // Round the rotated offset to integer values
-                            Mathf.RoundToInt(rotatedOffset.x),
-                            Mathf.RoundToInt(rotatedOffset.y),
-                            Mathf.RoundToInt(rotatedOffset.z)
+                        Vector3 offsetLocal = offset;
+                        Vector3 offsetWorld = newBlock.transform.TransformDirection(offsetLocal);
+                        Vector3 offsetInModule = commandModule.InverseTransformDirection(offsetWorld);
+
+                        Vector3Int offsetInModuleInt = new Vector3Int(
+                            Mathf.RoundToInt(offsetInModule.x),
+                            Mathf.RoundToInt(offsetInModule.y),
+                            Mathf.RoundToInt(offsetInModule.z)
                         );
-                        Vector3Int neighborPos = spawnPosInt + rotatedOffsetInt; // Calculate the position of the neighbor block
+                        Vector3Int neighborPos = spawnPosInt + offsetInModuleInt; // Calculate the position of the neighbor block
                         // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
                         if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb)) // If neighbor exist
                         {
@@ -328,7 +325,7 @@ public class BuildSystem : MonoBehaviour
                                 Hull neighborHull = neighborRb.GetComponent<Hull>();
                                 if (neighborHull != null)
                                 {
-                                    Vector3Int oppositeOffset = -rotatedOffsetInt; // Calculate the opposite offset
+                                    Vector3Int oppositeOffset = -offsetInModuleInt; // Calculate the opposite offset
                                     if (neighborHull.validConnectionOffsets.Contains(oppositeOffset)) // If the neighbor has a valid offset at the current position too
                                     {
                                         // Add joint
@@ -437,48 +434,69 @@ public class BuildSystem : MonoBehaviour
     }
     void UpdatePreview()
     {
+        // We'll do the same conversion steps for the preview
         LayerMask effectiveMask = rayCastLayers & ~shieldLayer;
         effectiveMask = effectiveMask & ~previewIgnoreLayers;
+
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, effectiveMask))
         {
             if (hitInfo.collider.gameObject.layer == 6)
             {
+                // Convert to commandModule space
                 Vector3 localPoint = commandModule.InverseTransformPoint(hitInfo.point);
                 Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal);
 
+                // Round spawn
                 Vector3 localSpawn = new Vector3(
                     Mathf.RoundToInt(localPoint.x + localNormal.x / 2f),
                     Mathf.RoundToInt(localPoint.y + localNormal.y / 2f),
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
 
+                // If we haven't created the preview object yet, do it
                 if (previewBlock == null)
                 {
                     previewBlock = Instantiate(currentBlock.PreviewObject, parent);
                     previewBlockOriginalRotation = previewBlock.transform.rotation;
                     RemovePhysicsComponents(previewBlock);
                 }
-                previewBlock.transform.localPosition = localSpawn;
 
+                // Convert to world, then parent-local
+                Vector3 worldSpawn = commandModule.TransformPoint(localSpawn);
+                Vector3 spawnInParentSpace = parent.InverseTransformPoint(worldSpawn);
+                previewBlock.transform.localPosition = spawnInParentSpace;
+
+                // Figure out orientation (top / bottom / side)
                 float angleWithUp = Vector3.Angle(hitInfo.normal, commandModule.TransformDirection(Vector3.up));
                 bool isTopSurface = angleWithUp < 30f;
                 bool isBottomSurface = angleWithUp > 150f;
                 bool isSideSurface = !isTopSurface && !isBottomSurface;
 
+                // We'll build the final world rotation
+                Quaternion newBlockWorldRotation = commandModule.rotation;
+
                 if (isSideSurface)
                 {
-                    previewBlock.transform.rotation = previewBlockOriginalRotation;
-                    Vector3 worldAttachDir = previewBlock.transform.TransformDirection(currentBlock.attachDirection);
-                    Quaternion adjustment = Quaternion.FromToRotation(worldAttachDir, hitInfo.normal);
-                    previewBlock.transform.rotation = adjustment * previewBlock.transform.rotation;
-                    previewBlock.transform.localRotation = Quaternion.Inverse(commandModule.rotation) * previewBlock.transform.rotation;
-                    previewBlock.transform.localRotation *= Quaternion.Euler(0, 180, 0);
+                    Vector3 blockAttachDir_world = commandModule.TransformDirection(currentBlock.attachDirection);
+                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, hitInfo.normal);
+                    newBlockWorldRotation = toNormal_world * commandModule.rotation;
+                    newBlockWorldRotation *= Quaternion.Euler(0f, 180f, 0f);
                 }
                 else
                 {
-                    previewBlock.transform.localRotation = isTopSurface ? Quaternion.identity : Quaternion.Euler(180, 0, 0);
+                    // top or bottom
+                    if (isBottomSurface)
+                    {
+                        newBlockWorldRotation *= Quaternion.Euler(180f, 0f, 0f);
+                    }
                 }
-                // previewBlock.transform.localRotation *= Quaternion.Euler(0, 90f * rotationOffsetCount, 0);
+
+                // Add user rotation offset
+                newBlockWorldRotation *= Quaternion.Euler(0f, 90f * rotationOffsetCount, 0f);
+
+                // Convert world rotation -> parent local
+                Quaternion finalLocalRotation = Quaternion.Inverse(parent.rotation) * newBlockWorldRotation;
+                previewBlock.transform.localRotation = finalLocalRotation;
                 previewBlock.SetActive(true);
             }
             else

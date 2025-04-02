@@ -15,11 +15,12 @@ MonoBehaviour:
   BlockName: Energy Turret
   BlockObject: {fileID: 9005498339358512627, guid: 75314b552bd6f3349a5422546f80bc5a, type: 3}
   PreviewObject: {fileID: 9005498339358512627, guid: 5e4ac12b4666f2a4faec1f1ef9be265a, type: 3}
-  ItemsNeededForBuildingBlock: 
-  AmountOfItemNeeded: 0
   isTopMountable: 1
   isSideMountable: 1
   isBottomMountable: 1
+  isCraftable: 1
+  cost: 30
+  recycleBonus: 10
   attachDirection: {x: 0, y: 1, z: 0}
   blockHealth: 100
   uiSprite: {fileID: 21300000, guid: 119d4a387dfa49449b5e818444347684, type: 3}

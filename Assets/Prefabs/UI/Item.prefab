@@ -813,6 +813,7 @@ GameObject:
   - component: {fileID: 8396967696865143518}
   - component: {fileID: 9153113054923175627}
   - component: {fileID: 3980652184113776497}
+  - component: {fileID: 737123992405196101}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -881,6 +882,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &737123992405196101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945057478151409648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b437158e6e354eb8d5918d19da86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockNameText: {fileID: 3379517299854705403}
+  blockCraftCostText: {fileID: 6231081096923794250}
+  blockRecycleBonusText: {fileID: 3981278789070491221}
+  iconImage: {fileID: 2491107773124281512}
+  blockCraftButton: {fileID: 5542669989135299852}
+  blockRecycleButton: {fileID: 675369319130365217}
+  blockData: {fileID: 0}
 --- !u!1 &8946640804316652233
 GameObject:
   m_ObjectHideFlags: 0

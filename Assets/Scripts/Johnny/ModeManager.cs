@@ -4,7 +4,7 @@ using System.Collections;
 public class ModeSwitcher : MonoBehaviour
 {
     public static ModeSwitcher instance;
-    public enum Mode { Build, Drive }
+    public enum Mode { Build, Drive , Craft };
     public Mode currentMode = Mode.Drive;
 
     public GameObject player;
@@ -15,9 +15,14 @@ public class ModeSwitcher : MonoBehaviour
     public Transform drivingCamera;
     public GameObject buildUI;
     public GameObject driveUI;
+    public GameObject craftUI;
     public float buildModeHeight = 5f;
     public float elevateDuration = 1f;
     public bool canManuallySwitchMode = true;
+    public float modeSwitchCooldown = 0.5f;
+    private float lastModeSwitchTime = 0f;
+    private Vector3 originalVehiclePosition;
+    private Quaternion originalVehicleRotation;
     private void Awake()
     {
         if (instance == null)
@@ -31,66 +36,120 @@ public class ModeSwitcher : MonoBehaviour
     }
     void Start()
     {
+        if(vehicleRoot != null)
+        {
+            originalVehiclePosition = vehicleRoot.position;
+            originalVehicleRotation = vehicleRoot.localRotation;
+        }
         SetMode(currentMode);
     }
 
     void Update()
     {
-        if (
-            canManuallySwitchMode &&
-            (
-                (InputManager.instance.GetBuildSwapModeAction() != null &&
-                InputManager.instance.GetBuildSwapModeAction().triggered) 
-                ||
-                (InputManager.instance.GetDriveSwapModeAction() != null &&
-                InputManager.instance.GetDriveSwapModeAction().triggered)
-            )
-        )
+        if (!canManuallySwitchMode || Time.time - lastModeSwitchTime < modeSwitchCooldown)
+            return;
+        if (canManuallySwitchMode)
         {
-            currentMode = (currentMode == Mode.Build) ? Mode.Drive : Mode.Build;
-            SetMode(currentMode);
+            bool buildSwapTriggered = InputManager.instance.GetBuildSwapModeAction() != null && InputManager.instance.GetBuildSwapModeAction().triggered;
+            bool driveSwapTriggered = InputManager.instance.GetDriveSwapModeAction() != null && InputManager.instance.GetDriveSwapModeAction().triggered;
+
+            if (buildSwapTriggered || driveSwapTriggered)
+            {
+                if (currentMode == Mode.Drive)
+                {
+                    currentMode = Mode.Build;
+                    SetMode(currentMode);
+                    lastModeSwitchTime = Time.time;
+                    if(vehicleRoot != null)
+                    {
+                        originalVehiclePosition = vehicleRoot.position;
+                        originalVehicleRotation = vehicleRoot.localRotation;
+                    }
+                    if (vehicleRoot != null)
+                    {
+                        StopAllCoroutines();
+                        StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration));
+                    }
+                    if (player != null)
+                    {
+                        if(drivingCamera != null)
+                        {
+                            player.transform.position = drivingCamera.position;
+                        }
+                    }
+                    return;
+                }
+                else if (currentMode == Mode.Build)
+                {
+                    currentMode = Mode.Drive;
+                    SetMode(currentMode);
+                    // if (vehicleRoot != null)
+                    // {
+                    //     StopAllCoroutines();
+                    //     vehicleRoot.position = originalVehiclePosition;
+                    //     vehicleRoot.localRotation = originalVehicleRotation;
+                    // }
+                    lastModeSwitchTime = Time.time;
+                    return;
+                }
+            }
+        }
+        if (canManuallySwitchMode && currentMode == Mode.Build){
+            if (InputManager.instance.GetBuildMenuAction() != null && InputManager.instance.GetBuildMenuAction().triggered)
+            {
+                currentMode = Mode.Craft;
+                SetMode(currentMode);
+                lastModeSwitchTime = Time.time;
+                return;
+            }
+        }
+        if (canManuallySwitchMode && currentMode == Mode.Craft)
+        {
+            if (InputManager.instance.GetUIMenuAction() != null && InputManager.instance.GetUIMenuAction().triggered)
+            {
+                currentMode = Mode.Build;
+                SetMode(currentMode);
+                lastModeSwitchTime = Time.time;
+                return;
+            }
         }
     }
 
-    // Set the mode of the game
     public void SetMode(Mode mode)
     {
         if (mode == Mode.Build)
         {
             if (buildUI != null) buildUI.SetActive(true);
             if (driveUI != null) driveUI.SetActive(false);
-            InputManager.instance.EnableBuildMap(); // Switching to the build input map
+            if (craftUI != null) craftUI.SetActive(false);
+            InputManager.instance.EnableBuildMap();
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             if (player != null)
             {
                 player.SetActive(true);
-                if(drivingCamera != null)
-                {
-                    player.transform.position = drivingCamera.position + new Vector3(0f, 6f, 0f); // Set the player position to the driving camera position
-                }
             }
             // if(buildCamera != null) buildCamera.gameObject.SetActive(true);
 
             // if(vehicle != null) vehicle.SetActive(false);
-            if(driveCameraPivot != null) driveCameraPivot.SetActive(false); // Disable the drive camera
+            if(driveCameraPivot != null) driveCameraPivot.SetActive(false);
 
             if(BlockManager.instance != null)
             {
-                BlockManager.instance.DisableVehiclePhysics(); // Disable the vehicle physics
+                BlockManager.instance.DisableVehiclePhysics();
             }
-            if (vehicleRoot != null)
-            {
-                StopAllCoroutines();
-                StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration)); // Elevate the vehicle to +5f on the y-axis
-            }
+            // if (vehicleRoot != null)
+            // {
+            //     StopAllCoroutines();
+            //     StartCoroutine(ElevateVehicle(buildModeHeight, elevateDuration));
+            // }
             if (EnemyBlockManager.instance != null)
             {
                 foreach (EnemyAI enemy in EnemyBlockManager.instance.GetEnemyVehicles())
                 {
-                    if (enemy != null) // For enemies that are registered and still alive
+                    if (enemy != null)
                     {
-                        enemy.enabled = false; // Disable all enemy AI
+                        enemy.enabled = false;
                     }
                 }
             }
@@ -100,6 +159,7 @@ public class ModeSwitcher : MonoBehaviour
         {
             if (buildUI != null) buildUI.SetActive(false);
             if (driveUI != null) driveUI.SetActive(true);
+            if (craftUI != null) craftUI.SetActive(false);
             InputManager.instance.EnableDriveMap();
             // if(vehicle != null) vehicle.SetActive(true);
             if(driveCameraPivot != null) driveCameraPivot.SetActive(true);
@@ -121,6 +181,14 @@ public class ModeSwitcher : MonoBehaviour
                     }
                 }
             }
+        } else if (mode == Mode.Craft)
+        {
+            if (buildUI != null) buildUI.SetActive(false);
+            if (driveUI != null) driveUI.SetActive(false);
+            if (craftUI != null) craftUI.SetActive(true);
+            InputManager.instance.EnableUIMap();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     IEnumerator ElevateVehicle(float targetHeight, float duration)

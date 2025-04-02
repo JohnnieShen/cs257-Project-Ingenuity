@@ -19,11 +19,16 @@ public class InputManager : MonoBehaviour
     private InputAction buildSwapModeAction;
     private InputAction buildScrollAction;
     private InputAction buildRotateAction;
+    private InputAction buildMenuAction;
     private InputAction driveMoveAction;
     private InputAction driveLookAction;
     private InputAction driveShootAction;
     private InputAction driveSwapModeAction;
     private InputAction driveScrollAction;
+    private InputActionMap UIMap;
+    private InputAction UIClickAction;
+    private InputAction UIScrollAction;
+    private InputAction UIMenuAction;
 
     private void Awake()
     {
@@ -37,6 +42,7 @@ public class InputManager : MonoBehaviour
 
         buildMap = inputActions.FindActionMap("Build");
         driveMap = inputActions.FindActionMap("Drive");
+        UIMap = inputActions.FindActionMap("UI");
 
         if (buildMap != null)
         {
@@ -49,6 +55,7 @@ public class InputManager : MonoBehaviour
             buildSwapModeAction = buildMap.FindAction("Swap Mode");
             buildScrollAction = buildMap.FindAction("Scroll");
             buildRotateAction = buildMap.FindAction("Rotate");
+            buildMenuAction = buildMap.FindAction("Menu");
         }
         if (driveMap != null)
         {
@@ -57,6 +64,12 @@ public class InputManager : MonoBehaviour
             driveShootAction = driveMap.FindAction("Fire");
             driveSwapModeAction = driveMap.FindAction("Swap Mode");
             driveScrollAction = driveMap.FindAction("Scroll");
+        }
+        if (UIMap != null)
+        {
+            UIClickAction = UIMap.FindAction("Click");
+            UIScrollAction = UIMap.FindAction("ScrollWheel");
+            UIMenuAction = UIMap.FindAction("Menu");
         }
 
         EnableBuildMap();
@@ -97,6 +110,10 @@ public class InputManager : MonoBehaviour
     {
         return buildRotateAction;
     }
+    public InputAction GetBuildMenuAction()
+    {
+        return buildMenuAction;
+    }
     public InputAction GetDriveMoveAction()
     {
         return driveMoveAction;
@@ -117,6 +134,18 @@ public class InputManager : MonoBehaviour
     {
         return driveScrollAction;
     }
+    public InputAction GetUIClickAction()
+    {
+        return UIClickAction;
+    }
+    public InputAction GetUIScrollAction()
+    {
+        return UIScrollAction;
+    }
+    public InputAction GetUIMenuAction()
+    {
+        return UIMenuAction;
+    }
     public void EnableBuildMap()
     {
         if (buildMap != null) buildMap.Enable();
@@ -127,5 +156,11 @@ public class InputManager : MonoBehaviour
     {
         if (driveMap != null) driveMap.Enable();
         if (buildMap != null) buildMap.Disable();
+    }
+    public void EnableUIMap()
+    {
+        if (UIMap != null) UIMap.Enable();
+        if (buildMap != null) buildMap.Disable();
+        if (driveMap != null) driveMap.Disable();
     }
 }

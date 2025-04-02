@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Events;
 
 public class VehicleResourceManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class VehicleResourceManager : MonoBehaviour
     public Slider energyAmmoSlider;
     private float lastEnergyShotTime = 0f;
     private Coroutine energyRechargeCoroutine = null;
+    public int scrapCount = 0;
+    public UnityEvent<int> onScrapChanged;
 
     void Awake()
     {
@@ -38,6 +41,10 @@ public class VehicleResourceManager : MonoBehaviour
         {
             energyAmmoSlider.maxValue = maxEnergyAmmo;
             energyAmmoSlider.value = energyAmmoCount;
+        }
+        if (onScrapChanged != null)
+        {
+            onScrapChanged.Invoke(scrapCount);
         }
     }
     void Update()
@@ -107,5 +114,20 @@ public class VehicleResourceManager : MonoBehaviour
             yield return new WaitForSeconds(1f / energyRechargeRate);
         }
         energyRechargeCoroutine = null;
+    }
+    public void AddScrap(int amount)
+    {
+        scrapCount += amount;
+        onScrapChanged?.Invoke(scrapCount);
+    }
+
+    public bool TryUseScrap(int amount)
+    {
+        if (scrapCount < amount)
+            return false;
+
+        scrapCount -= amount;
+        onScrapChanged?.Invoke(scrapCount);
+        return true;
     }
 }
