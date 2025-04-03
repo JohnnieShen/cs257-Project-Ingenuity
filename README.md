@@ -115,20 +115,48 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Project Part 3: Visual Effects
 
-For the next submission, we would like to work more on the level design of the game to make it look more fleshed out. In the main open world game mode, we would like to enlarge the playable area and add more points of interest to promote exploration for the player. We would also like to do a simple implementation of a mission board/checklist and some simple quests to push towards the final goal of having a linear progression in an open world. 
+~~For the next submission, we would like to work more on the level design of the game to make it look more fleshed out. In the main open world game mode, we would like to enlarge the playable area and add more points of interest to promote exploration for the player. We would also like to do a simple implementation of a mission board/checklist and some simple quests to push towards the final goal of having a linear progression in an open world.~~
 
-We would also want to keep on implementing more interesting blocks in general. One type of weapon we have started to work out towards the end of this milestone was physics based weapons (e.g. think a wrecking ball), we are yet to work out the quirks of the physics system, but we believe that once we have this implemented we would greatly improve the fun factor of the game. We also want to look into making blocks that work essentially as an addon to the vehicle, which doesn’t do anything directly, but gives the player power ups and bonuses. One example could be an engine block, where all attached wheels get a 20% boost in acceleration. 
+~~We would also want to keep on implementing more interesting blocks in general. One type of weapon we have started to work out towards the end of this milestone was physics based weapons (e.g. think a wrecking ball), we are yet to work out the quirks of the physics system, but we believe that once we have this implemented we would greatly improve the fun factor of the game. We also want to look into making blocks that work essentially as an addon to the vehicle, which doesn’t do anything directly, but gives the player power ups and bonuses. One example could be an engine block, where all attached wheels get a 20% boost in acceleration.~~
 
-For the visual parts, we would want to keep working on the visual design of the game. In the current vision, we plan on making the game low poly and with a cartoonish style. This is kinda there but would require more modeling and tuning of the shaders. We also want to actually start implementing textures into the game as we believe that they would greatly elevate the look. 
+~~For the visual parts, we would want to keep working on the visual design of the game. In the current vision, we plan on making the game low poly and with a cartoonish style. This is kinda there but would require more modeling and tuning of the shaders. We also want to actually start implementing textures into the game as we believe that they would greatly elevate the look.~~
 
-Last but not the least, we plan to add more variety to the enemy archetypes. Right now we only have one enemy prefab that we can spawn and it is more of an AI demo more than anything else. We plan on implementing a separate scene as an enemy prefab builder that would finish the configurations on the fly and accelerate the enemy building process. 
+~~Last but not the least, we plan to add more variety to the enemy archetypes. Right now we only have one enemy prefab that we can spawn and it is more of an AI demo more than anything else. We plan on implementing a separate scene as an enemy prefab builder that would finish the configurations on the fly and accelerate the enemy building process.~~ 
 
-- Improve level design, points of interests, quest checklist / tracking system, quests
-- More blocks, bug fixes related to physics based damage, add-on blocks
-- Improve visual design, upgrade shaders and textures, flesh out what we want the final design to look
-- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible)
-- Better UI (Tentative)
+- ~~Improve level design, points of interests, quest checklist / tracking system, quests~~ (In the works with nothing to show at this moment)
 
+- More blocks, ~~bug fixes related to physics based damage~~, add-on blocks  (Did more pixel art creation for UI so no time for modeling)
+- Improve visual design, upgrade shaders and textures, flesh out what we want the final design to look (not the imminent focus)
+- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible) (Did not do, current implementation completely overhauled vehicle representation and old AI prefabs are not updated to date, and AI script might not work with terrain, might need updating)
+- ~~Better UI (Tentative)~~
+
+### Additions
+
+- Crafting
+  -  Implemented menu for crafting blocks, can be entered from build mode. Players can recycle blocks in exchange for scraps, which can be used to craft other blocks, this will be a backup thing for players to acquire blocks, we did this first to flesh out the gameplay loop before worrying about the looks.
+  - Also implemented a resource manager for handling bullet counting, energy counting, scrap bookkeeping etc.
+- UI
+  - Created pixel art for block representations
+  - Implemented a rough draft of what we want the UI to look like, this is more of a mockup than anything.
+- Block previews for building
+  - This is an old feature that was disabled because it was really buggy, it is all fixed up and fully functional now.
+- Minimap
+  - Implemented a first version of the minimap on the UI, currently there are some issues with the full rendering pass. Fixes pending.
+
+As you can probably see, we put a lot of time into fleshing out the UI for the sake of streamlining the gameplay experience, and the previous plan was changed to some degree. The next checkpoint will be the checkpoint of playability, which will be our main focus from now.
+
+### Project Part 4: Sound, UI, and Animation
+
+For the next submission, we plan to work on sound design for our game. In our current state, while the game is visually quite put together, it lacks the background music, ambience, and other miscellaneous sounds to give the game a more lifelike feel. To start out, we plan on including sound effects such as building sounds, collision sounds, driving sounds, and shooting sounds. If time permits, having basic background music may be a desired addition. A good amount of our UI has been fleshed out, but fine tuning the parameters would be ideal. In terms of animation, having simple animations for building/block assembling, possibly shooting, and more. Since our game doesn’t particularly deal with characters, our animations will be less based on traditional rigging and more mechanical to fit with the nature of our game.
+
+For the next checkpoint as well we plan to have a more developed tutorial level, due to the slight complexity of our build systems to newer users. The goal will be to create a scene that has an abandoned government facility aesthetic, with obstacles, possibly a rogue enemy, and targets to give players a feel of the game’s building, shooting, and movement. We will include a title screen for players to either select the tutorial level if they want a recap on the control, or a play button to deliver them directly to the main gameplay. 
+
+We also plan on improving the playability of the game in general, in our case meaning a bigger map, more AI to kill and structures and POIs to explore. 
+
+- More blocks, add-on blocks
+- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation
+- More level design work, tutorial level with corresponding mechanics, bigger map in first world, script for spawning in enemies dynamically, more POIs
+- Sounds
 
 ## Development
 
@@ -213,6 +241,45 @@ For a stylized almost cartoonish look, we have implemented a shader graph for a 
 
 ![](Images/tooneffects.png)
 
+### Project Checkpoint 3
+
+We implemented a more refined UI, following the cartoonish-style of the game by adding in 8-bit textures for the blocks as well as changing the default text. The menu can be opened by pressing TAB while in build mode. This allows the player to scroll through all available blocks. There is a recycle button to convert blocks to scraps and a build button to convert scraps to blocks. There is also an icon depicting how many scraps you currently have available. In the future, we hope to add an additional text box displaying how many blocks of a certain type are available.
+
+In addition, we worked on a minimap to give the player additional information about the surrounding area. The minimap tracks the command module’s translation using an orthographic projection. It is always displayed in the lower right corner and displays the vehicle and the landscape. It is always oriented north and does not rotate as the vehicle rotates allowing the player to orient themselves when needed.
+
+#### UI and gameplay refinement
+
+UI is a main focus of this checkpoint. The original UI looks horrid and makes us not want to work on the project when we see it. So we did an overhaul of it. 
+
+First step is making a background image for the panels, which I did in Aseprite and imported into Unity.
+
+![](Images/panelpixel.png)
+
+This will be the foundation of the UI work we do at this moment, as we could resize and reuse this in panels.
+
+Then, we came up with the following static mockup of the crafting UI.
+
+![](Images/staticcrafting.png)
+
+The color palette choice is questionable but we did dig the kind of retro style and the NASA-esque choice of font. So we went with it. 
+
+By creating a prefab for each UI entry and some short scripting and uses a vertical layout group, we managed the implement the UI (with a few issues, of course, what is game dev without the shenanigans?) 
+
+![](Images/UIprefab.png)
+![](Images/finishedcrafting.png)
+
+The background not displaying is a known issue and is under investigation, also the weird looking panel on top right.
+
+As we talked about before, the reason we started with the crafting menu is that this menu is also important in a gameplay perspective, as it finishes the last piece of the gameplay loop: when the player takes off blocks from dead enemies, they will probably have a lot of blocks they don’t need and the rarer blocks will remain hard to find, so the players can scrap some unused blocks to craft some more needed ones, thus closing the shoot-loot-craft-build game loop.
+
+![](Images/UI.png)
+(This version of the minimap is bugged, have since fixed this issue)
+
+In addition to all of the previous updates, we also added a minimap as pictured in the bottom right. This uses a two-camera system and uses an orthographic projection in order to achieve the pictured look. We had an artifact in which the shading for the player and the trees were not aligned with their physical object, and so the toon shader had to be slightly tweaked.
+
+We also added a tracker for ballistic and energy ammo, the current idea is that energy ammo will replenish when out of battle and ballistic ammo needs to be crafted with scraps.
+
+
 ### Instructions for Testing the Project
 _Instructions for Base Game_
 
@@ -220,17 +287,23 @@ Load into the Terrain scene.
 
 In the Terrain scene, after launching the scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
 
+You can access the menu by pressing TAB while in build mode. You can click the green recycle button or the hammer build button to convert any block into 10 scraps or 30 scraps into any block (for now). Beware! The conversions are lossy!
+
 ![](Images/terraintoonfx.png)
 
 Once you’ve built a vehicle that you are satisfied with, you can press “B”. This will shift from “Build Mode” to “Play Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
 
-_Instructions for Arena Gamemode_
+_Instructions for Arena Gamemode CURRENTLY UNSUPPORTED IN CHECKPOINT 3_
 
-Load into the Arena scene.
+~~Load into the Arena scene.~~
 
-Overall the controls are similar to what they are in the main game mode. The only difference is that the player is not allowed to manually switch between build and drive mode, instead the player must fight off a wave of enemies in drive mode before being switched back to build mode.
+~~Overall the controls are similar to what they are in the main game mode. The only difference is that the player is not allowed to manually switch between build and drive mode, instead the player must fight off a wave of enemies in drive mode before being switched back to build mode.~~
 
-When launching the game, you will be put into build mode, where you need to build up a vehicle that you would use to beat the enemies. Once ready, you could press Enter and go into battle. A certain number of enemies will be spawned around you and in the same control scheme as above you need to defeat them, once done you will be put back into build mode automatically. Once back into build mode, you can pick up the reward blocks that spawned around using right mouse click while aiming at it. There will be a timer for you to upgrade the vehicle and once the timer runs out you will be spawned into battle again. You can also press Enter again to skip the timer.
+~~When launching the game, you will be put into build mode, where you need to build up a vehicle that you would use to beat the enemies. Once ready, you could press Enter and go into battle. A certain number of enemies will be spawned around you and in the same control scheme as above you need to defeat them, once done you will be put back into build mode automatically. Once back into build mode, you can pick up the reward blocks that spawned around using right mouse click while aiming at it. There will be a timer for you to upgrade the vehicle and once the timer runs out you will be spawned into battle again. You can also press Enter again to skip the timer.~~
+
+Currently arena mode is not updated up to date with new UI, since combat is not part of the focus for checkpoint 3 (whatever number for april 2nd)
 
 ### Known bugs
-- When some noncore block on AI vehicle gets destroys, the strucural validation calculation is faulty, causing the AI to fall apart.
+~~- When some noncore block on AI vehicle gets destroys, the strucural validation calculation is faulty, causing the AI to fall apart.~~
+
+- Crafting UI entries missing background
