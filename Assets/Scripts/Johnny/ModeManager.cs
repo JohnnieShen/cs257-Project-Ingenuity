@@ -4,6 +4,7 @@ using System.Collections;
 public class ModeSwitcher : MonoBehaviour
 {
     public static ModeSwitcher instance;
+    public BuildSystem build;
     public enum Mode { Build, Drive , Craft };
     public Mode currentMode = Mode.Drive;
 
@@ -163,10 +164,9 @@ public class ModeSwitcher : MonoBehaviour
             InputManager.instance.EnableDriveMap();
             // if(vehicle != null) vehicle.SetActive(true);
             if(driveCameraPivot != null) driveCameraPivot.SetActive(true);
-
+            build.destroyPreviewBlock();
             if(player != null) player.SetActive(false);
             // if(buildCamera != null) buildCamera.gameObject.SetActive(false);
-
             if(BlockManager.instance != null)
             {
                 BlockManager.instance.EnableVehiclePhysics();

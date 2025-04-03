@@ -125,6 +125,14 @@ public class BuildSystem : MonoBehaviour
     {
         UpdatePreview();
     }
+    public void destroyPreviewBlock()
+    {
+        if (previewBlock != null)
+        {
+            Destroy(previewBlock);
+            previewBlock = null;
+        }
+    }
  
     private void OnBuildPerformed(InputAction.CallbackContext ctx)
     {
