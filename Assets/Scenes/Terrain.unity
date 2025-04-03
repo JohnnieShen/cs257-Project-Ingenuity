@@ -15615,6 +15615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8352bcf67e606ed44a295a3b68bb7325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  build: {fileID: 1369968233}
   currentMode: 0
   player: {fileID: 1369968232}
   driveCameraPivot: {fileID: 1379108818}
@@ -15647,6 +15648,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3638504164888052890, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
   m_PrefabInstance: {fileID: 62485112}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1369968233 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6179468425478502006, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
+  m_PrefabInstance: {fileID: 62485112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369968232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962c2fc61c2b3ea4e9abd37d3612e692, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1379108818
 GameObject:
   m_ObjectHideFlags: 0
@@ -55961,11 +55973,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: 90459d4e4a7d10440ba02914b110ef81, type: 2}
-  m_TreeDistance: 1635
-  m_TreeBillboardDistance: 262
+  m_TreeDistance: 513
+  m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 221
+  m_DetailObjectDistance: 120
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
