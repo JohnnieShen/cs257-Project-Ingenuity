@@ -18,11 +18,7 @@ public class Hull : MonoBehaviour
         {
             return;
         }
-        commandModule = transform.parent.Find("CommandModule");
-        if (commandModule == null)
-        {
-            Debug.LogError("CommandModule sibling not found!", gameObject);
-        }
+        
         isAIVehicle = transform.parent.GetComponentInChildren<EnemyMovement>() != null;
         if (!isAIVehicle && BlockManager.instance != null)
         {
@@ -35,6 +31,13 @@ public class Hull : MonoBehaviour
             else
             {
                 Debug.LogError("Hull has no Rigidbody component!", gameObject);
+            }
+        } 
+        else {
+            commandModule = transform.parent.GetComponentInChildren<EnemyAI>().gameObject.transform;
+            if (commandModule == null)
+            {
+                Debug.LogError("CommandModule sibling not found!", gameObject);
             }
         }
         parentAI = transform.parent.GetComponentInChildren<EnemyAI>();
@@ -74,7 +77,9 @@ public class Hull : MonoBehaviour
         }
         if (parentAI != null)
         {
+            Debug.Log("Removing block from AI vehicle: " + parentAI.name);
             Transform referenceTransform = (commandModule != null) ? commandModule : parentAI.transform;
+            Debug.Log("command module is null "+(commandModule == null));
             Vector3Int localPos = Vector3Int.RoundToInt(referenceTransform.InverseTransformPoint(transform.position));
             EnemyBlockManager.instance.RemoveBlock(parentAI, localPos);
             EnemyBlockManager.instance.RemoveConnections(parentAI, localPos);

@@ -21272,10 +21272,10 @@ MonoBehaviour:
   commandModule: {fileID: 0}
   rayCastLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65
   shieldLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
 --- !u!1001 &1405237362
 PrefabInstance:
   m_ObjectHideFlags: 0

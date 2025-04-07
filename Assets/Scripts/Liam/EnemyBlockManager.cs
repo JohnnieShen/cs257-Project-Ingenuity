@@ -53,6 +53,7 @@ public class EnemyBlockManager : MonoBehaviour
 
     public void RemoveBlock(EnemyAI vehicle, Vector3Int localPos) {
         if (!vehicles.ContainsKey(vehicle)) return;
+        // Debug.Log("if reached vehicle contains key, Removing block at " + localPos + " from vehicle " + vehicle.name);
         var structure = vehicles[vehicle];
         if (structure.blocks.ContainsKey(localPos)) {
             structure.blocks.Remove(localPos);
@@ -77,6 +78,7 @@ public class EnemyBlockManager : MonoBehaviour
     
     public void RemoveConnections(EnemyAI vehicle, Vector3Int pos) {
         if (!vehicles.ContainsKey(vehicle)) return;
+        // Debug.Log("if reached vehicle contains key, Removing connections at " + pos + " from vehicle " + vehicle.name);
         var structure = vehicles[vehicle];
         if (structure.blockConnections.ContainsKey(pos)) {
             foreach (var connection in structure.blockConnections[pos]) {
@@ -112,7 +114,7 @@ public class EnemyBlockManager : MonoBehaviour
     public void ValidateStructure(EnemyAI vehicle) {
         if (isValidating) return;
         if (!vehicles.ContainsKey(vehicle)) return;
-        
+        // Debug.Log("Validating structure for vehicle: " + vehicle.name);
         isValidating = true;
         EnemyVehicleStructure structure = vehicles[vehicle];
         HashSet<Vector3Int> connected = CoreConnectionCheck(structure);

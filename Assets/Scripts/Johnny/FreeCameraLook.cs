@@ -117,7 +117,8 @@ public class FreeCameraLook : Pivot {
         {
             OnFire?.Invoke();
         }
-		Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+		Vector3 centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
+		Ray forwardRay = cam.GetComponentInChildren<Camera>().ScreenPointToRay(centerScreen);
         Hull hoveredHull = FindHoveredHull(forwardRay);
 		if (Input.GetKeyDown(KeyCode.F) && hoveredHull != null)
 		{
