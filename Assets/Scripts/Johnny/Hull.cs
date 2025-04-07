@@ -101,7 +101,9 @@ public class Hull : MonoBehaviour
         yield return null;
         if (isAIVehicle)
         {
-            transform.parent.GetComponentInChildren<EnemyAI>().BuildConnectionGraph();
+            var ai = transform.parent.GetComponentInChildren<EnemyAI>();
+            ai.BuildConnectionGraph();
+            EnemyBlockManager.instance.ValidateStructure(ai);
         }
         else
         {
