@@ -116,10 +116,14 @@ public class EnemyMovement : MonoBehaviour
 
             if (wheel.isTurnWheel)
             {
-                float steerAngle = currentSteerInput * wheel.maxSteeringAngle;
-                wheel.currentSteerAngle = Mathf.Lerp( // Lerp the current steer angle to the target steer angle based on the steering return speed.
-                    wheel.currentSteerAngle, 
-                    steerAngle, 
+                float sign = wheel.invertSteering ? -1f : 1f;
+                // sign = wheel.isLeftSide ? -sign : sign;
+                
+                float steerAngle = currentSteerInput * wheel.maxSteeringAngle * sign;
+                
+                wheel.currentSteerAngle = Mathf.Lerp(
+                    wheel.currentSteerAngle,
+                    steerAngle,
                     Time.fixedDeltaTime * wheel.steeringReturnSpeed
                 );
             }

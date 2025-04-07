@@ -120,6 +120,7 @@ public class ModeSwitcher : MonoBehaviour
     {
         if (mode == Mode.Build)
         {
+            // Time.timeScale = 1f;
             if (buildUI != null) buildUI.SetActive(true);
             if (driveUI != null) driveUI.SetActive(false);
             if (craftUI != null) craftUI.SetActive(false);
@@ -158,6 +159,7 @@ public class ModeSwitcher : MonoBehaviour
         // Vice versa
         else if (mode == Mode.Drive)
         {
+            // Time.timeScale = 1f;
             if (buildUI != null) buildUI.SetActive(false);
             if (driveUI != null) driveUI.SetActive(true);
             if (craftUI != null) craftUI.SetActive(false);
@@ -183,6 +185,7 @@ public class ModeSwitcher : MonoBehaviour
             }
         } else if (mode == Mode.Craft)
         {
+            // Time.timeScale = 0f;
             if (buildUI != null) buildUI.SetActive(false);
             if (driveUI != null) driveUI.SetActive(false);
             if (craftUI != null) craftUI.SetActive(true);

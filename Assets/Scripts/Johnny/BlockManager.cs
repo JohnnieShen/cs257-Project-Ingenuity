@@ -109,8 +109,10 @@ public class BlockManager : MonoBehaviour
     {
         foreach (Rigidbody rb in blocks.Values)
         {
+            // Debug.Log("Enabling physics for block " + rb.gameObject.name);
             if (rb != null)
             {
+                Debug.Log("Enabling physics for block " + rb.gameObject.name);
                 rb.isKinematic = false;
             }
         }

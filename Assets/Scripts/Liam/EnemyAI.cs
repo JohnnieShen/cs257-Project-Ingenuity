@@ -165,7 +165,7 @@ public class EnemyAI : MonoBehaviour
 
         // enemyMovement.targetPosition.position = playerTarget.position;
 
-        if (enemyTurret != null && !enemyTurret.isBlocked)
+        if (enemyTurret != null && enemyTurret.isActiveAndEnabled &&!enemyTurret.isBlocked)
         {
             enemyTurret.HandleFireEvent(); // Handle the fire event of the enemy turret.
 
@@ -241,12 +241,14 @@ public class EnemyAI : MonoBehaviour
 
     public void InitializeVehicleStructure()
     {
-        Hull[] blocks = GetComponentsInChildren<Hull>();
+        Hull[] blocks = transform.parent.GetComponentsInChildren<Hull>();
         foreach (Hull block in blocks)
         {
+            // Debug.Log("Registering block: " + block.name);
             Vector3Int localPos = Vector3Int.RoundToInt(
                 transform.InverseTransformPoint(block.transform.position)
             );
+            // Debug.Log("Local position: " + localPos);
             EnemyBlockManager.instance.RegisterBlock(this, localPos, block.GetComponent<Rigidbody>());
         }
         BuildConnectionGraph();
@@ -262,11 +264,13 @@ public class EnemyAI : MonoBehaviour
 
             foreach (FixedJoint joint in joints)
             {
+                // Debug.Log("Joint from" + rb.name + " to " + joint.connectedBody.name);
                 if (joint.connectedBody != null)
                 {
                     Vector3Int connectedPos = Vector3Int.RoundToInt(
                         transform.InverseTransformPoint(joint.connectedBody.transform.position)
                     );
+                    // Debug.Log(("added connection from " + blockEntry.Key + " to " + connectedPos));
                     EnemyBlockManager.instance.AddConnection(this, blockEntry.Key, connectedPos);
                 }
             }

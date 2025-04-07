@@ -27,24 +27,24 @@ public class Wheel : MonoBehaviour
     public float currentSteerAngle = 0f;
     public bool invertSteering = false;
     public float tireRadius = 0.3f;
-    private bool isLeftSide = false;
+    public bool isLeftSide = false;
     private Quaternion originalNeutral;
     private Transform probeCoreTransform;
 
     void Start()
     {
-        if (isTurnWheel)
-        {
-            neutralRotation = transform.localRotation;
-            if (transform.parent != null)
-            {
-                float parentLocalZ = transform.parent.localPosition.z;
-                if (parentLocalZ < 0.4f)
-                {
-                    invertSteering = true;
-                }
-            }
-        }
+        // if (isTurnWheel)
+        // {
+        //     neutralRotation = transform.localRotation;
+        //     if (transform.parent != null)
+        //     {
+        //         float parentLocalZ = transform.parent.localPosition.z;
+        //         if (parentLocalZ < 0.4f)
+        //         {
+        //             invertSteering = true;
+        //         }
+        //     }
+        // }
         if (transform.parent != null)
         {
             Transform grandParentObject = transform.parent.parent;
@@ -64,12 +64,26 @@ public class Wheel : MonoBehaviour
                 }
             }
         }
+        if (isTurnWheel)
+        {
+            neutralRotation = transform.localRotation;
+
+            if (probeCoreTransform != null)
+            {
+                Vector3 localPosRelativeToCore = probeCoreTransform.InverseTransformPoint(transform.position);
+                if (localPosRelativeToCore.z < 0.4f)
+                {
+                    invertSteering = true;
+                }
+            }
+        }
+        isLeftSide = (probeCoreTransform.InverseTransformPoint(transform.position).x < 0f);
+        // Debug.Log(probeCoreTransform.InverseTransformPoint(transform.position));
     }
     void OnEnable()
     {
         neutralRotation = transform.localRotation;
         originalNeutral = neutralRotation;
-        isLeftSide = (transform.localPosition.x < 0f);
     }
 
     public void Initialize(bool enabled, float driveInput, float currentSteerAngle)
@@ -102,7 +116,7 @@ public class Wheel : MonoBehaviour
             {
                 float direction = (steerInput > 0f) ? 1f : -1f;
                 float sign = invertSteering ? -1f : 1f;
-                sign = isLeftSide ? -sign : sign;
+                // sign = isLeftSide ? -sign : sign;
                 currentSteerAngle += sign * direction * rotationSpeed * Time.deltaTime;
             }
             else

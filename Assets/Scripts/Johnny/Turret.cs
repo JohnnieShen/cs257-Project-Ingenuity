@@ -45,7 +45,7 @@ public class Turret : MonoBehaviour
         // aimTarget = FreeCameraLook.instance?.aimTarget;
 
         
-        EnemyAI enemyAI = GetComponentInParent<EnemyAI>();
+        EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
          if (enemyAI != null && enemyAI.aimTransform != null)
         {
             // For every AI, we have a aimTransform under the top parent, so we get that here proramatically.
@@ -133,6 +133,8 @@ public class Turret : MonoBehaviour
     // Before calling, ensure that the turret script is well configured and the aimTarget is either set or can be found.
     public void HandleFireEvent()
     {
+        if (!this.enabled) 
+            return;
         Hull hull = GetComponent<Hull>();
         if (hull != null && hull.canPickup) // If the turret is not connected to the core, don't fire.
             return;
@@ -187,7 +189,7 @@ public class Turret : MonoBehaviour
             {
                 projScript.SetDamage(ballisticDamage, energyDamage);
             }
-            VehicleResourceManager.Instance.OnTurretFired(isEnergy, ammoCost);
+            if (!isAI) VehicleResourceManager.Instance.OnTurretFired(isEnergy, ammoCost);
         }
         else
         {

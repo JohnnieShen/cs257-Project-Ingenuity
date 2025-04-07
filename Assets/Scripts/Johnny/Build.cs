@@ -40,6 +40,13 @@ public class BuildSystem : MonoBehaviour
  
     private void OnEnable()
     {
+        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
+        if (allBlocks != null && allBlocks.Length > 0)
+        {
+            currentBlockIndex = 0;
+            currentBlock = allBlocks[currentBlockIndex].Block;
+            SetText();
+        }
         if (InputManager.instance != null)
         {
             InputManager.instance.GetBuildBuildAction().performed += OnBuildPerformed;
