@@ -148,12 +148,14 @@ public class InputManager : MonoBehaviour
     }
     public void EnableBuildMap()
     {
+        if (UIMap != null) UIMap.Disable();
         if (buildMap != null) buildMap.Enable();
         if (driveMap != null) driveMap.Disable();
     }
 
     public void EnableDriveMap()
     {
+        if (UIMap != null) UIMap.Disable();
         if (driveMap != null) driveMap.Enable();
         if (buildMap != null) buildMap.Disable();
     }

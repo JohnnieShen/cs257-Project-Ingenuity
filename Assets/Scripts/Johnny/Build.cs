@@ -463,8 +463,8 @@ public class BuildSystem : MonoBehaviour
 
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, effectiveMask))
         {
-            Debug.Log("Raycast hit: " + hitInfo.collider.gameObject.name);
-            Debug.Log("Raycast hit object has parent: " + hitInfo.collider.gameObject.transform.parent?.gameObject.name);
+            // Debug.Log("Raycast hit: " + hitInfo.collider.gameObject.name);
+            // Debug.Log("Raycast hit object has parent: " + hitInfo.collider.gameObject.transform.parent?.gameObject.name);
             if (hitInfo.collider.gameObject.layer == 6 || (hitInfo.collider.gameObject.transform.parent != null && hitInfo.collider.gameObject.transform.parent.gameObject.layer == 6))
             {
                 // Convert to commandModule space

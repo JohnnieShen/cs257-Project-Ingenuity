@@ -77,9 +77,9 @@ public class Hull : MonoBehaviour
         }
         if (parentAI != null)
         {
-            Debug.Log("Removing block from AI vehicle: " + parentAI.name);
+            // Debug.Log("Removing block from AI vehicle: " + parentAI.name);
             Transform referenceTransform = (commandModule != null) ? commandModule : parentAI.transform;
-            Debug.Log("command module is null "+(commandModule == null));
+            // Debug.Log("command module is null "+(commandModule == null));
             Vector3Int localPos = Vector3Int.RoundToInt(referenceTransform.InverseTransformPoint(transform.position));
             EnemyBlockManager.instance.RemoveBlock(parentAI, localPos);
             EnemyBlockManager.instance.RemoveConnections(parentAI, localPos);
