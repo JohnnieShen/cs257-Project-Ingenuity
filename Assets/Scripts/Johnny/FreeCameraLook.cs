@@ -38,6 +38,8 @@ public class FreeCameraLook : Pivot {
 	private float smoothYvelocity = 0;
 	private bool isFiring = false;
 	public float terrainDetectionRangeMultiplyer = 1f;
+	public float pickUpDistance = 5f;
+	public GameObject pickupIconPanel;
 	protected override void Awake()
 	{
 		base.Awake();
@@ -121,6 +123,9 @@ public class FreeCameraLook : Pivot {
 		Vector3 centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
 		Ray forwardRay = cam.GetComponentInChildren<Camera>().ScreenPointToRay(centerScreen);
         Hull hoveredHull = FindHoveredHull(forwardRay);
+		if(pickupIconPanel != null) {
+            pickupIconPanel.SetActive(hoveredHull != null);
+        }
 		if (Input.GetKeyDown(KeyCode.F) && hoveredHull != null)
 		{
 			PickupBlock(hoveredHull);
@@ -222,7 +227,7 @@ public class FreeCameraLook : Pivot {
 	private Hull FindHoveredHull(Ray ray)
     {
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f, combinedMask))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, pickUpDistance, combinedMask))
         {
 			// Debug.Log("Hit: " + hitInfo.transform.name);
             if ((hitInfo.transform.CompareTag("Block") ||

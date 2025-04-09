@@ -344,25 +344,29 @@ public class BuildSystem : MonoBehaviour
                                 Hull neighborHull = neighborRb.GetComponent<Hull>();
                                 if (neighborHull != null)
                                 {
-                                    Vector3Int oppositeOffset = -offsetInModuleInt; // Calculate the opposite offset
-                                    if (neighborHull.validConnectionOffsets.Contains(oppositeOffset)) // If the neighbor has a valid offset at the current position too
+                                    Vector3Int gridOffset = spawnPosInt - neighborPos;
+
+                                    Vector3 gridOffsetVec = gridOffset;
+                                    Quaternion neighborLocalRot = neighborRb.transform.localRotation;
+                                    Vector3 neighborLocalOffset = Quaternion.Inverse(neighborLocalRot) * gridOffsetVec;
+                                    Vector3Int neighborLocalOffsetInt = Vector3Int.RoundToInt(neighborLocalOffset);
+
+                                    if (neighborHull.validConnectionOffsets.Contains(neighborLocalOffsetInt))
                                     {
-                                        // Add joint
                                         var joint = newBlock.AddComponent<FixedJoint>();
                                         joint.connectedBody = neighborRb;
                                         joint.breakForce = breakForce;
 
-                                        Vector3Int newBlockPos = Vector3Int.RoundToInt(localSpawn);
-                                        BlockManager.instance.AddConnection(newBlockPos, neighborPos);
+                                        BlockManager.instance.AddConnection(spawnPosInt, neighborPos);
                                         BlockInventoryManager.instance.TryConsumeBlock(currentBlock, 1);
                                         SetText();
                                         
                                         // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                     }
-                                    // else
-                                    // {
-                                    //     Debug.Log($"Neighbor at {neighborPos} does not allow connection at offset {oppositeOffset}.");
-                                    // }
+                                    else
+                                    {
+                                        // Debug.Log($"Neighbor at {neighborPos} does not allow connection at offset {oppositeOffset}.");
+                                    }
                                 }
                             }
                             
