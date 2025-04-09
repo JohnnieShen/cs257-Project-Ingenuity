@@ -37,6 +37,7 @@ public class FreeCameraLook : Pivot {
 	private float smoothXvelocity = 0;
 	private float smoothYvelocity = 0;
 	private bool isFiring = false;
+	public float terrainDetectionRangeMultiplyer = 1f;
 	protected override void Awake()
 	{
 		base.Awake();
@@ -203,7 +204,20 @@ public class FreeCameraLook : Pivot {
 	void HandleZoom()
 	{
 		currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomSmoothFactor);
-		cam.localPosition = new Vector3(0f, 0f, -currentZoom);
+		Vector3 desiredLocalPos = new Vector3(0f, 0f, -currentZoom);
+		Vector3 desiredWorldPos = pivot.TransformPoint(desiredLocalPos);
+
+		Vector3 direction = (desiredWorldPos - pivot.position).normalized;
+		float distance = Vector3.Distance(pivot.position, desiredWorldPos);
+
+		RaycastHit hit;
+		if (Physics.Raycast(pivot.position, direction, out hit, distance*terrainDetectionRangeMultiplyer, terrainLayerMask))
+		{
+			currentZoom = hit.distance - 1f;
+			currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+			desiredLocalPos = new Vector3(0f, 2f, -currentZoom);
+		}
+		cam.localPosition = Vector3.Lerp(cam.localPosition, desiredLocalPos, Time.deltaTime * zoomSmoothFactor);
 	}
 	private Hull FindHoveredHull(Ray ray)
     {

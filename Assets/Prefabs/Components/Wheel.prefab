@@ -425,7 +425,7 @@ MonoBehaviour:
   accelForceMultiplier: 1
   rigidBody: {fileID: 4619296434302728546}
   suspensionRestDist: 1
-  springStrength: 300
+  springStrength: 1000
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
@@ -441,6 +441,7 @@ MonoBehaviour:
   currentSteerAngle: 0
   invertSteering: 0
   tireRadius: 0.3
+  isLeftSide: 0
 --- !u!1 &6096456668810512772
 GameObject:
   m_ObjectHideFlags: 0

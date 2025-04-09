@@ -6005,6 +6005,8 @@ GameObject:
   - component: {fileID: 859503053}
   - component: {fileID: 859503055}
   - component: {fileID: 859503054}
+  - component: {fileID: 859503056}
+  - component: {fileID: 859503057}
   m_Layer: 0
   m_Name: DrivingCamera
   m_TagString: Untagged
@@ -6122,6 +6124,54 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!135 &859503056
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859503052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &859503057
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859503052}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
 --- !u!1 &870341056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7508,19 +7558,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableBuildingBlocks:
   - Block: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
-    CurrentCount: 5
+    CurrentCount: 99
     MaxStack: 99
   - Block: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-    CurrentCount: 10
+    CurrentCount: 99
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
-    CurrentCount: 5
+    CurrentCount: 99
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
-    CurrentCount: 5
+    CurrentCount: 99
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
-    CurrentCount: 5
+    CurrentCount: 99
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
+    CurrentCount: 99
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
+    CurrentCount: 99
     MaxStack: 99
 --- !u!1 &1083270632
 GameObject:
@@ -21264,7 +21320,7 @@ MonoBehaviour:
   zoomSpeed: 3
   minZoom: 5
   maxZoom: 30
-  zoomSmoothFactor: 3
+  zoomSmoothFactor: 5
   terrainLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -21276,6 +21332,7 @@ MonoBehaviour:
   shieldLayer:
     serializedVersion: 2
     m_Bits: 2048
+  terrainDetectionRangeMultiplyer: 1.5
 --- !u!1001 &1405237362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64259,7 +64316,7 @@ GameObject:
   - component: {fileID: 1836449648}
   - component: {fileID: 1836449647}
   - component: {fileID: 1836449646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}

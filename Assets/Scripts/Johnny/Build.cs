@@ -307,6 +307,10 @@ public class BuildSystem : MonoBehaviour
                         newBlockWorldRotation *= Quaternion.Euler(180f, 0f, 0f);
                     }
                 }
+                if (currentBlock.isRotatable) // If block is rotatable, apply rotation offset
+                {
+                    newBlockWorldRotation *= Quaternion.Euler(0f, 90f * rotationOffsetCount, 0f);
+                }
                 // newBlock.transform.localRotation *= Quaternion.Euler(0, 90f * rotationOffsetCount, 0);
                 Quaternion finalLocalRotation = Quaternion.Inverse(parent.rotation) * newBlockWorldRotation;
                 newBlock.transform.localRotation = finalLocalRotation;
@@ -455,7 +459,9 @@ public class BuildSystem : MonoBehaviour
 
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, effectiveMask))
         {
-            if (hitInfo.collider.gameObject.layer == 6)
+            Debug.Log("Raycast hit: " + hitInfo.collider.gameObject.name);
+            Debug.Log("Raycast hit object has parent: " + hitInfo.collider.gameObject.transform.parent?.gameObject.name);
+            if (hitInfo.collider.gameObject.layer == 6 || (hitInfo.collider.gameObject.transform.parent != null && hitInfo.collider.gameObject.transform.parent.gameObject.layer == 6))
             {
                 // Convert to commandModule space
                 Vector3 localPoint = commandModule.InverseTransformPoint(hitInfo.point);
@@ -507,7 +513,9 @@ public class BuildSystem : MonoBehaviour
                 }
 
                 // Add user rotation offset
-                newBlockWorldRotation *= Quaternion.Euler(0f, 90f * rotationOffsetCount, 0f);
+                if (currentBlock.isRotatable){ // If block is rotatable, apply rotation offset
+                    newBlockWorldRotation *= Quaternion.Euler(0f, 90f * rotationOffsetCount, 0f);
+                }
 
                 // Convert world rotation -> parent local
                 Quaternion finalLocalRotation = Quaternion.Inverse(parent.rotation) * newBlockWorldRotation;
