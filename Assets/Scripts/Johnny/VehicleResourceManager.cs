@@ -49,10 +49,21 @@ public class VehicleResourceManager : MonoBehaviour
     }
     void Update()
     {
-        if (energyAmmoCount < maxEnergyAmmo && energyRechargeCoroutine == null &&
-            Time.time - lastEnergyShotTime >= energyRechargeDelay)
+        if (ModeSwitcher.instance != null && ModeSwitcher.instance.currentMode == ModeSwitcher.Mode.Drive)
         {
-            energyRechargeCoroutine = StartCoroutine(EnergyRechargeRoutine());
+            if (energyAmmoCount < maxEnergyAmmo && energyRechargeCoroutine == null &&
+                Time.time - lastEnergyShotTime >= energyRechargeDelay)
+            {
+                energyRechargeCoroutine = StartCoroutine(EnergyRechargeRoutine());
+            }
+        }
+        else
+        {
+            if (energyRechargeCoroutine != null)
+            {
+                StopCoroutine(energyRechargeCoroutine);
+                energyRechargeCoroutine = null;
+            }
         }
     }
 
@@ -90,7 +101,7 @@ public class VehicleResourceManager : MonoBehaviour
         }
     }
 
-    private void UpdateBallisticAmmoUI()
+    public void UpdateBallisticAmmoUI()
     {
         if (ballisticAmmoSlider != null)
         {
@@ -98,7 +109,7 @@ public class VehicleResourceManager : MonoBehaviour
         }
     }
 
-    private void UpdateEnergyAmmoUI()
+    public void UpdateEnergyAmmoUI()
     {
         if (energyAmmoSlider != null)
         {
@@ -129,5 +140,9 @@ public class VehicleResourceManager : MonoBehaviour
         scrapCount -= amount;
         onScrapChanged?.Invoke(scrapCount);
         return true;
+    }
+    public void ResetLastEnergyShotTime()
+    {
+    lastEnergyShotTime = Time.time;
     }
 }

@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     private InputAction driveShootAction;
     private InputAction driveSwapModeAction;
     private InputAction driveScrollAction;
+    private InputAction driveBoostAction;
     private InputActionMap UIMap;
     private InputAction UIClickAction;
     private InputAction UIScrollAction;
@@ -64,6 +65,7 @@ public class InputManager : MonoBehaviour
             driveShootAction = driveMap.FindAction("Fire");
             driveSwapModeAction = driveMap.FindAction("Swap Mode");
             driveScrollAction = driveMap.FindAction("Scroll");
+            driveBoostAction = driveMap.FindAction("Boost");
         }
         if (UIMap != null)
         {
@@ -133,6 +135,9 @@ public class InputManager : MonoBehaviour
     public InputAction GetDriveScrollAction()
     {
         return driveScrollAction;
+    }
+    public InputAction GetDriveBoostAction() {
+        return driveBoostAction;
     }
     public InputAction GetUIClickAction()
     {

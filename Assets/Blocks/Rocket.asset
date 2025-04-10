@@ -18,9 +18,10 @@ MonoBehaviour:
   isTopMountable: 1
   isSideMountable: 1
   isBottomMountable: 1
+  isRotatable: 0
   isCraftable: 1
   cost: 30
   recycleBonus: 10
   attachDirection: {x: 0, y: 1, z: 0}
   blockHealth: 100
-  uiSprite: {fileID: 21300000, guid: 2b2173f89a0239b428b3a174fed18275, type: 3}
+  uiSprite: {fileID: 21300000, guid: 19a75cd8e9d281a41b8a948ffe121036, type: 3}
