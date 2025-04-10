@@ -5,18 +5,17 @@ using UnityEngine.InputSystem.HID;
 
 public class Vehicle : MonoBehaviour
 {
-    public GameObject authority;
-    public Dictionary<Vector3Int, Block> blocks;
+    public Dictionary<Vector3, Block> blocks;
     public Block commandModule;
 
     void Awake()
     {
         // Instantiate blocks
-        blocks = new Dictionary<Vector3Int, Block>();
-        blocks.Add(Vector3Int.zero, commandModule);
+        blocks = new Dictionary<Vector3, Block>();
+        blocks.Add(Vector3.zero, commandModule);
     }
 
-    public void Add(Vector3Int coordinates, Vector3Int orientation, GameObject prefab)
+    public void Add(Vector3 coordinates, Vector3 orientation, GameObject prefab)
     {
         //// Check if coordinates are out of bounds
         //if (coordinates.x < 0 || coordinates.x >= blocks.GetLength(0) || coordinates.y < 0 || coordinates.y >= blocks.GetLength(1) || coordinates.z < 0 || coordinates.z >= blocks.GetLength(2))
@@ -43,7 +42,7 @@ public class Vehicle : MonoBehaviour
         foreach ((_, Block block) in blocks)
         {
             // Find adjacent blocks with compatible connections
-            foreach (Vector3Int connection in block.connections)
+            foreach (Vector3 connection in block.connections)
             {
                 if (blocks.TryGetValue(block.coordinates + connection, out Block otherBlock) && otherBlock.connections.Contains(-connection))
                 {
@@ -77,9 +76,9 @@ public class Vehicle : MonoBehaviour
     //HashSet<Block> Neighbors(Block block)
     //{
     //    HashSet<Block> neighbors = new HashSet<Block>(); // TODO: should neighbors contain self?
-    //    foreach (Vector3Int connection in block.connections)
+    //    foreach (Vector3 connection in block.connections)
     //    {
-    //        Vector3Int otherPosition = block.position + connection;
+    //        Vector3 otherPosition = block.position + connection;
     //        Block otherBlock = blocks[otherPosition.x, otherPosition.y, otherPosition.z];
     //        if (otherBlock && otherBlock.connections.Contains(-connection))
     //        {

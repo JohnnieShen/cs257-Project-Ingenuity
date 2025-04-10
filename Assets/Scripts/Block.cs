@@ -6,10 +6,10 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
     public Vehicle vehicle;
-    public Vector3Int coordinates;
+    public Vector3 coordinates;
     public int connectionStrength; // TODO: implement without public
-    [SerializeField] Vector3Int[] connectionsArray; // used to instantiate connections since sets cannot be serialized
-    public HashSet<Vector3Int> connections; // TODO: implement without public 
+    [SerializeField] Vector3[] connectionsArray; // used to instantiate connections since sets cannot be serialized
+    public HashSet<Vector3> connections; // TODO: implement without public 
 
     //int health;
 
@@ -17,10 +17,10 @@ public class Block : MonoBehaviour
 
     void Awake()
     {
-       connections = new HashSet<Vector3Int>(connectionsArray);
+       connections = new HashSet<Vector3>(connectionsArray);
     }
 
-    //public void Initialize(Vector3Int position)
+    //public void Initialize(Vector3 position)
     //{
     //    this.position = position;
     //}
@@ -28,7 +28,7 @@ public class Block : MonoBehaviour
     //void Remove()
     //{
     //    vehicle.Remove(this);
-    //    position = Vector3Int.zero;
+    //    position = Vector3.zero;
     //    vehicle = null;
     //    // TODO: reparent to environment
     //}

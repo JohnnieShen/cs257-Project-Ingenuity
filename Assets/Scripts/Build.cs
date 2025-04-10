@@ -33,7 +33,7 @@ public class Build : MonoBehaviour
             }
 
             // Calculate connection
-            Vector3Int connection = Helper.ToInt(vehicle.commandModule.transform.InverseTransformDirection(hit.normal));
+            Vector3 connection = vehicle.commandModule.transform.InverseTransformDirection(hit.normal);
 
             // Check if block has that connection
             if (!block.connections.Contains(connection))

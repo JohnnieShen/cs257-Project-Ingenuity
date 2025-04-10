@@ -73,15 +73,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7339906490987056343, guid: 852c9a2ccd94f5c42b9818bdc238ee08, type: 3}
       propertyPath: coordinates.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339906490987056343, guid: 852c9a2ccd94f5c42b9818bdc238ee08, type: 3}
       propertyPath: coordinates.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7339906490987056343, guid: 852c9a2ccd94f5c42b9818bdc238ee08, type: 3}
       propertyPath: coordinates.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7812225158133222064, guid: 852c9a2ccd94f5c42b9818bdc238ee08, type: 3}
       propertyPath: m_LocalPosition.x
