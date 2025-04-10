@@ -193,6 +193,10 @@ public class BlockManager : MonoBehaviour
         if (blocks.TryGetValue(pos, out Rigidbody rb)) // If the block is in the blocks directory
         {
             if (rb == null) return;
+            if (rb.transform.parent != null)
+            {
+                rb.transform.SetParent(null);
+            }
             rb.isKinematic = false; // Enable physics on the block
             FixedJoint[] joints = rb.GetComponents<FixedJoint>();
             foreach (FixedJoint joint in joints)
