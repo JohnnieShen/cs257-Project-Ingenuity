@@ -406,8 +406,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2764749836424522545}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -5296,8 +5296,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2764749836424522545}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -10562,8 +10562,7 @@ MonoBehaviour:
   - {fileID: 1423184359962775420}
   shootPoint: {fileID: 3142191892951490519}
   projectilePrefab: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
-  fireRate: 2
-  reloadTime: 2
+  fireRate: 10
   ballisticDamage: 10
   energyDamage: 10
   magazineSize: 10
@@ -10591,6 +10590,7 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
+  isPreview: 0
 --- !u!65 &9042610892384459985
 BoxCollider:
   m_ObjectHideFlags: 0
