@@ -112,7 +112,7 @@ public class BlockManager : MonoBehaviour
             // Debug.Log("Enabling physics for block " + rb.gameObject.name);
             if (rb != null)
             {
-                Debug.Log("Enabling physics for block " + rb.gameObject.name);
+                // Debug.Log("Enabling physics for block " + rb.gameObject.name);
                 rb.isKinematic = false;
             }
         }

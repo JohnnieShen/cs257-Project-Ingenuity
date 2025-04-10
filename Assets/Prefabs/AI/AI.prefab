@@ -1399,7 +1399,7 @@ MonoBehaviour:
   - {fileID: 1185898557519851581}
   - {fileID: 7952681331814472299}
   shootPoint: {fileID: 1886362546996563457}
-  projectilePrefab: {fileID: 7899788722775472648, guid: 26b87f6b0dc09474cbc4df9e2167fcc7, type: 3}
+  projectilePrefab: {fileID: 6708683079509076862, guid: 7e323d06d51ae0e408b1147ce3c976cc, type: 3}
   fireRate: 2
   ballisticDamage: 10
   energyDamage: 10

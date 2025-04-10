@@ -3,24 +3,27 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public bool IsEnemyProjectile = false;
-    public float launchForce;
+    public float speed;
     public float ballisticDamage = 10f;
     public float energyDamage = 10f;
     public float timeToDestroy = 10f;
 
-    private Rigidbody rb;
-
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.AddRelativeForce(0, 0, launchForce, ForceMode.Impulse);
         Destroy(gameObject, timeToDestroy);
     }
+
+    private void Update()
+    {
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+    }
+
     public void SetDamage(float ballisticDmg, float energyDmg)
     {
         ballisticDamage = ballisticDmg;
         energyDamage = energyDmg;
     }
+
     void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Projectile hit: " + other.name + " " + other.tag);

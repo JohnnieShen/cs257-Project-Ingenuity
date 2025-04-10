@@ -43,6 +43,10 @@ public class EnemyAI : MonoBehaviour
                 Debug.LogWarning("No Core found");
             }
         }
+        if (!EnemyBlockManager.instance.vehicles.ContainsKey(this))
+        {
+            InitializeVehicleStructure();
+        }
         patrolCenter = transform.position;
         InitializeAI();
         maxTotalHealth = healthSystem.CalculateMaxHealth();
