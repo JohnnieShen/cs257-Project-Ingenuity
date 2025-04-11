@@ -2026,11 +2026,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729767063}
   m_CullTransparentMesh: 1
---- !u!1 &731380239 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
-  m_PrefabInstance: {fileID: 515548460}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &773504774
 GameObject:
   m_ObjectHideFlags: 0
@@ -55867,9 +55862,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d19da5f1e917734b9551e36382ced05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballisticAmmoCount: 100
+  ballisticAmmoCount: 9999
   energyAmmoCount: 30
-  maxBallisticAmmo: 100
+  maxBallisticAmmo: 9999
   maxEnergyAmmo: 30
   energyRechargeDelay: 3
   energyRechargeRate: 1
@@ -56176,7 +56171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 100
-  prefab: {fileID: 731380239}
+  prefab: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
   numberEnemies: 10
 --- !u!4 &1909752368
 Transform:
