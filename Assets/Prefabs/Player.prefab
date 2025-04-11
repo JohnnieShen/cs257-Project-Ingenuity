@@ -144,7 +144,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 8664133814074725093, guid: e750b30487ce470438be5f8a09235e23, type: 3}
   - {fileID: 3394638363398936712, guid: ebedc9bf4d456a1459f5b13518ef8889, type: 3}
-  - {fileID: 6110892110929326520, guid: 18905e5b955bc3447abbc1191fae1c25, type: 3}
+  - {fileID: 2677563407817334961, guid: c7389b7afed0f49488764cac8584176c, type: 3}
 --- !u!33 &2563163056239309620
 MeshFilter:
   m_ObjectHideFlags: 0

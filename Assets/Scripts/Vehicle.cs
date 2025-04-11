@@ -42,7 +42,7 @@ public class Vehicle : MonoBehaviour
         foreach ((_, Block block) in blocks)
         {
             // Find adjacent blocks with compatible connections
-            foreach (Vector3 connection in block.connections)
+            foreach (Vector3Int connection in block.connections)
             {
                 if (blocks.TryGetValue(block.coordinates + connection, out Block otherBlock) && otherBlock.connections.Contains(-connection))
                 {
