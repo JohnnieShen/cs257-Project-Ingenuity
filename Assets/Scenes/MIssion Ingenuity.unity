@@ -2582,6 +2582,9 @@ MonoBehaviour:
   - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
     CurrentCount: 4
     MaxStack: 99
+  - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
+    CurrentCount: 4
+    MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
   m_ObjectHideFlags: 0
@@ -55844,7 +55847,7 @@ Transform:
   m_GameObject: {fileID: 1909752366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 18.23, z: 0}
+  m_LocalPosition: {x: -150, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
