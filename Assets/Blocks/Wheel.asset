@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea9861b54fd5a3a9b884dc989415243, type: 3}
+  m_Name: Wheel
+  m_EditorClassIdentifier: 
+  BlockName: Wheel
+  BlockObject: {fileID: 2325821719734306567, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+  PreviewObject: {fileID: 2325821719734306567, guid: ab5e4b4f6417eb8759bdd7ce880e272a, type: 3}
+  isTopMountable: 0
+  isSideMountable: 1
+  isBottomMountable: 0
+  isCraftable: 1
+  cost: 30
+  recycleBonus: 10
+  attachDirection: {x: -1, y: 0, z: 0}
+  blockHealth: 200
+  uiSprite: {fileID: 21300000, guid: 48687174bb12ac546b69ee09abc6af21, type: 3}
