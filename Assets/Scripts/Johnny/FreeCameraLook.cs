@@ -145,16 +145,16 @@ public class FreeCameraLook : Pivot {
 		// Ray forwardRay = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
 		Debug.DrawRay(forwardRay.origin, forwardRay.direction * 1000f, Color.red, 0.1f);
 
-		int aimLayer = LayerMask.NameToLayer("Aim");
-		if (aimLayer == -1)
-		{
-			Debug.LogError("Layer 'Aim' does not exist in Project Settings > Tags and Layers.");
-			return;
-		}
-		int aimMask = 1 << aimLayer;
+		//int aimLayer = LayerMask.NameToLayer("Aim");
+		//if (aimLayer == -1)
+		//{
+		//	Debug.LogError("Layer 'Aim' does not exist in Project Settings > Tags and Layers.");
+		//	return;
+		//}
+		//int aimMask = 1 << aimLayer;
 
 		RaycastHit hit;
-		if (Physics.Raycast(forwardRay, out hit, 1000f, aimMask, QueryTriggerInteraction.Collide))
+		if (Physics.Raycast(forwardRay, out hit, 1000f, LayerMask.GetMask("Terrain", "EnemyBlock"), QueryTriggerInteraction.Collide))
 		{
 			aimTarget.position = Vector3.Lerp(aimTarget.position, hit.point, Time.deltaTime * 10f);
 		}
