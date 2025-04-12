@@ -114,6 +114,7 @@ public class Turret : MonoBehaviour
             return;
         CheckIfBlocked();
     }
+
     // Subscribe to the OnFire event for player turrets, we don't want AI turrets to do this.
     void OnEnable()
     {
@@ -121,6 +122,7 @@ public class Turret : MonoBehaviour
             return;
         FreeCameraLook.OnFire += HandleFireEvent;
     }
+
     // Unsubscribe from the OnFire event when the turret is disabled to prevent memory leaks.
     void OnDisable()
     {
