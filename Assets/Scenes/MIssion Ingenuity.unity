@@ -2576,29 +2576,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableBuildingBlocks:
-  - Block: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
+  - Block: {fileID: 11400000, guid: 4aff471f1d9cd7e4b96eecf9f3ec2404, type: 2}
     CurrentCount: 99
     MaxStack: 99
-  - Block: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
-    CurrentCount: 99
+  - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
+    CurrentCount: 4
     MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
