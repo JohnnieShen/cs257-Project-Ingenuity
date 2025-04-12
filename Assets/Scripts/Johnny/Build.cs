@@ -389,8 +389,7 @@ public class BuildSystem : MonoBehaviour
                                         joint.breakForce = breakForce;
 
                                         BlockManager.instance.AddConnection(spawnPosInt, neighborPos);
-                                        BlockInventoryManager.instance.TryConsumeBlock(currentBlock, 1);
-                                        SetText();
+                                        
                                         
                                         // Debug.Log($"Connected new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {oppositeOffset}).");
                                     }
@@ -411,6 +410,8 @@ public class BuildSystem : MonoBehaviour
                         //     Debug.Log("No neighbor found at " + neighborPos + ".");
                         // }
                     }
+                    BlockInventoryManager.instance.TryConsumeBlock(currentBlock, 1);
+                    SetText();
                 }
                 // else
                 // {

@@ -2,6 +2,7 @@
 using System;
 //using UnityEditor;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class FreeCameraLook : Pivot {
 	public static event Action OnFire;
 
@@ -40,6 +41,7 @@ public class FreeCameraLook : Pivot {
 	public float terrainDetectionRangeMultiplyer = 1f;
 	public float pickUpDistance = 5f;
 	public GameObject pickupIconPanel;
+	public Image pickupIconImage;
 	protected override void Awake()
 	{
 		base.Awake();
@@ -124,9 +126,19 @@ public class FreeCameraLook : Pivot {
 		Ray forwardRay = cam.GetComponentInChildren<Camera>().ScreenPointToRay(centerScreen);
         Hull hoveredHull = FindHoveredHull(forwardRay);
 		if(pickupIconPanel != null) {
-            pickupIconPanel.SetActive(hoveredHull != null);
-        }
-		if (Input.GetKeyDown(KeyCode.F) && hoveredHull != null)
+			bool showPickupPanel = (hoveredHull != null);
+			pickupIconPanel.SetActive(showPickupPanel);
+			if(showPickupPanel && pickupIconImage != null && hoveredHull.sourceBlock != null) {
+				pickupIconImage.sprite = hoveredHull.sourceBlock.uiSprite;
+			}
+		}
+		// if (hoveredHull != null) {
+		// 	Debug.Log("Hovered Hull: " + hoveredHull.name);
+		// }
+		if (InputManager.instance != null
+			&& InputManager.instance.GetDriveInteractAction() != null 
+			&& InputManager.instance.GetDriveInteractAction().triggered 
+			&& hoveredHull != null)
 		{
 			PickupBlock(hoveredHull);
 		}
