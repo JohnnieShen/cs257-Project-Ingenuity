@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8763938670952321033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8563919812240860363}
+  - component: {fileID: 1336984390763432504}
+  m_Layer: 9
+  m_Name: AimSphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8563919812240860363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763938670952321033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4108613267094406386}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1336984390763432504
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763938670952321033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &805412111250501203
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,12 +152,21 @@ PrefabInstance:
     - {fileID: 7446290743480563555, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3614666414008085153, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 8563919812240860363}
+    - targetCorrespondingSourceObject: {fileID: 3614666414008085153, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4671442481500805805}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2640438906345378060}
+    - targetCorrespondingSourceObject: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7482913657371841814}
+    - targetCorrespondingSourceObject: {fileID: 5049604137013132266, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 196162801597095118}
   m_SourcePrefab: {fileID: 100100000, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
 --- !u!4 &4108613267094406386 stripped
 Transform:
@@ -130,6 +192,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: cb5ee92dce5d259409ba70cec9d5f3bc, type: 2}
   currentHealth: 0
+--- !u!114 &7482913657371841814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566073352069617081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6873b45f4c83224f839c34e3f33579d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphereRadius: 50
+  sphere: {fileID: 1336984390763432504}
+--- !u!114 &196162801597095118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566073352069617081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d19da5f1e917734b9551e36382ced05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballisticAmmoCount: 9999
+  energyAmmoCount: 30
+  maxBallisticAmmo: 9999
+  maxEnergyAmmo: 30
+  energyRechargeDelay: 3
+  energyRechargeRate: 1
+  ballisticAmmoSlider: {fileID: 0}
+  energyAmmoSlider: {fileID: 0}
+  scrapCount: 0
+  onScrapChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5142817560197807430
 PrefabInstance:
   m_ObjectHideFlags: 0
