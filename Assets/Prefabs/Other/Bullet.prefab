@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnemyProjectile: 0
-  speed: 10
-  ballisticDamage: 10
-  energyDamage: 10
+  speed: 30
+  ballisticDamage: 1000
+  energyDamage: 0
   timeToDestroy: 30

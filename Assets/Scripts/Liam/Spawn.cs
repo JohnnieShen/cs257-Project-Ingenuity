@@ -12,7 +12,7 @@ public class Spawn : MonoBehaviour
     {
         for (int i = 0; i < numberEnemies; i++)
         {
-            var position = new Vector3(Random.Range(-range, range), 100, Random.Range(-range, range));
+            var position = transform.position + new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
             position.y = Terrain.activeTerrain.SampleHeight(position) + 5;
             Instantiate(prefab, position, Quaternion.identity);
         }
