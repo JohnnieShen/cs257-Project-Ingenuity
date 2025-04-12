@@ -37,6 +37,7 @@ public class BuildSystem : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Transform commandModule;
+    private Transform referenceTransform;
  
     private void OnEnable()
     {
@@ -54,6 +55,15 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildScrollAction().performed += OnScrollPerformed;
             InputManager.instance.GetBuildRotateAction().performed += OnRotatePerformed;
         }
+        if (commandModule != null)
+        {
+            referenceTransform.position = commandModule.position;
+            referenceTransform.rotation = commandModule.rotation;
+        }
+
+        ReparentAllBlocksToReference();
+        referenceTransform.rotation = Quaternion.identity;
+        TransferBlocksToParent();
     }
 
     private void OnDisable()
@@ -66,7 +76,7 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildRotateAction().performed -= OnRotatePerformed;
         }
     }
-    private void Start()
+    private void Awake()
     {
         // InitializeInventory();
         var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
@@ -76,8 +86,9 @@ public class BuildSystem : MonoBehaviour
             currentBlock = allBlocks[currentBlockIndex].Block;
             SetText();
         }
+        GameObject dummy = new GameObject("ReferenceTransform");
+        referenceTransform = dummy.transform;
     }
-
     // void InitializeInventory()
     // {
     //     foreach (BlockInventory ib in availableBuildingBlocks)
@@ -130,6 +141,11 @@ public class BuildSystem : MonoBehaviour
 
     private void Update()
     {
+        if (commandModule != null && referenceTransform != null)
+        {
+            referenceTransform.position = commandModule.position;
+            referenceTransform.rotation = commandModule.rotation;
+        }
         UpdatePreview();
     }
     public void destroyPreviewBlock()
@@ -256,12 +272,9 @@ public class BuildSystem : MonoBehaviour
 
             if (hitInfo.collider.gameObject.layer == 6) // Hit a block
             {
-                Vector3 localPoint  = commandModule.InverseTransformPoint(hitInfo.point); // Convert hit point to local space
-                Vector3 localNormal = commandModule.InverseTransformDirection(hitInfo.normal); // Convert hit normal to local space
-                float angleWithUp = Vector3.Angle(
-                    hitInfo.normal,
-                    commandModule.TransformDirection(Vector3.up)
-                );
+                Vector3 localPoint = referenceTransform.InverseTransformPoint(hitInfo.point);
+                Vector3 localNormal = referenceTransform.InverseTransformDirection(hitInfo.normal);
+                float angleWithUp = Vector3.Angle(hitInfo.normal, referenceTransform.TransformDirection(Vector3.up));
                 bool isTopSurface = (angleWithUp < 30f);
                 bool isBottomSurface = (angleWithUp > 150f);
                 bool isSideSurface = (!isTopSurface && !isBottomSurface);
@@ -286,7 +299,7 @@ public class BuildSystem : MonoBehaviour
                     Mathf.RoundToInt(localPoint.z + localNormal.z / 2f)
                 );
                 Vector3Int spawnPosInt = Vector3Int.RoundToInt(localSpawn);
-                Vector3 spawnWorldPos = commandModule.TransformPoint(localSpawn);
+                Vector3 spawnWorldPos = referenceTransform.TransformPoint(localSpawn);
                 Vector3 spawnInParentSpace = parent.InverseTransformPoint(spawnWorldPos);
                 // Vector3 spawnInParentSpace = parent.InverseTransformPoint(commandModule.TransformPoint(localSpawn));
                 GameObject newBlock = Instantiate(blockPrefab, parent); // Instantiate new block as child of command module
@@ -294,14 +307,33 @@ public class BuildSystem : MonoBehaviour
                 Quaternion newBlockWorldRotation = Quaternion.identity;
                 if (isSideSurface)
                 {
-                    Vector3 blockAttachDir_world = commandModule.TransformDirection(currentBlock.attachDirection);
-                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, hitInfo.normal);
-                    newBlockWorldRotation = toNormal_world * commandModule.rotation;
+                    Vector3 hitNormal = hitInfo.normal;
+                    // Debug.Log($"[BuildBlock] Raw hitNormal: {hitNormal}");
+
+                    Vector3 snappedNormal = new Vector3(
+                        Mathf.Abs(hitNormal.x) > 0.9f ? Mathf.Sign(hitNormal.x) : 0f,
+                        Mathf.Abs(hitNormal.y) > 0.9f ? Mathf.Sign(hitNormal.y) : 0f,
+                        Mathf.Abs(hitNormal.z) > 0.9f ? Mathf.Sign(hitNormal.z) : 0f
+                    );
+                    snappedNormal.Normalize();
+                    // Debug.Log($"[BuildBlock] Snapped hitNormal: {snappedNormal}");
+
+                    Vector3 blockAttachDir_world = referenceTransform.TransformDirection(currentBlock.attachDirection);
+                    // Debug.Log($"[BuildBlock] currentBlock.attachDirection: {currentBlock.attachDirection} -> blockAttachDir_world: {blockAttachDir_world}");
+
+                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, snappedNormal);
+                    // Debug.Log($"[BuildBlock] toNormal_world (Euler): {toNormal_world.eulerAngles}");
+
+                    newBlockWorldRotation = toNormal_world * referenceTransform.rotation;
+                    // Debug.Log($"[BuildBlock] Intermediate newBlockWorldRotation (Euler): {newBlockWorldRotation.eulerAngles}");
+
                     newBlockWorldRotation *= Quaternion.Euler(0f, 180f, 0f);
+                    // Debug.Log($"[BuildBlock] Final newBlockWorldRotation (Euler): {newBlockWorldRotation.eulerAngles}");
                 }
+
                 else
                 {
-                    newBlockWorldRotation = commandModule.rotation;
+                    newBlockWorldRotation = referenceTransform.rotation;
                     if (isBottomSurface)
                     {
                         newBlockWorldRotation *= Quaternion.Euler(180f, 0f, 0f);
@@ -329,8 +361,7 @@ public class BuildSystem : MonoBehaviour
                     {
                         Vector3 offsetLocal = offset;
                         Vector3 offsetWorld = newBlock.transform.TransformDirection(offsetLocal);
-                        Vector3 offsetInModule = commandModule.InverseTransformDirection(offsetWorld);
-
+                        Vector3 offsetInModule = referenceTransform.InverseTransformDirection(offsetWorld);
                         Vector3Int offsetInModuleInt = new Vector3Int(
                             Mathf.RoundToInt(offsetInModule.x),
                             Mathf.RoundToInt(offsetInModule.y),
@@ -502,9 +533,20 @@ public class BuildSystem : MonoBehaviour
 
                 if (isSideSurface)
                 {
-                    Vector3 blockAttachDir_world = commandModule.TransformDirection(currentBlock.attachDirection);
-                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, hitInfo.normal);
-                    newBlockWorldRotation = toNormal_world * commandModule.rotation;
+                    Vector3 hitNormal = hitInfo.normal;
+                    Vector3 snappedNormal = new Vector3(
+                        Mathf.Abs(hitNormal.x) > 0.9f ? Mathf.Sign(hitNormal.x) : 0f,
+                        Mathf.Abs(hitNormal.y) > 0.9f ? Mathf.Sign(hitNormal.y) : 0f,
+                        Mathf.Abs(hitNormal.z) > 0.9f ? Mathf.Sign(hitNormal.z) : 0f
+                    );
+                    snappedNormal.Normalize();
+
+                    Vector3 blockAttachDir_world = referenceTransform.TransformDirection(currentBlock.attachDirection);
+
+                    Quaternion toNormal_world = Quaternion.FromToRotation(blockAttachDir_world, snappedNormal);
+
+                    newBlockWorldRotation = toNormal_world * referenceTransform.rotation;
+
                     newBlockWorldRotation *= Quaternion.Euler(0f, 180f, 0f);
                 }
                 else
@@ -566,6 +608,31 @@ public class BuildSystem : MonoBehaviour
         foreach (Renderer rend in renderers)
         {
             rend.material = previewMaterial;
+        }
+    }
+    private void ReparentAllBlocksToReference()
+    {
+        List<Transform> blocksToMove = new List<Transform>();
+        foreach (Transform child in parent)
+        {
+            blocksToMove.Add(child);
+        }
+        foreach (Transform child in blocksToMove)
+        {
+            child.SetParent(referenceTransform, true);
+        }
+    }
+
+    private void TransferBlocksToParent()
+    {
+        List<Transform> blocksToTransfer = new List<Transform>();
+        foreach (Transform child in referenceTransform)
+        {
+            blocksToTransfer.Add(child);
+        }
+        foreach (Transform child in blocksToTransfer)
+        {
+            child.SetParent(parent, true);
         }
     }
 }
