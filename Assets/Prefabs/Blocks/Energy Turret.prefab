@@ -10547,4 +10547,4 @@ MonoBehaviour:
   isBlocked: 0
   isAI: 0
   isEnergy: 1
-  ammoCost: 3
+  ammoCost: 1

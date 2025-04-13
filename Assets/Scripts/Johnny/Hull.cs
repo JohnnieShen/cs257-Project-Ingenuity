@@ -6,6 +6,7 @@ public class Hull : MonoBehaviour
 {
     // public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
     public List<Vector3Int> validConnectionOffsets = new List<Vector3Int>();
+    public Transform coreTransform;
     private EnemyAI parentAI;
     private bool isAIVehicle = false;
     public bool canPickup = false;
@@ -56,6 +57,24 @@ public class Hull : MonoBehaviour
         //         cp.body = myRb;
         //     }
         // }
+        Transform[] siblings = transform.parent.GetComponentsInChildren<Transform>();
+        foreach (Transform sibling in siblings)
+        {
+            if (!isAIVehicle && sibling.CompareTag("Core"))
+            {
+                coreTransform = sibling;
+                break;
+            }
+            else if (isAIVehicle && sibling.GetComponent<EnemyAI>() != null)
+            {
+                coreTransform = sibling;
+                break;
+            }
+        }
+        if (coreTransform == null)
+        {
+            Debug.LogWarning("Core transform not found for Hull: " + gameObject.name);
+        }
     }
     
     void OnDestroy()

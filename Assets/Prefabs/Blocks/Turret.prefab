@@ -5683,7 +5683,7 @@ MonoBehaviour:
   isBlocked: 0
   isAI: 0
   isEnergy: 0
-  ammoCost: 3
+  ammoCost: 2
 --- !u!114 &6366130342008382150
 MonoBehaviour:
   m_ObjectHideFlags: 0

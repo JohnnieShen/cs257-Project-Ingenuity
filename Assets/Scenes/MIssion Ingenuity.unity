@@ -15839,6 +15839,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2022962272}
     - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
+      propertyPath: maxBallisticAmmo
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
+      propertyPath: ballisticAmmoCount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
       propertyPath: ballisticAmmoSlider
       value: 
       objectReference: {fileID: 1959042142}
