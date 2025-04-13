@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public float ballisticDamage = 10f;
     public float energyDamage = 10f;
     public float timeToDestroy = 10f;
+    public ParticleSystem impactEffect;
 
     void Start()
     {
@@ -76,6 +77,13 @@ public class Projectile : MonoBehaviour
 
         if (blockHealth != null)
         {
+            Vector3 collisionPoint = other.ClosestPoint(transform.position);
+
+            if (impactEffect != null)
+            {
+                ParticleSystem effect = Instantiate(impactEffect, collisionPoint, Quaternion.identity);
+                Destroy(effect.gameObject, effect.main.duration);
+            }
             blockHealth.TakeDamage(ballisticDamage);
             Destroy(gameObject);
         }
