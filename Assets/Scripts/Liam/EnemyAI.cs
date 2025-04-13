@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     private GameObject patrolTargetObject;
     public LayerMask enemyLayer;
     public Transform aimTransform;
+    public float aimDispersionMultiplier = 1f;
     void Start()
     {
         if (playerTarget == null)
@@ -163,8 +164,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (playerTarget != null && aimTransform != null) // If the player target and aim transform of this AI are not null.
         {
-            Vector3 aimOffset = new Vector3(0, 0f, 0);
-            aimTransform.position = playerTarget.position + aimOffset; // Set the aim transform position to the player's position.
+            Vector3 randomOffset = Random.insideUnitSphere * aimDispersionMultiplier;
+            aimTransform.position = playerTarget.position + randomOffset; // Set the aim transform position to the player's position.
         }
 
         // enemyMovement.targetPosition.position = playerTarget.position;

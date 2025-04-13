@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+      propertyPath: ballisticDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+      propertyPath: IsEnemyProjectile
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7337241990413326769, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.40866518
@@ -50,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: m_Name
-      value: Bullet Variant
+      value: Enemy Bullet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
