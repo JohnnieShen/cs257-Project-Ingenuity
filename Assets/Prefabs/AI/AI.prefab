@@ -347,6 +347,8 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
   isPreview: 0
@@ -1412,6 +1414,7 @@ MonoBehaviour:
   isAI: 1
   isEnergy: 0
   ammoCost: 3
+  aiSpreadAngle: 2
 --- !u!114 &6828658197690590664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1426,6 +1429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: 0, y: -1, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
   isPreview: 0
@@ -7068,6 +7073,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: -1, y: 0, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
   isPreview: 0
@@ -7921,6 +7928,8 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
   isPreview: 0
@@ -9895,6 +9904,8 @@ MonoBehaviour:
   validConnectionOffsets:
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: cb5ee92dce5d259409ba70cec9d5f3bc, type: 2}
   isPreview: 0
@@ -9977,13 +9988,16 @@ MonoBehaviour:
   patrolTimeout: 10
   playerTarget: {fileID: 0}
   enemyMovement: {fileID: 8365212581135263867}
-  enemyTurret: {fileID: 507145633340678802}
+  enemyTurrets:
+  - {fileID: 507145633340678802}
   healthSystem: {fileID: 8743112968291217135}
   patrolWaitTimer: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
   aimTransform: {fileID: 8120539998815119400}
+  aimDispersionMultiplier: 1
+  aiSpreadAngle: 2
 --- !u!1 &5367756047448207486
 GameObject:
   m_ObjectHideFlags: 0
@@ -10354,6 +10368,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: -1, y: 0, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
   isPreview: 0
@@ -10802,6 +10818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: -1, y: 0, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
   isPreview: 0
@@ -11207,6 +11225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: -1, y: 0, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
   isPreview: 0
