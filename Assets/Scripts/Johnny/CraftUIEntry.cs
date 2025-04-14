@@ -22,6 +22,8 @@ public class CraftUIEntry : MonoBehaviour
     public void Setup(OnCraftClicked craftDelegate, OnRecycleClicked recycleDelegate, Block blockData)
     {
         this.blockData = blockData;
+        int current = BlockInventoryManager.instance.GetBlockCount(blockData);
+        UpdateCount(current);
         if (blockNameText != null)
             blockNameText.text = blockData.BlockName;
         if (iconImage != null)
@@ -44,5 +46,10 @@ public class CraftUIEntry : MonoBehaviour
             blockRecycleButton.onClick.RemoveAllListeners();
             blockRecycleButton.onClick.AddListener(() => onRecycleClicked?.Invoke(blockData));
         }
+    }
+    public void UpdateCount(int count)
+    {
+        if (blockNameText != null && blockData != null)
+            blockNameText.text = $"{blockData.BlockName} ({count})";
     }
 }

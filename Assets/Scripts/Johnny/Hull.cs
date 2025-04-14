@@ -6,6 +6,7 @@ public class Hull : MonoBehaviour
 {
     // public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
     public List<Vector3Int> validConnectionOffsets = new List<Vector3Int>();
+    public List<MeshRenderer> childMeshRenderers = new List<MeshRenderer>();
     public Transform coreTransform;
     private EnemyAI parentAI;
     private bool isAIVehicle = false;
@@ -75,6 +76,8 @@ public class Hull : MonoBehaviour
         {
             Debug.LogWarning("Core transform not found for Hull: " + gameObject.name);
         }
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        childMeshRenderers = new List<MeshRenderer>(renderers);
     }
     
     void OnDestroy()

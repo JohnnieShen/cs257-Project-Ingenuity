@@ -38,6 +38,8 @@ public class Turret : MonoBehaviour
     public bool isAI = false;
     public bool isEnergy;
     public int ammoCost;
+
+    [SerializeField] private float aiSpreadAngle = 2f;
     // public Transform aimTransform;
 
     void Start()
@@ -185,7 +187,16 @@ public class Turret : MonoBehaviour
     {
         if (projectilePrefab != null && shootPoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            Quaternion projRotation = shootPoint.rotation;
+
+            if (isAI && aiSpreadAngle > 0f)
+            {
+                projRotation *= Quaternion.Euler(
+                    Random.Range(-aiSpreadAngle, aiSpreadAngle),
+                    Random.Range(-aiSpreadAngle, aiSpreadAngle),
+                    0f);
+            }
+            GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, projRotation);
             Projectile projScript = projectile.GetComponent<Projectile>();
             if (projScript != null)
             {
@@ -291,4 +302,5 @@ public class Turret : MonoBehaviour
         if (blockedLine != null)
             blockedLine.enabled = false;
     }
+    public void SetAISpread(float spread) => aiSpreadAngle = Mathf.Max(0f, spread);
 }

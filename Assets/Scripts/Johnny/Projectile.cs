@@ -88,9 +88,16 @@ public class Projectile : MonoBehaviour
                 Destroy(effect.gameObject, effect.main.duration);
             }
 
+            Hull hull = blockHealth.GetComponent<Hull>();
             MonoBehaviour mb = blockHealth as MonoBehaviour;
-            if (mb != null)
+            if (hull != null && mb != null)
             {
+                // Start the coroutine that jitters only the MeshRenderers in hull.childMeshRenderers.
+                mb.StartCoroutine(JitterVisualMeshes(hull, jitterDuration, jitterMagnitude));
+            }
+            else if (mb != null)
+            {
+                // Fallback jitter: jitter the entire block transform.
                 mb.StartCoroutine(JitterBlock(blockHealth.transform, jitterDuration, jitterMagnitude));
             }
 
@@ -133,5 +140,58 @@ public class Projectile : MonoBehaviour
         // After jitter, restore the block's position relative to the updated reference.
         blockTransform.position = reference.position + initialOffset;
     }
+    private IEnumerator JitterVisualMeshes(Hull hull, float duration, float magnitude)
+    {
+        // Determine the reference transform.
+        Transform reference = null;
+        if (hull.coreTransform != null)
+        {
+            reference = hull.coreTransform;
+        }
+        else if (hull.transform.parent != null)
+        {
+            reference = hull.transform.parent;
+        }
+        else
+        {
+            reference = hull.transform;
+        }
+        
+        // Store each MeshRenderer's original local position relative to the reference.
+        Dictionary<Transform, Vector3> originalLocalPositions = new Dictionary<Transform, Vector3>();
+        foreach (MeshRenderer mr in hull.childMeshRenderers)
+        {
+            if (mr != null)
+            {
+                originalLocalPositions[mr.transform] = reference.InverseTransformPoint(mr.transform.position);
+            }
+        }
+        
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            // For each mesh, compute its base world position using the stored local position and add random jitter.
+            foreach (MeshRenderer mr in hull.childMeshRenderers)
+            {
+                if (mr != null && originalLocalPositions.ContainsKey(mr.transform))
+                {
+                    Vector3 baseWorldPos = reference.TransformPoint(originalLocalPositions[mr.transform]);
+                    mr.transform.position = baseWorldPos + Random.insideUnitSphere * magnitude;
+                }
+            }
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Restore each MeshRenderer's position exactly.
+        foreach (MeshRenderer mr in hull.childMeshRenderers)
+        {
+            if (mr != null && originalLocalPositions.ContainsKey(mr.transform))
+            {
+                mr.transform.position = reference.TransformPoint(originalLocalPositions[mr.transform]);
+            }
+        }
+    }
+
 
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     [Header("References")]
     public Transform playerTarget;
     public EnemyMovement enemyMovement;
-    public Turret enemyTurret;
+    public List<Turret> enemyTurrets = new List<Turret>();
     public HealthSystem healthSystem;
 
     private Vector3 patrolCenter;
@@ -30,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     public LayerMask enemyLayer;
     public Transform aimTransform;
     public float aimDispersionMultiplier = 1f;
+    public float aiSpreadAngle = 2f;
     void Start()
     {
         if (playerTarget == null)
@@ -51,6 +54,10 @@ public class EnemyAI : MonoBehaviour
         patrolCenter = transform.position;
         InitializeAI();
         maxTotalHealth = healthSystem.CalculateMaxHealth();
+        if (enemyTurrets.Count == 0)
+            enemyTurrets.AddRange(GetComponentsInChildren<Turret>());
+        foreach (Turret t in enemyTurrets)
+            if (t != null) t.SetAISpread(aiSpreadAngle);
     }
 
     void InitializeAI()
@@ -164,18 +171,14 @@ public class EnemyAI : MonoBehaviour
     {
         if (playerTarget != null && aimTransform != null) // If the player target and aim transform of this AI are not null.
         {
-            Vector3 randomOffset = Random.insideUnitSphere * aimDispersionMultiplier;
-            aimTransform.position = playerTarget.position + randomOffset; // Set the aim transform position to the player's position.
+            aimTransform.position = playerTarget.position;
         }
 
         // enemyMovement.targetPosition.position = playerTarget.position;
 
-        if (enemyTurret != null && enemyTurret.isActiveAndEnabled &&!enemyTurret.isBlocked)
-        {
-            enemyTurret.HandleFireEvent(); // Handle the fire event of the enemy turret.
-
-            // TODO handle the case with multiple turrets, create a lisf for turrets and iterate through them
-        }
+        foreach (Turret t in enemyTurrets)
+            if (t != null && t.isActiveAndEnabled && !t.isBlocked)
+                t.HandleFireEvent();
     }
 
     void FleeBehavior()

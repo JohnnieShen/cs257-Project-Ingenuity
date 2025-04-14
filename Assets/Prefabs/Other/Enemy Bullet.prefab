@@ -13,6 +13,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+      propertyPath: jitterMagnitude
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: IsEnemyProjectile
       value: 1
       objectReference: {fileID: 0}

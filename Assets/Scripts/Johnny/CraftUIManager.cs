@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+using System.Collections;
 
 public class CraftUIManager : MonoBehaviour
 {
     public GameObject craftUIEntryPrefab;
     public Transform entriesParent;
     public TextMeshProUGUI ScrapText;
+    private readonly Dictionary<Block, CraftUIEntry> entryLookup = new();
 
     private void Start()
     {
@@ -36,6 +39,8 @@ public class CraftUIManager : MonoBehaviour
                     entry.blockData = blockInv.Block;
                     entry.Setup(HandleCraftClicked, HandleRecycleClicked, blockInv.Block);
                 }
+                if (entry != null) entryLookup[blockInv.Block] = entry;
+                RefreshEntry(blockInv.Block);
             }
         }
     }
@@ -48,6 +53,7 @@ public class CraftUIManager : MonoBehaviour
         {
             BlockInventoryManager.instance.AddBlock(block, 1);
             Debug.Log("Crafted: " + block.BlockName);
+            RefreshEntry(block);
         }
         else
         {
@@ -65,6 +71,7 @@ public class CraftUIManager : MonoBehaviour
             int bonus = block.recycleBonus;
             VehicleResourceManager.Instance.AddScrap(bonus);
             Debug.Log("Recycled: " + block.BlockName + ", bonus: " + bonus);
+            RefreshEntry(block);
         }
         else
         {
@@ -77,6 +84,14 @@ public class CraftUIManager : MonoBehaviour
         if (ScrapText != null)
         {
             ScrapText.text = newValue.ToString();
+        }
+    }
+    private void RefreshEntry(Block block)
+    {
+        if (entryLookup.TryGetValue(block, out var entry))
+        {
+            int newCount = BlockInventoryManager.instance.GetBlockCount(block);
+            entry.UpdateCount(newCount);
         }
     }
 }
