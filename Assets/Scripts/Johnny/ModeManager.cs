@@ -24,6 +24,7 @@ public class ModeSwitcher : MonoBehaviour
     private float lastModeSwitchTime = 0f;
     private Vector3 originalVehiclePosition;
     private Quaternion originalVehicleRotation;
+    public GameObject buildArrow;
     private void Awake()
     {
         if (instance == null)
@@ -122,6 +123,7 @@ public class ModeSwitcher : MonoBehaviour
     {
         if (mode == Mode.Build)
         {
+            buildArrow.SetActive(true);
             // Time.timeScale = 1f;
             if (buildUI != null) buildUI.SetActive(true);
             if (driveUI != null) driveUI.SetActive(false);
@@ -161,6 +163,7 @@ public class ModeSwitcher : MonoBehaviour
         // Vice versa
         else if (mode == Mode.Drive)
         {
+            buildArrow.SetActive(false);
             // Time.timeScale = 1f;
             if (buildUI != null) buildUI.SetActive(false);
             if (driveUI != null) driveUI.SetActive(true);
@@ -187,6 +190,7 @@ public class ModeSwitcher : MonoBehaviour
             }
         } else if (mode == Mode.Craft)
         {
+            buildArrow.SetActive(true);
             // Time.timeScale = 0f;
             if (buildUI != null) buildUI.SetActive(false);
             if (driveUI != null) driveUI.SetActive(false);
