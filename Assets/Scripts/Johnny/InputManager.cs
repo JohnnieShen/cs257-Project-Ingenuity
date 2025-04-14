@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
     private InputAction UIClickAction;
     private InputAction UIScrollAction;
     private InputAction UIMenuAction;
+    private InputAction UIEscapeAction;
 
     private void Awake()
     {
@@ -74,6 +75,7 @@ public class InputManager : MonoBehaviour
             UIClickAction = UIMap.FindAction("Click");
             UIScrollAction = UIMap.FindAction("ScrollWheel");
             UIMenuAction = UIMap.FindAction("Menu");
+            UIEscapeAction = UIMap.FindAction("Escape");
         }
 
         EnableBuildMap();
@@ -155,6 +157,10 @@ public class InputManager : MonoBehaviour
     public InputAction GetUIMenuAction()
     {
         return UIMenuAction;
+    }
+    public InputAction GetUIEscapeAction()
+    {
+        return UIEscapeAction;
     }
     public void EnableBuildMap()
     {

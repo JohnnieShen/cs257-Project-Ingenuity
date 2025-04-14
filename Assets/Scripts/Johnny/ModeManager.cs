@@ -106,11 +106,13 @@ public class ModeSwitcher : MonoBehaviour
         }
         if (canManuallySwitchMode && currentMode == Mode.Craft)
         {
-            if (InputManager.instance.GetUIMenuAction() != null && InputManager.instance.GetUIMenuAction().triggered)
+            if ((InputManager.instance.GetUIMenuAction() != null && InputManager.instance.GetUIMenuAction().triggered) || InputManager.instance.GetUIEscapeAction() != null && InputManager.instance.GetUIEscapeAction().triggered)
             {
                 currentMode = Mode.Build;
                 SetMode(currentMode);
                 lastModeSwitchTime = Time.time;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 return;
             }
         }

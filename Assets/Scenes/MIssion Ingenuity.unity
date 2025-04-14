@@ -16057,6 +16057,7 @@ GameObject:
   - component: {fileID: 1568084687}
   - component: {fileID: 1568084686}
   - component: {fileID: 1568084685}
+  - component: {fileID: 1568084688}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -16145,11 +16146,26 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1568084688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568084683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a437f9095298194894d81a111d6f1dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupDialoguePrefab: {fileID: 4457199320191225018, guid: 350c9fa8bb1c31143b88abf64d7c9cc8, type: 3}
+  craftUIEntryPrefab: {fileID: 8945057478151409648, guid: 0662afe29ea5cb843a0a41ad0d1e001c, type: 3}
+  UIContainer: {fileID: 1568084684}
 --- !u!1 &1592247151
 GameObject:
   m_ObjectHideFlags: 0

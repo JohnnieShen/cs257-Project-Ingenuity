@@ -47,22 +47,28 @@ public class CraftUIManager : MonoBehaviour
 
     private void HandleCraftClicked(Block block)
     {
+        string message;
         Debug.Log("Craft clicked for: " + block.BlockName);
 
         if (VehicleResourceManager.Instance.TryUseScrap(block.cost))
         {
             BlockInventoryManager.instance.AddBlock(block, 1);
-            Debug.Log("Crafted: " + block.BlockName);
+            message = $"Successfully crafted {block.BlockName}";
+            Debug.Log(message);
             RefreshEntry(block);
         }
         else
         {
-            Debug.Log("Not enough scrap to craft: " + block.BlockName);
+            message = $"Not enough scrap to craft {block.BlockName}";
+            Debug.LogWarning(message);
         }
+
+        UIManager.Instance.ShowPopup(message, 2f);
     }
 
     private void HandleRecycleClicked(Block block)
     {
+        string message;
         Debug.Log("Recycle clicked for: " + block.BlockName);
 
         bool recycled = BlockInventoryManager.instance.TryConsumeBlock(block, 1);
@@ -70,13 +76,17 @@ public class CraftUIManager : MonoBehaviour
         {
             int bonus = block.recycleBonus;
             VehicleResourceManager.Instance.AddScrap(bonus);
-            Debug.Log("Recycled: " + block.BlockName + ", bonus: " + bonus);
+            message = $"Recycled {block.BlockName}, bonus: {bonus}";
+            Debug.Log(message);
             RefreshEntry(block);
         }
         else
         {
-            Debug.Log("No block available to recycle: " + block.BlockName);
+            message = $"No {block.BlockName} available to recycle";
+            Debug.LogWarning(message);
         }
+
+        UIManager.Instance.ShowPopup(message, 2f);
     }
     private void UpdateScrapText(int newValue)
     {
