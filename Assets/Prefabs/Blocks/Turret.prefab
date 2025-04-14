@@ -5698,6 +5698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: 0, y: -1, z: 0}
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
   isPreview: 0
@@ -5720,8 +5721,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.9777488, y: 1.8112093, z: 2.0013094}
-  m_Center: {x: -0.059094608, y: -0.16922575, z: -0.026932716}
+  m_Size: {x: 1.9307612, y: 1.8112093, z: 1.9402231}
+  m_Center: {x: -0.03560084, y: -0.16922575, z: 0.0036104321}
 --- !u!54 &1785506366642487863
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5908,6 +5909,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4239629071919216060}
     m_Modifications:
+    - target: {fileID: 5361060865934958187, guid: bd66b88e7c660e6d591afc0906dfbd54, type: 3}
+      propertyPath: m_Size.x
+      value: 0.95811886
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361060865934958187, guid: bd66b88e7c660e6d591afc0906dfbd54, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9306724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361060865934958187, guid: bd66b88e7c660e6d591afc0906dfbd54, type: 3}
+      propertyPath: m_Center.x
+      value: -0.020940572
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361060865934958187, guid: bd66b88e7c660e6d591afc0906dfbd54, type: 3}
+      propertyPath: m_Center.z
+      value: -0.013328686
+      objectReference: {fileID: 0}
     - target: {fileID: 5361060865934958187, guid: bd66b88e7c660e6d591afc0906dfbd54, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0

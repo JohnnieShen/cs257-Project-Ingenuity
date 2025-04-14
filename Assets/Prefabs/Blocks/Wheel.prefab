@@ -433,7 +433,7 @@ MonoBehaviour:
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
-  maxSteeringAngle: 45
+  maxSteeringAngle: 30
   tire: {fileID: 1944057051638950029}
   isDriveWheel: 1
   isTurnWheel: 1
