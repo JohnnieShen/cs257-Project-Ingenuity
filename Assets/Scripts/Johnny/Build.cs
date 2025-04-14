@@ -278,6 +278,21 @@ public class BuildSystem : MonoBehaviour
                 bool isTopSurface = (angleWithUp < 30f);
                 bool isBottomSurface = (angleWithUp > 150f);
                 bool isSideSurface = (!isTopSurface && !isBottomSurface);
+                if (currentBlock.onlyInlinePlacement)
+                {
+                    Vector3 allowedDirection = referenceTransform.TransformDirection(currentBlock.attachDirection);
+                    float alignmentAngle = Vector3.Angle(hitInfo.normal, allowedDirection);
+                    float alignmentAngleNegative = Vector3.Angle(hitInfo.normal, -allowedDirection);
+                    float tolerance = 20f;
+
+                    if (alignmentAngle > tolerance && alignmentAngleNegative > tolerance)
+                    {
+                        string popupMsg = $"{currentBlock.BlockName} must be placed along the core direction!";
+                        Debug.LogWarning(popupMsg);
+                        UIManager.Instance.ShowPopup(popupMsg, 2f);
+                        return;
+                    }
+                }
                 if (isTopSurface && !currentBlock.isTopMountable)
                 {
                     Debug.LogWarning("This block cannot be top-mounted!");

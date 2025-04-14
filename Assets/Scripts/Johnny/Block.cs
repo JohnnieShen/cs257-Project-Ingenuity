@@ -23,4 +23,5 @@ public class Block : ScriptableObject
     public float blockHealth;
     [Header("UI")]
     public Sprite uiSprite;
+    public bool onlyInlinePlacement = false;
 }
