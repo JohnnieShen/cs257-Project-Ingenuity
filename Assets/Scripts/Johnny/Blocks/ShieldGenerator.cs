@@ -18,9 +18,11 @@ public class ShieldGenerator : MonoBehaviour
     public Material aiShieldMaterial;
     public bool isAI = false;
     
-    private SphereCollider shieldCollider;
-    private MeshRenderer shieldRenderer;
+    public SphereCollider shieldCollider;
+    public MeshRenderer shieldRenderer;
     private float lastDamageTime;
+    private float regenerationTimer;
+    private bool isRegenerating;
     // private bool isShieldActive = true;
 
     /* Awake is called when the script instance is being loaded.
@@ -47,7 +49,7 @@ public class ShieldGenerator : MonoBehaviour
         meshFilter.mesh = Resources.GetBuiltinResource<Mesh>("Sphere.fbx");
 
         shieldCollider = shieldObject.AddComponent<SphereCollider>();
-        shieldCollider.radius = shieldRadius;
+        shieldCollider.radius = 1f;
         shieldCollider.isTrigger = true;
         EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
         if (enemyAI != null)
@@ -74,9 +76,20 @@ public class ShieldGenerator : MonoBehaviour
     */
     private void Update()
     {
-        if(Time.time > lastDamageTime + shieldRegenDelay && currentShieldHealth < maxShieldHealth)
+        if (!isRegenerating)
         {
+            regenerationTimer += Time.deltaTime;
+        }
+
+        if (regenerationTimer >= shieldRegenDelay && currentShieldHealth < maxShieldHealth)
+        {
+            isRegenerating = true;
             RegenerateShield();
+        }
+
+        if(currentShieldHealth > 0 && !shieldRenderer.enabled)
+        {
+            ReactivateShield();
         }
 
         UpdateShieldVisuals();
@@ -89,6 +102,11 @@ public class ShieldGenerator : MonoBehaviour
     private void RegenerateShield()
     {
         currentShieldHealth = Mathf.Min(currentShieldHealth + shieldRegenRate * Time.deltaTime, maxShieldHealth);
+        
+        if (currentShieldHealth >= maxShieldHealth)
+        {
+            isRegenerating = false;
+        }
     }
 
     /* Updates the shield's visual representation based on its current health.
@@ -112,21 +130,29 @@ public class ShieldGenerator : MonoBehaviour
     */
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log("Shield hit: " + other.name + " " + other.tag);
         Projectile projectile = other.GetComponent<Projectile>();
         if (projectile != null)
         {
             bool validProjectile = isAI ? !projectile.IsEnemyProjectile : projectile.IsEnemyProjectile;
             if (validProjectile)
             {
-                currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
-                lastDamageTime = Time.time;
-
-                Destroy(projectile.gameObject);
-
-                if (currentShieldHealth <= 0)
+                if (projectile.energyDamage > 0)
                 {
-                    DeactivateShield();
+                    currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
+                    // Debug.Log("Shield took damage: " + projectile.energyDamage + " Current Shield Health: " + currentShieldHealth);
+                    regenerationTimer = 0f;
+                    isRegenerating = false;
+                    lastDamageTime = Time.time;
+                    if (projectile.isEnergy){
+                        Destroy(projectile.gameObject);
+                    }
+                    else {
+                        DeflectProjectile(projectile, other);
+                    }
+                    if (currentShieldHealth <= 0)
+                    {
+                        DeactivateShield();
+                    }
                 }
             }
         }
@@ -140,8 +166,6 @@ public class ShieldGenerator : MonoBehaviour
         // isShieldActive = false;
         shieldRenderer.enabled = false;
         shieldCollider.enabled = false;
-
-        Invoke("ReactivateShield", 5f);
     }
 
     /* Reactivates the shield and resets its health to maximum.
@@ -149,10 +173,11 @@ public class ShieldGenerator : MonoBehaviour
     */
     private void ReactivateShield()
     {
-        currentShieldHealth = maxShieldHealth;
-        // isShieldActive = true;
-        shieldRenderer.enabled = true;
-        shieldCollider.enabled = true;
+        if(currentShieldHealth > 0)
+        {
+            shieldRenderer.enabled = true;
+            shieldCollider.enabled = true;
+        }
     }
 
     /* BoostShield is called to increase the shield's health by a specified amount.
@@ -175,5 +200,23 @@ public class ShieldGenerator : MonoBehaviour
         {
             shieldRenderer.material = shieldMaterial;
         }
+    }
+    private void DeflectProjectile(Projectile projectile, Collider projectileCollider)
+    {
+        Vector3 shieldCenter = transform.position;
+        Vector3 collisionPoint = projectileCollider.ClosestPoint(shieldCenter);
+        Vector3 normal = (collisionPoint - shieldCenter).normalized;
+
+        Vector3 incomingDirection = projectile.transform.forward;
+        Vector3 reflectedDirection = Vector3.Reflect(incomingDirection, normal).normalized;
+
+        float spreadAngle = 30f;
+        reflectedDirection = Quaternion.Euler(
+            Random.Range(-spreadAngle, spreadAngle),
+            Random.Range(-spreadAngle, spreadAngle),
+            0
+        ) * reflectedDirection;
+
+        projectile.transform.forward = reflectedDirection;
     }
 }

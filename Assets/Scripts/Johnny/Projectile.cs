@@ -21,6 +21,7 @@ public class Projectile : MonoBehaviour
     public ParticleSystem impactEffect;
     public float jitterDuration = 0.3f;
     public float jitterMagnitude = 0.1f;
+    public bool isEnergy = false;
 
     /* Start is called before the first frame update.
     * It destroys the projectile after a specified time to prevent it from existing indefinitely in the game world.

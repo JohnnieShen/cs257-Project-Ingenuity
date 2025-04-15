@@ -233,10 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0875f6624d2dd042a14f4c1186b267c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShieldHealth: 100
-  currentShieldHealth: 100
+  maxShieldHealth: 30
+  currentShieldHealth: 30
   shieldRegenRate: 5
-  shieldRegenDelay: 3
+  shieldRegenDelay: 10
   shieldRadius: 5
   shieldMaterial: {fileID: 2100000, guid: 60679e777415f2147863eadb9b869432, type: 2}
   aiShieldMaterial: {fileID: 2100000, guid: a356800be4ca2d9478f71a53d9a1ead6, type: 2}

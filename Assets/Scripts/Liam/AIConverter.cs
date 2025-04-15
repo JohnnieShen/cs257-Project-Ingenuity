@@ -92,11 +92,16 @@ public class ConvertToAI : MonoBehaviour
             rb.isKinematic = false;
         }
         Transform[] allTransforms = GetComponentsInChildren<Transform>();
+        int shieldLayer = LayerMask.NameToLayer("Shield");
         foreach (Transform t in allTransforms)
         {
             if (t.CompareTag("BuildVisualWidget"))
             {
                 t.gameObject.SetActive(false);
+            }
+            if (t.gameObject.layer == shieldLayer)
+            {
+                Destroy(t.gameObject);
             }
         }
         Destroy(this);

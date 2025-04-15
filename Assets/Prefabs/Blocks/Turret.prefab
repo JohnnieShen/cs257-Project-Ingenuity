@@ -5675,7 +5675,7 @@ MonoBehaviour:
   enemyProjectilePrefab: {fileID: 6708683079509076862, guid: 7e323d06d51ae0e408b1147ce3c976cc, type: 3}
   fireRate: 10
   ballisticDamage: 10
-  energyDamage: 10
+  energyDamage: 1
   magazineSize: 10
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 8169501708824361396}
