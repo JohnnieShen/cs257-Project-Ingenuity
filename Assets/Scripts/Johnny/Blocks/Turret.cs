@@ -26,7 +26,9 @@ public class Turret : MonoBehaviour
     private Transform aimTarget;
     [Header("Shooting Settings")]
     [SerializeField] private Transform shootPoint;
-    [SerializeField] private GameObject projectilePrefab;
+    private GameObject projectilePrefab;
+    [SerializeField] private GameObject playerProjectilePrefab;
+    [SerializeField] private GameObject enemyProjectilePrefab;
     [SerializeField] private float fireRate = 1f;
     // [SerializeField] private float reloadTime = 2f;
     [SerializeField] private float ballisticDamage = 10f;
@@ -95,6 +97,16 @@ public class Turret : MonoBehaviour
             blockedLine.startWidth = 0.05f;
             blockedLine.endWidth = 0.05f;
             blockedLine.enabled = false;
+        }
+
+        // Set bullet prefab according to AI or player
+        if (isAI)
+        {
+            projectilePrefab = enemyProjectilePrefab;
+        }
+        else
+        {
+            projectilePrefab = playerProjectilePrefab;
         }
     }
     
