@@ -95,32 +95,25 @@ public class EnemyMovement : MonoBehaviour
             Hull hull = wheel.GetComponentInParent<Hull>();
             if (hull != null && hull.canPickup) // Skip the wheel if it is attached to a block that can be picked up, aka detached.
                 continue;
-            if (wheel.isDriveWheel)
-            {
-                wheel.driveInput = currentDriveInput; // Set the drive input of the wheel to the current drive input.
-                float effectiveForce = wheel.accelForce * currentDriveInput; //
-                if (rb != null && wheel != null) {
-                    rb.AddForceAtPosition( // Add a force at the position of the wheel to help movement, dirty fix for now.
-                        wheel.transform.forward * effectiveForce,
-                        wheel.transform.position,
-                        ForceMode.Acceleration
-                    );
-                }
-            }
-
-            if (wheel.isTurnWheel)
-            {
-                float sign = wheel.invertSteering ? -1f : 1f;
-                // sign = wheel.isLeftSide ? -sign : sign;
-                
-                float steerAngle = currentSteerInput * wheel.maxSteeringAngle * sign;
-                
-                wheel.currentSteerAngle = Mathf.Lerp(
-                    wheel.currentSteerAngle,
-                    steerAngle,
-                    Time.fixedDeltaTime * wheel.steeringReturnSpeed
+            wheel.driveInput = currentDriveInput; // Set the drive input of the wheel to the current drive input.
+            float effectiveForce = wheel.accelForce * currentDriveInput; //
+            if (rb != null && wheel != null) {
+                rb.AddForceAtPosition( // Add a force at the position of the wheel to help movement, dirty fix for now.
+                    wheel.transform.forward * effectiveForce,
+                    wheel.transform.position,
+                    ForceMode.Acceleration
                 );
             }
+
+            float sign = wheel.invertSteering ? -1f : 1f;
+                
+            float steerAngle = currentSteerInput * wheel.maxSteeringAngle * sign;
+                
+            wheel.currentSteerAngle = Mathf.Lerp(
+                wheel.currentSteerAngle,
+                steerAngle,
+                Time.fixedDeltaTime * wheel.steeringReturnSpeed
+            );
         }
     }
 

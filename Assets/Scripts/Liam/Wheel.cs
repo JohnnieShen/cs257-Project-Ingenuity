@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour
 {
-    [Header("AI Overrides")]
     public float driveInput = 0f;
     public float accelForceMultiplier = 1f;
-    public Rigidbody rigidBody;
     public float suspensionRestDist;
     public float springStrength;
     public float springDamper;
@@ -18,33 +16,18 @@ public class Wheel : MonoBehaviour
     public float steeringReturnSpeed = 2f;
     public float maxSteeringAngle = 45f;
     public GameObject tire;
-
-    public bool isDriveWheel = false;
-    public bool isTurnWheel = false;
     public bool isAI = false;
-
     private Quaternion neutralRotation;
     public float currentSteerAngle = 0f;
     public bool invertSteering = false;
     public float tireRadius = 0.3f;
     public bool isLeftSide = false;
-    private Quaternion originalNeutral;
-    private Transform probeCoreTransform;
+    public Rigidbody rigidBody;
+    private Transform commandModuleTransform;
 
     void Start()
     {
-        // if (isTurnWheel)
-        // {
-        //     neutralRotation = transform.localRotation;
-        //     if (transform.parent != null)
-        //     {
-        //         float parentLocalZ = transform.parent.localPosition.z;
-        //         if (parentLocalZ < 0.4f)
-        //         {
-        //             invertSteering = true;
-        //         }
-        //     }
-        // }
+        // Get reference to command module
         if (transform.parent != null)
         {
             Transform grandParentObject = transform.parent.parent;
@@ -54,48 +37,37 @@ public class Wheel : MonoBehaviour
                 {
                     if ((sibling != transform.parent && sibling.CompareTag("Core"))||(sibling != transform.parent && sibling.name == "CommandModule"))
                     {
-                        probeCoreTransform = sibling;
+                        commandModuleTransform = sibling;
                         break;
                     }
                 }
                 if ((grandParentObject != transform.parent && grandParentObject.CompareTag("Core"))||(grandParentObject != transform.parent && grandParentObject.name == "CommandModule"))
                 {
-                    probeCoreTransform = grandParentObject;
+                    commandModuleTransform = grandParentObject;
                 }
             }
         }
-        if (isTurnWheel)
-        {
-            neutralRotation = transform.localRotation;
 
-            if (probeCoreTransform != null)
-            {
-                Vector3 localPosRelativeToCore = probeCoreTransform.InverseTransformPoint(transform.position);
-                if (localPosRelativeToCore.z < 0.4f)
-                {
-                    invertSteering = true;
-                }
-            }
-        }
-        isLeftSide = (probeCoreTransform.InverseTransformPoint(transform.position).x < 0f);
-        // Debug.Log(probeCoreTransform.InverseTransformPoint(transform.position));
-    }
-    void OnEnable()
-    {
+        // Remember neutral rotation
         neutralRotation = transform.localRotation;
-        originalNeutral = neutralRotation;
-    }
 
-    public void Initialize(bool enabled, float driveInput, float currentSteerAngle)
-    {
-        this.enabled = enabled;
-        this.driveInput = driveInput;
-        this.currentSteerAngle = currentSteerAngle;
+        // Invert steering if wheel is behind the command module
+        if (commandModuleTransform != null)
+        {
+            Vector3 localPosRelativeToCore = commandModuleTransform.InverseTransformPoint(transform.position);
+            if (localPosRelativeToCore.z < 0.4f)
+            {
+                invertSteering = true;
+            }
+        }
+        isLeftSide = (commandModuleTransform.InverseTransformPoint(transform.position).x < 0f);
     }
 
     void Update()
     {
         Hull hull = GetComponentInParent<Hull>();
+
+        // Only the wheels currently attached to the player should drive
         if (hull != null && hull.canPickup)
             return;
         if (isAI) return;
@@ -106,27 +78,22 @@ public class Wheel : MonoBehaviour
         {
             moveValue = InputManager.instance.GetDriveMoveAction().ReadValue<Vector2>();
         }
-        // Debug.Log(moveValue);
         float steerInput = moveValue.x;
         float driveInput = moveValue.y;
 
-        if (isTurnWheel)
+        if (Mathf.Abs(steerInput) > 0.1f)
         {
-            if (Mathf.Abs(steerInput) > 0.1f)
-            {
-                float direction = (steerInput > 0f) ? 1f : -1f;
-                float sign = invertSteering ? -1f : 1f;
-                // sign = isLeftSide ? -sign : sign;
-                currentSteerAngle += sign * direction * rotationSpeed * Time.deltaTime;
-            }
-            else
-            {
-                currentSteerAngle = Mathf.Lerp(currentSteerAngle, 0f, steeringReturnSpeed * Time.deltaTime);
-            }
-
-            currentSteerAngle = Mathf.Clamp(currentSteerAngle, -maxSteeringAngle, maxSteeringAngle);
-            transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
+            float direction = (steerInput > 0f) ? 1f : -1f;
+            float sign = invertSteering ? -1f : 1f;
+            currentSteerAngle += sign * direction * rotationSpeed * Time.deltaTime;
         }
+        else
+        {
+            currentSteerAngle = Mathf.Lerp(currentSteerAngle, 0f, steeringReturnSpeed * Time.deltaTime);
+        }
+
+        currentSteerAngle = Mathf.Clamp(currentSteerAngle, -maxSteeringAngle, maxSteeringAngle);
+        transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
     }
 
     void FixedUpdate()
@@ -147,7 +114,7 @@ public class Wheel : MonoBehaviour
         {
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
-            Vector3 accelDir = probeCoreTransform.forward;
+            Vector3 accelDir = commandModuleTransform.forward;
             
             float springOffset = suspensionRestDist - hit.distance;
             if (rigidBody == null)
@@ -164,12 +131,9 @@ public class Wheel : MonoBehaviour
             float steeringForce = tireMass * desiredAccel;
 
             float driveInput = 0f;
-            if (isDriveWheel)
-            {
-                driveInput = isAI ? this.driveInput : Input.GetAxis("Vertical");
-            }
+            driveInput = isAI ? this.driveInput : Input.GetAxis("Vertical");
 
-            if (isAI && isTurnWheel)
+            if (isAI)
             {
                 ApplySteering(currentSteerAngle);
             }
@@ -187,21 +151,18 @@ public class Wheel : MonoBehaviour
         }
 
         float forwardSpeed;
-        if (isDriveWheel)
+        if (isGrounded)
         {
-            if (isGrounded)
-            {
-                forwardSpeed = Vector3.Dot(rigidBody.velocity, transform.forward);
-            }
-            else
-            {
-                forwardSpeed = driveInput * accelForce * 0.1f;
-            }
-
-            float distanceTraveled = forwardSpeed * Time.fixedDeltaTime;
-            float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
-            tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
+            forwardSpeed = Vector3.Dot(rigidBody.velocity, transform.forward);
         }
+        else
+        {
+            forwardSpeed = driveInput * accelForce * 0.1f;
+        }
+
+        float distanceTraveled = forwardSpeed * Time.fixedDeltaTime;
+        float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
+        tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
     }
     private void ApplySteering(float targetAngle)
     {
