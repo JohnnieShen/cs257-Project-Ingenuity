@@ -26,7 +26,9 @@ public class Turret : MonoBehaviour
     private Transform aimTarget;
     [Header("Shooting Settings")]
     [SerializeField] private Transform shootPoint;
-    [SerializeField] private GameObject projectilePrefab;
+    private GameObject projectilePrefab;
+    [SerializeField] private GameObject playerProjectilePrefab;
+    [SerializeField] private GameObject enemyProjectilePrefab;
     [SerializeField] private float fireRate = 1f;
     // [SerializeField] private float reloadTime = 2f;
     [SerializeField] private float ballisticDamage = 10f;
@@ -96,6 +98,9 @@ public class Turret : MonoBehaviour
             blockedLine.endWidth = 0.05f;
             blockedLine.enabled = false;
         }
+
+        // Choose bullet prefab for player or AI
+        projectilePrefab = isAI ? enemyProjectilePrefab : playerProjectilePrefab;
     }
     
     /* Disable aiming constraints by setting their weight to 0.
