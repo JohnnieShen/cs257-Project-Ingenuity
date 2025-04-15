@@ -12,7 +12,7 @@ public class Spawn : MonoBehaviour
     * The script also includes an exclusion zone to prevent spawning enemies too close to a specified center point.
     * The script is attached to a GameObject in the scene and requires references to the enemy prefab, the number of enemies to spawn, and the exclusion center and radius.
     */
-    public GameObject prefab;
+    public List<GameObject> aiPrefabs;
     public int numberEnemies;
     public Transform exclusionCenter;
     public float exclusionRadius = 10f;
@@ -57,12 +57,15 @@ public class Spawn : MonoBehaviour
                 validPosition = true;
             }
 
-            if (!validPosition)
+            if (aiPrefabs != null && aiPrefabs.Count > 0)
             {
-                Debug.LogWarning($"Could not find a valid spawn position after {attempt} attempts.");
-                continue;
+                GameObject chosenPrefab = aiPrefabs[Random.Range(0, aiPrefabs.Count)];
+                Instantiate(chosenPrefab, randomPos, Quaternion.identity);
             }
-            Instantiate(prefab, randomPos, Quaternion.identity);
+            else
+            {
+                Debug.LogError("No AI prefabs assigned in the inspector!");
+            }
         }
     }
 }

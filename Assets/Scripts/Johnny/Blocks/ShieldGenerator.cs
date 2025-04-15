@@ -15,6 +15,8 @@ public class ShieldGenerator : MonoBehaviour
     public float shieldRadius = 5f;
     
     public Material shieldMaterial;
+    public Material aiShieldMaterial;
+    public bool isAI = false;
     
     private SphereCollider shieldCollider;
     private MeshRenderer shieldRenderer;
@@ -47,8 +49,19 @@ public class ShieldGenerator : MonoBehaviour
         shieldCollider = shieldObject.AddComponent<SphereCollider>();
         shieldCollider.radius = shieldRadius;
         shieldCollider.isTrigger = true;
-
-        shieldRenderer.material = shieldMaterial;
+        EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
+        if (enemyAI != null)
+        {
+            isAI = true;
+        }
+        if (isAI && aiShieldMaterial != null)
+        {
+            shieldRenderer.material = aiShieldMaterial;
+        }
+        else
+        {
+            shieldRenderer.material = shieldMaterial;
+        }
         shieldRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         shieldRenderer.receiveShadows = false;
 
@@ -101,17 +114,20 @@ public class ShieldGenerator : MonoBehaviour
     {
         // Debug.Log("Shield hit: " + other.name + " " + other.tag);
         Projectile projectile = other.GetComponent<Projectile>();
-        if(projectile != null && projectile.IsEnemyProjectile)
+        if (projectile != null)
         {
-            // Debug.Log("Shield hit by enemy projectile");
-            currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
-            lastDamageTime = Time.time;
-            
-            Destroy(projectile.gameObject);
-            
-            if(currentShieldHealth <= 0)
+            bool validProjectile = isAI ? !projectile.IsEnemyProjectile : projectile.IsEnemyProjectile;
+            if (validProjectile)
             {
-                DeactivateShield();
+                currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
+                lastDamageTime = Time.time;
+
+                Destroy(projectile.gameObject);
+
+                if (currentShieldHealth <= 0)
+                {
+                    DeactivateShield();
+                }
             }
         }
     }
@@ -147,5 +163,17 @@ public class ShieldGenerator : MonoBehaviour
     public void BoostShield(float amount)
     {
         currentShieldHealth = Mathf.Min(currentShieldHealth + amount, maxShieldHealth);
+    }
+    public void SetAI(bool ai)
+    {
+        isAI = ai;
+        if (ai && aiShieldMaterial != null)
+        {
+            shieldRenderer.material = aiShieldMaterial;
+        }
+        else
+        {
+            shieldRenderer.material = shieldMaterial;
+        }
     }
 }

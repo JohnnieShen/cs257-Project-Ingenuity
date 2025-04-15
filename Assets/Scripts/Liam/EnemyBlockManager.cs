@@ -37,7 +37,7 @@ public class EnemyBlockManager : MonoBehaviour
         {
             if (!vehicles.ContainsKey(enemy))
             {
-                // Debug.Log("Initializing vehicle structure for: " + enemy.name);
+                Debug.Log("Initializing vehicle structure for: " + enemy.transform.parent.gameObject.name);
                 vehicles.Add(enemy, new EnemyVehicleStructure());
                 enemy.InitializeVehicleStructure();
             }

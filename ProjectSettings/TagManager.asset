@@ -8,6 +8,7 @@ TagManager:
   - ConnectionPoint
   - Core
   - EnemyBlock
+  - BuildVisualWidget
   layers:
   - Default
   - TransparentFX

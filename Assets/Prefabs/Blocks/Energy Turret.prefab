@@ -10502,6 +10502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: 0, y: -1, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
   isPreview: 0
@@ -10535,7 +10537,8 @@ MonoBehaviour:
   - {fileID: 8933661954676186850}
   - {fileID: 8509931481967155564}
   shootPoint: {fileID: 6305559117466502201}
-  projectilePrefab: {fileID: 7899788722775472648, guid: 2bde0bb2e057b3e448e66605d40d6d1c, type: 3}
+  playerProjectilePrefab: {fileID: 7899788722775472648, guid: 2bde0bb2e057b3e448e66605d40d6d1c, type: 3}
+  enemyProjectilePrefab: {fileID: 7899788722775472648, guid: e4bdf854dc3c3f8448380b29f6e5b87b, type: 3}
   fireRate: 5
   ballisticDamage: 10
   energyDamage: 10
@@ -10548,3 +10551,4 @@ MonoBehaviour:
   isAI: 0
   isEnergy: 1
   ammoCost: 1
+  aiSpreadAngle: 2

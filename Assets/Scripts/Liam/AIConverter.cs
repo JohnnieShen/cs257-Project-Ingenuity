@@ -40,6 +40,11 @@ public class ConvertToAI : MonoBehaviour
                 turret.isAI = true;
                 turrets.Add(turret);
             }
+            ShieldGenerator shield = child.GetComponent<ShieldGenerator>();
+            if (shield != null)
+            {
+                shield.SetAI(true);
+            }
         }
 
         // Set up HealthSystem script
@@ -81,5 +86,19 @@ public class ConvertToAI : MonoBehaviour
         Destroy(center.gameObject);
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
+        Rigidbody[] allRigidbodies = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody rb in allRigidbodies)
+        {
+            rb.isKinematic = false;
+        }
+        Transform[] allTransforms = GetComponentsInChildren<Transform>();
+        foreach (Transform t in allTransforms)
+        {
+            if (t.CompareTag("BuildVisualWidget"))
+            {
+                t.gameObject.SetActive(false);
+            }
+        }
+        Destroy(this);
     }
 }

@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
     - target: {fileID: 919132149155446097, guid: 11378a0c861259e47a83f7fdbdc35436, type: 3}
       propertyPath: m_Name
-      value: shield_generator
+      value: Shield Generator
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 11378a0c861259e47a83f7fdbdc35436, type: 3}
       propertyPath: m_TagString
@@ -195,8 +195,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validConnectionOffsets:
   - {x: 0, y: -1, z: 0}
+  childMeshRenderers: []
+  coreTransform: {fileID: 0}
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
+  isPreview: 0
 --- !u!135 &1912481191328375882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -236,3 +239,5 @@ MonoBehaviour:
   shieldRegenDelay: 3
   shieldRadius: 5
   shieldMaterial: {fileID: 2100000, guid: 60679e777415f2147863eadb9b869432, type: 2}
+  aiShieldMaterial: {fileID: 2100000, guid: a356800be4ca2d9478f71a53d9a1ead6, type: 2}
+  isAI: 0
