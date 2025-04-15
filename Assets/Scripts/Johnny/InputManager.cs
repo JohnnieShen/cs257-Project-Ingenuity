@@ -3,6 +3,15 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    /* 
+    * Author: Johnny
+    * Summary: This script is responsible for managing input actions in the game. It uses the new Input System to handle input from the player.
+    * The script is a singleton, ensuring that only one instance exists throughout the game. It initializes input actions for different modes (Build, Drive, UI) and provides methods to enable or disable these maps.
+    * It also provides getter methods for accessing specific input actions.
+    */
+
+    // I don't think it's necessary to comment out this one since it's very self explanary 
+
     public static InputManager instance;
 
     [SerializeField] private InputActionAsset inputActions;

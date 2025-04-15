@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class BlockManager : MonoBehaviour
 {
+    /* 
+    * Author: Johnny
+    * Summary: This script manages the blocks in the game. It allows for adding, removing, and checking the connections between blocks.
+    * It also provides functionality to validate the structure of the vehicle by checking if all blocks are connected to the core block.
+    * The script uses a singleton pattern to ensure that only one instance of the BlockManager exists in the game.
+    * It also provides functionality to enable or disable the physics of all blocks in the vehicle.
+    * The script uses a dictionary to keep track of the blocks and their positions, as well as the connections between blocks.
+    * It also provides a method to recalculate the connections between blocks and clean up any broken joints.
+    * The script is attached to a GameObject in the scene and requires a reference to the grid origin for calculating local positions.
+    */
+
     public static BlockManager instance;
     public Dictionary<Vector3Int, Rigidbody> blocks = new Dictionary<Vector3Int, Rigidbody>(); // Directory for storing the blocks and their positions
     // ^^^ Key is the position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
@@ -13,6 +24,12 @@ public class BlockManager : MonoBehaviour
     // ^^^ Value is a list of Vector3Int positions of the connected blocks. Each entry in the list is a connection from the key block to the connected block.
     private bool isValidating = false;
     public Transform gridOrigin;
+
+
+    /* Awake is called when the script instance is being loaded.
+    It enforces the singleton pattern by checking if an instance already exists.
+    If it does, it logs an error message and destroys the new instance.
+    */
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +39,9 @@ public class BlockManager : MonoBehaviour
     }
 
     // Add a block to the blocks directory
+    // This function is used in the build logic to add blocks to the vehicle.
+    // Param 1: localPos - The local position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // Param 2: blockRb - The Rigidbody component of the block.
     public void AddBlock(Vector3Int localPos, Rigidbody blockRb)
     {
         // foreach (var block in blocks)
@@ -34,12 +54,18 @@ public class BlockManager : MonoBehaviour
         }
     }
     // Check if a block exists at a given position
+    // This function is used in the build logic to check if a block exists at a given position.
+    // Param 1: localPos - The local position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // Param 2: blockRb - The Rigidbody component of the block.
     public bool TryGetBlockAt(Vector3Int localPos, out Rigidbody blockRb)
     {
         return blocks.TryGetValue(localPos, out blockRb);
     }
 
     // Remove a block from the blocks directory
+    // This function is used in the build logic to remove blocks from the vehicle.
+    // Param 1: localPos - The local position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // Param 2: blockRb - The Rigidbody component of the block.
     public void RemoveBlock(Vector3Int localPos)
     {
         if (blocks.ContainsKey(localPos))
@@ -53,12 +79,19 @@ public class BlockManager : MonoBehaviour
     // ^^^ These functions are mainly used in the build logic, but also used in e.g. the block destruction logic.
 
     // Add a connection between two blocks
+    // This function is used in the build logic to add connections between blocks.
+    // Param 1: position1 - The local position of the first block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // Param 2: position2 - The local position of the second block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
     public void AddConnection(Vector3Int position1, Vector3Int position2)
     {
         AddConnectionDirection(position1, position2);
         AddConnectionDirection(position2, position1);
     }
 
+    /* Add a connection direction between two blocks
+    * Param 1: from - The local position of the first block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    * Param 2: to - The local position of the second block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    */
     private void AddConnectionDirection(Vector3Int from, Vector3Int to)
     {
         if (!blockConnections.ContainsKey(from))
@@ -69,6 +102,9 @@ public class BlockManager : MonoBehaviour
     }
 
     // Remove a connection between two blocks
+    // This function is used in the build logic to remove connections between blocks.
+    // Param 1: position1 - The local position of the first block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // Param 2: position2 - The local position of the second block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
     public void RemoveConnections(Vector3Int position)
     {
         if (blockConnections.ContainsKey(position))
@@ -81,6 +117,12 @@ public class BlockManager : MonoBehaviour
             blockConnections.Remove(position);
         }
     }
+
+    /* Cleanup broken joints
+    * This function is used to clean up any broken joints in the blocks directory.
+    * It iterates through all the blocks and checks if any of the joints are broken (i.e. connected to a null or destroyed object).
+    * If a broken joint is found, it is destroyed.
+    */
     public void CleanupBrokenJoints()
     {
         foreach (var blockEntry in blocks)
@@ -118,6 +160,8 @@ public class BlockManager : MonoBehaviour
         }
     }
 
+    // Disable the physics of all blocks in the vehicle
+    // Only effects the player vehicle blocks, not AI since those are stored in a different manager.
     public void DisableVehiclePhysics()
     {
         foreach (Rigidbody rb in blocks.Values)
@@ -140,6 +184,9 @@ public class BlockManager : MonoBehaviour
     // }
 
     // Check if the core block is connected to all other blocks in the vehicle by running a BFS on the connections as edges
+    // This function is used to validate the structure of the vehicle by checking if all blocks are connected to the core block.
+    // It returns a HashSet of all the blocks that are connected to the core block.
+    // The core block is assumed to be at the origin (0, 0, 0) in local space.
     public HashSet<Vector3Int> CoreConnectionCheck()
     {
         HashSet<Vector3Int> visited = new HashSet<Vector3Int>();
@@ -170,6 +217,11 @@ public class BlockManager : MonoBehaviour
     }
 
     // Validate the structure of the vehicle by checking if all blocks are connected to the core block.
+    // This function is used to validate the structure of the vehicle by checking if all blocks are connected to the core block.
+    // It is called when the vehicle is built or when a block is added or removed from the vehicle.
+    // It iterates through all the blocks and checks if any of them are not connected to the core block.
+    // If a block is not connected, it is detached from the vehicle and its physics are enabled.
+    // It also removes the block from the blocks directory and removes its connections.
     public void ValidateStructure()
     {
         if (isValidating)
@@ -188,6 +240,14 @@ public class BlockManager : MonoBehaviour
         }
         isValidating = false;
     }
+
+    // Detach a block from the vehicle and enable its physics
+    // This function is used to detach a block from the vehicle and enable its physics.
+    // It is called when a block is not connected to the core block and needs to be detached.
+    // Param 1: pos - The local position of the block in local space as relative to the core block, in Vector3Int as x, y, z coordinates aligned to the grid.
+    // It first checks if the block is in the blocks directory and if so, it enables its physics and removes its connections.
+    // It also sets the block to be pickable and disables any wheel or turret scripts on the block.
+    // It also destroys any fixed joints on the block.
     private void DetachBlock(Vector3Int pos)
     {
         if (blocks.TryGetValue(pos, out Rigidbody rb)) // If the block is in the blocks directory
@@ -232,6 +292,12 @@ public class BlockManager : MonoBehaviour
     }
 
     // Recalculate the connections between blocks
+    // This function is used to recalculate the connections between blocks in the vehicle.
+    // It is called when a block is added or removed from the vehicle or when the vehicle is built.
+    // It iterates through all the blocks and checks if any of them have fixed joints connected to other blocks.
+    // If a fixed joint is found, it adds the connection to the block connections directory.
+    // It also validates the structure of the vehicle by checking if all blocks are connected to the core block.
+    // It also cleans up any broken joints on the blocks.
     public void recalculateConnections()
     {
         // First clear the current connections
@@ -261,6 +327,10 @@ public class BlockManager : MonoBehaviour
 
         ValidateStructure();
     }
+
+    // DelayedRecalculateConnections is a coroutine that waits for one frame and then calls the recalculateConnections method.
+    // This function is used to delay the recalculation of connections to the next frame.
+    // This is because broken joints take a frame to calculate, so we need to wait for the next frame to recalculate the connections.
     public IEnumerator DelayedRecalculateConnections()
     {
         yield return null;
