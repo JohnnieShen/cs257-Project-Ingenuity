@@ -29,6 +29,9 @@ public class BlockInventoryManager : MonoBehaviour
     
     private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
 
+    /* Awake is called when the script instance is being loaded.
+    * It initializes the singleton instance and calls the InitializeInventory method to set up the block inventory.
+    */
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -37,6 +40,10 @@ public class BlockInventoryManager : MonoBehaviour
         InitializeInventory();
     }
 
+    /* InitializeInventory sets up the block inventory by clearing the existing inventory and populating it with available building blocks.
+    * It iterates through the available building blocks and adds them to the block inventory dictionary.
+    * If a block is null or has no Block reference, it is skipped.
+    */
     private void InitializeInventory()
     {
         blockInventory.Clear();
@@ -51,11 +58,19 @@ public class BlockInventoryManager : MonoBehaviour
         }
     }
 
+    /* It returns whether a block is present in the inventory.
+    * Param 1: block - The block to check for in the inventory.
+    * Returns true if the block is present, false otherwise.
+    */
     public bool ContainsBlock(Block block)
     {
         return block != null && blockInventory.ContainsKey(block);
     }
 
+    /* It returns the current count of a specific block in the inventory.
+    * Param 1: block - The block to check the count for.
+    * Returns the current count of the block in the inventory.
+    */
     public int GetBlockCount(Block block)
     {
         if (block != null && blockInventory.TryGetValue(block, out var inventoryEntry))
@@ -65,6 +80,14 @@ public class BlockInventoryManager : MonoBehaviour
         return 0;
     }
 
+    /* Consumes a block if it is present in the inventory and the amount to consume is valid.
+    * It checks if the block is null or if the amount is less than or equal to zero, and returns false if so.
+    * If the block is present in the inventory and the current count is greater than or equal to the amount to consume,
+    * it reduces the current count by the amount and returns true.
+    * Otherwise, it returns false.
+    * Param 1: block - The block to consume from the inventory.
+    * Param 2: amount - The amount of the block to consume.
+    */
     public bool TryConsumeBlock(Block block, int amount)
     {
         if (block == null || amount <= 0) return false;
@@ -81,6 +104,14 @@ public class BlockInventoryManager : MonoBehaviour
         return false;
     }
 
+    /* It adds a block to the inventory if it is not null and the amount is valid.
+    * It checks if the block is null or if the amount is less than or equal to zero, and returns if so.
+    * If the block is already present in the inventory, it increases the current count by the amount,
+    * ensuring that it does not exceed the maximum stack size.
+    * If the block is not present, it creates a new BlockInventory entry for the block and adds it to the inventory.
+    * Param 1: block - The block to add to the inventory.
+    * Param 2: amount - The amount of the block to add to the inventory.
+    */
     public void AddBlock(Block block, int amount)
     {
         if (block == null || amount <= 0) return;
@@ -104,6 +135,10 @@ public class BlockInventoryManager : MonoBehaviour
         }
     }
 
+    /* Updates display string for a block in the inventory.
+    * Param 1: block - The block to get the display string for.
+    * Returns the display string for the block, including its name, current count, and maximum stack size.
+    */
     public string GetDisplayString(Block block)
     {
         if (block == null) return "None";

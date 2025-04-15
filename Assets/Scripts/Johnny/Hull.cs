@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Hull : MonoBehaviour
 {
+    /*
+    * Author: Johnny
+    * Summary: This script is attached to a hull block in the game. It manages the hull's connection points and its interaction with the BlockManager.
+    * The hull can be part of a vehicle and can be connected to other blocks. It also handles the destruction of the hull and its connections.
+    * The script uses a coroutine to delay the recalculation of connections when a joint breaks.
+    */
+
     // public List<ConnectionPoint> connectionPoints = new List<ConnectionPoint>();
     public List<Vector3Int> validConnectionOffsets = new List<Vector3Int>();
     public List<MeshRenderer> childMeshRenderers = new List<MeshRenderer>();
@@ -14,6 +21,12 @@ public class Hull : MonoBehaviour
     public Block sourceBlock;
     public bool isPreview = false;
     private Transform commandModule;
+
+    /* Start is called before the first frame update.
+    * It checks if the hull is a preview or an AI vehicle. If it's not, it registers the block with the BlockManager or EnemyBlockManager.
+    * It also finds the core transform and sets up the connection points.
+    * It also sets up the visual renderers for the childrens.
+    */
     void Start()
     {
         if(isPreview)
@@ -80,6 +93,11 @@ public class Hull : MonoBehaviour
         childMeshRenderers = new List<MeshRenderer>(renderers);
     }
     
+    /* OnDestroy is called when the MonoBehaviour will be destroyed.
+    * It checks if the hull is a preview or an AI vehicle. If it's not, it removes the block from the BlockManager or EnemyBlockManager.
+    * It also removes the connections and validates the structure of the vehicle.
+    * It also starts a coroutine to delay the recalculation of connections.
+    */
     void OnDestroy()
     {
         if (isPreview)
@@ -109,6 +127,11 @@ public class Hull : MonoBehaviour
         }
     }
 
+    /* OnJointBreak is called when a joint attached to the hull breaks.
+    * It checks if the hull is a preview. If it's not, it starts a coroutine to delay the recalculation of connections.
+    * It also validates the structure of the vehicle.
+    * Param1: breakForce - The force at which the joint broke.
+    */
     void OnJointBreak(float breakForce)
     {
         if (isPreview)
@@ -118,6 +141,11 @@ public class Hull : MonoBehaviour
         StartCoroutine(DelayedRecalculate());   
     }
 
+    /* DelayedRecalculate is a coroutine that waits for one frame and then recalculates the connections of the vehicle.
+    * It checks if the hull is an AI vehicle. If it is, it calls the BuildConnectionGraph method on the EnemyAI component.
+    * It also validates the structure of the vehicle using the EnemyBlockManager.
+    * If the hull is not an AI vehicle, it calls the recalculateConnections method on the BlockManager.
+    */
     private IEnumerator DelayedRecalculate()
     {
         yield return null;

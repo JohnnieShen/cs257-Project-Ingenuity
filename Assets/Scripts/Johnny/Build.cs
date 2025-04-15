@@ -6,6 +6,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class BuildSystem : MonoBehaviour
 {
+    /*
+    * Author: Johnny
+    * Summary: This script manages the building system in the game. It allows players to build and destroy blocks in the game world.
+    * It handles the selection of blocks, the placement of blocks in the world, and the removal of blocks.
+    * The script uses raycasting to determine where the player is looking and where to place or remove blocks.
+    * It also manages the UI elements related to block selection and placement.
+    */
+
     // public Block[] availableBuildingBlocks;
     int currentBlockIndex = 0;
  
@@ -38,7 +46,13 @@ public class BuildSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform commandModule;
     private Transform referenceTransform;
- 
+
+    /* OnEnable is called when the object becomes enabled and active.
+    * It sets up the input actions for building, removing, scrolling, and rotating blocks.
+    * It also initializes the block inventory and sets the initial block to be built.
+    * The reference transform is set to the position and rotation of the command module.
+    * The blocks are reparented to the reference transform and then transferred back to the parent.
+    */
     private void OnEnable()
     {
         var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
@@ -66,6 +80,9 @@ public class BuildSystem : MonoBehaviour
         TransferBlocksToParent();
     }
 
+    /* OnDisable is called when the behaviour becomes disabled or inactive.
+    * It removes the input action listeners to prevent memory leaks and ensures that the blocks are reparented to the command module.
+    */
     private void OnDisable()
     {
         if (InputManager.instance != null)
@@ -76,6 +93,12 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildRotateAction().performed -= OnRotatePerformed;
         }
     }
+
+    /* Awake is called when the script instance is being loaded.
+    * It initializes the block inventory and sets the initial block to be built.
+    * It also creates a reference transform for the command module.
+    * The reference transform is used to calculate the position and rotation of the blocks when they are placed in the world.
+    */
     private void Awake()
     {
         // InitializeInventory();
@@ -139,6 +162,12 @@ public class BuildSystem : MonoBehaviour
     //     // UpdatePreview();
     // }
 
+    /* Update is called every frame.
+    * It checks if the command module and reference transform are not null.
+    * If they are not null, it updates the position and rotation of the reference transform to match the command module.
+    * It also updates the preview of the block being built.
+    * The preview is a visual representation of the block that will be placed in the world.
+    */
     private void Update()
     {
         if (commandModule != null && referenceTransform != null)
@@ -148,6 +177,9 @@ public class BuildSystem : MonoBehaviour
         }
         UpdatePreview();
     }
+
+    /* DestroyPreviewBlock is called to destroy the preview block if it exists.
+    */
     public void destroyPreviewBlock()
     {
         if (previewBlock != null)
@@ -157,6 +189,12 @@ public class BuildSystem : MonoBehaviour
         }
     }
  
+    /* OnBuildPerformed is called when the build action is performed.
+    * It checks if the current block is not null and if it has a block object.
+    * If it does, it calls the BuildBlock method to place the block in the world.
+    * If the current block is null or has no block object, it logs a warning message.
+    * Param 1: ctx - The input action callback context.
+    */
     private void OnBuildPerformed(InputAction.CallbackContext ctx)
     {
         if (currentBlock == null || currentBlock.BlockObject == null)
@@ -167,11 +205,22 @@ public class BuildSystem : MonoBehaviour
         BuildBlock(currentBlock.BlockObject);
     }
 
+    /* OnRemovePerformed is called when the remove action is performed.
+    * It calls the DestroyBlock method to remove a block from the world.
+    * Param 1: ctx - The input action callback context.
+    */
     private void OnRemovePerformed(InputAction.CallbackContext ctx)
     {
         DestroyBlock();
     }
 
+    /* OnScrollPerformed is called when the scroll action is performed.
+    * It checks the scroll value and updates the current block index accordingly.
+    * If the scroll value is positive, it increments the current block index.
+    * If the scroll value is negative, it decrements the current block index.
+    * It wraps around the index if it goes out of bounds.
+    * Param 1: ctx - The input action callback context.
+    */
     private void OnScrollPerformed(InputAction.CallbackContext ctx)
     {
         Vector2 scrollValue = ctx.ReadValue<Vector2>();
@@ -203,11 +252,21 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
+    /* OnRotatePerformed is called when the rotate action is performed.
+    * It increments the rotation offset count to rotate the block being built.
+    * The rotation offset count is used to determine the rotation of the block when it is placed in the world.
+    * It wraps around the count if it exceeds the maximum value.
+    * Param 1: ctx - The input action callback context.
+    */
     private void OnRotatePerformed(InputAction.CallbackContext ctx)
     {
         rotationOffsetCount = (rotationOffsetCount + 1) % 4;
     }
 
+    /* Sets the text for the current block name and updates the UI image.
+    * If the current block is null, it sets the text to "No Block Selected" and clears the image.
+    * If the current block is not null, it sets the text to the block name and updates the image with the block's sprite.
+    */
     void SetText()
     {
         if (blockNameText != null && currentBlock != null)
@@ -254,6 +313,13 @@ public class BuildSystem : MonoBehaviour
  
    
  
+    /* Builds a block at the specified position in the world.
+    * It checks if the current block is not null and if there are enough blocks in the inventory.
+    * It performs a raycast to find a valid position to place the block.
+    * If a valid position is found, it instantiates the block prefab and sets its position and rotation.
+    * It also creates joints and connections with neighboring blocks if applicable.
+    * Param 1: blockPrefab - The prefab of the block to be built.
+    */
     void BuildBlock(GameObject blockPrefab)
     {
         int count = BlockInventoryManager.instance.GetBlockCount(currentBlock);
@@ -451,7 +517,18 @@ public class BuildSystem : MonoBehaviour
     }
 
 
- 
+    /* Checks which direction thee joints should go.
+    * It checks the x, y, and z coordinates of the neighbor position and the spawn position.
+    * If the neighbor position is less than the spawn position in x, it returns true.
+    * If the neighbor position is greater than the spawn position in x, it returns false.
+    * If the neighbor position is less than the spawn position in y, it returns true.
+    * If the neighbor position is greater than the spawn position in y, it returns false.
+    * If the neighbor position is less than the spawn position in z, it returns true.
+    * Otherwise, it returns false.
+    * Param 1: neighborPos - The position of the neighbor block.
+    * Param 2: spawnPos - The position of the block being built.
+    * Returns true if the joint should connect, false otherwise.
+    */
     bool ShouldConnect(Vector3Int neighborPos, Vector3Int spawnPos)
     {
         if(neighborPos.x < spawnPos.x) return true;
@@ -461,6 +538,12 @@ public class BuildSystem : MonoBehaviour
         return neighborPos.z < spawnPos.z;
     }
  
+    /* Destroys a block at the specified position in the world.
+    * It performs a raycast to find the block to be destroyed.
+    * If a block is hit, it checks if it is a valid block to destroy.
+    * If it is, it adds the block to the inventory and destroys the block object.
+    * It also removes the block from the block manager.
+    */
     void DestroyBlock()
     {
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
@@ -485,6 +568,7 @@ public class BuildSystem : MonoBehaviour
         }
     }
  
+    // LEGACY, NO LONGER USED
     void HighlightBlock()
     {
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo))
@@ -510,6 +594,14 @@ public class BuildSystem : MonoBehaviour
             }
         }
     }
+
+    /* Updates the preview of the block being built.
+    * It performs a raycast to find a valid position to place the block.
+    * If a valid position is found, it instantiates the preview block and sets its position and rotation.
+    * It also applies the preview material to the block and sets it active.
+    * If no valid position is found, it deactivates the preview block.
+    * It also removes the physics components from the preview block to prevent it from falling.
+    */
     void UpdatePreview()
     {
         // We'll do the same conversion steps for the preview
@@ -609,6 +701,11 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
+    /* Removes the physics components from the preview block.
+    * It iterates through all the colliders and fixed joints in the block and destroys them.
+    * It also destroys the rigidbody component if it exists.
+    * Param 1: obj - The game object to remove the physics components from.
+    */
     void RemovePhysicsComponents(GameObject obj)
     {
         foreach (Collider col in obj.GetComponentsInChildren<Collider>())
@@ -626,6 +723,10 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
+    /* Applies the preview material to the block.
+    * It iterates through all the renderers in the block and sets their material to the preview material.
+    * Param 1: obj - The game object to apply the preview material to.
+    */
     void ApplyPreviewMaterial(GameObject obj)
     {
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
@@ -634,6 +735,10 @@ public class BuildSystem : MonoBehaviour
             rend.material = previewMaterial;
         }
     }
+
+    /* Reparents all blocks to the reference transform.
+    * It iterates through all the children of the parent transform and sets their parent to the reference transform.
+    */
     private void ReparentAllBlocksToReference()
     {
         List<Transform> blocksToMove = new List<Transform>();
@@ -647,6 +752,9 @@ public class BuildSystem : MonoBehaviour
         }
     }
 
+    /* Transfers all blocks from the reference transform to the parent transform.
+    * It iterates through all the children of the reference transform and sets their parent to the parent transform.
+    */
     private void TransferBlocksToParent()
     {
         List<Transform> blocksToTransfer = new List<Transform>();
