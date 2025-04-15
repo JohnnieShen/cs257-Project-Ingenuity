@@ -3,6 +3,14 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Pivot : FollowTarget {
 
+	/*
+	* Author: Johnny
+	* Summary: This script is responsible for managing the camera pivot in the game. It allows the camera to follow a target object smoothly.
+	* The script is designed to be used in the Unity Editor and can be attached to a GameObject with a Camera component.
+	* It uses the FollowTarget class to handle the target following logic. The script also includes functionality to adjust the camera's local position based on the target's position.
+	* The Follow method is abstract and should be implemented in derived classes to define the specific following behavior.
+	*/
+
 	protected Transform cam;
 	protected Transform pivot;
 	protected Vector3 lastTargetPosition;

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    /*
+    * Author: Liam
+    * Summary: This script handles the player movement in the game. It uses a CharacterController to move the player based on input from the InputManager.
+    * The player can move in 3D space using WASD or arrow keys, and can also move up and down using the assigned input actions. The movement is smoothed for a better experience.
+    * The script also restricts the player's movement within a specified radius around a center point, if provided.
+    */
+
     public CharacterController controller;
     public float speed = 12f;
     

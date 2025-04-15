@@ -4,6 +4,15 @@ using System.Collections.Generic;
 
 public class Projectile : MonoBehaviour
 {
+
+    /* 
+    * Author: Johnny
+    * Summary: This script handles the projectile behavior in the game. It manages the projectile's speed, damage, and impact effects.
+    * The projectile can be set to be an enemy projectile or not, and it will destroy itself after a specified time.
+    * When the projectile collides with a block or core, it applies damage and triggers a visual effect.
+    * The script also includes a jitter effect for the block upon impact, which can be customized in terms of duration and magnitude.
+    */
+
     public bool IsEnemyProjectile = false;
     public float speed;
     public float ballisticDamage = 10f;
@@ -13,22 +22,39 @@ public class Projectile : MonoBehaviour
     public float jitterDuration = 0.3f;
     public float jitterMagnitude = 0.1f;
 
+    /* Start is called before the first frame update.
+    * It destroys the projectile after a specified time to prevent it from existing indefinitely in the game world.
+    */
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
     }
 
+    /* Update is called once per frame.
+    * It moves the projectile forward at a specified speed.
+    */
     private void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    /* SetDamage is a public method that allows other scripts to set the damage values for the projectile.
+    * It takes two float parameters: ballisticDmg and energyDmg, which represent the damage values for ballistic and energy damage respectively.
+    * Param 1: ballisticDmg - The damage value for ballistic damage.
+    * Param 2: energyDmg - The damage value for energy damage.
+    */
     public void SetDamage(float ballisticDmg, float energyDmg)
     {
         ballisticDamage = ballisticDmg;
         energyDamage = energyDmg;
     }
 
+    /* OnTriggerEnter is called when the collider other enters the trigger collider attached to the object where this script is attached.
+    * It checks if the projectile is an enemy projectile and applies damage to the block or core it collides with.
+    * It also triggers a visual effect at the collision point and applies a jitter effect to the block or core.
+    * The method uses a coroutine to handle the jitter effect, which can be customized in terms of duration and magnitude.
+    * Param 1: other - The collider that the projectile collides with.
+    */
     void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Projectile hit: " + other.name + " " + other.tag);
@@ -106,6 +132,15 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    /* JitterBlock is a coroutine that applies a jitter effect to the block transform.
+    * It takes the block transform, duration, and magnitude as parameters.
+    * The coroutine computes the block's position relative to a reference transform and applies a random jitter to it.
+    * After the jitter effect, it restores the block's position to its original state.
+    * Param 1: blockTransform - The transform of the block to be jittered.
+    * Param 2: duration - The duration of the jitter effect.
+    * Param 3: magnitude - The magnitude of the jitter effect.
+    */
     private IEnumerator JitterBlock(Transform blockTransform, float duration, float magnitude)
     {
         // Try to get a Hull component and use its coreTransform if available.
@@ -140,6 +175,15 @@ public class Projectile : MonoBehaviour
         // After jitter, restore the block's position relative to the updated reference.
         blockTransform.position = reference.position + initialOffset;
     }
+
+    /* JitterVisualMeshes is a coroutine that applies a jitter effect to the visual meshes of the hull.
+    * It takes the hull, duration, and magnitude as parameters.
+    * The coroutine computes the position of each MeshRenderer relative to a reference transform and applies a random jitter to it.
+    * After the jitter effect, it restores the position of each MeshRenderer to its original state.
+    * Param 1: hull - The Hull component containing the visual meshes to be jittered.
+    * Param 2: duration - The duration of the jitter effect.
+    * Param 3: magnitude - The magnitude of the jitter effect.
+    */
     private IEnumerator JitterVisualMeshes(Hull hull, float duration, float magnitude)
     {
         // Determine the reference transform.

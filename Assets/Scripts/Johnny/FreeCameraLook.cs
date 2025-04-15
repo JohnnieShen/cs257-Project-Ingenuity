@@ -4,6 +4,14 @@ using System;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 public class FreeCameraLook : Pivot {
+	/*
+	* Author: Johnny
+	* Summary: This script is responsible for controlling the free camera movement and look in the game.
+	* It allows the player to move the camera around, look around, and zoom in and out.
+	* It also handles the firing action and interacts with the game world by picking up blocks.
+	* The script uses Unity's Input System for handling input actions and events.
+	*/
+
 	public static event Action OnFire;
 
 	public static FreeCameraLook instance;
@@ -42,6 +50,11 @@ public class FreeCameraLook : Pivot {
 	public float pickUpDistance = 5f;
 	public GameObject pickupIconPanel;
 	public Image pickupIconImage;
+
+	/* Awake is called when the script instance is being loaded.
+	* It initializes the camera and pivot transforms, sets the target zoom, and checks for duplicate instances of the FreeCameraLook script.
+	* It also creates a new AimTarget GameObject if it is not assigned.
+	*/
 	protected override void Awake()
 	{
 		base.Awake();
@@ -62,6 +75,11 @@ public class FreeCameraLook : Pivot {
             Debug.Log("aimTarget was not assigned. A new AimTarget GameObject has been created.");
         }
 	}
+
+	/* OnEnable sets up the listeners for the drive shoot and scroll actions from the InputManager.
+	* It subscribes to the performed and canceled events for the drive shoot action and the performed event for the drive scroll action.
+	* It also checks if the InputManager instance is not null and if the actions are not null before subscribing to the events.
+	*/
 	private void OnEnable()
     {
         if (InputManager.instance != null && InputManager.instance.GetDriveShootAction() != null)
@@ -75,6 +93,10 @@ public class FreeCameraLook : Pivot {
 		}
     }
 
+	/* OnDisable removes the listeners for the drive shoot and scroll actions from the InputManager.
+	* It unsubscribes from the performed and canceled events for the drive shoot action and the performed event for the drive scroll action.
+	* It also checks if the InputManager instance is not null and if the actions are not null before unsubscribing from the events.
+	*/
     private void OnDisable()
     {
         if (InputManager.instance != null && InputManager.instance.GetDriveShootAction() != null)
@@ -88,16 +110,31 @@ public class FreeCameraLook : Pivot {
 		}
     }
 
+	/* OnFireStarted is called when the drive shoot action is performed.
+	* It sets the isFiring variable to true, indicating that the player is firing.
+	* It also checks if the InputManager instance is not null and if the action is not null before setting the variable.
+	* Param 1: ctx - The input action context that contains information about the input event.
+	*/
 	void OnFireStarted(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         isFiring = true;
     }
+
+	/* OnFireCanceled is called when the drive shoot action is canceled.
+	* It sets the isFiring variable to false, indicating that the player has stopped firing.
+	* It also checks if the InputManager instance is not null and if the action is not null before setting the variable.
+	* Param 1: ctx - The input action context that contains information about the input event.
+	*/
     void OnFireCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         isFiring = false;
     }
 	
 	// Update is called once per frame
+	// It handles the camera rotation, zoom, and target updates.
+	// It also checks for mouse input and interacts with the game world by picking up blocks.
+	// It uses the InputManager instance to get the drive look and interact actions.
+	// It also checks for the pickup icon panel and updates it based on the hovered hull.
 	protected override	void Update ()
 	{
 		base.Update();
@@ -144,12 +181,22 @@ public class FreeCameraLook : Pivot {
 		}
 	}
 
-
+	/* Follow is called to update the camera position based on the target's position.
+	* It uses linear interpolation to smoothly move the camera towards the target position.
+	* Param 1: deltaTime - The time since the last frame, used for smooth movement.
+	*/
 	protected override void Follow (float deltaTime)
 	{
 		transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
 
 	}
+
+	/* UpdateTarget is called to update the aim target position based on the camera's forward direction.
+	* It uses a raycast to check for collisions with the terrain or enemy blocks.
+	* If a collision is detected, it updates the aim target position to the hit point.
+	* If no collision is detected, it sets the aim target position to a point far away in the forward direction.
+	* It also draws a debug ray to visualize the raycast direction.
+	*/
 	private void UpdateTarget() 
 	{
 		Vector3 centerScreen = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
@@ -178,7 +225,12 @@ public class FreeCameraLook : Pivot {
 
 
 		
-    
+    /* HandleRotationMovement is called to handle the camera rotation and movement based on player input.
+	* It uses the InputManager instance to get the drive look action and reads the input values.
+	* It applies smoothing to the input values if the turnsmoothing variable is greater than 0.
+	* It updates the look angle and tilt angle based on the input values and applies clamping to the tilt angle.
+	* It also updates the camera and pivot rotations based on the calculated angles.
+	*/
 	void HandleRotationMovement()
     {
         Vector2 lookVal = Vector2.zero;
@@ -209,6 +261,11 @@ public class FreeCameraLook : Pivot {
         pivot.localRotation = Quaternion.Euler(tiltAngle, 0f, 0f);
     }
 
+	/* OnScrollPerformed is called when the drive scroll action is performed.
+	* It reads the scroll value from the input action context and updates the target zoom based on the scroll value.
+	* It clamps the target zoom value between the minimum and maximum zoom values.
+	* Param 1: ctx - The input action context that contains information about the input event.
+	*/
     private void OnScrollPerformed(InputAction.CallbackContext ctx)
 	{
 		Vector2 scrollValue = ctx.ReadValue<Vector2>();
@@ -218,6 +275,14 @@ public class FreeCameraLook : Pivot {
 		targetZoom -= scroll * zoomSpeed;
 		targetZoom = Mathf.Clamp(targetZoom, minZoom, maxZoom);
 	}
+
+	/* HandleZoom is called to handle the camera zoom based on the target zoom value.
+	* It uses linear interpolation to smoothly move the camera towards the target zoom value.
+	* It calculates the desired local position based on the current zoom value and the pivot transform.
+	* It performs a raycast to check for collisions with the terrain and updates the current zoom value based on the hit distance.
+	* It clamps the current zoom value between the minimum and maximum zoom values.
+	* It updates the camera local position based on the desired local position and the current zoom value.
+	*/
 	void HandleZoom()
 	{
 		currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomSmoothFactor);
@@ -236,6 +301,15 @@ public class FreeCameraLook : Pivot {
 		}
 		cam.localPosition = Vector3.Lerp(cam.localPosition, desiredLocalPos, Time.deltaTime * zoomSmoothFactor);
 	}
+
+	/* FindHoveredHull is called to find the hull that is currently hovered by the camera.
+	* It performs a raycast from the camera's position in the forward direction and checks for collisions with the specified layers.
+	* If a collision is detected, it checks if the hit object is a block or enemy block and if it can be picked up.
+	* If so, it returns the Hull component of the hit object.
+	* Otherwise, it returns null.
+	* Param 1: ray - The ray to cast from the camera's position in the forward direction.
+	* Returns: The Hull component of the hovered object or null if no hull is found.
+	*/
 	private Hull FindHoveredHull(Ray ray)
     {
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
@@ -250,6 +324,13 @@ public class FreeCameraLook : Pivot {
         }
         return null;
     }
+
+	/* PickupBlock is called to pick up a block from the game world.
+	* It checks if the hull and source block are not null before proceeding.
+	* It adds the block to the BlockInventoryManager and destroys the hull game object.
+	* It also checks if the BlockInventoryManager instance is not null before adding the block.
+	* Param 1: hull - The Hull component of the block to be picked up.
+	*/
 	private void PickupBlock(Hull hull)
     {
         if (hull == null || hull.sourceBlock == null) {

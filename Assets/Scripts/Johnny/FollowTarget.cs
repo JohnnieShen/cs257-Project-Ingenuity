@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
 public abstract class FollowTarget : MonoBehaviour {
-	
+	/* 
+	* Author: Johnny
+	* Summary: This script is responsible for following a target object in the game. It can be attached to any GameObject that needs to follow a target.
+	* The target can be set manually or automatically found using the "Player" tag. The script uses FixedUpdate to follow the target smoothly.
+	* The Follow method is abstract and should be implemented in derived classes to define the specific following behavior.
+	*/
 	[SerializeField] public Transform target;
 	[SerializeField] private bool autoTargetPlayer = true;
 
