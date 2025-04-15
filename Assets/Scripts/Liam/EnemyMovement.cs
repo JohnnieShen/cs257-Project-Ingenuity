@@ -24,13 +24,7 @@ public class EnemyMovement : MonoBehaviour
     public float currentSteerInput;
     
     // TODO bool for if movement is enabled
-    void Start()
-    {
-        foreach (Wheel wheel in wheels)
-        {
-            wheel.isAI = true; // Set the isAI flag to true for all wheels, so they don't respond to player input.
-        }
-    }
+
     void FixedUpdate()
     {
         if (targetPosition == null) return;

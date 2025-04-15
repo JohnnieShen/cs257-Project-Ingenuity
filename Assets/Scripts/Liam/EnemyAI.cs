@@ -63,6 +63,7 @@ public class EnemyAI : MonoBehaviour
     void InitializeAI()
     {
         if (healthSystem != null)
+            Debug.Log("Here");
             healthSystem.OnHealthChanged.AddListener(HandleHealthChanged);
         if (enemyMovement.targetPosition == null)
         {

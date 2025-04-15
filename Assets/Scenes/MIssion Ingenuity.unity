@@ -2832,6 +2832,15 @@ MonoBehaviour:
   - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
     CurrentCount: 4
     MaxStack: 99
+  - Block: {fileID: 11400000, guid: 4aff471f1d9cd7e4b96eecf9f3ec2404, type: 2}
+    CurrentCount: 4
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
+    CurrentCount: 4
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
+    CurrentCount: 4
+    MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
   m_ObjectHideFlags: 0
@@ -56216,7 +56225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
-  numberEnemies: 30
+  numberEnemies: 0
   exclusionCenter: {fileID: 1737559191}
   exclusionRadius: 20
 --- !u!4 &1909752368
