@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    /*
-    Author: Liam
-    Summary: This script handles the mouse look functionality for a first-person camera. It allows the player to look around using the mouse input.
-    It uses the Unity Input System to read the mouse input and applies it to the camera and player body rotation. The script also includes smoothing for the rotation.
-    */
     public float mouseSensitivity = 100f;
     public Transform playerBody;
 

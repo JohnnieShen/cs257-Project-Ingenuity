@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    /*
-    * Author: Jay
-    * Summary: This script handles the player movement in a 3D environment. It applies gravity towards a planet and allows the player to move around the planet's surface.
-    * The player can move in all directions using WASD keys and can jump using the spacebar. The script also handles the player's rotation to align with the planet's surface.
-    */
-
-    //NOT USED
-
     public GameObject planet; 
     public float speed;
     public float gravityStrength;
