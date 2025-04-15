@@ -67,13 +67,9 @@ public class EnemyAI : MonoBehaviour
     void InitializeAI()
     {
         if (healthSystem != null)
-<<<<<<< Updated upstream
         {
             healthSystem.OnHealthChanged.AddListener(HandleHealthChanged);
         }
-=======
-             healthSystem.OnHealthChanged?.AddListener(HandleHealthChanged); // TODO listener may not be added correctly
->>>>>>> Stashed changes
         if (enemyMovement.targetPosition == null)
         {
             patrolTargetObject = new GameObject("EnemyNavigationTarget");

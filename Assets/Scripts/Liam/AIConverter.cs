@@ -62,7 +62,6 @@ public class ConvertToAI : MonoBehaviour
         // Remove AimSphere and VehicleResourceManager scripts which are only used by the player vehicle
         Destroy(commandModule.GetComponent<AimSphere>());
         Destroy(commandModule.GetComponent<VehicleResourceManager>());
-<<<<<<< Updated upstream:Assets/Scripts/Liam/AIConverter.cs
 
         // Reset transforms
         Transform center = new GameObject().transform;
@@ -82,7 +81,5 @@ public class ConvertToAI : MonoBehaviour
         Destroy(center.gameObject);
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
-=======
->>>>>>> Stashed changes:Assets/ConvertToAI.cs
     }
 }
