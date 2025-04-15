@@ -259,7 +259,9 @@ public class BuildSystem : MonoBehaviour
         int count = BlockInventoryManager.instance.GetBlockCount(currentBlock);
         if (currentBlock == null || count <= 0) // No blocks remaining of this type
         {
-            Debug.LogWarning("No blocks remaining of this type!");
+            string popupMsg = "No blocks remaining of this type!";
+            Debug.LogWarning(popupMsg);
+            UIManager.Instance.ShowPopup(popupMsg, 2f);
             return;
         }
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
@@ -295,17 +297,23 @@ public class BuildSystem : MonoBehaviour
                 }
                 if (isTopSurface && !currentBlock.isTopMountable)
                 {
-                    Debug.LogWarning("This block cannot be top-mounted!");
+                    string popupMsg = "This block cannot be top-mounted!";
+                    Debug.LogWarning(popupMsg);
+                    UIManager.Instance.ShowPopup(popupMsg, 2f);
                     return;
                 }
                 if (isBottomSurface && !currentBlock.isBottomMountable)
                 {
-                    Debug.LogWarning("This block cannot be bottom-mounted!");
+                    string popupMsg = "This block cannot be bottom-mounted!";
+                    Debug.LogWarning(popupMsg);
+                    UIManager.Instance.ShowPopup(popupMsg, 2f);
                     return;
                 }
                 if (isSideSurface && !currentBlock.isSideMountable)
                 {
-                    Debug.LogWarning("This block cannot be side-mounted!");
+                    string popupMsg = "This block cannot be side-mounted!";
+                    Debug.LogWarning(popupMsg);
+                    UIManager.Instance.ShowPopup(popupMsg, 2f);
                     return;
                 }
                 Vector3 localSpawn = new Vector3( // Calculate spawn position

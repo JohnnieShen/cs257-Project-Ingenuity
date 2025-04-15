@@ -76,6 +76,11 @@ public class EnemyAI : MonoBehaviour
     {
         if (healthSystem != null)
             healthSystem.OnHealthChanged.RemoveListener(HandleHealthChanged);
+        if (VehicleResourceManager.Instance != null)
+        {
+            VehicleResourceManager.Instance.ballisticAmmoCount = VehicleResourceManager.Instance.maxBallisticAmmo;
+            VehicleResourceManager.Instance.UpdateBallisticAmmoUI();
+        }
     }
 
     void Update()
