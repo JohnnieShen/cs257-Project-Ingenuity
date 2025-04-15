@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class BlockHealth : MonoBehaviour
 {
+    /*
+    * Author: Johnny
+    * Summary: This script is responsible for managing the health of a block in the game.
+    * It allows the block to take damage and triggers an event when the block is damaged.
+    * If the block's health reaches zero, it destroys the block.
+    */
+
     public Block blockType;
     public float currentHealth;
     

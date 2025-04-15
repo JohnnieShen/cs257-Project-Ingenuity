@@ -9,6 +9,14 @@ using System.Collections.Generic;
     */
 public class Turret : MonoBehaviour
 {
+    /* 
+    * Author: Johnny
+    * Summary: This script is attached to a turret block in the game. It manages the turret's aiming, shooting, and reloading.
+    * The turret uses the MultiAimConstraint component to aim at a target and can shoot projectiles at a specified fire rate.
+    * The turret can also check for obstacles in its line of sight and block the shot if necessary.
+    * The turret can be configured to use either ballistic or energy projectiles, and it can be set to AI mode for enemy turrets.
+    */
+
     // List of MultiAimConstraint components that will be used to aim at the target.
     // Each represents a MultiAimConstraint under the Rig component under turret, there should be multiple.
     // We are only accessing it here to turn on and off aiming (by setting the weight of the target).
@@ -42,6 +50,11 @@ public class Turret : MonoBehaviour
     [SerializeField] private float aiSpreadAngle = 2f;
     // public Transform aimTransform;
 
+    /**
+    * Start is called before the first frame update.
+    * It initializes the aim target and sets up the MultiAimConstraint components to aim at it.
+    * It also sets up the blocked line renderer and initializes the ammo count.
+    */
     void Start()
     {
         // aimTarget = FreeCameraLook.instance?.aimTarget;
@@ -84,7 +97,10 @@ public class Turret : MonoBehaviour
             blockedLine.enabled = false;
         }
     }
-    // Disable all aim constraints by setting all weights to 0 then rebuilding when the turret is not in use.
+    
+    /* Disable aiming constraints by setting their weight to 0.
+    * This is used when the turret is not connected to the core
+    */
     private void DisableAimConstraints()
     {
         foreach (MultiAimConstraint constraint in aimConstraints)
@@ -96,12 +112,21 @@ public class Turret : MonoBehaviour
             rigs.Build();
     }
 
+    /* Set the weight of the MultiAimConstraint to the specified value.
+    * This is used to enable or disable aiming for the turret.
+    * Param1: constraint - The MultiAimConstraint to set the weight for.
+    * Param2: weight - The weight to set for the constraint.
+    */
     private void SetConstraintWeight(MultiAimConstraint constraint, float weight)
     {
         if (constraint != null)
             constraint.weight = weight;
     }
 
+    /* Update is called once per frame.
+    * It checks if the turret is blocked by an obstacle and updates the blocked line renderer if necessary.
+    * It also disables the aim constraints if the turret is not connected to the core.
+    */
     void Update()
     {
         Hull hull = GetComponent<Hull>();
@@ -117,7 +142,10 @@ public class Turret : MonoBehaviour
         CheckIfBlocked();
     }
 
-    // Subscribe to the OnFire event for player turrets, we don't want AI turrets to do this.
+    /* * OnEnable is called when the script is enabled.
+    * It subscribes to the OnFire event from the FreeCameraLook instance to handle firing the turret.
+    * It also checks if the turret is AI and does not subscribe to the event if it is. Because AI firing is handle by EnemyBehavior.
+    */
     void OnEnable()
     {
         if (isAI)
@@ -125,7 +153,10 @@ public class Turret : MonoBehaviour
         FreeCameraLook.OnFire += HandleFireEvent;
     }
 
-    // Unsubscribe from the OnFire event when the turret is disabled to prevent memory leaks.
+    /* OnDisable is called when the script is disabled.
+    * It unsubscribes from the OnFire event from the FreeCameraLook instance to prevent memory leaks.
+    * It also checks if the turret is AI and does not unsubscribe if it is. Because AI firing is handle by EnemyBehavior.
+    */
     void OnDisable()
     {
         if (isAI)
@@ -235,6 +266,9 @@ public class Turret : MonoBehaviour
     // }
 
     // Set the target of the MultiAimConstraint to the new target.
+    // This is used to change the target of the turret when the player changes the aim target.
+    // Param1: constraint - The MultiAimConstraint to set the target for.
+    // Param2: newTarget - The new target to set for the constraint.
     private void SetConstraintTarget(MultiAimConstraint constraint, Transform newTarget)
     {
         if (constraint == null || newTarget == null)
@@ -302,5 +336,10 @@ public class Turret : MonoBehaviour
         if (blockedLine != null)
             blockedLine.enabled = false;
     }
+
+    /* Set the aim accuracy for AI turrets.
+    * This is used to set the spread angle for AI turrets to make them less accurate.
+    * Param1: spread - The spread angle to set for the AI turret.
+    */
     public void SetAISpread(float spread) => aiSpreadAngle = Mathf.Max(0f, spread);
 }

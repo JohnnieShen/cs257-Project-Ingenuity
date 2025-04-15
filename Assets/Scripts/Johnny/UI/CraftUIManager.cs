@@ -5,11 +5,21 @@ using System.Collections;
 
 public class CraftUIManager : MonoBehaviour
 {
+    /* 
+    * Author: Johnny
+    * Summary: This script manages the crafting UI in the game. It populates the UI with available blocks, handles crafting and recycling actions,
+    * and updates the scrap count displayed in the UI. It uses a dictionary to keep track of the UI entries for each block and updates them accordingly.
+    * The script also listens for changes in the scrap count and updates the UI text accordingly.
+    */
     public GameObject craftUIEntryPrefab;
     public Transform entriesParent;
     public TextMeshProUGUI ScrapText;
     private readonly Dictionary<Block, CraftUIEntry> entryLookup = new();
 
+    /* Start is called before the first frame update.
+    * It populates the crafting UI with available blocks and sets up listeners for scrap count changes.
+    * It also updates the scrap text to reflect the current scrap count.
+    */
     private void Start()
     {
         PopulateCraftUI();
@@ -20,6 +30,10 @@ public class CraftUIManager : MonoBehaviour
         }
     }
 
+    /* It goes through the available building blocks in the BlockInventoryManager and creates a UI entry for each craftable block.
+    * It sets up the UI entry with the block data and assigns the crafting and recycling actions to the buttons.
+    * It also refreshes the entry to show the current block count.
+    */
     private void PopulateCraftUI()
     {
         var invManager = BlockInventoryManager.instance;
@@ -45,6 +59,11 @@ public class CraftUIManager : MonoBehaviour
         }
     }
 
+    /* It handles the crafting action when the craft button is clicked.
+    * It checks if there are enough resources to craft the block and updates the UI accordingly.
+    * It also shows a popup message to inform the player about the crafting result.
+    * Param 1: block - The block to be crafted.
+    */
     private void HandleCraftClicked(Block block)
     {
         string message;
@@ -66,6 +85,11 @@ public class CraftUIManager : MonoBehaviour
         UIManager.Instance.ShowPopup(message, 2f);
     }
 
+    /* It handles the recycling action when the recycle button is clicked.
+    * It checks if there are enough blocks to recycle and updates the UI accordingly.
+    * It also shows a popup message to inform the player about the recycling result.
+    * Param 1: block - The block to be recycled.
+    */
     private void HandleRecycleClicked(Block block)
     {
         string message;
@@ -88,6 +112,11 @@ public class CraftUIManager : MonoBehaviour
 
         UIManager.Instance.ShowPopup(message, 2f);
     }
+
+    /* It updates the scrap text displayed in the UI.
+    * It takes in the new scrap count and updates the text accordingly.
+    * Param 1: newValue - The new scrap count to be displayed.
+    */
     private void UpdateScrapText(int newValue)
     {
         // Just update the text so the UI shows the current scrapCount
@@ -96,6 +125,11 @@ public class CraftUIManager : MonoBehaviour
             ScrapText.text = newValue.ToString();
         }
     }
+
+    /* It refreshes the entry for a specific block in the crafting UI.
+    * It checks if the entry exists in the dictionary and updates the block count displayed in the UI.
+    * Param 1: block - The block whose entry needs to be refreshed.
+    */
     private void RefreshEntry(Block block)
     {
         if (entryLookup.TryGetValue(block, out var entry))

@@ -5,6 +5,13 @@ using UnityEngine.Rendering.Universal;
 
 public class EdgeDetection : ScriptableRendererFeature
 {
+
+    /*
+    * Author: https://ameye.dev/notes/edge-detection-outlines/
+    * Summary: This script is a custom renderer feature for Unity's Universal Render Pipeline (URP).
+    * See above link for details
+    */
+
     private class EdgeDetectionPass : ScriptableRenderPass
     {
         private Material material;

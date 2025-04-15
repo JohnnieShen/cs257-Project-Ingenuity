@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
-    public UnityEvent<float> OnHealthChanged;
+    public UnityEvent<float> OnHealthChanged = new UnityEvent<float>();
 
     void Start()
     {

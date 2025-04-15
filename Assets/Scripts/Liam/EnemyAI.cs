@@ -52,19 +52,24 @@ public class EnemyAI : MonoBehaviour
             InitializeVehicleStructure();
         }
         patrolCenter = transform.position;
+        if (healthSystem == null) {
+            healthSystem = GetComponent<HealthSystem>();
+        }
         InitializeAI();
         maxTotalHealth = healthSystem.CalculateMaxHealth();
         if (enemyTurrets.Count == 0)
             enemyTurrets.AddRange(GetComponentsInChildren<Turret>());
         foreach (Turret t in enemyTurrets)
             if (t != null) t.SetAISpread(aiSpreadAngle);
+        
     }
 
     void InitializeAI()
     {
         if (healthSystem != null)
-            Debug.Log("Here");
+        {
             healthSystem.OnHealthChanged.AddListener(HandleHealthChanged);
+        }
         if (enemyMovement.targetPosition == null)
         {
             patrolTargetObject = new GameObject("EnemyNavigationTarget");

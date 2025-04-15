@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* BlockInventory tracks the inventory of blocks in the game.
+ * It contains a Block reference, the current count of that block, and the maximum stack size.
+ */
 [System.Serializable]
 public class BlockInventory
 {
@@ -11,6 +15,13 @@ public class BlockInventory
 
 public class BlockInventoryManager : MonoBehaviour
 {
+    /* 
+    * Author: Johnny
+    * Summary: This script manages the inventory of blocks in the game. It allows for adding, consuming, and checking the count of blocks.
+    * It also provides functionality to initialize the inventory and check if a block is present in the inventory.
+    * The script uses a singleton pattern to ensure that only one instance of the BlockInventoryManager exists in the game.
+    */
+
     public static BlockInventoryManager instance;
 
     [Header("Block Inventory Setup")]
