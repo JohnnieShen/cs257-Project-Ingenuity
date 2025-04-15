@@ -56224,8 +56224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1acb29a9311f7f342b79cfc3c64c6c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4204723348030927112, guid: 2c188981f849deb4594e66e4c725f708, type: 3}
-  numberEnemies: 30
+  prefab: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
+  numberEnemies: 0
   exclusionCenter: {fileID: 1737559191}
   exclusionRadius: 20
 --- !u!4 &1909752368
