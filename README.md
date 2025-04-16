@@ -153,10 +153,10 @@ For the next checkpoint as well we plan to have a more developed tutorial level,
 
 We also plan on improving the playability of the game in general, in our case meaning a bigger map, more AI to kill and structures and POIs to explore. 
 
-- More blocks, add-on blocks
-- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation
-- More level design work, tutorial level with corresponding mechanics, bigger map in first world, script for spawning in enemies dynamically, more POIs
-- Sounds
+~~- More blocks, add-on blocks~~
+~~- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation~~
+~~- More level design work,~~ tutorial level with corresponding mechanics (out of scope), ~~bigger map in first world, script for spawning in enemies dynamically, more POIs~~
+- Sounds (did not get around to do)
 
 ## Development
 
@@ -309,3 +309,4 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 - Crafting UI entries missing background
 - Tree breaking doesn't have particle effect
 - Trees are sometimes off the ground
+- Block selection in build mode doesn't feel the best, pending QOL fix
