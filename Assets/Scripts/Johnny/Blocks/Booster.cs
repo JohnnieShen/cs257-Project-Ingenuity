@@ -29,6 +29,11 @@ public class Booster : MonoBehaviour
         {
             Debug.LogError("No Rigidbody found on this block");
         }
+        hull = GetComponent<Hull>();
+        if (hull == null)
+        {
+            Debug.LogWarning("No Hull component found on this block");
+        }
     }
 
     /**
@@ -69,6 +74,10 @@ public class Booster : MonoBehaviour
     */
     private void StartBoost(InputAction.CallbackContext context)
     {
+        if (hull != null && hull.canPickup)
+        {
+            return;
+        }
         if (VehicleResourceManager.Instance != null && VehicleResourceManager.Instance.energyAmmoCount > 0)
         {
             isBoosting = true;

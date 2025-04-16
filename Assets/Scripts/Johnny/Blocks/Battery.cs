@@ -11,6 +11,7 @@ public class Battery : MonoBehaviour
 
     private Hull hull;
     private bool energyBoostApplied = false;
+    private bool isAI = false;
 
     /**
     * Awake is called when the script instance is being loaded.
@@ -23,6 +24,11 @@ public class Battery : MonoBehaviour
         {
             Debug.LogError("BatteryBlock: Hull component not found on battery block.");
         }
+        EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
+        if (enemyAI != null)
+        {
+            isAI = true;
+        }
     }
     /**
     * Start is called before the first frame update.
@@ -31,11 +37,14 @@ public class Battery : MonoBehaviour
     */
     void Start()
     {
+        if (isAI)
+        {
+            return;
+        }
         if (hull != null && !hull.canPickup && VehicleResourceManager.Instance != null)
         {
             ApplyBatteryEffect();
         }
-        // TODO: what happens if battery is attached to AI vehicle
     }
 
     /**
@@ -45,6 +54,10 @@ public class Battery : MonoBehaviour
     */
     void Update()
     {
+        if (isAI)
+        {
+            return;
+        }
         if (energyBoostApplied && hull != null && hull.canPickup)
         {
             RemoveBatteryEffect();
@@ -57,6 +70,10 @@ public class Battery : MonoBehaviour
     */
     void OnDestroy()
     {
+        if (isAI)
+        {
+            return;
+        }
         if (energyBoostApplied && VehicleResourceManager.Instance != null)
         {
             RemoveBatteryEffect();
