@@ -8,6 +8,13 @@ using UnityEngine;
     */  
 public class EnemyMovement : MonoBehaviour
 {
+    /*
+    * Author: Johnny
+    * Summary: This script is responsible for the movement of the enemy vehicle in the game. It uses a Rigidbody component to apply forces to the vehicle and control its movement.
+    * The script calculates the target speed based on the distance to the target position and applies steering and braking forces to the vehicle.
+    * The script also handles the movement of the wheels and applies forces to them based on the current drive and steer input.
+    * The script is designed to be used in conjunction with the EnemyAI script to control the enemy vehicle's behavior.
+    */
     public float maxSpeed = 20f;
     public float arrivalDistance = 2f;
     public float reverseThreshold = 0.5f;
@@ -25,6 +32,10 @@ public class EnemyMovement : MonoBehaviour
     
     // TODO bool for if movement is enabled
 
+    /* FixedUpdate is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    * In this case, it is used to calculate the movement of the enemy vehicle towards the target position.
+    * It calculates the vector to the target position, the distance to the target position, and the local target direction.
+    */
     void FixedUpdate()
     {
         if (targetPosition == null) return;
@@ -42,6 +53,12 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Calculate the target speed based on the distance to the target.
+    // If we are within the slow down radius, lerp the speed to 0 based on the distance.
+    // If we are within the arrival distance, return 0 speed.
+    // If we are not within the slow down radius, return the maximum speed.
+    // Param 1: toTarget - The vector to the target position.
+    // Param 2: distance - The distance to the target position.
+    // Return: The target speed based on the distance to the target position.
     float CalculateTargetSpeed(Vector3 toTarget, float distance)
     {
         float forwardDot = Vector3.Dot(transform.forward, toTarget.normalized); // Calculate the dot product between the forward vector and the vector to the target to see if we are going forward or not.
@@ -59,6 +76,8 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update the drive input based on the target speed and the distance to the target.
+    // Param 1: targetSpeed - The target speed based on the distance to the target position.
+    // Param 2: distanceToTarget - The distance to the target position.
     void UpdateDriveInput(float targetSpeed, float distanceToTarget)
     {
         float currentForwardSpeed = Vector3.Dot(rb.velocity, transform.forward); // Calculate the current forward speed.
@@ -72,6 +91,8 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Apply braking based on the distance to the target.
+    // If we are within the slow down radius, apply a braking force in the opposite direction of the velocity.
+    // Param 1: distanceToTarget - The distance to the target position.
     void ApplyBraking(float distanceToTarget)
     {
         // Debug.Log("Distance to target: " + distanceToTarget);
@@ -87,6 +108,8 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update the wheels based on the current drive and steer input.
+    // It sets the drive input of the wheel to the current drive input and applies a force at the position of the wheel to help movement.
+    // It also sets the steer angle of the wheel based on the current steer input and the maximum steering angle of the wheel.
     void UpdateWheels()
     {
         foreach (Wheel wheel in wheels)
@@ -117,6 +140,11 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    /* OnDrawGizmos is called when the script is being edited in the Unity Editor.
+    * It draws a line from the enemy vehicle to the target position and draws a wire sphere at the target position to visualize the arrival distance and slow down radius.
+    * It also draws a wire sphere at the target position to visualize the slow down radius.
+    * It is used for debugging purposes to visualize the target position and the distances.
+    */
     void OnDrawGizmos()
     {
         if (targetPosition != null)
