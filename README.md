@@ -175,6 +175,21 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
    - A rocket booster was added to make the game feel more alive for the player, the block allows for acceleration when the player presses shift. An associated particle effect was created for it.
 - Boss Fight
    - A more advanced AI was created to simulate a boss fight which lives in the boss base, a script was attached to where anytime a player comes within a certain distance, a large health bar will appear towards the top of the screen
+
+### Next milestone:
+
+For the next milestone, we want to continue fleshing out the core gameplay and adding more content to the game. One thing we are in the middle of doing would be a boss fight of some sorts that will feature a POI and a dark souls style health bar, which we thought would be really funny. Another thing that we would want to do to fully close the gameplay loop would be to create a set of endgame conditions so that players can get out of an level and move on to the other. We are still in the middle of looking into this.
+
+Content wise, another thing we could do would be to add even more blocks to the game. We have added a system of block rarities to the game as a placeholder system to enrich the gameplay, but we would like to keep on exploring our options. One issue this system brings us is that since now there are about 20 blocks, it is really annoying to look for a specific one. Thus, we would like to implement some QOL fix for this issue next patch and potentially change how the players interact with the system.
+
+Another thing we've been always wanted to do is to add sounds effects and music to the game. We have been sidetracked for multiple times in attempting to do this, but hopefully we can add it in this patch.
+
+- Boss enemies with special scripts for behavior, boss fight mechanic, end game goals (tentative if our time allows), more enemy types
+- More POI on the map, fell-able trees
+- More blocks, better navigation scheme for build mode for selecting blocks
+- UI polish
+- Sounds (sound effects, music)
+
 ## Development
 
 ### Project Checkpoint 1-2
@@ -306,6 +321,14 @@ We also added a tracker for ballistic and energy ammo, the current idea is that 
 We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent. This took me a long long time to figure out, and I’m proud that I did.
 
 We also added five different rarities to the game: common (gray), uncommon (green), rare (blue), epic (purple) and legendary (orange). So far, only the hull, wheel and turret blocks have different rarities. We plan to continue tweaking the stats of each rarity to feel distinct without feeling overpowered. Most importantly, the different block rarities have different physics properties which affects how large of a vehicle you can build. We also plan to have certain advanced blocks only available in higher rarities. Primarily the shield generator and rocket boosters will be rarer items. Having different block rarities allows us to create AI vehicles of varying strengths which will make the enemy progression much more interesting and dynamic.
+
+We have also added more blocks to the game, namely the rocket booster, battery and half block. The rocket booster brings a new method of moving around for the player and complements the driving gameplay really well. Batteries are good for fleshing out the shooting gameplay, and half blocks are good for times where looks matter. Overall after creating an workflow for adding new blocks it become a lot easier to do so, and we would probably add more for next milestone. 
+
+Another thing we did is that we added a lot of "juice" to the game. One thing would be the addition of bullet trails, which makes battles a lot more visually cool, combined with the "jitter" effect of blocks when hit and the sparks partical effect when hit, fighting feels a lot more rewarding and "juicy" now. Last but not least, to fully use the potential of bullet trails, we made it so that ballistic bullets that hit a enemy shield would be deflected instead of just absorbed, and it looked really cool.
+
+Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. Jay is also working on a script that would allow trees to fell when hit, which would be interesting.
+
+Last but not least, we added a script for converting player vehicle to AI vehicles in the editor. Before we have to go through a long and convoluted process of creating AI vehicles, which is annoying and prone to errors. Now we can just make the vehicle in the game, apply the script to the block parent, and store the vehicle as a prefab.  
 
 
 ### Instructions for Testing the Project
