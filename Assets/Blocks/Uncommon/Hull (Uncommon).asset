@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ea9861b54fd5a3a9b884dc989415243, type: 3}
-  m_Name: Command Module
+  m_Name: Hull (Uncommon)
   m_EditorClassIdentifier: 
-  BlockName: Core
-  BlockObject: {fileID: 919132149155446097, guid: c9e7c76c1abfb25a79472fc5f0ed18cc, type: 3}
-  PreviewObject: {fileID: 0}
-  isTopMountable: 0
-  isSideMountable: 0
-  isBottomMountable: 0
+  BlockName: Hull (Uncommon)
+  BlockObject: {fileID: 1084902746709771934, guid: 2ffa0093bf77a9d40bcb8bc6c6c926af, type: 3}
+  PreviewObject: {fileID: 5049604137013132266, guid: 88398177f5568024ba80f6548c3a5e4c, type: 3}
+  isTopMountable: 1
+  isSideMountable: 1
+  isBottomMountable: 1
   isRotatable: 0
-  isCraftable: 0
-  cost: 0
-  recycleBonus: 0
+  isCraftable: 1
+  cost: 10
+  recycleBonus: 10
   attachDirection: {x: 0, y: -1, z: 0}
   blockHealth: 10
-  uiSprite: {fileID: 0}
+  uiSprite: {fileID: 21300000, guid: 1ff5f1a3bce511c4fb3517219927f4aa, type: 3}
   onlyInlinePlacement: 0

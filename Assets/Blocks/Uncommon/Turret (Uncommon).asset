@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea9861b54fd5a3a9b884dc989415243, type: 3}
+  m_Name: Turret (Uncommon)
+  m_EditorClassIdentifier: 
+  BlockName: Turret (Common)
+  BlockObject: {fileID: 5282438896853963229, guid: 97c135f4b444c474c890a56b5de9c0bc, type: 3}
+  PreviewObject: {fileID: 5282438896853963229, guid: 3976665f6052c39489a30d3d1f606b4b, type: 3}
+  isTopMountable: 1
+  isSideMountable: 1
+  isBottomMountable: 1
+  isRotatable: 0
+  isCraftable: 1
+  cost: 30
+  recycleBonus: 10
+  attachDirection: {x: 0, y: 1, z: 0}
+  blockHealth: 100
+  uiSprite: {fileID: 21300000, guid: 2b2173f89a0239b428b3a174fed18275, type: 3}
+  onlyInlinePlacement: 0
