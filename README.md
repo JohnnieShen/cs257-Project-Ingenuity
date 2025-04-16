@@ -153,9 +153,9 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ~~We also plan on improving the playability of the game in general, in our case meaning a bigger map, more AI to kill and structures and POIs to explore.~~ 
 
-~~- More blocks, add-on blocks~~
-~~- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation~~
-~~- More level design work,~~ tutorial level with corresponding mechanics (out of scope), ~~bigger map in first world, script for spawning in enemies dynamically, more POIs~~
+- ~~More blocks, add-on blocks~~
+- ~~More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation~~
+- ~~More level design work,~~ tutorial level with corresponding mechanics (out of scope), ~~bigger map in first world, script for spawning in enemies dynamically, more POIs~~
 - Sounds (did not get around to do)
 
 ### Additions:
@@ -185,7 +185,7 @@ Content wise, another thing we could do would be to add even more blocks to the 
 Another thing we've been always wanted to do is to add sounds effects and music to the game. We have been sidetracked for multiple times in attempting to do this, but hopefully we can add it in this patch.
 
 - Boss enemies with special scripts for behavior, boss fight mechanic, end game goals (tentative if our time allows), more enemy types
-- More POI on the map, fell-able trees
+- More POI on the map, fell-able trees with particle effects.
 - More blocks, better navigation scheme for build mode for selecting blocks
 - UI polish
 - Sounds (sound effects, music)
