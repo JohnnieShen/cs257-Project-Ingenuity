@@ -307,3 +307,5 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 ~~- When some noncore block on AI vehicle gets destroys, the strucural validation calculation is faulty, causing the AI to fall apart.~~
 
 - Crafting UI entries missing background
+- Tree breaking doesn't have particle effect
+- Trees are sometimes off the ground
