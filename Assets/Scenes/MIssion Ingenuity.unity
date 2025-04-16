@@ -2808,38 +2808,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableBuildingBlocks:
-  - Block: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
   - Block: {fileID: 11400000, guid: 4aff471f1d9cd7e4b96eecf9f3ec2404, type: 2}
-    CurrentCount: 4
+    CurrentCount: 2
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
     CurrentCount: 4
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
-    CurrentCount: 4
+    CurrentCount: 1
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 02b857ecbb2e1e94694fb076d3ac1e0f, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 2711bb3d49431a0458405b5d08464ea5, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: b5ac9c8ee02d2bd48b9f519e33603f61, type: 2}
+    CurrentCount: 0
     MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
@@ -15861,6 +15846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 856457731}
     m_Modifications:
+    - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
+      propertyPath: scrapCount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
       propertyPath: maxEnergyAmmo
       value: 100
@@ -56205,6 +56194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1909752368}
   - component: {fileID: 1909752367}
+  - component: {fileID: 1909752369}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -56219,7 +56209,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909752366}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1acb29a9311f7f342b79cfc3c64c6c7b, type: 3}
   m_Name: 
@@ -56237,12 +56227,27 @@ Transform:
   m_GameObject: {fileID: 1909752366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -150, y: 0, z: 0}
+  m_LocalPosition: {x: -50, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1909752369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909752366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  prefab: {fileID: 5087926164049615283, guid: 2bc680070eabb684a85a0afc6c8eb489, type: 3}
+  numberEnemies: 3
 --- !u!1 &1927781931
 GameObject:
   m_ObjectHideFlags: 0

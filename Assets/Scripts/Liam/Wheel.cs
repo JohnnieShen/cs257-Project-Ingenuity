@@ -4,17 +4,15 @@ using UnityEngine;
 public class Wheel : MonoBehaviour
 {
     public float driveInput = 0f;
-    public float accelForceMultiplier = 1f;
-    public float suspensionRestDist;
-    public float springStrength;
-    public float springDamper;
-    public float maxDistance;
-    public float tireGripFactor;
-    public float tireMass;
-    public float accelForce;
-    public float rotationSpeed;
-    public float steeringReturnSpeed = 2f;
-    public float maxSteeringAngle = 45f;
+    public float suspensionRestDist = 1f;
+    public float springStrength = 500f;
+    public float springDamper = 10f;
+    public float maxDistance = 1.5f;
+    public float tireGripFactor = 0.3f;
+    public float accelForce = 10f;
+    public float rotationSpeed = 10f;
+    public float steeringReturnSpeed = 10f;
+    public float maxSteeringAngle = 30f;
     public GameObject tire;
     public bool isAI = false;
     private Quaternion neutralRotation;
@@ -128,7 +126,6 @@ public class Wheel : MonoBehaviour
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
             
             float springForce = springOffset * springStrength - springVel * springDamper;
-            float steeringForce = tireMass * desiredAccel;
 
             float driveInput = 0f;
             driveInput = isAI ? this.driveInput : Input.GetAxis("Vertical");
@@ -138,8 +135,8 @@ public class Wheel : MonoBehaviour
                 ApplySteering(currentSteerAngle);
             }
 
-            float driveForce = accelForce * accelForceMultiplier * driveInput;
-            rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
+            float driveForce = accelForce * driveInput;
+            rigidBody.AddForce(springForce * springDir + desiredAccel * steeringDir + accelDir * driveForce);
 
             tire.transform.position = hit.point + springDir * 0.5f;
         }
