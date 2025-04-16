@@ -79577,7 +79577,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909752368}
-  - component: {fileID: 1909752367}
+  - component: {fileID: 1909752370}
+  - component: {fileID: 1909752369}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -79585,24 +79586,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1909752367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909752366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1acb29a9311f7f342b79cfc3c64c6c7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiPrefabs:
-  - {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
-  - {fileID: 6808192744913518881, guid: b189a8b472c6e324595be6753e711450, type: 3}
-  numberEnemies: 40
-  exclusionCenter: {fileID: 1737559191}
-  exclusionRadius: 20
 --- !u!4 &1909752368
 Transform:
   m_ObjectHideFlags: 0
@@ -79612,12 +79595,42 @@ Transform:
   m_GameObject: {fileID: 1909752366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1909752369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909752366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  prefab: {fileID: 6808192744913518881, guid: b189a8b472c6e324595be6753e711450, type: 3}
+  numberEnemies: 1
+--- !u!114 &1909752370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909752366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 50
+  prefab: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
+  numberEnemies: 5
 --- !u!1 &1927781931
 GameObject:
   m_ObjectHideFlags: 0
