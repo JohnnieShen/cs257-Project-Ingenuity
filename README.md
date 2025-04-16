@@ -125,39 +125,56 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 - ~~Improve level design, points of interests, quest checklist / tracking system, quests~~ (In the works with nothing to show at this moment)
 
-- More blocks, ~~bug fixes related to physics based damage~~, add-on blocks  (Did more pixel art creation for UI so no time for modeling)
-- Improve visual design, upgrade shaders and textures, flesh out what we want the final design to look (not the imminent focus)
-- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible) (Did not do, current implementation completely overhauled vehicle representation and old AI prefabs are not updated to date, and AI script might not work with terrain, might need updating)
+- ~~More blocks, ~~bug fixes related to physics based damage~~, add-on blocks  (Did more pixel art creation for UI so no time for modeling)~~
+~~- Improve visual design, upgrade shaders and textures, flesh out what we want the final design to look (not the imminent focus)~~
+- ~~More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible) (Did not do, current implementation completely overhauled vehicle representation and old AI prefabs are not updated to date, and AI script might not work with terrain, might need updating)~~
 - ~~Better UI (Tentative)~~
 
 ### Additions
 
-- Crafting
-  -  Implemented menu for crafting blocks, can be entered from build mode. Players can recycle blocks in exchange for scraps, which can be used to craft other blocks, this will be a backup thing for players to acquire blocks, we did this first to flesh out the gameplay loop before worrying about the looks.
-  - Also implemented a resource manager for handling bullet counting, energy counting, scrap bookkeeping etc.
-- UI
-  - Created pixel art for block representations
-  - Implemented a rough draft of what we want the UI to look like, this is more of a mockup than anything.
-- Block previews for building
-  - This is an old feature that was disabled because it was really buggy, it is all fixed up and fully functional now.
-- Minimap
-  - Implemented a first version of the minimap on the UI, currently there are some issues with the full rendering pass. Fixes pending.
+- ~~Crafting~~
+  -  ~~Implemented menu for crafting blocks, can be entered from build mode. Players can recycle blocks in exchange for scraps, which can be used to craft other blocks, this will be a backup thing for players to acquire blocks, we did this first to flesh out the gameplay loop before worrying about the looks.~~
+  - ~~Also implemented a resource manager for handling bullet counting, energy counting, scrap bookkeeping etc.~~
+- ~~UI~~
+  ~~- Created pixel art for block representations~~
+  ~~- Implemented a rough draft of what we want the UI to look like, this is more of a mockup than anything.~~
+~~- Block previews for building~~
+  ~~- This is an old feature that was disabled because it was really buggy, it is all fixed up and fully functional now.~~
+~~- Minimap~~
+  ~~- Implemented a first version of the minimap on the UI, currently there are some issues with the full rendering pass. Fixes pending.~~
 
-As you can probably see, we put a lot of time into fleshing out the UI for the sake of streamlining the gameplay experience, and the previous plan was changed to some degree. The next checkpoint will be the checkpoint of playability, which will be our main focus from now.
+~~As you can probably see, we put a lot of time into fleshing out the UI for the sake of streamlining the gameplay experience, and the previous plan was changed to some degree. The next checkpoint will be the checkpoint of playability, which will be our main focus from now.~~
 
-### Project Part 4: Sound, UI, and Animation
+~~### Project Part 4: Sound, UI, and Animation~~
 
-For the next submission, we plan to work on sound design for our game. In our current state, while the game is visually quite put together, it lacks the background music, ambience, and other miscellaneous sounds to give the game a more lifelike feel. To start out, we plan on including sound effects such as building sounds, collision sounds, driving sounds, and shooting sounds. If time permits, having basic background music may be a desired addition. A good amount of our UI has been fleshed out, but fine tuning the parameters would be ideal. In terms of animation, having simple animations for building/block assembling, possibly shooting, and more. Since our game doesn’t particularly deal with characters, our animations will be less based on traditional rigging and more mechanical to fit with the nature of our game.
+~~For the next submission, we plan to work on sound design for our game. In our current state, while the game is visually quite put together, it lacks the background music, ambience, and other miscellaneous sounds to give the game a more lifelike feel. To start out, we plan on including sound effects such as building sounds, collision sounds, driving sounds, and shooting sounds. If time permits, having basic background music may be a desired addition. A good amount of our UI has been fleshed out, but fine tuning the parameters would be ideal. In terms of animation, having simple animations for building/block assembling, possibly shooting, and more. Since our game doesn’t particularly deal with characters, our animations will be less based on traditional rigging and more mechanical to fit with the nature of our game.~~
 
-For the next checkpoint as well we plan to have a more developed tutorial level, due to the slight complexity of our build systems to newer users. The goal will be to create a scene that has an abandoned government facility aesthetic, with obstacles, possibly a rogue enemy, and targets to give players a feel of the game’s building, shooting, and movement. We will include a title screen for players to either select the tutorial level if they want a recap on the control, or a play button to deliver them directly to the main gameplay. 
+~~For the next checkpoint as well we plan to have a more developed tutorial level, due to the slight complexity of our build systems to newer users. The goal will be to create a scene that has an abandoned government facility aesthetic, with obstacles, possibly a rogue enemy, and targets to give players a feel of the game’s building, shooting, and movement. We will include a title screen for players to either select the tutorial level if they want a recap on the control, or a play button to deliver them directly to the main gameplay.~~
 
-We also plan on improving the playability of the game in general, in our case meaning a bigger map, more AI to kill and structures and POIs to explore. 
+~~We also plan on improving the playability of the game in general, in our case meaning a bigger map, more AI to kill and structures and POIs to explore.~~ 
 
 ~~- More blocks, add-on blocks~~
 ~~- More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation~~
 ~~- More level design work,~~ tutorial level with corresponding mechanics (out of scope), ~~bigger map in first world, script for spawning in enemies dynamically, more POIs~~
 - Sounds (did not get around to do)
 
+### Additions:
+- AI Converter
+   - Implemented a script to allow for developers to construct vehicles of their own design in the Build Mode, apply the AI converter script, and that prefab can be saved as an AI
+   - Vastly improved efficiency and usability for creating new enemy types
+- Block Types
+   - Different rarities for our blocks were added (common, uncommon, rare, epic and legendary) and with each increasing rank, a proportional increase in stats is attached.
+- Terrain Size
+   - The terrain was modified to be 16x larger than our original (1000x1000 → 4000x4000), Added a couple of structural components, a centralized boss base, and more, Randomized AI spawn on the terrain
+- Main Menu
+   - Added a start screen with a custom background, buttons for the main gameplay loop, tutorial, settings, and quitting (only main gameplay is interactive at the moment), a menu that follows around the player’s cursor, and then some particle effects to give it extra flair
+- Tree Breaker
+   - Unity’s terrain tree system doesn’t actually place trees as game objects, which means the player can’t easily interact with them as you would with a traditional game object. First, a script had to be created to where any terrain tree within a certain radius of the player’s vehicle would have an associated tree prefab spawned in. Then, another script had to be added to the tree prefab to allow for the deletion of both the prefab and terrain counterpart when colliding with the player.
+- Bullet/Rocket Booster Effects
+   - Bullet trails were added for both the standard and energy turret. In addition to changing the bullet projectiles themselves, colors were used to differentiate between the two, orange for original and blue for energy. An added interaction was put into place with the energy shield, where the standard turret bullets will deflect off of energy shields, while the energy bullets will be absorbed.
+   - A rocket booster was added to make the game feel more alive for the player, the block allows for acceleration when the player presses shift. An associated particle effect was created for it.
+- Boss Fight
+   - A more advanced AI was created to simulate a boss fight which lives in the boss base, a script was attached to where anytime a player comes within a certain distance, a large health bar will appear towards the top of the screen
 ## Development
 
 ### Project Checkpoint 1-2
@@ -278,6 +295,14 @@ As we talked about before, the reason we started with the crafting menu is that 
 In addition to all of the previous updates, we also added a minimap as pictured in the bottom right. This uses a two-camera system and uses an orthographic projection in order to achieve the pictured look. We had an artifact in which the shading for the player and the trees were not aligned with their physical object, and so the toon shader had to be slightly tweaked.
 
 We also added a tracker for ballistic and energy ammo, the current idea is that energy ammo will replenish when out of battle and ballistic ammo needs to be crafted with scraps.
+
+### Checkpoint 5
+
+### Polishing Gameplay Loop and Mechanics
+
+We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent. This took me a long long time to figure out, and I’m proud that I did.
+
+We also added five different rarities to the game: common (gray), uncommon (green), rare (blue), epic (purple) and legendary (orange). So far, only the hull, wheel and turret blocks have different rarities. We plan to continue tweaking the stats of each rarity to feel distinct without feeling overpowered. Most importantly, the different block rarities have different physics properties which affects how large of a vehicle you can build. We also plan to have certain advanced blocks only available in higher rarities. Primarily the shield generator and rocket boosters will be rarer items. Having different block rarities allows us to create AI vehicles of varying strengths which will make the enemy progression much more interesting and dynamic.
 
 
 ### Instructions for Testing the Project
