@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8683500536680192174}
   - component: {fileID: 6873912444871011428}
   m_Layer: 0
-  m_Name: PT_Pine_Tree_03_green_cut
+  m_Name: NO_COLLISION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
