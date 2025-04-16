@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public class RadialSpawn : MonoBehaviour
+public class AreaSpawner : MonoBehaviour
 {
+    /*
+    Author: Liam
+    Summary: This script spawns enemies in a square region around the spawn point with side length 2 * range.
+    */
     [SerializeField] float range;
     [SerializeField] GameObject prefab;
     [SerializeField] int numberEnemies;
+
+    /*
+    When the scene is loaded, a number of enemies are spawned within a square region centered at the spawn point.
+    */
     private void Awake()
     {
         for (int i = 0; i < numberEnemies; i++)

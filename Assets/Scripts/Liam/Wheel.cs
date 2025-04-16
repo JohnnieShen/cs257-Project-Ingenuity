@@ -3,18 +3,21 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour
 {
+    /*
+    Author: Liam
+    This script simulates the physics of a wheel. There are several parameters which can affect the speed,
+    acceleration and handling of the wheel.
+    */
     public float driveInput = 0f;
-    public float accelForceMultiplier = 1f;
-    public float suspensionRestDist;
-    public float springStrength;
-    public float springDamper;
-    public float maxDistance;
-    public float tireGripFactor;
-    public float tireMass;
-    public float accelForce;
-    public float rotationSpeed;
-    public float steeringReturnSpeed = 2f;
-    public float maxSteeringAngle = 45f;
+    public float suspensionRestDist = 0.5f;
+    public float springStrength = 500f;
+    public float springDamper = 10f;
+    public float maxDistance = 1.5f;
+    public float tireGripFactor = 0.3f;
+    public float accelForce = 20f;
+    public float rotationSpeed = 20f;
+    public float steeringReturnSpeed = 10f;
+    public float maxSteeringAngle = 30f;
     public GameObject tire;
     public bool isAI = false;
     private Quaternion neutralRotation;
@@ -25,6 +28,9 @@ public class Wheel : MonoBehaviour
     public Rigidbody rigidBody;
     private Transform commandModuleTransform;
 
+    /*
+    This function is called when the block is instantiated. It sets up the wheel
+    */
     void Start()
     {
         // Get reference to command module
@@ -63,6 +69,9 @@ public class Wheel : MonoBehaviour
         isLeftSide = (commandModuleTransform.InverseTransformPoint(transform.position).x < 0f);
     }
 
+    /*
+    This function is called every frame to respond to player input and turn the wheels.
+    */
     void Update()
     {
         Hull hull = GetComponentInParent<Hull>();
@@ -96,6 +105,10 @@ public class Wheel : MonoBehaviour
         transform.localRotation = neutralRotation * Quaternion.Euler(0f, currentSteerAngle, 0f);
     }
 
+    /*
+    This function is called in fixed time intervals to simulate the physics of the wheel and calculate thethree main
+    force types: drive, steering and spring.
+    */
     void FixedUpdate()
     {
         Hull hull = GetComponentInParent<Hull>();
@@ -110,6 +123,7 @@ public class Wheel : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.red);
         bool isGrounded = Physics.Raycast(ray, out RaycastHit hit, maxDistance);
 
+        // Raycast towards the ground
         if (isGrounded)
         {
             Vector3 springDir = transform.up;
@@ -121,6 +135,8 @@ public class Wheel : MonoBehaviour
             {
                 return;
             }
+
+            // Calculate physics
             float springVel = Vector3.Dot(springDir, rigidBody.velocity);
             float steeringVel = Vector3.Dot(steeringDir, rigidBody.velocity);
             
@@ -138,7 +154,7 @@ public class Wheel : MonoBehaviour
                 ApplySteering(currentSteerAngle);
             }
 
-            float driveForce = accelForce * accelForceMultiplier * driveInput;
+            float driveForce = accelForce * driveInput;
             rigidBody.AddForce(springForce * springDir + steeringForce * steeringDir + accelDir * driveForce);
 
             tire.transform.position = hit.point + springDir * 0.5f;
@@ -150,6 +166,7 @@ public class Wheel : MonoBehaviour
             tire.transform.position = maxExtendedPos + springDir * 0.5f;
         }
 
+        // Rotate wheel mesh
         float forwardSpeed;
         if (isGrounded)
         {
@@ -164,8 +181,13 @@ public class Wheel : MonoBehaviour
         float angleDelta = (distanceTraveled / tireRadius) * Mathf.Rad2Deg;
         tire.transform.Rotate(Vector3.right, angleDelta, Space.Self);
     }
+
+    /*
+    This function is called when the player uses the "a" or "d" keys to apply steering input.
+    */
     private void ApplySteering(float targetAngle)
     {
+        // If the key is held down, we lerp towards the max rotation in that direction
         currentSteerAngle = Mathf.Lerp(
             currentSteerAngle, 
             targetAngle, 
