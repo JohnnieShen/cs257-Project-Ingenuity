@@ -79578,7 +79578,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909752368}
   - component: {fileID: 1909752367}
-  - component: {fileID: 1909752369}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -79619,21 +79618,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1909752369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909752366}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 100
-  prefab: {fileID: 2157338462233846979, guid: b50ae6248229be66196f1114284d641c, type: 3}
-  numberEnemies: 5
 --- !u!1 &1927781931
 GameObject:
   m_ObjectHideFlags: 0
