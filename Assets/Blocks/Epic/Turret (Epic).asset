@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea9861b54fd5a3a9b884dc989415243, type: 3}
   m_Name: Turret (Epic)
   m_EditorClassIdentifier: 
-  BlockName: Turret (Rare)
-  BlockObject: {fileID: 8925927411255228310, guid: cca969693b5cd51848a650bdab5db876, type: 3}
+  BlockName: Turret (Epic)
+  BlockObject: {fileID: 8925927411255228310, guid: 5cb0e3f0263f0e5d485a28766945cc95, type: 3}
   PreviewObject: {fileID: 5282438896853963229, guid: 3976665f6052c39489a30d3d1f606b4b, type: 3}
   isTopMountable: 1
   isSideMountable: 1
