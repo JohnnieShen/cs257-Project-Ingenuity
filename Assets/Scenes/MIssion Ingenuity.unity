@@ -718,7 +718,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 155.45868}
-  m_SizeDelta: {x: 0, y: 400.6316}
+  m_SizeDelta: {x: 0, y: 1141.5004}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &296431914
 MonoBehaviour:
@@ -2043,7 +2043,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1270834900}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.23843563}
+  m_AnchorMin: {x: 0, y: 0.6178508}
   m_AnchorMax: {x: 1, y: 0.99999994}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -2808,38 +2808,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableBuildingBlocks:
-  - Block: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-    CurrentCount: 99
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 8b8067ab2e36931f88a469caf888d3ab, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
-  - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
-    CurrentCount: 4
-    MaxStack: 99
   - Block: {fileID: 11400000, guid: 4aff471f1d9cd7e4b96eecf9f3ec2404, type: 2}
-    CurrentCount: 4
+    CurrentCount: 2
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
     CurrentCount: 4
     MaxStack: 99
   - Block: {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
-    CurrentCount: 4
+    CurrentCount: 1
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 1162fd1e7143f50cfa4ea1c5c5bc6560, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 2789e11fb193b317cb748ab96d09f975, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 5181871b62d022d77a881b201d466216, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 3f2c181fe946192db8c4dc7c831b26cf, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 38e2441e80e2dc37c9bcadd2b16fab09, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 5aee37cc39aa6fdf0988b4e9dec9e07d, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 0e86bc37753825136ac29b0b1070f5ff, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 9cd6e41198154d34e83b6e314c6f7d4a, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
+    CurrentCount: 0
+    MaxStack: 99
+  - Block: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
+    CurrentCount: 0
     MaxStack: 99
 --- !u!1 &1104303861
 GameObject:
@@ -15862,6 +15886,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 856457731}
     m_Modifications:
     - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
+      propertyPath: scrapCount
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 196162801597095118, guid: fe0eb01084fe36b209b837bb5aaf1251, type: 3}
       propertyPath: maxEnergyAmmo
       value: 100
       objectReference: {fileID: 0}
@@ -16019,8 +16047,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 805497971}
   m_HandleRect: {fileID: 805497970}
   m_Direction: 2
-  m_Value: 1.000002
-  m_Size: 0.7615644
+  m_Value: 1.0000004
+  m_Size: 0.38214925
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
