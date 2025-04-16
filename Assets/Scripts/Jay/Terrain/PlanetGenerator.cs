@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 public class PlanetGenerator : MonoBehaviour
 {
+    /*
+    Author: Jay
+    Summary: (outdated), based on the tile structure of the Planet script, this
+    generator allowed for procedural generation of different permutations of the
+    planet by raising and sinking certain tile groups.
+    */
+
     public Material m_Material;
     private GameObject m_PlanetMesh;
     private Planet planet;

@@ -6,6 +6,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class HitscanGun : MonoBehaviour
 {
+    /*
+    Author: Johnny / Jay
+    Summary: This is a copy of the original script (outdated copy) for the hitscan gun, please refer
+    to Johnny's folder for full documentation. This script was for testing purposes
+    for particle effects.
+    */
     [SerializeField]
     private bool AddBulletSpread = true;
     [SerializeField]

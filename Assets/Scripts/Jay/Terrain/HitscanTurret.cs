@@ -5,6 +5,12 @@ using System.Collections.Generic;
 
 public class HitscanTurret : MonoBehaviour
 {
+    /*
+    Author: Johnny / Jay
+    Summary: This is a copy of the original script (outdated copy) for the hitscan gun, please refer
+    to Johnny's folder for full documentation. This script was for testing purposes
+    for particle effects.
+    */
     [SerializeField] private ParticleSystem muzzleSpark;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private List<MultiAimConstraint> aimConstraints = new List<MultiAimConstraint>();

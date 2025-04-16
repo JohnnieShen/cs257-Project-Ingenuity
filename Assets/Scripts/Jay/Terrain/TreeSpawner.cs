@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class TreeSpawner : MonoBehaviour
 {
+    /*
+    Author: Jay
+    Summary: Due to the nature of how Unity's terrain tree placement works,
+    in order to allow for proper collisions between trees and player, this script
+    was put in place. The script first checks for the player's position, and then
+    all terrain tree objects within a certain radius of the player, and those tree
+    objects than have a duplicated tree prefab game object placed in the same location.
+    This works in tandem with the BreakableTree script, and allows for the trees to disappear
+    when in contact with the plaer.
+    */
+
     public Terrain terrain;
     public GameObject breakableTreePrefab;
     public Transform player;

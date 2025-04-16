@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PolySet : HashSet<Polygon>
 {
+  /*
+    Author: Jay
+    Summary: (outdated)Creates a set of polygons, allowed for the grouped procedural generator.
+    Based on shared edges, this script would sort each polygon and from that, extract
+    a list of unique vertices.
+    */
+
   //Given a set of Polys, calculate the set of Edges
   //that surround them.
   public EdgeSet CreateEdgeSet()

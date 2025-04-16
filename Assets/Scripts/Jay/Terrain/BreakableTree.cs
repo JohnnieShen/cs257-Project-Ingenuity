@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class BreakableTree : MonoBehaviour
 {
-    public Terrain terrain;                 // Assign in inspector or dynamically
+    /*
+    Author: Jay
+    Summary: A script to allow for the tree obstacles to be removed once the
+    player collides with the box collider. Both the tree prefab (physical game object)
+    as well as the matching tree instance in the terrain itself are deleted together.
+    */
+    public Terrain terrain;                 // Assigndynamically
     public float removalRadius = 1f;        // Radius to find matching terrain tree
 
     void Start()

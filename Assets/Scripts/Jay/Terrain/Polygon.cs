@@ -2,6 +2,13 @@ using System.Collections.Generic;
 
 public class Polygon
 {
+  /*
+    Author: Jay
+    Summary: (outdated) base class for a polygon, takes in three points to create
+    a polygon, has scripting to check for neighboring tiles, as well as replacing
+    neighbors during procedural generation.
+    */
+
     public List<int> m_Vertices;
     public List<Polygon> m_Neighbors;
     

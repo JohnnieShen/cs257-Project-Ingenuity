@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Planet
 {
+    /*
+    Author: Jay
+    Summary: (oudated), was used when we had originally concept mapped to
+    create a procedurally generated planet to be used as a level map. Allowed
+    for the user to change parameters for the number of subdivisions, radius, etc.
+    Tile-based system to fit with the low poly style of the game, icosahedron
+    subdivision logic.
+    */
+
     public List<Polygon> m_Polygons;
     public List<Vector3> m_Vertices;
 
@@ -94,7 +103,6 @@ public class Planet
         // we ensure that this function returns the same result
         // whether you call
         // GetMidPointIndex(cache, 5, 9)
-        // or...
         // GetMidPointIndex(cache, 9, 5)
         int smallerIndex = Mathf.Min (indexA, indexB);
         int greaterIndex = Mathf.Max (indexA, indexB);
@@ -104,7 +112,7 @@ public class Planet
         if (cache.TryGetValue (key, out ret))
             return ret;
         // If we're here, it's because a midpoint for these two
-        // vertices hasn't been created yet. Let's do that now!
+        // vertices hasn't been created yet.
         Vector3 p1 = m_Vertices [indexA];
         Vector3 p2 = m_Vertices [indexB];
         Vector3 middle = Vector3.Lerp (p1, p2, 0.5f).normalized;
