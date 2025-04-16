@@ -17,7 +17,7 @@ public class Booster : MonoBehaviour
     private bool isBoosting = false;
     public float energyConsumptionPerSecond = 5f;
     private float energyConsumptionAccumulator = 0f;
-
+    private Hull hull;
     /**
     * Awake is called when the script instance is being loaded.
     * It initializes the Rigidbody component and checks if it is present.
