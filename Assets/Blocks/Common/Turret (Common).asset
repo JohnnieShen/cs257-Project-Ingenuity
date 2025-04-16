@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Turret (Common)
   m_EditorClassIdentifier: 
   BlockName: Turret (Common)
-  BlockObject: {fileID: 5282438896853963229, guid: 97c135f4b444c474c890a56b5de9c0bc, type: 3}
+  BlockObject: {fileID: 8925927411255228310, guid: 6461b318888c0eb49986c4111ac48ce1, type: 3}
   PreviewObject: {fileID: 5282438896853963229, guid: 3976665f6052c39489a30d3d1f606b4b, type: 3}
   isTopMountable: 1
   isSideMountable: 1
@@ -21,8 +21,8 @@ MonoBehaviour:
   isRotatable: 0
   isCraftable: 1
   cost: 30
-  recycleBonus: 10
+  recycleBonus: 15
   attachDirection: {x: 0, y: 1, z: 0}
-  blockHealth: 100
+  blockHealth: 10
   uiSprite: {fileID: 21300000, guid: 2b2173f89a0239b428b3a174fed18275, type: 3}
   onlyInlinePlacement: 0

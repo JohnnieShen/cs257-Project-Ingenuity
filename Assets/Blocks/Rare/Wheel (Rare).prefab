@@ -11,19 +11,31 @@ PrefabInstance:
     - target: {fileID: 463035899319107106, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: sourceBlock
       value: 
-      objectReference: {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
+      objectReference: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
+    - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: accelForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: springStrength
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 1719701304185983027, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: blockType
       value: 
-      objectReference: {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
+      objectReference: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
     - target: {fileID: 2325821719734306567, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: m_Name
-      value: Wheel (Uncommon)
+      value: Wheel (Rare)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619296434302728546, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: m_Mass
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5407478371172515235, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: af4a56c89bfd3160aab3b061c102da28, type: 2}
+      objectReference: {fileID: 2100000, guid: f39903d0872662f71ac65ad8323c37fd, type: 2}
     - target: {fileID: 6087997320347571788, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
