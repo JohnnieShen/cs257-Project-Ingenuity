@@ -20,7 +20,7 @@ MonoBehaviour:
   isBottomMountable: 0
   isRotatable: 0
   isCraftable: 1
-  cost: 30
+  cost: 20
   recycleBonus: 10
   attachDirection: {x: -1, y: 0, z: 0}
   blockHealth: 10
