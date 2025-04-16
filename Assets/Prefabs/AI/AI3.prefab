@@ -145,13 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: -1
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 600
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -288,7 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &3631389595120575822
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -588,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: cb5ee92dce5d259409ba70cec9d5f3bc, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!114 &3047737059464587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &3103838613150153093
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -1321,7 +1319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &4920971665245793983
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -2280,8 +2278,8 @@ MonoBehaviour:
   shootPoint: {fileID: 4725217042204235049}
   playerProjectilePrefab: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
   enemyProjectilePrefab: {fileID: 6708683079509076862, guid: 7e323d06d51ae0e408b1147ce3c976cc, type: 3}
-  fireRate: 10
-  ballisticDamage: 10
+  fireRate: 2
+  ballisticDamage: 1
   energyDamage: 10
   magazineSize: 10
   muzzleFlash: {fileID: 0}
@@ -2500,7 +2498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: 0c149d8862a6f1e4694aeeef646ba66d, type: 2}
-  currentHealth: 100
+  currentHealth: 10
 --- !u!138 &7655687303751834187
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -4106,7 +4104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &8211926551890151684
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -10048,13 +10046,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: -1
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 600
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -16155,7 +16151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
-  currentHealth: 100
+  currentHealth: 10
 --- !u!114 &901979513884302442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22242,7 +22238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &6649687302321516796
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -22305,13 +22301,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: -1
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 600
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -22799,7 +22793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &2322468760827385512
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -23051,13 +23045,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: -1
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 600
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -31052,7 +31044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &1374967923358458440
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -31975,7 +31967,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &1231860244570622120
 FixedJoint:
   m_ObjectHideFlags: 0

@@ -144,7 +144,7 @@ public class Wheel : MonoBehaviour
             float desiredAccel = desiredVelChange / Time.fixedDeltaTime;
             
             float springForce = springOffset * springStrength - springVel * springDamper;
-            float steeringForce = tireMass * desiredAccel;
+            float steeringForce = desiredAccel;
 
             float driveInput = 0f;
             driveInput = isAI ? this.driveInput : Input.GetAxis("Vertical");

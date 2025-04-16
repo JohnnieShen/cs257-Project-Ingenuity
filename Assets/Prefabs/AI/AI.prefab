@@ -365,7 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &5651215727281861301
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -1255,26 +1255,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
-  rigidBody: {fileID: 5466656438560811950}
   suspensionRestDist: 1
   springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
   maxSteeringAngle: 45
   tire: {fileID: 6764810310966614751}
-  isDriveWheel: 1
-  isTurnWheel: 1
   isAI: 1
   currentSteerAngle: 0
   invertSteering: 1
   tireRadius: 0.3
   isLeftSide: 0
+  rigidBody: {fileID: 5466656438560811950}
 --- !u!1 &1327318545461016421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,9 +1397,10 @@ MonoBehaviour:
   - {fileID: 1185898557519851581}
   - {fileID: 7952681331814472299}
   shootPoint: {fileID: 1886362546996563457}
-  projectilePrefab: {fileID: 6708683079509076862, guid: 7e323d06d51ae0e408b1147ce3c976cc, type: 3}
+  playerProjectilePrefab: {fileID: 7899788722775472648, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+  enemyProjectilePrefab: {fileID: 6708683079509076862, guid: 7e323d06d51ae0e408b1147ce3c976cc, type: 3}
   fireRate: 2
-  ballisticDamage: 10
+  ballisticDamage: 1
   energyDamage: 10
   magazineSize: 10
   muzzleFlash: {fileID: 0}
@@ -1673,26 +1670,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
-  rigidBody: {fileID: 9180360405981973039}
   suspensionRestDist: 1
   springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
   maxSteeringAngle: 45
   tire: {fileID: 8729665761260153851}
-  isDriveWheel: 1
-  isTurnWheel: 1
   isAI: 1
   currentSteerAngle: 0
   invertSteering: 1
   tireRadius: 0.3
   isLeftSide: 0
+  rigidBody: {fileID: 9180360405981973039}
 --- !u!1 &1480028564401712838
 GameObject:
   m_ObjectHideFlags: 0
@@ -7091,7 +7084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &5842654258245319999
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -7946,7 +7939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &3875167469855280050
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -8212,26 +8205,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
-  rigidBody: {fileID: 2598589672623868907}
   suspensionRestDist: 1
   springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
   maxSteeringAngle: 45
   tire: {fileID: 9080248063869033835}
-  isDriveWheel: 1
-  isTurnWheel: 1
   isAI: 1
   currentSteerAngle: 0
   invertSteering: 0
   tireRadius: 0.3
   isLeftSide: 0
+  rigidBody: {fileID: 2598589672623868907}
 --- !u!1 &3606121665903043773
 GameObject:
   m_ObjectHideFlags: 0
@@ -9186,26 +9175,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
-  rigidBody: {fileID: 9141804351895608721}
   suspensionRestDist: 1
   springStrength: 300
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 1
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
   maxSteeringAngle: 45
   tire: {fileID: 6520397974993377778}
-  isDriveWheel: 1
-  isTurnWheel: 1
   isAI: 1
   currentSteerAngle: 0
   invertSteering: 0
   tireRadius: 0.3
   isLeftSide: 0
+  rigidBody: {fileID: 9141804351895608721}
 --- !u!1 &4760583925817456158
 GameObject:
   m_ObjectHideFlags: 0
@@ -9922,7 +9907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: cb5ee92dce5d259409ba70cec9d5f3bc, type: 2}
-  currentHealth: 500
+  currentHealth: 10
 --- !u!114 &8365212581135263867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10386,7 +10371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &317230796767867291
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -10836,7 +10821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &6463211011730595963
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -11243,7 +11228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
-  currentHealth: 200
+  currentHealth: 10
 --- !u!138 &5445522364740114644
 FixedJoint:
   m_ObjectHideFlags: 0
