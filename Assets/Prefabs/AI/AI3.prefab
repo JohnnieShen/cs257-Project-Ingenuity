@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c91ee87c22f5f48b4e6ebe3cbbe43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -659,7 +660,7 @@ MonoBehaviour:
   patrolWaitTimer: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   aimTransform: {fileID: 2260421275554221405}
   aimDispersionMultiplier: 1
   aiSpreadAngle: 2

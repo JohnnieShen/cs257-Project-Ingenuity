@@ -10,6 +10,7 @@ public class HealthSystem : MonoBehaviour
     * The script uses UnityEvents to notify other components when the health changes.
     * This script is used to decide flee behavior in enemy AI.
     */
+    public float maxHealth;
     public UnityEvent<float> OnHealthChanged = new UnityEvent<float>();
 
     /* Start is called before the first frame update.
@@ -18,10 +19,16 @@ public class HealthSystem : MonoBehaviour
     */
     void Start()
     {
-        foreach (BlockHealth blockHealth in GetComponentsInChildren<BlockHealth>())
+        foreach (BlockHealth blockHealth in transform.parent.GetComponentsInChildren<BlockHealth>())
         {
             blockHealth.OnDamaged += HandleBlockDamaged;
         }
+    }
+
+    public void InitializeMaxHealth(float initialMax)
+    {
+        maxHealth = initialMax;
+        OnHealthChanged?.Invoke(CalculateTotalHealth());
     }
 
     /* HandleBlockDamaged is called when a block takes damage.
@@ -38,33 +45,25 @@ public class HealthSystem : MonoBehaviour
     public float CalculateTotalHealth()
     {
         float total = 0f;
-        foreach (BlockHealth healthComp in GetComponentsInChildren<BlockHealth>())
+        foreach (BlockHealth healthComp in transform.parent.GetComponentsInChildren<BlockHealth>())
         {
+            Debug.Log("Current object: " + healthComp.gameObject.name);
+            if (healthComp == null) continue;
+            if (healthComp.transform.GetComponent<Hull>() != null && healthComp.transform.GetComponent<Hull>().canPickup) continue;
             total += healthComp.currentHealth;
+            Debug.Log("Current health: " + healthComp.currentHealth+" / " + total);
+            
         }
         return total;
     }
 
-    /* CalculateMaxHealth calculates the maximum health of the vehicle by summing up the maximum health of all BlockHealth components in the children of this GameObject.
-    * It returns the maximum health as a float value.
-    */
-    public float CalculateMaxHealth()
-    {
-        float total = 0f;
-        foreach (BlockHealth healthComp in GetComponentsInChildren<BlockHealth>())
-        {
-            total += healthComp.blockType.blockHealth;
-        }
-        return total;
-    }
-
-    // TODO: CALCULATE MAX HEALTH WHEN AI VEHICLE IS INITIALIZED
+    public float GetMaxHealth() => maxHealth;
 
     /* GetHealthPercentage calculates the health percentage of the vehicle by dividing the current health by the maximum health.
     * It returns the health percentage as a float value between 0 and 1.
     */
     public float GetHealthPercentage()
     {
-        return CalculateTotalHealth() / CalculateMaxHealth();
+        return CalculateTotalHealth() / maxHealth;
     }
 }

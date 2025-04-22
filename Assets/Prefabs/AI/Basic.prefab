@@ -1559,6 +1559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44c91ee87c22f5f48b4e6ebe3cbbe43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1618,7 +1619,7 @@ MonoBehaviour:
   patrolWaitTimer: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   aimTransform: {fileID: 263581206531666111}
   aimDispersionMultiplier: 1
   aiSpreadAngle: 2
@@ -2389,13 +2390,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 500
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -8131,13 +8130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 500
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -14088,13 +14085,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 500
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10
@@ -16358,13 +16353,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driveInput: 0
-  accelForceMultiplier: 1
   suspensionRestDist: 1
   springStrength: 500
   springDamper: 10
   maxDistance: 1.5
   tireGripFactor: 0.3
-  tireMass: 1
   accelForce: 20
   rotationSpeed: 20
   steeringReturnSpeed: 10

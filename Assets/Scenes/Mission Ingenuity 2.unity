@@ -721,10 +721,32 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &72109691
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72109687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &106190824
 GameObject:
   m_ObjectHideFlags: 0
@@ -9251,6 +9273,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2836007981487261968, guid: 8bd8a94969f06f24794038a3b2b8c138, type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
     - target: {fileID: 3207102155220041175, guid: 8bd8a94969f06f24794038a3b2b8c138, type: 3}
       propertyPath: m_LocalPosition.x
       value: 334.8816
@@ -54398,6 +54424,9 @@ MonoBehaviour:
   - Block: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
     CurrentCount: 0
     MaxStack: 99
+  - Block: {fileID: 11400000, guid: 23a850e552c9ef243b0025b0c265a944, type: 2}
+    CurrentCount: 5
+    MaxStack: 99
 --- !u!1 &1053137298 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5663820773122464984, guid: 8bd8a94969f06f24794038a3b2b8c138, type: 3}
@@ -57686,6 +57715,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7296054959696050501, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 72109688}
+    - targetCorrespondingSourceObject: {fileID: 7296054959696050501, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 72109691}
+    - targetCorrespondingSourceObject: {fileID: 7389196695646074697, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2038123293}
   m_SourcePrefab: {fileID: 100100000, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
 --- !u!43 &1429593079
 Mesh:
@@ -59126,6 +59161,7 @@ GameObject:
   - component: {fileID: 1568084686}
   - component: {fileID: 1568084685}
   - component: {fileID: 1568084688}
+  - component: {fileID: 1568084689}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -59235,6 +59271,20 @@ MonoBehaviour:
   popupDialoguePrefab: {fileID: 4457199320191225018, guid: 350c9fa8bb1c31143b88abf64d7c9cc8, type: 3}
   craftUIEntryPrefab: {fileID: 8945057478151409648, guid: 0662afe29ea5cb843a0a41ad0d1e001c, type: 3}
   UIContainer: {fileID: 1568084684}
+--- !u!114 &1568084689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568084683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64336003f2c322429ea29233aff3d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 843429625}
+  bossCore: {fileID: 1053137298}
 --- !u!1 &1596752693
 GameObject:
   m_ObjectHideFlags: 0
@@ -79613,9 +79663,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
+  range: 50
   prefab: {fileID: 6808192744913518881, guid: b189a8b472c6e324595be6753e711450, type: 3}
-  numberEnemies: 1
+  numberEnemies: 4
 --- !u!114 &1909752370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79628,9 +79678,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ccd12fa8303a49be52ee5a3ce4996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 50
+  range: 100
   prefab: {fileID: 3150473799291557483, guid: 46782399fccbcd0438403aadccfc7a67, type: 3}
-  numberEnemies: 5
+  numberEnemies: 10
 --- !u!1 &1927781931
 GameObject:
   m_ObjectHideFlags: 0
@@ -80076,6 +80126,33 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2038123289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7389196695646074697, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
+  m_PrefabInstance: {fileID: 1418319446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2038123293
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038123289}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7931003169463669571, guid: 0ef9f3b550a8ffd40ab0be1ae6034fe1, type: 3}
 --- !u!1 &2051636206
 GameObject:
   m_ObjectHideFlags: 0

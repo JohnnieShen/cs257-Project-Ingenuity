@@ -33,7 +33,6 @@ public class EnemyAI : MonoBehaviour
     private float stateUpdateTimer;
     [SerializeField] private float patrolWaitTimer;
     private bool hasLineOfSight;
-    private float maxTotalHealth;
     private float patrolTimer;
     private GameObject patrolTargetObject;
     public LayerMask enemyLayer;
@@ -70,12 +69,13 @@ public class EnemyAI : MonoBehaviour
             healthSystem = GetComponent<HealthSystem>();
         }
         InitializeAI();
-        maxTotalHealth = healthSystem.CalculateMaxHealth();
         if (enemyTurrets.Count == 0)
             enemyTurrets.AddRange(GetComponentsInChildren<Turret>());
         foreach (Turret t in enemyTurrets)
             if (t != null) t.SetAISpread(aiSpreadAngle);
         
+
+        //TODO: Delay calculating until ai structure is initialized?
     }
 
     /* InitializeAI is called to set up the AI's initial state and target position.
@@ -321,9 +321,8 @@ public class EnemyAI : MonoBehaviour
     */
     void HandleHealthChanged(float currentTotalHealth)
     {
-        float healthPercentage = currentTotalHealth / maxTotalHealth;
-
-        if (healthPercentage <= fleeHealthThreshold && currentState != AIState.Flee)
+        if (healthSystem.GetHealthPercentage() <= fleeHealthThreshold 
+            && currentState != AIState.Flee)
         {
             currentState = AIState.Flee;
         }
@@ -348,8 +347,22 @@ public class EnemyAI : MonoBehaviour
             EnemyBlockManager.instance.RegisterBlock(this, localPos, block.GetComponent<Rigidbody>());
         }
         BuildConnectionGraph();
+        StartCoroutine(DelayedInitMaxHealth());
+        // if (healthSystem == null)
+        //     healthSystem = GetComponent<HealthSystem>();
+        // float initialMax = healthSystem.CalculateTotalHealth();
+        // healthSystem.InitializeMaxHealth(initialMax);
     }
+    private IEnumerator DelayedInitMaxHealth()
+    {
+        yield return new WaitForSeconds(0.5f);
 
+        if (healthSystem == null)
+            healthSystem = GetComponent<HealthSystem>();
+
+        float initialMax = healthSystem.CalculateTotalHealth();
+        healthSystem.InitializeMaxHealth(initialMax);
+    }
     /* BuildConnectionGraph is called to build the connection graph for the vehicle.
     * It clears the existing block connections and iterates through all the blocks in the vehicle.
     * It gets the FixedJoint components of each block and checks if they are connected to another block.

@@ -190,6 +190,11 @@ public class EnemyBlockManager : MonoBehaviour
                 DetachBlock(vehicle, pos);
             }
         }
+        var hs = vehicle.GetComponent<HealthSystem>();
+        if (hs != null) {
+            float newTotal = hs.CalculateTotalHealth();
+            hs.OnHealthChanged?.Invoke(newTotal);
+        }
         isValidating = false;
     }
 
