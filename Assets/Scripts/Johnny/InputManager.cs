@@ -29,6 +29,8 @@ public class InputManager : MonoBehaviour
     private InputAction buildScrollAction;
     private InputAction buildRotateAction;
     private InputAction buildMenuAction;
+    private InputAction buildSwitchToLastAction;
+    private InputAction buildSwitchToNextAction;
     private InputAction driveMoveAction;
     private InputAction driveLookAction;
     private InputAction driveShootAction;
@@ -68,6 +70,8 @@ public class InputManager : MonoBehaviour
             buildScrollAction = buildMap.FindAction("Scroll");
             buildRotateAction = buildMap.FindAction("Rotate");
             buildMenuAction = buildMap.FindAction("Menu");
+            buildSwitchToLastAction = buildMap.FindAction("Switch to Last Block");
+            buildSwitchToNextAction = buildMap.FindAction("Switch to Next Block");
         }
         if (driveMap != null)
         {
@@ -128,6 +132,14 @@ public class InputManager : MonoBehaviour
     public InputAction GetBuildMenuAction()
     {
         return buildMenuAction;
+    }
+    public InputAction GetBuildSwitchToLastAction()
+    {
+        return buildSwitchToLastAction;
+    }
+    public InputAction GetBuildSwitchToNextAction()
+    {
+        return buildSwitchToNextAction;
     }
     public InputAction GetDriveMoveAction()
     {

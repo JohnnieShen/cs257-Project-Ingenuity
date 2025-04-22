@@ -15,7 +15,8 @@ public class BuildSystem : MonoBehaviour
     */
 
     // public Block[] availableBuildingBlocks;
-    int currentBlockIndex = 0;
+    private int currentRow = 0;
+    private int currentColumn = 0;
  
     Block currentBlock;
     public TMP_Text blockNameText;
@@ -46,7 +47,8 @@ public class BuildSystem : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform commandModule;
     private Transform referenceTransform;
-
+    private System.Action<InputAction.CallbackContext> onPrevLevel;
+    private System.Action<InputAction.CallbackContext> onNextLevel;
     /* OnEnable is called when the object becomes enabled and active.
     * It sets up the input actions for building, removing, scrolling, and rotating blocks.
     * It also initializes the block inventory and sets the initial block to be built.
@@ -55,26 +57,27 @@ public class BuildSystem : MonoBehaviour
     */
     private void OnEnable()
     {
-        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
-        if (allBlocks != null && allBlocks.Length > 0)
-        {
-            currentBlockIndex = 0;
-            currentBlock = allBlocks[currentBlockIndex].Block;
-            SetText();
-        }
+        UpdateCurrentBlockFromMatrix();
+        SetText();
         if (InputManager.instance != null)
         {
             InputManager.instance.GetBuildBuildAction().performed += OnBuildPerformed;
             InputManager.instance.GetBuildRemoveAction().performed += OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed += OnScrollPerformed;
             InputManager.instance.GetBuildRotateAction().performed += OnRotatePerformed;
+            var prev = InputManager.instance.GetBuildSwitchToLastAction();
+            var next = InputManager.instance.GetBuildSwitchToNextAction();
+            onPrevLevel = ctx => ChangeColumn(-1);
+            onNextLevel = ctx => ChangeColumn(+1);
+            prev.performed += onPrevLevel;
+            next.performed += onNextLevel;
         }
         if (commandModule != null)
         {
             referenceTransform.position = commandModule.position;
             referenceTransform.rotation = commandModule.rotation;
         }
-
+        
         ReparentAllBlocksToReference();
         referenceTransform.rotation = Quaternion.identity;
         TransferBlocksToParent();
@@ -91,6 +94,10 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildRemoveAction().performed -= OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed -= OnScrollPerformed;
             InputManager.instance.GetBuildRotateAction().performed -= OnRotatePerformed;
+            var prev = InputManager.instance.GetBuildSwitchToLastAction();
+            var next = InputManager.instance.GetBuildSwitchToNextAction();
+            if (prev != null && onPrevLevel != null) prev.performed -= onPrevLevel;
+            if (next != null && onNextLevel != null) next.performed -= onNextLevel;
         }
     }
 
@@ -102,13 +109,8 @@ public class BuildSystem : MonoBehaviour
     private void Awake()
     {
         // InitializeInventory();
-        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
-        if (allBlocks != null && allBlocks.Length > 0)
-        {
-            currentBlockIndex = 0;
-            currentBlock = allBlocks[currentBlockIndex].Block;
-            SetText();
-        }
+        UpdateCurrentBlockFromMatrix();
+        SetText();
         GameObject dummy = new GameObject("ReferenceTransform");
         referenceTransform = dummy.transform;
     }
@@ -223,35 +225,50 @@ public class BuildSystem : MonoBehaviour
     */
     private void OnScrollPerformed(InputAction.CallbackContext ctx)
     {
-        Vector2 scrollValue = ctx.ReadValue<Vector2>();
-        float scroll = scrollValue.y;
+        float scroll = ctx.ReadValue<Vector2>().y;
+        var matrix = BlockInventoryManager.instance.inventoryMatrix;
+        if (matrix == null || matrix.rowsCount == 0) return;
 
-        var allBlocks = BlockInventoryManager.instance.availableBuildingBlocks;
-        if (allBlocks == null || allBlocks.Length == 0) return;
+        if (scroll > 0) 
+            currentRow = (currentRow + 1) % matrix.rowsCount;
+        else 
+            currentRow = (currentRow - 1 + matrix.rowsCount) % matrix.rowsCount;
 
-        if (scroll > 0)
+        currentColumn = Mathf.Clamp(currentColumn, 0, matrix.columnsCount - 1);
+
+        int startCol = currentColumn;
+        do
         {
-            currentBlockIndex++;
-            if (currentBlockIndex >= allBlocks.Length)
-                currentBlockIndex = 0;
-        }
-        else if (scroll < 0)
-        {
-            currentBlockIndex--;
-            if (currentBlockIndex < 0)
-                currentBlockIndex = allBlocks.Length - 1;
-        }
+            var bi = matrix.rows[currentRow].columns[currentColumn];
+            if (bi != null && bi.Block != null)
+                break;
 
-        currentBlock = allBlocks[currentBlockIndex].Block;
+            currentColumn = (currentColumn + 1) % matrix.columnsCount;
+        }
+        while (currentColumn != startCol);
+
+        UpdateCurrentBlockFromMatrix();
         SetText();
-
-        if (previewBlock != null)
-        {
-            Destroy(previewBlock);
-            previewBlock = null;
-        }
     }
+    private void ChangeColumn(int dir)
+    {
+        var matrix = BlockInventoryManager.instance.inventoryMatrix;
+        if (matrix == null || matrix.columnsCount == 0) return;
 
+        int start = currentColumn;
+        do
+        {
+            currentColumn = (currentColumn + dir + matrix.columnsCount) % matrix.columnsCount;
+
+            var bi = matrix.rows[currentRow].columns[currentColumn];
+            if (bi != null && bi.Block != null)
+                break;
+
+        } while (currentColumn != start);
+
+        UpdateCurrentBlockFromMatrix();
+        SetText();
+    }
     /* OnRotatePerformed is called when the rotate action is performed.
     * It increments the rotation offset count to rotate the block being built.
     * The rotation offset count is used to determine the rotation of the block when it is placed in the world.
@@ -267,6 +284,21 @@ public class BuildSystem : MonoBehaviour
     * If the current block is null, it sets the text to "No Block Selected" and clears the image.
     * If the current block is not null, it sets the text to the block name and updates the image with the block's sprite.
     */
+    private void UpdateCurrentBlockFromMatrix()
+    {
+        var matrix = BlockInventoryManager.instance.inventoryMatrix;
+        if (matrix == null) { currentBlock = null; return; }
+
+        if (currentRow < 0 || currentRow >= matrix.rowsCount
+         || currentColumn < 0 || currentColumn >= matrix.columnsCount)
+        {
+            currentBlock = null;
+            return;
+        }
+
+        var bi = matrix.rows[currentRow].columns[currentColumn];
+        currentBlock = bi != null ? bi.Block : null;
+    }
     void SetText()
     {
         if (blockNameText != null && currentBlock != null)
@@ -766,6 +798,11 @@ public class BuildSystem : MonoBehaviour
         {
             child.SetParent(parent, true);
         }
+    }
+    public void RefreshSelection()
+    {
+        UpdateCurrentBlockFromMatrix();
+        SetText();
     }
 }
 

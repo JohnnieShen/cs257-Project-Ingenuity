@@ -94,6 +94,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Last Block",
+                    "type": "Button",
+                    "id": "a0939603-4c41-494e-8586-706a6e888792",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Switch to Next Block",
+                    "type": "Button",
+                    "id": "7ae57cda-1aaa-4488-8fbf-0f4e3ad32f9e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -391,6 +409,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8eb17e93-3b14-4e74-a782-f70b59818bfb",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Switch to Last Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9c339999-83d3-4848-a972-1d2e218c64e9",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Switch to Next Block",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

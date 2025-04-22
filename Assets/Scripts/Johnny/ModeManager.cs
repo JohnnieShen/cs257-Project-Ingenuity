@@ -130,6 +130,8 @@ public class ModeSwitcher : MonoBehaviour
             {
                 currentMode = Mode.Build;
                 SetMode(currentMode);
+                if (build != null)
+                build.RefreshSelection();
                 lastModeSwitchTime = Time.time;
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;

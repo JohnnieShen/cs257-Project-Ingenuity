@@ -25,7 +25,7 @@ public class BlockInventoryManager : MonoBehaviour
     public static BlockInventoryManager instance;
 
     [Header("Block Inventory Setup")]
-    public BlockInventory[] availableBuildingBlocks;
+    public BlockInventoryMatrix inventoryMatrix;
     
     private Dictionary<Block, BlockInventory> blockInventory = new Dictionary<Block, BlockInventory>();
 
@@ -47,13 +47,18 @@ public class BlockInventoryManager : MonoBehaviour
     private void InitializeInventory()
     {
         blockInventory.Clear();
-        if (availableBuildingBlocks == null) return;
+        if (inventoryMatrix == null) return;
 
-        foreach (BlockInventory bi in availableBuildingBlocks)
+        for (int r = 0; r < inventoryMatrix.rowsCount; r++)
         {
-            if (bi != null && bi.Block != null)
+            var row = inventoryMatrix.rows[r];
+            if (row?.columns == null) continue;
+
+            for (int c = 0; c < inventoryMatrix.columnsCount; c++)
             {
-                blockInventory[bi.Block] = bi;
+                var bi = row.columns[c];
+                if (bi != null && bi.Block != null)
+                    blockInventory[bi.Block] = bi;
             }
         }
     }

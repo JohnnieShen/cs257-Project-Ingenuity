@@ -14,6 +14,7 @@ public class CraftUIManager : MonoBehaviour
     public GameObject craftUIEntryPrefab;
     public Transform entriesParent;
     public TextMeshProUGUI ScrapText;
+    private BlockInventoryMatrix inventoryMatrix => BlockInventoryManager.instance.inventoryMatrix;
     private readonly Dictionary<Block, CraftUIEntry> entryLookup = new();
 
     /* Start is called before the first frame update.
@@ -36,25 +37,26 @@ public class CraftUIManager : MonoBehaviour
     */
     private void PopulateCraftUI()
     {
-        var invManager = BlockInventoryManager.instance;
-        if (invManager == null || invManager.availableBuildingBlocks == null)
-        {
-            return;
-        }
+        if (inventoryMatrix == null) return;
 
-        foreach (var blockInv in invManager.availableBuildingBlocks)
+        for (int r = 0; r < inventoryMatrix.rowsCount; r++)
         {
-            if (blockInv != null && blockInv.Block != null && blockInv.Block.isCraftable)
+            var row = inventoryMatrix.rows[r];
+            if (row?.columns == null) continue;
+
+            for (int c = 0; c < inventoryMatrix.columnsCount; c++)
             {
-                GameObject entryObj = Instantiate(craftUIEntryPrefab, entriesParent);
-                CraftUIEntry entry = entryObj.GetComponent<CraftUIEntry>();
-                if (entry != null)
-                {
-                    entry.blockData = blockInv.Block;
-                    entry.Setup(HandleCraftClicked, HandleRecycleClicked, blockInv.Block);
-                }
-                if (entry != null) entryLookup[blockInv.Block] = entry;
-                RefreshEntry(blockInv.Block);
+                var bi = row.columns[c];
+                if (bi == null || bi.Block == null || !bi.Block.isCraftable) 
+                    continue;
+
+                var go = Instantiate(craftUIEntryPrefab, entriesParent);
+                var entry = go.GetComponent<CraftUIEntry>();
+                entry.blockData = bi.Block;
+                entry.Setup(HandleCraftClicked, HandleRecycleClicked, bi.Block);
+
+                entryLookup[bi.Block] = entry;
+                RefreshEntry(bi.Block);
             }
         }
     }
