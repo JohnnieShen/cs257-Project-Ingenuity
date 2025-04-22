@@ -251,6 +251,7 @@ public class EnemyAI : MonoBehaviour
     void FleeBehavior()
     {
         // Set the target position to the opposite direction of the player.
+        if (transform == null || playerTarget == null) return;
         Vector3 fleeDirection = (transform.position - playerTarget.position).normalized;
         enemyMovement.targetPosition.position = transform.position + fleeDirection * detectionRange;
     }

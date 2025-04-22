@@ -128,6 +128,10 @@ public class Wheel : MonoBehaviour
         {
             Vector3 springDir = transform.up;
             Vector3 steeringDir = transform.right;
+            if (commandModuleTransform == null)
+            {
+                return;
+            }
             Vector3 accelDir = commandModuleTransform.forward;
             
             float springOffset = suspensionRestDist - hit.distance;

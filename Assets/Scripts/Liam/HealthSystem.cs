@@ -47,6 +47,7 @@ public class HealthSystem : MonoBehaviour
         float total = 0f;
         foreach (BlockHealth healthComp in transform.parent.GetComponentsInChildren<BlockHealth>())
         {
+            if (healthComp == null) continue;
             Debug.Log("Current object: " + healthComp.gameObject.name);
             if (healthComp == null) continue;
             if (healthComp.transform.GetComponent<Hull>() != null && healthComp.transform.GetComponent<Hull>().canPickup) continue;

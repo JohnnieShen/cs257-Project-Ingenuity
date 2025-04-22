@@ -80,6 +80,8 @@ public class ConvertToAI : MonoBehaviour
         enemyAI.enemyTurrets = turrets;
         enemyAI.enemyMovement = enemyMovement;
         enemyAI.healthSystem = healthSystem;
+        int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
+        enemyAI.enemyLayer = 1 << enemyBlockLayer;
 
         // Remove AimSphere and VehicleResourceManager scripts which are only used by the player vehicle
         Destroy(commandModule.GetComponent<AimSphere>());

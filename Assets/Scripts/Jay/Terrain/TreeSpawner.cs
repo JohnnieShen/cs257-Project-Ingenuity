@@ -30,6 +30,7 @@ public class TreeSpawner : MonoBehaviour
 
     void Update()
     {
+        if (player == null || terrain == null) return;
         if (Vector3.Distance(player.position, lastCheckedPosition) > checkInterval)
         {
             UpdateTreeSpawns();

@@ -220,6 +220,7 @@ public class Projectile : MonoBehaviour
             {
                 if (mr != null && originalLocalPositions.ContainsKey(mr.transform))
                 {
+                    if (mr.transform == null) continue;
                     Vector3 baseWorldPos = reference.TransformPoint(originalLocalPositions[mr.transform]);
                     mr.transform.position = baseWorldPos + Random.insideUnitSphere * magnitude;
                 }
