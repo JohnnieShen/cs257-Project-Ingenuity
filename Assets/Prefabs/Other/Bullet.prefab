@@ -122,13 +122,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnemyProjectile: 0
-  speed: 30
+  speed: 50
   ballisticDamage: 1000
   energyDamage: 0
   timeToDestroy: 30
   impactEffect: {fileID: 3211406693315425797, guid: 7f571abd5c899314b88418dcfc95b159, type: 3}
   jitterDuration: 0.3
   jitterMagnitude: 0.03
+  isEnergy: 0
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!96 &6346163228260600536
 TrailRenderer:
   serializedVersion: 3
