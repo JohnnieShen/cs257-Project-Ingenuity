@@ -1,9 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class BossUIManager : MonoBehaviour
 {
     public TextMeshProUGUI healthText;
+    public Image healthBar;
 
     public GameObject bossCore;
     private HealthSystem healthSystem;
@@ -30,14 +33,22 @@ public class BossUIManager : MonoBehaviour
     {
         if (bossCore == null)
         {
-            if (healthText != null)
-                healthText.gameObject.SetActive(false);
+            if (healthText != null) healthText.gameObject.SetActive(false);
+            if (healthBar != null) healthBar.gameObject.SetActive(false);
             enabled = false;
         }
     }
     private void OnHealthChanged(float currentHealth)
     {
         float maxHealth = healthSystem.GetMaxHealth();
-        healthText.text = $"{currentHealth:0}/{maxHealth:0}";
+        UpdateUI(currentHealth, maxHealth);
+    }
+    private void UpdateUI(float current, float max)
+    {
+        if (healthText != null)
+            healthText.text = $"{current:0}/{max:0}";
+
+        if (healthBar != null && max > 0f)
+            healthBar.fillAmount = Mathf.Clamp01(current / max);
     }
 }
