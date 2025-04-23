@@ -32,4 +32,5 @@ public class Block : ScriptableObject
     [Header("UI")]
     public Sprite uiSprite;
     public bool onlyInlinePlacement = false;
+    public int connectionStrength = 0;
 }

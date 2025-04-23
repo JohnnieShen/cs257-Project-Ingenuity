@@ -507,8 +507,9 @@ public class BuildSystem : MonoBehaviour
                                     {
                                         var joint = newBlock.AddComponent<FixedJoint>();
                                         joint.connectedBody = neighborRb;
-                                        joint.breakForce = breakForce;
-
+                                        // joint.breakForce = breakForce;
+                                        joint.breakForce = newBlock.transform.GetComponent<Hull>().sourceBlock.connectionStrength + neighborRb.GetComponent<Hull>().sourceBlock.connectionStrength;
+                                        
                                         BlockManager.instance.AddConnection(spawnPosInt, neighborPos);
                                         
                                         
