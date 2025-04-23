@@ -79776,7 +79776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 50
   prefab: {fileID: 6808192744913518881, guid: b189a8b472c6e324595be6753e711450, type: 3}
-  numberEnemies: 4
+  numberEnemies: 0
 --- !u!114 &1909752370
 MonoBehaviour:
   m_ObjectHideFlags: 0
