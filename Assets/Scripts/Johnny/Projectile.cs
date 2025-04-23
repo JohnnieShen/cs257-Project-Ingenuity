@@ -23,12 +23,14 @@ public class Projectile : MonoBehaviour
     public float jitterMagnitude = 0.1f;
     public bool isEnergy = false;
     public Vector3 velocity;
+    float spawnTime;
     /* Start is called before the first frame update.
     * It destroys the projectile after a specified time to prevent it from existing indefinitely in the game world.
     */
     void Start()
     {
         Destroy(gameObject, timeToDestroy);
+        spawnTime = Time.time;
     }
 
     /* Update is called once per frame.
@@ -36,7 +38,7 @@ public class Projectile : MonoBehaviour
     */
     private void Update()
     {
-        transform.Translate(velocity * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     /* SetDamage is a public method that allows other scripts to set the damage values for the projectile.
@@ -58,6 +60,7 @@ public class Projectile : MonoBehaviour
     */
     void OnTriggerEnter(Collider other)
     {
+        if (Time.time - spawnTime < 0.05f) return;
         // Debug.Log("Projectile hit: " + other.name + " " + other.tag);
         BlockHealth blockHealth = null;
         if (IsEnemyProjectile)

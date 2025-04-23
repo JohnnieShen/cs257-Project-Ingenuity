@@ -38,7 +38,7 @@ public class ConvertToAI : MonoBehaviour
 
             // Convert blocks from Player tag and layer to Enemy tag and layer
             child.tag = "EnemyBlock";
-            child.gameObject.layer = LayerMask.NameToLayer("EnemyBlock");
+            // child.gameObject.layer = LayerMask.NameToLayer("EnemyBlock");
 
             // Obtain reference to wheel
             Wheel wheel = child.GetComponentInChildren<Wheel>();
@@ -63,7 +63,11 @@ public class ConvertToAI : MonoBehaviour
                 shield.SetAI(true);
             }
         }
-
+        int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
+        foreach (Transform t in transform.GetComponentsInChildren<Transform>(true))
+        {
+            t.gameObject.layer = enemyBlockLayer;
+        }
         // Set up HealthSystem script
         HealthSystem healthSystem = commandModule.AddComponent<HealthSystem>();
 
@@ -80,7 +84,7 @@ public class ConvertToAI : MonoBehaviour
         enemyAI.enemyTurrets = turrets;
         enemyAI.enemyMovement = enemyMovement;
         enemyAI.healthSystem = healthSystem;
-        int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
+        // int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
         enemyAI.enemyLayer = 1 << enemyBlockLayer;
 
         // Remove AimSphere and VehicleResourceManager scripts which are only used by the player vehicle
