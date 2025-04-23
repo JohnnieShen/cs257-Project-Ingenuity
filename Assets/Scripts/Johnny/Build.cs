@@ -249,6 +249,7 @@ public class BuildSystem : MonoBehaviour
 
         UpdateCurrentBlockFromMatrix();
         SetText();
+        destroyPreviewBlock();
     }
     private void ChangeColumn(int dir)
     {
@@ -268,6 +269,7 @@ public class BuildSystem : MonoBehaviour
 
         UpdateCurrentBlockFromMatrix();
         SetText();
+        destroyPreviewBlock();
     }
     /* OnRotatePerformed is called when the rotate action is performed.
     * It increments the rotation offset count to rotate the block being built.
