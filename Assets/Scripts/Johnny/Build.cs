@@ -45,7 +45,7 @@ public class BuildSystem : MonoBehaviour
     private List<Block> availableBlocksList = new List<Block>();
 
     [Header("References")]
-    [SerializeField] private Transform commandModule;
+    public Transform commandModule;
     private Transform referenceTransform;
     private System.Action<InputAction.CallbackContext> onPrevLevel;
     private System.Action<InputAction.CallbackContext> onNextLevel;

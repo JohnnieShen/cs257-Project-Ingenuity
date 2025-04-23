@@ -51,6 +51,10 @@ public class FreeCameraLook : Pivot {
 	public GameObject pickupIconPanel;
 	public Image pickupIconImage;
 
+	private float _initialZoom;
+    private float _initialTilt;
+    private float _initialYaw;
+
 	/* Awake is called when the script instance is being loaded.
 	* It initializes the camera and pivot transforms, sets the target zoom, and checks for duplicate instances of the FreeCameraLook script.
 	* It also creates a new AimTarget GameObject if it is not assigned.
@@ -61,7 +65,7 @@ public class FreeCameraLook : Pivot {
 
         Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-
+	
 		cam = GetComponentInChildren<Camera>().transform;
 		pivot = cam.parent;
 		targetZoom = currentZoom;
@@ -74,6 +78,9 @@ public class FreeCameraLook : Pivot {
             aimTarget = aimTargetGO.transform;
             Debug.Log("aimTarget was not assigned. A new AimTarget GameObject has been created.");
         }
+		_initialZoom = currentZoom;
+		_initialTilt = tiltAngle;
+		_initialYaw  = lookAngle;
 	}
 
 	/* OnEnable sets up the listeners for the drive shoot and scroll actions from the InputManager.
@@ -342,5 +349,21 @@ public class FreeCameraLook : Pivot {
 		//Remove blocks from manager here?
 
         Destroy(hull.gameObject);
+    }
+	public void ResetView()
+    {
+        if (target == null) return;
+
+        transform.position = target.position;
+
+        lookAngle = target.eulerAngles.y;
+        transform.rotation = Quaternion.Euler(0f, lookAngle, 0f);
+
+        tiltAngle = 0f;
+        pivot.localRotation = Quaternion.Euler(tiltAngle, 0f, 0f);
+
+        targetZoom  = _initialZoom;
+        currentZoom = _initialZoom;
+        cam.localPosition = new Vector3(0f, 0f, -currentZoom);
     }
 }
