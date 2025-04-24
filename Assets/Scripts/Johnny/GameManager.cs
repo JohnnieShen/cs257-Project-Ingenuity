@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip winSound;
     [SerializeField] private AudioSource winAudioSource;
     [SerializeField, Min(0.1f)] private float fadeDuration = 1.5f;
+    [SerializeField] private CanvasGroup fadeOutOverlay;
+    [SerializeField] private float fadeOutDuration = 1.5f;
 
     void Awake()
     {
@@ -154,6 +156,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame()
     {
+        Debug.Log("WinGame() called");
         if (winPanel != null)
         {
             winPanel.SetActive(true);
@@ -168,8 +171,21 @@ public class GameManager : MonoBehaviour
         PlayWinSound();
         if (pauseOnWin)
             Time.timeScale = 0f;
-        
+        StartCoroutine(HandleWinDelay());
     }
+    private IEnumerator HandleWinDelay()
+{
+    float delay = 5f;
+
+    if (pauseOnWin)
+        yield return new WaitForSecondsRealtime(delay);
+    else
+        yield return new WaitForSeconds(delay);
+
+    Time.timeScale = 1f;
+
+    UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+}
     private IEnumerator FadeCanvasGroup(CanvasGroup cg,
                                         float from, float to, float duration)
     {
