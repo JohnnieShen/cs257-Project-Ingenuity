@@ -24,6 +24,6 @@ MonoBehaviour:
   recycleBonus: 40
   attachDirection: {x: 0, y: -1, z: 0}
   blockHealth: 40
-  uiSprite: {fileID: 21300000, guid: 1ff5f1a3bce511c4fb3517219927f4aa, type: 3}
+  uiSprite: {fileID: 21300000, guid: f976b3286235c1a40b64262f75125c1a, type: 3}
   onlyInlinePlacement: 0
   connectionStrength: 2000

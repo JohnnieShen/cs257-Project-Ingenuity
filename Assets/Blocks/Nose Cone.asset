@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: Nose Cone
   m_EditorClassIdentifier: 
   BlockName: Nose Cone
-  BlockObject: {fileID: 9209137055945082942, guid: 9ee93b54c5df9024fba082b31bd75ab1, type: 3}
-  PreviewObject: {fileID: 9209137055945082942, guid: 7e0516351ef62fc4db093c5adedba9c0, type: 3}
+  BlockObject: {fileID: 4479673081621953131, guid: 0bd2615ae1ce84d4d9a1d3bd75394402, type: 3}
+  PreviewObject: {fileID: 6251610490619408644, guid: a55957aa034321440b14c04233fa45e3, type: 3}
   isTopMountable: 1
   isSideMountable: 1
   isBottomMountable: 1
   isRotatable: 0
-  isCraftable: 0
+  isCraftable: 1
   cost: 30
   recycleBonus: 10
   attachDirection: {x: 0, y: 1, z: 0}
   blockHealth: 10
   uiSprite: {fileID: 21300000, guid: 2b2173f89a0239b428b3a174fed18275, type: 3}
   onlyInlinePlacement: 0
+  connectionStrength: 500
