@@ -15,6 +15,7 @@ public class BossHealthBarToggle : MonoBehaviour
 
     [Header("Settings")]
     public float visibilityDistance = 30f;
+    [SerializeField] private Block unlockableBlock;
 
     /*
     Checks periodically whether the player is within a certain distance of
@@ -37,5 +38,14 @@ public class BossHealthBarToggle : MonoBehaviour
             if (healthBarUI.activeSelf)
                 healthBarUI.SetActive(false);
         }
+    }
+    private void OnDestroy()
+    {
+        if (unlockableBlock == null) return;
+
+        unlockableBlock.isCraftable = true;
+        UIManager.Instance?.ShowPopup("New Craftable Block Unlocked: " + unlockableBlock.BlockName, 3f);
+        if (CraftUIManager.Instance != null && CraftUIManager.Instance.isActiveAndEnabled)
+            CraftUIManager.Instance.TryAddCraftableBlock(unlockableBlock);
     }
 }

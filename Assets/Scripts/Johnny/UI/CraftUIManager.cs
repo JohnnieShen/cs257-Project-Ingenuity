@@ -11,17 +11,38 @@ public class CraftUIManager : MonoBehaviour
     * and updates the scrap count displayed in the UI. It uses a dictionary to keep track of the UI entries for each block and updates them accordingly.
     * The script also listens for changes in the scrap count and updates the UI text accordingly.
     */
+    public static CraftUIManager Instance { get; private set; }
     public GameObject craftUIEntryPrefab;
     public Transform entriesParent;
     public TextMeshProUGUI ScrapText;
     private BlockInventoryMatrix inventoryMatrix => BlockInventoryManager.instance.inventoryMatrix;
     private readonly Dictionary<Block, CraftUIEntry> entryLookup = new();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
+
     /* Start is called before the first frame update.
     * It populates the crafting UI with available blocks and sets up listeners for scrap count changes.
     * It also updates the scrap text to reflect the current scrap count.
     */
     private void Start()
+    {
+        PopulateCraftUI();
+        if (VehicleResourceManager.Instance != null)
+        {
+            VehicleResourceManager.Instance.onScrapChanged.AddListener(UpdateScrapText);
+            UpdateScrapText(VehicleResourceManager.Instance.scrapCount);
+        }
+    }
+
+    private void OnEnable()
     {
         PopulateCraftUI();
         if (VehicleResourceManager.Instance != null)
@@ -139,5 +160,20 @@ public class CraftUIManager : MonoBehaviour
             int newCount = BlockInventoryManager.instance.GetBlockCount(block);
             entry.UpdateCount(newCount);
         }
+    }
+    public void TryAddCraftableBlock(Block block)
+    {
+        if (block == null || !block.isCraftable) return;
+        if (entryLookup.ContainsKey(block))
+            return;
+
+        var go = Instantiate(craftUIEntryPrefab, entriesParent);
+        var entry = go.GetComponent<CraftUIEntry>();
+
+        entry.blockData = block;
+        entry.Setup(HandleCraftClicked, HandleRecycleClicked, block);
+
+        entryLookup[block] = entry;
+        RefreshEntry(block);
     }
 }
