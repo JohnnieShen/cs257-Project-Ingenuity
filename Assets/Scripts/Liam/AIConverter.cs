@@ -130,6 +130,7 @@ public class ConvertToAI : MonoBehaviour
                 Destroy(t.gameObject);
             }
         }
+        // I am not sure why but the command module will have a sphere collider on it for some reason and it does mess things up
         SphereCollider sphereCollider = commandModule.GetComponent<SphereCollider>();
         if (sphereCollider != null)
         {

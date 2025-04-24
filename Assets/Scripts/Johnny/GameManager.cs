@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class GameManager : MonoBehaviour
     [Header("Win-screen")]
     [SerializeField] private GameObject winPanel;
     [SerializeField] private bool pauseOnWin = true;
+    [SerializeField] private AudioClip winSound;
+    [SerializeField] private AudioSource winAudioSource;
+    [SerializeField, Min(0.1f)] private float fadeDuration = 1.5f;
+
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -149,11 +155,40 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         if (winPanel != null)
+        {
             winPanel.SetActive(true);
 
+            CanvasGroup cg = winPanel.GetComponent<CanvasGroup>();
+            if (cg == null) cg = winPanel.AddComponent<CanvasGroup>();
+
+            cg.alpha = 0f;
+            
+            StartCoroutine(FadeCanvasGroup(cg, 0f, 1f, fadeDuration));
+        }
+        PlayWinSound();
         if (pauseOnWin)
             Time.timeScale = 0f;
         
+    }
+    private IEnumerator FadeCanvasGroup(CanvasGroup cg,
+                                        float from, float to, float duration)
+    {
+        float elapsed = 0f;
+        cg.alpha = from;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            cg.alpha = Mathf.Lerp(from, to, elapsed / duration);
+            yield return null;
+        }
+        cg.alpha = to;
+    }
+    private void PlayWinSound()
+    {
+        if (winSound == null) return;
+        winAudioSource.clip = winSound;
+        winAudioSource.Play();
     }
     public void ResumeGame()
     {
