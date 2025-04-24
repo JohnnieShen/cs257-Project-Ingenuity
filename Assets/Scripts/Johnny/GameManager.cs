@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     private GameObject _currentCore;
     public GameObject visualWidget;
     public Vector3Int blockParentPos;
+    [Header("Win-screen")]
+    [SerializeField] private GameObject winPanel;
+    [SerializeField] private bool pauseOnWin = true;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -142,5 +145,18 @@ public class GameManager : MonoBehaviour
                 enemy.playerTarget = coreTransform;
             }
         }
+    }
+    public void WinGame()
+    {
+        if (winPanel != null)
+            winPanel.SetActive(true);
+
+        if (pauseOnWin)
+            Time.timeScale = 0f;
+        
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
     }
 }

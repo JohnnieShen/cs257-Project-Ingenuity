@@ -24,7 +24,7 @@ public class BlockManager : MonoBehaviour
     // ^^^ Value is a list of Vector3Int positions of the connected blocks. Each entry in the list is a connection from the key block to the connected block.
     private bool isValidating = false;
     public Transform gridOrigin;
-
+    private readonly Dictionary<Block, int> vehicleBlockCounts = new();
 
     /* Awake is called when the script instance is being loaded.
     It enforces the singleton pattern by checking if an instance already exists.
@@ -52,6 +52,14 @@ public class BlockManager : MonoBehaviour
         {
             blocks.Add(localPos, blockRb);
         }
+        var hull = blockRb.GetComponent<Hull>();
+        if (hull != null && hull.sourceBlock != null)
+        {
+            vehicleBlockCounts.TryGetValue(hull.sourceBlock, out int n);
+            vehicleBlockCounts[hull.sourceBlock] = n + 1;
+
+            VehicleBuildEvents.RaiseBlockAdded(hull.sourceBlock, localPos);
+        }
     }
     // Check if a block exists at a given position
     // This function is used in the build logic to check if a block exists at a given position.
@@ -68,12 +76,19 @@ public class BlockManager : MonoBehaviour
     // Param 2: blockRb - The Rigidbody component of the block.
     public void RemoveBlock(Vector3Int localPos)
     {
-        if (blocks.ContainsKey(localPos))
+        if (!blocks.TryGetValue(localPos, out var rb)) return;
+
+        var hull = rb != null ? rb.GetComponent<Hull>() : null;
+        if (hull != null && hull.sourceBlock != null)
         {
-            //MIGHT NOT BE NECESSARY
-            blocks.Remove(localPos);
-            RemoveConnections(localPos);
+            if (vehicleBlockCounts.TryGetValue(hull.sourceBlock, out int n))
+                vehicleBlockCounts[hull.sourceBlock] = Mathf.Max(0, n - 1);
+
+            VehicleBuildEvents.RaiseBlockRemoved(hull.sourceBlock, localPos);
         }
+
+        blocks.Remove(localPos);
+        RemoveConnections(localPos);
     }
 
     // ^^^ These functions are mainly used in the build logic, but also used in e.g. the block destruction logic.
@@ -336,5 +351,9 @@ public class BlockManager : MonoBehaviour
         yield return null;
         CleanupBrokenJoints();
         recalculateConnections();
+    }
+    public int GetMountedCount(Block block)
+    {
+        return block != null && vehicleBlockCounts.TryGetValue(block, out int n) ? n : 0;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using System.Collections;
-
+using UnityEngine.UI;
 public class CraftUIManager : MonoBehaviour
 {
     /* 
@@ -80,6 +80,7 @@ public class CraftUIManager : MonoBehaviour
                 RefreshEntry(bi.Block);
             }
         }
+        StartCoroutine(RebuildNextFrame());
     }
 
     /* It handles the crafting action when the craft button is clicked.
@@ -175,5 +176,11 @@ public class CraftUIManager : MonoBehaviour
 
         entryLookup[block] = entry;
         RefreshEntry(block);
+        StartCoroutine(RebuildNextFrame());
+    }
+    IEnumerator RebuildNextFrame()
+    {
+        yield return null;
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)entriesParent);
     }
 }

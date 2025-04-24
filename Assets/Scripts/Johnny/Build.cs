@@ -544,7 +544,7 @@ public class BuildSystem : MonoBehaviour
                 
                 if (BlockManager.instance != null)
                 {
-                    BlockManager.instance.AddBlock(spawnPosInt, newBlockRb); // Register the new block in the block manager
+                    // BlockManager.instance.AddBlock(spawnPosInt, newBlockRb); // Register the new block in the block manager
                     // Debug.Log("Registered new block at grid coordinate: " + spawnPosInt);
                 }
             }
