@@ -47611,6 +47611,7 @@ GameObject:
   - component: {fileID: 859503054}
   - component: {fileID: 859503056}
   - component: {fileID: 859503057}
+  - component: {fileID: 859503058}
   m_Layer: 0
   m_Name: DrivingCamera
   m_TagString: Untagged
@@ -47776,6 +47777,14 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!81 &859503058
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859503052}
+  m_Enabled: 1
 --- !u!1 &907673420
 GameObject:
   m_ObjectHideFlags: 0
@@ -54472,7 +54481,7 @@ MonoBehaviour:
       MaxStack: 99
   - columns:
     - Block: {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
-      CurrentCount: 0
+      CurrentCount: 1
       MaxStack: 99
     - Block: {fileID: 11400000, guid: 2789e11fb193b317cb748ab96d09f975, type: 2}
       CurrentCount: 0

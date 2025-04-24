@@ -38,6 +38,9 @@ public class Turret : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private ParticleSystem muzzleSpark;
     [Header("Obstacle Check Settings")]
+    [Header("Audio")]
+    [SerializeField] private AudioSource gunAudioSource;
+    [SerializeField] private AudioClip gunShotClip;
     [SerializeField] private float checkDistance = 100f;
     public LineRenderer blockedLine;
 
@@ -259,6 +262,10 @@ public class Turret : MonoBehaviour
             muzzleSpark.transform.position = shootPoint.position;
             muzzleSpark.transform.rotation = shootPoint.rotation;
             muzzleSpark.Play();
+        }
+        Debug.Log("Shoot called");
+        if (gunAudioSource != null && gunShotClip != null) {
+            gunAudioSource.PlayOneShot(gunShotClip);
         }
         // currentAmmo--;
     }
