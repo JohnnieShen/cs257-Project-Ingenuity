@@ -487,6 +487,8 @@ MonoBehaviour:
   magazineSize: 5
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 3733260209672207583}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 1221858645317849463}
   isBlocked: 0
@@ -4121,7 +4123,6 @@ GameObject:
   - component: {fileID: 4539989847517082616}
   - component: {fileID: 7258774304944952470}
   - component: {fileID: 4254697714035618029}
-  - component: {fileID: 5277782946894221493}
   - component: {fileID: 8186348767352619794}
   - component: {fileID: 1665001942495254303}
   - component: {fileID: 6589105125117306460}
@@ -4240,27 +4241,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockType: {fileID: 11400000, guid: cb5ee92dce5d259409ba70cec9d5f3bc, type: 2}
   currentHealth: 500
---- !u!135 &5277782946894221493
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4041066200822361599}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8186348767352619794
 MonoBehaviour:
   m_ObjectHideFlags: 0

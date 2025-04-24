@@ -130,7 +130,11 @@ public class ConvertToAI : MonoBehaviour
                 Destroy(t.gameObject);
             }
         }
-
+        SphereCollider sphereCollider = commandModule.GetComponent<SphereCollider>();
+        if (sphereCollider != null)
+        {
+            Destroy(sphereCollider);
+        }
         // All done converting! Script is not needed at runtime.
         Destroy(this);
     }

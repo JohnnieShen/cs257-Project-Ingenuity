@@ -54784,7 +54784,7 @@ MonoBehaviour:
       MaxStack: 99
   - columns:
     - Block: {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
-      CurrentCount: 1
+      CurrentCount: 2
       MaxStack: 99
     - Block: {fileID: 11400000, guid: 2789e11fb193b317cb748ab96d09f975, type: 2}
       CurrentCount: 0
@@ -54800,7 +54800,7 @@ MonoBehaviour:
       MaxStack: 99
   - columns:
     - Block: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
-      CurrentCount: 0
+      CurrentCount: 4
       MaxStack: 99
     - Block: {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
       CurrentCount: 0
@@ -55848,7 +55848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1302662222
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55862,7 +55862,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f5ee21cf8fb714d6492f4bd36526832c, type: 3}
   m_Resource: {fileID: 8300000, guid: f5ee21cf8fb714d6492f4bd36526832c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
