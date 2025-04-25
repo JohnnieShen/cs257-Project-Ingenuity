@@ -55,6 +55,11 @@ public class BuildSystem : MonoBehaviour
     * The reference transform is set to the position and rotation of the command module.
     * The blocks are reparented to the reference transform and then transferred back to the parent.
     */
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+
     private void OnEnable()
     {
         UpdateCurrentBlockFromMatrix();
@@ -426,6 +431,10 @@ public class BuildSystem : MonoBehaviour
                 Vector3 spawnInParentSpace = parent.InverseTransformPoint(spawnWorldPos);
                 // Vector3 spawnInParentSpace = parent.InverseTransformPoint(commandModule.TransformPoint(localSpawn));
                 GameObject newBlock = Instantiate(blockPrefab, parent); // Instantiate new block as child of command module
+
+                // Play build sound
+                audioSource.PlayOneShot(audioClip);
+
                 newBlock.transform.localPosition = spawnInParentSpace; // Set local position of new block
                 Quaternion newBlockWorldRotation = Quaternion.identity;
                 if (isSideSurface)
