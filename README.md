@@ -345,14 +345,17 @@ Last but not least, we added a script for converting player vehicle to AI vehicl
 
 ### Second to last checkpoint
 
-As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing I implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning s.t. when the player dies it would be respawned at the starting platform.
+As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing I implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning so that when the player dies it would be respawned at the starting platform.
 
 We also implemented a lot of UI elements for the new mechanics. Namely we added a checklist for build mode for all blocks needed to win the game, it would be created dynamically and managed dynamically, so no hard coding needed which is good for scaling into more levels. We also added a dark souls style health bar for the boss fight, which is fully functional and looks cool.
 
-We have also fleshed out the AI converter script and have fixed a lot of bugs in the previous implementation, it should be fully functioning correctly and should make the workflow of creaating AI enemies a lot easier.
+We have also fleshed out the AI converter script and have fixed a lot of bugs in the previous implementation, it should be fully functioning correctly and should make the workflow of creating AI enemies a lot easier.
 
 Another thing we did for this patch would be that we added some sound effects to the game, namely a ambiance sound track, sound effects for the two types of cannons, and a rocket take off sound effect for the win game screen.
 
+As an update to block rarities, the force required to break a joint now scales with rarity. We added a section to the build script which accesses the block stats for the break force. Then it adds both the break force of the new block and the block it is connecting to in order to set the final strength. This allows different block rarity combinations to respond differently to physics collisions which adds another layer of strategy and realism.
+
+Additionally, another small bug fix was updating bullet physics. In previous versions, the bullet moved in a straight line at a fixed speed no matter when it was fired. In this version, the bullet now calculates a new velocity for itself based on the relative world space velocity of the turret it was fired from. This makes combat much more exciting and higher paced when driving at increased speeds. In previous versions, the bullets would move very slowly relative to the turret which fired it leading to self collisions that were not desirable.
 
 ### Instructions for Testing the Project
 _Instructions for Base Game_
