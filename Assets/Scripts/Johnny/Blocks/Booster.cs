@@ -18,6 +18,7 @@ public class Booster : MonoBehaviour
     public float energyConsumptionPerSecond = 5f;
     private float energyConsumptionAccumulator = 0f;
     private Hull hull;
+    public AudioSource audioSource;
     /**
     * Awake is called when the script instance is being loaded.
     * It initializes the Rigidbody component and checks if it is present.
@@ -81,10 +82,15 @@ public class Booster : MonoBehaviour
         if (VehicleResourceManager.Instance != null && VehicleResourceManager.Instance.energyAmmoCount > 0)
         {
             isBoosting = true;
+
+            // Particles
             if (boostParticles != null && !boostParticles.isPlaying)
             {
                 boostParticles.Play();
             }
+
+            // Audio
+            audioSource.Play();
         }
     }
 
@@ -105,11 +111,18 @@ public class Booster : MonoBehaviour
     private void ForceStopBoosting()
     {
         isBoosting = false;
+
+        // Reset accumulator
+        energyConsumptionAccumulator = 0f;
+
+        // Particles
         if (boostParticles != null && boostParticles.isPlaying)
         {
             boostParticles.Stop();
         }
-        energyConsumptionAccumulator = 0f;
+
+        // Audio
+        audioSource.Stop();
     }
 
     /**
