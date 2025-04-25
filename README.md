@@ -178,17 +178,30 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Next milestone:
 
-For the next milestone, we want to continue fleshing out the core gameplay and adding more content to the game. One thing we are in the middle of doing would be a boss fight of some sorts that will feature a POI and a dark souls style health bar, which we thought would be really funny. Another thing that we would want to do to fully close the gameplay loop would be to create a set of endgame conditions so that players can get out of an level and move on to the other. We are still in the middle of looking into this.
+~~For the next milestone, we want to continue fleshing out the core gameplay and adding more content to the game. One thing we are in the middle of doing would be a boss fight of some sorts that will feature a POI and a dark souls style health bar, which we thought would be really funny. Another thing that we would want to do to fully close the gameplay loop would be to create a set of endgame conditions so that players can get out of an level and move on to the other. We are still in the middle of looking into this.~~
 
-Content wise, another thing we could do would be to add even more blocks to the game. We have added a system of block rarities to the game as a placeholder system to enrich the gameplay, but we would like to keep on exploring our options. One issue this system brings us is that since now there are about 20 blocks, it is really annoying to look for a specific one. Thus, we would like to implement some QOL fix for this issue next patch and potentially change how the players interact with the system.
+~~Content wise, another thing we could do would be to add even more blocks to the game. We have added a system of block rarities to the game as a placeholder system to enrich the gameplay, but we would like to keep on exploring our options. One issue this system brings us is that since now there are about 20 blocks, it is really annoying to look for a specific one. Thus, we would like to implement some QOL fix for this issue next patch and potentially change how the players interact with the system.~~
 
-Another thing we've been always wanted to do is to add sounds effects and music to the game. We have been sidetracked for multiple times in attempting to do this, but hopefully we can add it in this patch.
+~~Another thing we've been always wanted to do is to add sounds effects and music to the game. We have been sidetracked for multiple times in attempting to do this, but hopefully we can add it in this patch.~~
 
-- Boss enemies with special scripts for behavior, boss fight mechanic, end game goals (tentative if our time allows), more enemy types
-- More POI on the map, fell-able trees with particle effects.
-- More blocks, better navigation scheme for build mode for selecting blocks
-- UI polish
-- Sounds (sound effects, music)
+- ~~Boss enemies~~ with special scripts for behavior, ~~boss fight mechanic, end game goals (tentative if our time allows), more enemy types~~
+- More POI on the map, ~~fell-able trees~~ with particle effects.
+- More blocks, ~~better navigation scheme for build mode for selecting blocks~~
+- ~~UI polish~~
+- ~~Sounds (sound effects, music)~~
+
+### Additions
+
+- Completed game loop: We added respawning and an endgame condition to the game. the player would need to attach certain blocks to the vehicle to win the game.
+
+### Next milestone
+
+Since we have completed most of the mechanics of the game, we would focus on polishing the gameplay experience and adding more content for the next milestone. 
+
+- More enemy prefabs and randomized spawn. 
+- More diverse behavior for enemies
+- UI and QOL polishes
+- More sound effects
 
 ## Development
 
@@ -329,6 +342,16 @@ Another thing we did is that we added a lot of "juice" to the game. One thing wo
 Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. Jay is also working on a script that would allow trees to fell when hit, which would be interesting.
 
 Last but not least, we added a script for converting player vehicle to AI vehicles in the editor. Before we have to go through a long and convoluted process of creating AI vehicles, which is annoying and prone to errors. Now we can just make the vehicle in the game, apply the script to the block parent, and store the vehicle as a prefab.  
+
+### Second to last checkpoint
+
+As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing I implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning s.t. when the player dies it would be respawned at the starting platform.
+
+We also implemented a lot of UI elements for the new mechanics. Namely we added a checklist for build mode for all blocks needed to win the game, it would be created dynamically and managed dynamically, so no hard coding needed which is good for scaling into more levels. We also added a dark souls style health bar for the boss fight, which is fully functional and looks cool.
+
+We have also fleshed out the AI converter script and have fixed a lot of bugs in the previous implementation, it should be fully functioning correctly and should make the workflow of creaating AI enemies a lot easier.
+
+Another thing we did for this patch would be that we added some sound effects to the game, namely a ambiance sound track, sound effects for the two types of cannons, and a rocket take off sound effect for the win game screen.
 
 
 ### Instructions for Testing the Project
