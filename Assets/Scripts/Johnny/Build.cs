@@ -373,6 +373,7 @@ public class BuildSystem : MonoBehaviour
         LayerMask combinedMask_preview = combinedMask & ~previewIgnoreLayers;
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask_preview)) // Raycast hit something that is a block
         {
+            if (AimingAtPickupHullCanPickUp(hitInfo)) return;
             // Debug.Log("raycast hitting"+hitInfo.collider.gameObject.name);
 
             // 1. Instantiating the block
@@ -654,6 +655,10 @@ public class BuildSystem : MonoBehaviour
 
         if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, effectiveMask))
         {
+            if (AimingAtPickupHullCanPickUp(hitInfo)) {
+                if (previewBlock != null) previewBlock.SetActive(false);
+                return;
+            }
             // Debug.Log("Raycast hit: " + hitInfo.collider.gameObject.name);
             // Debug.Log("Raycast hit object has parent: " + hitInfo.collider.gameObject.transform.parent?.gameObject.name);
             if (hitInfo.collider.gameObject.layer == 6 || (hitInfo.collider.gameObject.transform.parent != null && hitInfo.collider.gameObject.transform.parent.gameObject.layer == 6))
@@ -815,6 +820,11 @@ public class BuildSystem : MonoBehaviour
     {
         UpdateCurrentBlockFromMatrix();
         SetText();
+    }
+    bool AimingAtPickupHullCanPickUp(RaycastHit hit)
+    {
+        Hull h = hit.collider.GetComponentInParent<Hull>();
+        return h != null && h.canPickup;
     }
 }
 
