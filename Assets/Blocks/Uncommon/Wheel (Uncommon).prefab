@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: sourceBlock
       value: 
       objectReference: {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
+    - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: accelForce
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1719701304185983027, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: blockType
       value: 

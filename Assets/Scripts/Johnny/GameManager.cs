@@ -117,6 +117,7 @@ public class GameManager : MonoBehaviour
         ModeSwitcher.instance.buildArrow = visualWidget;
         RebuildPlayerBlockManager(core);
         UpdateAllEnemyAITargets(core.transform);
+        EnablePickUpForChildHulls(coreParent.gameObject);
     }
     private void RebuildPlayerBlockManager(GameObject core)
     {
@@ -209,5 +210,15 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1f;
+    }
+    private void EnablePickUpForChildHulls(GameObject parent)
+    {
+        foreach (var hull in parent.GetComponentsInChildren<Hull>(true))
+        {
+            if (!hull.CompareTag("Core"))
+            {
+                hull.canPickup = true;
+            }
+        }
     }
 }

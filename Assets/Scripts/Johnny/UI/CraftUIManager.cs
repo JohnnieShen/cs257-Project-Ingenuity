@@ -44,7 +44,7 @@ public class CraftUIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PopulateCraftUI();
+        // PopulateCraftUI();
         if (VehicleResourceManager.Instance != null)
         {
             VehicleResourceManager.Instance.onScrapChanged.AddListener(UpdateScrapText);

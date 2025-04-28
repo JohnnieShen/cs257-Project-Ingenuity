@@ -370,8 +370,8 @@ public class BuildSystem : MonoBehaviour
             return;
         }
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
-        LayerMask combinedMask_preview = combinedMask & ~previewIgnoreLayers;
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask_preview)) // Raycast hit something that is a block
+        LayerMask combinedMask_preview = combinedMask & ~previewIgnoreLayers; //NOTWORKING NEED FIX
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, combinedMask_preview)) // Raycast hit something that is a block
         {
             if (AimingAtPickupHullCanPickUp(hitInfo)) return;
             // Debug.Log("raycast hitting"+hitInfo.collider.gameObject.name);
@@ -501,9 +501,10 @@ public class BuildSystem : MonoBehaviour
                             Mathf.RoundToInt(offsetInModule.z)
                         );
                         Vector3Int neighborPos = spawnPosInt + offsetInModuleInt; // Calculate the position of the neighbor block
-                        // Debug.Log("Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
+                        // Debug.Log("For block " + currentBlock.BlockName + "Checking neighbor at: " + neighborPos + " for connection offset: " + offset);
                         if (BlockManager.instance != null && BlockManager.instance.TryGetBlockAt(neighborPos, out Rigidbody neighborRb)) // If neighbor exist
                         {
+                            // Debug.Log("Neighbor found at " + neighborPos + " for connection offset: " + offset);
                             if (neighborRb != null) {
                                 Hull neighborHull = neighborRb.GetComponent<Hull>();
                                 if (neighborHull != null)
@@ -517,6 +518,7 @@ public class BuildSystem : MonoBehaviour
 
                                     if (neighborHull.validConnectionOffsets.Contains(neighborLocalOffsetInt))
                                     {
+                                        // Debug.Log($"Connecting new block at {spawnPosInt} to neighbor at {neighborPos} (offset {offset}, opposite {neighborLocalOffsetInt}).");
                                         var joint = newBlock.AddComponent<FixedJoint>();
                                         joint.connectedBody = neighborRb;
                                         // joint.breakForce = breakForce;
@@ -592,8 +594,9 @@ public class BuildSystem : MonoBehaviour
     void DestroyBlock()
     {
         LayerMask combinedMask = rayCastLayers & ~shieldLayer;
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, combinedMask))
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hitInfo, Mathf.Infinity, combinedMask))
         {
+            Debug.Log("Raycast hit: " + hitInfo.collider.gameObject.name);
             if (hitInfo.transform.CompareTag("Block") || ((hitInfo.transform.CompareTag("EnemyBlock") && hitInfo.transform.GetComponent<Hull>().canPickup)))
             {
                 Hull hull = hitInfo.transform.GetComponent<Hull>();

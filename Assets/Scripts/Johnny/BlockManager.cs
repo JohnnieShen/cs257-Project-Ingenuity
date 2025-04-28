@@ -48,13 +48,16 @@ public class BlockManager : MonoBehaviour
         // {
         //     Debug.Log("Block at " + block.Key + " with Rigidbody " + block.Value);
         // }
+        // Debug.Log("Adding block at " + localPos + " with Rigidbody " + blockRb);
         if (!blocks.ContainsKey(localPos))
         {
+            // Debug.Log("Adding block at " + localPos + " with Rigidbody " + blockRb + " to blocks directory");
             blocks.Add(localPos, blockRb);
         }
         var hull = blockRb.GetComponent<Hull>();
         if (hull != null && hull.sourceBlock != null)
         {
+            // Debug.Log("Adding block at " + localPos + " with Hull " + hull + " to arrays");
             vehicleBlockCounts.TryGetValue(hull.sourceBlock, out int n);
             vehicleBlockCounts[hull.sourceBlock] = n + 1;
 
@@ -299,6 +302,13 @@ public class BlockManager : MonoBehaviour
                     if (turret.blockedLine != null)
                         turret.blockedLine.enabled = false;
                     // ^^^ Disable the turret script and the blocked line renderer
+                }
+                if (hull != null && hull.sourceBlock != null)
+                {
+                    if (vehicleBlockCounts.TryGetValue(hull.sourceBlock, out int n))
+                        vehicleBlockCounts[hull.sourceBlock] = Mathf.Max(0, n - 1);
+
+                    VehicleBuildEvents.RaiseBlockRemoved(hull.sourceBlock, pos);
                 }
             }
         }

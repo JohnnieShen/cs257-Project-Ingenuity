@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
     - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: accelForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: springStrength
       value: 500
       objectReference: {fileID: 0}

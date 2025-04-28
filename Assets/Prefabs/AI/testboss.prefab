@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5891757304112346109}
   - component: {fileID: 8243466997096440073}
   - component: {fileID: 1425735785562947771}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5359719818567358799}
   - component: {fileID: 3299784715019291999}
   - component: {fileID: 6610366795665328586}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7000806625049821725}
   - component: {fileID: 2543245178073148820}
   - component: {fileID: 1790790500429879380}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 2014449081388825133}
   - component: {fileID: 1965528731288260677}
   - component: {fileID: 2134077766317629031}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 7700516169221398562}
   - component: {fileID: 8731254067952908533}
   - component: {fileID: 831929150427626628}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 7051389470231078537}
   - component: {fileID: 686626391918591104}
   - component: {fileID: 8852683041362789486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 5235120586270904576}
   - component: {fileID: 3231227844986577677}
   - component: {fileID: 1120431900807792896}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   - component: {fileID: 3843827539927812170}
   - component: {fileID: 8381047823611247135}
   - component: {fileID: 3955155453943617248}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 2104874273936200838}
   - component: {fileID: 280344612289307151}
   - component: {fileID: 3137285789523048030}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   - component: {fileID: 3100385151098220147}
   - component: {fileID: 8741773260516527524}
   - component: {fileID: 8195882607893647100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3196336542031248786}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -813,7 +813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4676505892940152877}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 6545213678693295800}
   - component: {fileID: 4148029069496612374}
   - component: {fileID: 6186260992362139901}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6751515405104477489}
   - component: {fileID: 6108511596913040945}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopArmAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 3421202227675417468}
   - component: {fileID: 6380821963268047742}
   - component: {fileID: 4931909073579478901}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1109,7 +1109,7 @@ GameObject:
   - component: {fileID: 9177504995126649849}
   - component: {fileID: 6104563502813353383}
   - component: {fileID: 120030489122438847}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,7 +1405,7 @@ GameObject:
   - component: {fileID: 2089854861257473733}
   - component: {fileID: 5696181012609044538}
   - component: {fileID: 1172335639709844502}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 4280085743879598966}
   - component: {fileID: 684595952672694748}
   - component: {fileID: 6418276798894991209}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,7 +1557,7 @@ GameObject:
   - component: {fileID: 6848938353009713202}
   - component: {fileID: 5125809685539814813}
   - component: {fileID: 7594066619388380852}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 6900841343625425707}
   - component: {fileID: 4495207892591624498}
   - component: {fileID: 576181000519330926}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -1709,7 +1709,7 @@ GameObject:
   - component: {fileID: 5955936328705691680}
   - component: {fileID: 8111178733936598468}
   - component: {fileID: 491718707755935397}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -1774,7 +1774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3045665747256438200}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1813,7 +1813,7 @@ GameObject:
   - component: {fileID: 1350990885798374703}
   - component: {fileID: 6672986593328451766}
   - component: {fileID: 8169885646248017059}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1898,7 +1898,7 @@ GameObject:
   - component: {fileID: 3948227590329972363}
   - component: {fileID: 8983261533165346418}
   - component: {fileID: 111354196422804825}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,7 +2167,7 @@ GameObject:
   - component: {fileID: 3126234951622933508}
   - component: {fileID: 616945152011657844}
   - component: {fileID: 7539040055884716272}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -2234,7 +2234,7 @@ GameObject:
   - component: {fileID: 9125690810269042364}
   - component: {fileID: 517551541164270172}
   - component: {fileID: 3263716455763998752}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2319,7 +2319,7 @@ GameObject:
   - component: {fileID: 5748886898391394304}
   - component: {fileID: 2173923639834065679}
   - component: {fileID: 6869553217091959171}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -2386,7 +2386,7 @@ GameObject:
   - component: {fileID: 3996740413203250369}
   - component: {fileID: 8415243736004394242}
   - component: {fileID: 222009494561375138}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -2453,7 +2453,7 @@ GameObject:
   - component: {fileID: 277366507730416552}
   - component: {fileID: 2749467517268192772}
   - component: {fileID: 582515532657602963}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -2520,7 +2520,7 @@ GameObject:
   - component: {fileID: 1796914559308715175}
   - component: {fileID: 3542571394031964798}
   - component: {fileID: 4311634143199370329}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -2587,7 +2587,7 @@ GameObject:
   - component: {fileID: 4871931209630634433}
   - component: {fileID: 5372748087976736982}
   - component: {fileID: 2604280504639601742}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2672,7 +2672,7 @@ GameObject:
   - component: {fileID: 5155276524716338226}
   - component: {fileID: 8249788235473457167}
   - component: {fileID: 4703874649022623796}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2758,7 +2758,7 @@ GameObject:
   - component: {fileID: 2205640919845022393}
   - component: {fileID: 6705174243608381223}
   - component: {fileID: 943233824228856147}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 6457986999875251736}
   - component: {fileID: 235593387796600739}
   - component: {fileID: 4410788198972648111}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3123,7 +3123,7 @@ GameObject:
   - component: {fileID: 5897262957088739749}
   - component: {fileID: 5823795830113843479}
   - component: {fileID: 5269677956957752726}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3210,7 +3210,7 @@ GameObject:
   - component: {fileID: 13935464930908514}
   - component: {fileID: 2806798684761427349}
   - component: {fileID: 7895227769217800330}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -3316,7 +3316,7 @@ GameObject:
   - component: {fileID: 5143115881989436621}
   - component: {fileID: 6096389659947505163}
   - component: {fileID: 4218588841273486259}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -3381,7 +3381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5111151662696037729}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,7 +3416,7 @@ GameObject:
   - component: {fileID: 3370772894629908890}
   - component: {fileID: 4255873733927780609}
   - component: {fileID: 5970763988469187446}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3500,7 +3500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5322598350771377687}
   - component: {fileID: 2693364671559907486}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopArmAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3586,7 +3586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2797198545903481733}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3620,7 +3620,7 @@ GameObject:
   - component: {fileID: 1714677347920205579}
   - component: {fileID: 267529026570117096}
   - component: {fileID: 4241515730661307722}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3703,7 +3703,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8129278381706978109}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3868,6 +3868,7 @@ MonoBehaviour:
   boostForceMagnitude: 3
   boostParticles: {fileID: 0}
   energyConsumptionPerSecond: 5
+  audioSource: {fileID: 0}
 --- !u!138 &36506085736185520
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -3895,7 +3896,7 @@ GameObject:
   - component: {fileID: 4101915148510063841}
   - component: {fileID: 3509885021197580721}
   - component: {fileID: 9057196082721992682}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4191,7 +4192,7 @@ GameObject:
   - component: {fileID: 5274513315188812730}
   - component: {fileID: 7562090530886897667}
   - component: {fileID: 8293904245945401429}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -4257,7 +4258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 521931355766297569}
   - component: {fileID: 7466370312256948778}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4344,7 +4345,7 @@ GameObject:
   - component: {fileID: 6042052219004003108}
   - component: {fileID: 7159784008546508746}
   - component: {fileID: 4565251421263299126}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -4410,7 +4411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4749841061890402656}
   - component: {fileID: 1508868082127829064}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4497,7 +4498,7 @@ GameObject:
   - component: {fileID: 3971405354788159916}
   - component: {fileID: 4199707282393571435}
   - component: {fileID: 7661132011071608062}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4582,7 +4583,7 @@ GameObject:
   - component: {fileID: 4275964788899262449}
   - component: {fileID: 8342115882703525834}
   - component: {fileID: 7411976903585373748}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4665,7 +4666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 360930835519901982}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4697,7 +4698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7359035764514112206}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4866,6 +4867,7 @@ MonoBehaviour:
   boostForceMagnitude: 3
   boostParticles: {fileID: 0}
   energyConsumptionPerSecond: 5
+  audioSource: {fileID: 0}
 --- !u!138 &2115741804206791255
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -4892,7 +4894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1760239271225699991}
   - component: {fileID: 1445540506886100502}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4955,7 +4957,7 @@ GameObject:
   - component: {fileID: 267189180647354958}
   - component: {fileID: 3136513605337173873}
   - component: {fileID: 2678249400563702026}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -5022,7 +5024,7 @@ GameObject:
   - component: {fileID: 8882945261672235195}
   - component: {fileID: 4175484039378759875}
   - component: {fileID: 4291783479136945863}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -5089,7 +5091,7 @@ GameObject:
   - component: {fileID: 4299600548769942664}
   - component: {fileID: 7378239190020705068}
   - component: {fileID: 5168703013286088178}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -5154,7 +5156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4915185606412842610}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5193,7 +5195,7 @@ GameObject:
   - component: {fileID: 4903372009531956058}
   - component: {fileID: 2695882529678782603}
   - component: {fileID: 4554256111341707130}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5278,7 +5280,7 @@ GameObject:
   - component: {fileID: 3186304901834186299}
   - component: {fileID: 2776976201754002541}
   - component: {fileID: 1994433312987474831}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -5345,7 +5347,7 @@ GameObject:
   - component: {fileID: 113297592567965048}
   - component: {fileID: 6473869537379631257}
   - component: {fileID: 4946992925509452371}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arrow
   m_TagString: BuildVisualWidget
   m_Icon: {fileID: 0}
@@ -5430,7 +5432,7 @@ GameObject:
   - component: {fileID: 6808565327821998377}
   - component: {fileID: 9164612351859418196}
   - component: {fileID: 137857931208360539}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10318,7 +10320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6752078585126507977}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Shooting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10352,7 +10354,7 @@ GameObject:
   - component: {fileID: 4283619370017577471}
   - component: {fileID: 3615826641257981657}
   - component: {fileID: 1225360032400660235}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -10456,7 +10458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3001075306625443242}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10843,7 +10845,7 @@ GameObject:
   - component: {fileID: 1279075877513805681}
   - component: {fileID: 8488412956052134533}
   - component: {fileID: 4042599549784850970}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10930,7 +10932,7 @@ GameObject:
   - component: {fileID: 4089966638289417862}
   - component: {fileID: 6853378546165724292}
   - component: {fileID: 3513714316168571989}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11015,7 +11017,7 @@ GameObject:
   - component: {fileID: 3192247379880535311}
   - component: {fileID: 4899893081206273797}
   - component: {fileID: 3105587375648112690}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11100,7 +11102,7 @@ GameObject:
   - component: {fileID: 3555888698644359369}
   - component: {fileID: 3084745957702620535}
   - component: {fileID: 3341816067482448548}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11185,7 +11187,7 @@ GameObject:
   - component: {fileID: 9194483163439000555}
   - component: {fileID: 5224147101359031646}
   - component: {fileID: 1379685530762266898}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11270,7 +11272,7 @@ GameObject:
   - component: {fileID: 8564337132505167039}
   - component: {fileID: 6497964276435556124}
   - component: {fileID: 5764065444670966327}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11355,7 +11357,7 @@ GameObject:
   - component: {fileID: 4454574900581573709}
   - component: {fileID: 828035193804631920}
   - component: {fileID: 1729281439269343664}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -11422,7 +11424,7 @@ GameObject:
   - component: {fileID: 6488728867173195929}
   - component: {fileID: 5838499244870708093}
   - component: {fileID: 1806453279457791676}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11507,7 +11509,7 @@ GameObject:
   - component: {fileID: 3668907291745921610}
   - component: {fileID: 6653300874850351063}
   - component: {fileID: 8885919422565276920}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -11574,7 +11576,7 @@ GameObject:
   - component: {fileID: 5650992847240738046}
   - component: {fileID: 9092432658873199516}
   - component: {fileID: 8425276871328430987}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11853,7 +11855,7 @@ GameObject:
   - component: {fileID: 1344827882055893587}
   - component: {fileID: 5957829187688694144}
   - component: {fileID: 5807416599934463994}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11938,7 +11940,7 @@ GameObject:
   - component: {fileID: 3472482802173942918}
   - component: {fileID: 6970383168351637860}
   - component: {fileID: 3176942072594245075}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12023,7 +12025,7 @@ GameObject:
   - component: {fileID: 6111581785440697639}
   - component: {fileID: 6243716660686158008}
   - component: {fileID: 4033287408735586266}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -12090,7 +12092,7 @@ GameObject:
   - component: {fileID: 6266069279820940815}
   - component: {fileID: 4106396806278318972}
   - component: {fileID: 8930071159119747691}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -12155,7 +12157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3054345386177070528}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12189,7 +12191,7 @@ GameObject:
   - component: {fileID: 2334933624724978505}
   - component: {fileID: 3491273059307199687}
   - component: {fileID: 816961813876362976}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12580,6 +12582,8 @@ MonoBehaviour:
   magazineSize: 5
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 5888242992944217428}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 4782655118914850241}
   isBlocked: 0
@@ -12614,7 +12618,7 @@ GameObject:
   - component: {fileID: 2844038964449955834}
   - component: {fileID: 5951447332023648403}
   - component: {fileID: 1971076516223688747}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12699,7 +12703,7 @@ GameObject:
   - component: {fileID: 7744492391678488870}
   - component: {fileID: 9143250733823787552}
   - component: {fileID: 6129070642606367168}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17589,7 +17593,7 @@ GameObject:
   - component: {fileID: 7743617063770907539}
   - component: {fileID: 7863900013597978740}
   - component: {fileID: 1642856058432146128}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17672,7 +17676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8199184110415540355}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17711,7 +17715,7 @@ GameObject:
   - component: {fileID: 3639708339093695588}
   - component: {fileID: 4280805158226924125}
   - component: {fileID: 8961019186929658714}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17796,7 +17800,7 @@ GameObject:
   - component: {fileID: 1944486613574239735}
   - component: {fileID: 1996665132564066495}
   - component: {fileID: 164079957287610264}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -17863,7 +17867,7 @@ GameObject:
   - component: {fileID: 1693807706298614853}
   - component: {fileID: 7856640008661664537}
   - component: {fileID: 3969187750310007857}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -17928,7 +17932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4666988649228846112}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17962,7 +17966,7 @@ GameObject:
   - component: {fileID: 2226921621391326138}
   - component: {fileID: 4185195732508232966}
   - component: {fileID: 1516739275303388197}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18047,7 +18051,7 @@ GameObject:
   - component: {fileID: 8734014396546263260}
   - component: {fileID: 510386443230444648}
   - component: {fileID: 4906019369847808393}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -18113,7 +18117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1178206979799714521}
   - component: {fileID: 1100989898032546707}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18167,7 +18171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2559509588654958245}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shooting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18198,7 +18202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3372002014426283999}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18233,7 +18237,7 @@ GameObject:
   - component: {fileID: 1229303352325383341}
   - component: {fileID: 2746246543308887131}
   - component: {fileID: 2635090696865073524}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18319,7 +18323,7 @@ GameObject:
   - component: {fileID: 3801229721524075090}
   - component: {fileID: 2497089208186912109}
   - component: {fileID: 3130673093229364801}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18637,7 +18641,7 @@ GameObject:
   - component: {fileID: 3967268475200273879}
   - component: {fileID: 3277003633668698950}
   - component: {fileID: 809777327969908933}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18720,7 +18724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8453025828167851105}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18755,7 +18759,7 @@ GameObject:
   - component: {fileID: 8636332128393506670}
   - component: {fileID: 2114028709752286040}
   - component: {fileID: 1544540998555031878}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -18822,7 +18826,7 @@ GameObject:
   - component: {fileID: 3507753003706148723}
   - component: {fileID: 31734163279306973}
   - component: {fileID: 7618171966803071025}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -18889,7 +18893,7 @@ GameObject:
   - component: {fileID: 8847806749534444190}
   - component: {fileID: 4914509863470525093}
   - component: {fileID: 8567016966273406434}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18975,7 +18979,7 @@ GameObject:
   - component: {fileID: 2804698764945145429}
   - component: {fileID: 3652048631470876261}
   - component: {fileID: 4699600209518375321}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19060,7 +19064,7 @@ GameObject:
   - component: {fileID: 6898928058719002517}
   - component: {fileID: 9169781939677704261}
   - component: {fileID: 2202566716024059378}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -19127,7 +19131,7 @@ GameObject:
   - component: {fileID: 1825118903496497819}
   - component: {fileID: 6645375483520061345}
   - component: {fileID: 2296826215116333220}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19212,7 +19216,7 @@ GameObject:
   - component: {fileID: 8175493386871438156}
   - component: {fileID: 9096130667933024413}
   - component: {fileID: 8393927491879854540}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19298,7 +19302,7 @@ GameObject:
   - component: {fileID: 6147730070157180615}
   - component: {fileID: 318086145404185542}
   - component: {fileID: 2682435934739250595}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19383,7 +19387,7 @@ GameObject:
   - component: {fileID: 7216438450180912606}
   - component: {fileID: 3113496705022397686}
   - component: {fileID: 1432020168972220257}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19469,7 +19473,7 @@ GameObject:
   - component: {fileID: 1767951801559055222}
   - component: {fileID: 8799558991571456539}
   - component: {fileID: 3484079226420074798}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -19678,7 +19682,7 @@ GameObject:
   - component: {fileID: 7862612118694034784}
   - component: {fileID: 5721498951371661292}
   - component: {fileID: 197013278294415554}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -19745,7 +19749,7 @@ GameObject:
   - component: {fileID: 8263756736716110957}
   - component: {fileID: 1215255530916591621}
   - component: {fileID: 8331955132192772097}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19830,7 +19834,7 @@ GameObject:
   - component: {fileID: 8610472504913324126}
   - component: {fileID: 4547588828855880006}
   - component: {fileID: 2006387881580590744}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19915,7 +19919,7 @@ GameObject:
   - component: {fileID: 8564959269043990327}
   - component: {fileID: 4828335591549167851}
   - component: {fileID: 2174583775320739657}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -19982,7 +19986,7 @@ GameObject:
   - component: {fileID: 39848707522359508}
   - component: {fileID: 8317511239839730796}
   - component: {fileID: 9045286821828639044}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24872,7 +24876,7 @@ GameObject:
   - component: {fileID: 8869539967303678499}
   - component: {fileID: 2490721274836394522}
   - component: {fileID: 6451385656127690467}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24957,7 +24961,7 @@ GameObject:
   - component: {fileID: 5345796231531257814}
   - component: {fileID: 723497800677852112}
   - component: {fileID: 6340602021996058295}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -25024,7 +25028,7 @@ GameObject:
   - component: {fileID: 4160785261002734510}
   - component: {fileID: 1473765248208931365}
   - component: {fileID: 2024715057504092536}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25108,7 +25112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9050907132021496244}
   - component: {fileID: 6037949169413403395}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25194,7 +25198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3990248601309513726}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: just_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25229,7 +25233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8450868374035977335}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shooting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25261,7 +25265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4660682787036431745}
   - component: {fileID: 1601871394297258074}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25317,7 +25321,7 @@ GameObject:
   - component: {fileID: 4387723016235390765}
   - component: {fileID: 356896300872891700}
   - component: {fileID: 7908711709418142863}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25404,7 +25408,7 @@ GameObject:
   - component: {fileID: 909520048396602772}
   - component: {fileID: 3314808881338465439}
   - component: {fileID: 1768121252991411265}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -25471,7 +25475,7 @@ GameObject:
   - component: {fileID: 6114407918998416195}
   - component: {fileID: 332490854263484490}
   - component: {fileID: 1893676619455084194}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -25680,7 +25684,7 @@ GameObject:
   - component: {fileID: 3493221717342855285}
   - component: {fileID: 2714335122212677414}
   - component: {fileID: 8869296116522939340}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25766,7 +25770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116763783382859385}
   - component: {fileID: 9084833895397041283}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25853,7 +25857,7 @@ GameObject:
   - component: {fileID: 2446680889048793058}
   - component: {fileID: 5859936886719750670}
   - component: {fileID: 1733503294226123395}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25936,7 +25940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7953011788946723819}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Top Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25970,7 +25974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4737031563226106089}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26002,7 +26006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151895186393870315}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26035,7 +26039,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405130609261469221}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26070,7 +26074,7 @@ GameObject:
   - component: {fileID: 7523511928924633180}
   - component: {fileID: 5607770154218285346}
   - component: {fileID: 6296486489540606514}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -26277,7 +26281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7094339458030405818}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AimTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26308,7 +26312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4841836909325182793}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26501,7 +26505,7 @@ GameObject:
   - component: {fileID: 6493656643049276244}
   - component: {fileID: 4949258401887210928}
   - component: {fileID: 8681930585217712614}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -26568,7 +26572,7 @@ GameObject:
   - component: {fileID: 7186418725145829209}
   - component: {fileID: 6588103662246997230}
   - component: {fileID: 1937141694420347529}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -26633,7 +26637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2854100636618390002}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26791,6 +26795,8 @@ MonoBehaviour:
   magazineSize: 10
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 7512439197655478120}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 8797915333052020091}
   isBlocked: 0
@@ -27033,7 +27039,7 @@ GameObject:
   - component: {fileID: 8233242550063962537}
   - component: {fileID: 8534141117377380346}
   - component: {fileID: 334507174562514284}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -27100,7 +27106,7 @@ GameObject:
   - component: {fileID: 530232370208532100}
   - component: {fileID: 4333697046265453501}
   - component: {fileID: 8597664639617451847}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27183,7 +27189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5126546689648738489}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27217,7 +27223,7 @@ GameObject:
   - component: {fileID: 6634421663228427601}
   - component: {fileID: 927056414703394142}
   - component: {fileID: 8098001284904292971}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27302,7 +27308,7 @@ GameObject:
   - component: {fileID: 1816894668126052318}
   - component: {fileID: 6599779193032803574}
   - component: {fileID: 5936884513032090175}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -27367,7 +27373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2126607944149877265}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shooting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27400,7 +27406,7 @@ GameObject:
   - component: {fileID: 1507713269136538601}
   - component: {fileID: 4133239727741115246}
   - component: {fileID: 6401886715401876237}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27485,7 +27491,7 @@ GameObject:
   - component: {fileID: 9018143863852154354}
   - component: {fileID: 3088666650646344665}
   - component: {fileID: 514164623853496891}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27570,7 +27576,7 @@ GameObject:
   - component: {fileID: 7688679696252664383}
   - component: {fileID: 2864755309546947497}
   - component: {fileID: 6222341740603842094}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -27637,7 +27643,7 @@ GameObject:
   - component: {fileID: 8938975513812876351}
   - component: {fileID: 7561257928447805795}
   - component: {fileID: 4636269811639832613}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27722,7 +27728,7 @@ GameObject:
   - component: {fileID: 8366809632801526035}
   - component: {fileID: 188549542177919179}
   - component: {fileID: 6310789788468348168}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28001,7 +28007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5605641840801254252}
   - component: {fileID: 4634662578084729370}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28048,7 +28054,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6594194619185766348}
   - component: {fileID: 3892282276549925617}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28298,7 +28304,7 @@ GameObject:
   - component: {fileID: 5005320785018965362}
   - component: {fileID: 7690946155964507765}
   - component: {fileID: 4228480705404979766}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28383,7 +28389,7 @@ GameObject:
   - component: {fileID: 9138872146019036623}
   - component: {fileID: 7385398210671187246}
   - component: {fileID: 7471950836178663902}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -28450,7 +28456,7 @@ GameObject:
   - component: {fileID: 4336170215516110957}
   - component: {fileID: 584158307253624217}
   - component: {fileID: 8742859453798900725}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -28516,7 +28522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640486129552753143}
   - component: {fileID: 6541721976134519664}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28601,7 +28607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3852597746411399935}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28640,7 +28646,7 @@ GameObject:
   - component: {fileID: 863555735697438241}
   - component: {fileID: 6362918814731563925}
   - component: {fileID: 8226995702738077530}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28725,7 +28731,7 @@ GameObject:
   - component: {fileID: 7679889215877499954}
   - component: {fileID: 3199743446080811943}
   - component: {fileID: 6759599233312814823}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28810,7 +28816,7 @@ GameObject:
   - component: {fileID: 7272463869286527287}
   - component: {fileID: 8068930164382159569}
   - component: {fileID: 5105919813396658401}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -28877,7 +28883,7 @@ GameObject:
   - component: {fileID: 5288812179096606840}
   - component: {fileID: 4097524414578311938}
   - component: {fileID: 3565359498476088861}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -28943,7 +28949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2496131033907041855}
   - component: {fileID: 3288387811670998193}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29031,7 +29037,7 @@ GameObject:
   - component: {fileID: 7828610609331299339}
   - component: {fileID: 3750828295400453774}
   - component: {fileID: 739456188242036099}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -29098,7 +29104,7 @@ GameObject:
   - component: {fileID: 8149897463509063754}
   - component: {fileID: 184518909904252799}
   - component: {fileID: 3175777476896944074}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29183,7 +29189,7 @@ GameObject:
   - component: {fileID: 8062452812680365307}
   - component: {fileID: 8101439086209078240}
   - component: {fileID: 384248929293267536}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29268,7 +29274,7 @@ GameObject:
   - component: {fileID: 7341643109972033045}
   - component: {fileID: 6103062368083923295}
   - component: {fileID: 1742720957527889276}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -29336,7 +29342,7 @@ GameObject:
   - component: {fileID: 4415836726306219986}
   - component: {fileID: 8874169278704920507}
   - component: {fileID: 8210100536658964139}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29443,7 +29449,7 @@ GameObject:
   - component: {fileID: 201781928883602772}
   - component: {fileID: 1695331055077441381}
   - component: {fileID: 2756212527676453065}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -29510,7 +29516,7 @@ GameObject:
   - component: {fileID: 2126631204530853989}
   - component: {fileID: 5309414539978309082}
   - component: {fileID: 4848502489938816751}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29593,7 +29599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6580156035366668680}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: just_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29841,7 +29847,7 @@ GameObject:
   - component: {fileID: 127584027895318392}
   - component: {fileID: 927621360834060857}
   - component: {fileID: 3016686247863378796}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29925,7 +29931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3692747847644638596}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29964,7 +29970,7 @@ GameObject:
   - component: {fileID: 6059978463994182773}
   - component: {fileID: 3291171560758544366}
   - component: {fileID: 4869615168659064161}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -30031,7 +30037,7 @@ GameObject:
   - component: {fileID: 1136285891936619795}
   - component: {fileID: 1093464769427711689}
   - component: {fileID: 4352538478477579045}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34921,7 +34927,7 @@ GameObject:
   - component: {fileID: 8071775528861374570}
   - component: {fileID: 6706507313059378805}
   - component: {fileID: 796922203473829830}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35006,7 +35012,7 @@ GameObject:
   - component: {fileID: 182292704163229243}
   - component: {fileID: 8137883075530533491}
   - component: {fileID: 5404575205207436654}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -35071,7 +35077,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1289015571989732624}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35107,7 +35113,7 @@ GameObject:
   - component: {fileID: 60343211344874027}
   - component: {fileID: 6179798754075522861}
   - component: {fileID: 2556281221169490540}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35190,7 +35196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 554614143134351696}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35224,7 +35230,7 @@ GameObject:
   - component: {fileID: 653117362384209433}
   - component: {fileID: 8147956494364651953}
   - component: {fileID: 26168817869949882}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35309,7 +35315,7 @@ GameObject:
   - component: {fileID: 7188121999507720425}
   - component: {fileID: 8501795769539614726}
   - component: {fileID: 6146576751128535037}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -35377,7 +35383,7 @@ GameObject:
   - component: {fileID: 5754615512910495077}
   - component: {fileID: 9147555374627653933}
   - component: {fileID: 1157504305880768314}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -35481,7 +35487,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8646677684689304595}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35518,7 +35524,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5356842850898824054}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35552,7 +35558,7 @@ GameObject:
   - component: {fileID: 6075020560767884310}
   - component: {fileID: 5133478535153466852}
   - component: {fileID: 2881965721361766216}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -35619,7 +35625,7 @@ GameObject:
   - component: {fileID: 1694436070412098174}
   - component: {fileID: 4401558820457218637}
   - component: {fileID: 3898036863822569736}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35702,7 +35708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2092177363190889043}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35736,7 +35742,7 @@ GameObject:
   - component: {fileID: 805344060785412032}
   - component: {fileID: 2765451220799064356}
   - component: {fileID: 6442427890744487202}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -35801,7 +35807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8550913407562165802}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35840,7 +35846,7 @@ GameObject:
   - component: {fileID: 3084453764558252993}
   - component: {fileID: 7637065967925204813}
   - component: {fileID: 3102773356059748142}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35923,7 +35929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9025721191675492007}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36152,7 +36158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3904685334400052635}
   - component: {fileID: 3904135249801126905}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36208,7 +36214,7 @@ GameObject:
   - component: {fileID: 1883684926261935043}
   - component: {fileID: 8788191163090213615}
   - component: {fileID: 3831487705682075393}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36293,7 +36299,7 @@ GameObject:
   - component: {fileID: 1453642164716391076}
   - component: {fileID: 4325640619158963527}
   - component: {fileID: 7267924000842095114}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36378,7 +36384,7 @@ GameObject:
   - component: {fileID: 8689921295355172087}
   - component: {fileID: 4431810280110648354}
   - component: {fileID: 3397491697196441933}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -36444,7 +36450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7454995651384183927}
   - component: {fileID: 7892548113176112540}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36507,7 +36513,7 @@ GameObject:
   - component: {fileID: 901052361873141545}
   - component: {fileID: 8073051011135097515}
   - component: {fileID: 2965297776902678644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36591,7 +36597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5651861439872793293}
   - component: {fileID: 7574188835999208670}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36677,7 +36683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8011158071864190776}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shooting Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36710,7 +36716,7 @@ GameObject:
   - component: {fileID: 5317731438702797175}
   - component: {fileID: 1017845120302828644}
   - component: {fileID: 3090028022883366191}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -36776,7 +36782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7260949385104949475}
   - component: {fileID: 3274612868290035270}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunAIm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36863,7 +36869,7 @@ GameObject:
   - component: {fileID: 5732528545912140274}
   - component: {fileID: 3207577306616003849}
   - component: {fileID: 7025644147532679491}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -36930,7 +36936,7 @@ GameObject:
   - component: {fileID: 6419569598847093043}
   - component: {fileID: 470398749611716973}
   - component: {fileID: 5456247170042562481}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -36995,7 +37001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8644689890126617259}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37157,6 +37163,8 @@ MonoBehaviour:
   magazineSize: 10
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 5028803672893084611}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 789597547171706518}
   isBlocked: 0
@@ -37399,7 +37407,7 @@ GameObject:
   - component: {fileID: 7204771364129880748}
   - component: {fileID: 4396614606745077251}
   - component: {fileID: 5315062464544423400}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -37466,7 +37474,7 @@ GameObject:
   - component: {fileID: 5101574897161044646}
   - component: {fileID: 1579848402081483388}
   - component: {fileID: 8113913488839185747}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37552,7 +37560,7 @@ GameObject:
   - component: {fileID: 3278111655128256507}
   - component: {fileID: 8631301138049121153}
   - component: {fileID: 6231887546238407319}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37659,7 +37667,7 @@ GameObject:
   - component: {fileID: 5370379999351893154}
   - component: {fileID: 2670189189488826392}
   - component: {fileID: 6595098588914210455}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37744,7 +37752,7 @@ GameObject:
   - component: {fileID: 8138115633038852412}
   - component: {fileID: 1416016062424240158}
   - component: {fileID: 5629652051088158255}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37829,7 +37837,7 @@ GameObject:
   - component: {fileID: 1738906573426911548}
   - component: {fileID: 4008559077720500976}
   - component: {fileID: 2789814907244940803}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -37894,7 +37902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3172305736301111170}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37929,7 +37937,7 @@ GameObject:
   - component: {fileID: 2176735705031938836}
   - component: {fileID: 6167836229997593507}
   - component: {fileID: 6145126389692049515}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -37996,7 +38004,7 @@ GameObject:
   - component: {fileID: 4382493732694757331}
   - component: {fileID: 2980427882377268423}
   - component: {fileID: 455554009448755195}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38080,7 +38088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8588489274757725418}
   - component: {fileID: 7655768329453530251}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38141,7 +38149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3207102155220041175}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: testboss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38210,7 +38218,7 @@ GameObject:
   - component: {fileID: 3641306490011523482}
   - component: {fileID: 2837328674292152918}
   - component: {fileID: 607764166033953815}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38295,7 +38303,7 @@ GameObject:
   - component: {fileID: 5544279900267526250}
   - component: {fileID: 1421506909451779604}
   - component: {fileID: 7673929689298610345}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38380,7 +38388,7 @@ GameObject:
   - component: {fileID: 6671634022157516203}
   - component: {fileID: 7978637174390290760}
   - component: {fileID: 2631782050951508042}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -38447,7 +38455,7 @@ GameObject:
   - component: {fileID: 5017648112083864601}
   - component: {fileID: 5988334279385108640}
   - component: {fileID: 8672940722059442548}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38532,7 +38540,7 @@ GameObject:
   - component: {fileID: 5077171259744873465}
   - component: {fileID: 1960445671714596319}
   - component: {fileID: 8357834146877470202}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -38599,7 +38607,7 @@ GameObject:
   - component: {fileID: 5236571364577162019}
   - component: {fileID: 2809558964224466585}
   - component: {fileID: 3375092721035907488}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -38666,7 +38674,7 @@ GameObject:
   - component: {fileID: 2791689826074331013}
   - component: {fileID: 4339065271170740222}
   - component: {fileID: 2859042518977278170}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -38733,7 +38741,7 @@ GameObject:
   - component: {fileID: 6207804848011829950}
   - component: {fileID: 736388837105309185}
   - component: {fileID: 1049827334255709083}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38800,7 +38808,7 @@ GameObject:
   - component: {fileID: 5383492221145532085}
   - component: {fileID: 8579941357885869948}
   - component: {fileID: 2610361707287508216}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38910,7 +38918,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8335931392385337859}
   - {fileID: 7838397293836011909}
   - {fileID: 4420526631800305300}
   - {fileID: 113297592567965048}
@@ -39097,7 +39104,7 @@ GameObject:
   - component: {fileID: 7588961697722355658}
   - component: {fileID: 5888242992944217428}
   - component: {fileID: 7777618543699034995}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43987,7 +43994,7 @@ GameObject:
   - component: {fileID: 2033641412386926845}
   - component: {fileID: 2398212712427907615}
   - component: {fileID: 3451031377615488153}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -44054,7 +44061,7 @@ GameObject:
   - component: {fileID: 5635534740315464322}
   - component: {fileID: 2933980454216762425}
   - component: {fileID: 8813744191345273887}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44139,7 +44146,7 @@ GameObject:
   - component: {fileID: 1183304582879252748}
   - component: {fileID: 8758265390170042152}
   - component: {fileID: 6486035220144089238}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44224,7 +44231,7 @@ GameObject:
   - component: {fileID: 8009126774447284077}
   - component: {fileID: 7062940575706287541}
   - component: {fileID: 738697732578606334}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44309,7 +44316,7 @@ GameObject:
   - component: {fileID: 1096166570838622691}
   - component: {fileID: 814271451560069259}
   - component: {fileID: 1233084122178789664}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -44376,7 +44383,7 @@ GameObject:
   - component: {fileID: 7598877341542824708}
   - component: {fileID: 9131764279445989119}
   - component: {fileID: 3231061826292429721}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44462,7 +44469,7 @@ GameObject:
   - component: {fileID: 831512442683898472}
   - component: {fileID: 8663814100289278929}
   - component: {fileID: 3247867639408488280}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -44568,7 +44575,7 @@ GameObject:
   - component: {fileID: 8360365964786714364}
   - component: {fileID: 6189655961524434995}
   - component: {fileID: 6859146824668872590}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44652,7 +44659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8319919204533842474}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44689,7 +44696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7596459869803404526}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44727,7 +44734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8026166256590505323}
   - component: {fileID: 3022387291332227688}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopArmAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44815,7 +44822,7 @@ GameObject:
   - component: {fileID: 8958626388267952257}
   - component: {fileID: 6159531450390444456}
   - component: {fileID: 6058426099916493459}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44898,7 +44905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7770075598365077783}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44933,7 +44940,7 @@ GameObject:
   - component: {fileID: 6358148333061505382}
   - component: {fileID: 3130006734061933366}
   - component: {fileID: 3866236282243531273}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45018,7 +45025,7 @@ GameObject:
   - component: {fileID: 3494192936612054727}
   - component: {fileID: 1616918960604971152}
   - component: {fileID: 844695023277788395}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -45085,7 +45092,7 @@ GameObject:
   - component: {fileID: 3254530250534507393}
   - component: {fileID: 8367472968775138839}
   - component: {fileID: 7890944403789730122}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49975,7 +49982,7 @@ GameObject:
   - component: {fileID: 337431386746876400}
   - component: {fileID: 2250306254046296999}
   - component: {fileID: 9149230446879892547}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50063,7 +50070,7 @@ GameObject:
   - component: {fileID: 2145896770960151827}
   - component: {fileID: 6077714787447016385}
   - component: {fileID: 4900739599276813677}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -50169,7 +50176,7 @@ GameObject:
   - component: {fileID: 3499696497761549352}
   - component: {fileID: 2738542573315596472}
   - component: {fileID: 4590119405453732517}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50254,7 +50261,7 @@ GameObject:
   - component: {fileID: 7021742228518360296}
   - component: {fileID: 5028803672893084611}
   - component: {fileID: 509109668098091413}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55144,7 +55151,7 @@ GameObject:
   - component: {fileID: 6718848870376240788}
   - component: {fileID: 6654044376933641406}
   - component: {fileID: 173671894110911653}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -55211,7 +55218,7 @@ GameObject:
   - component: {fileID: 6623983803167625533}
   - component: {fileID: 88895493837338587}
   - component: {fileID: 4567164596629822568}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -55267,59 +55274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 8809110319285766960}
---- !u!1 &6169455819868735517
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8335931392385337859}
-  - component: {fileID: 3199096431820628528}
-  m_Layer: 9
-  m_Name: AimSphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8335931392385337859
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169455819868735517}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7388002666594010234}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3199096431820628528
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6169455819868735517}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 50
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6205881869874979509
 GameObject:
   m_ObjectHideFlags: 0
@@ -55331,7 +55285,7 @@ GameObject:
   - component: {fileID: 5137302705730801635}
   - component: {fileID: 3876981707924043924}
   - component: {fileID: 6973178923601276261}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55414,7 +55368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 739224370649734673}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55448,7 +55402,7 @@ GameObject:
   - component: {fileID: 7063918218107949925}
   - component: {fileID: 233189496065268877}
   - component: {fileID: 6114102595891933487}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -55515,7 +55469,7 @@ GameObject:
   - component: {fileID: 7638927780350823961}
   - component: {fileID: 3864554008954932716}
   - component: {fileID: 3030697207895141395}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -55742,7 +55696,7 @@ GameObject:
   - component: {fileID: 7409713999756963355}
   - component: {fileID: 256812531375134032}
   - component: {fileID: 4058251167350529160}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55825,7 +55779,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2067141324835781914}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: just_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55862,7 +55816,7 @@ GameObject:
   - component: {fileID: 6829951900556934150}
   - component: {fileID: 8883217765490840460}
   - component: {fileID: 1602480027232266965}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55947,7 +55901,7 @@ GameObject:
   - component: {fileID: 3719450352632111397}
   - component: {fileID: 1654213927413337391}
   - component: {fileID: 4000958778589086355}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56030,7 +55984,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5937217397169964165}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56069,7 +56023,7 @@ GameObject:
   - component: {fileID: 7577838490540117948}
   - component: {fileID: 5394547385174815362}
   - component: {fileID: 5713680446117803181}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -56134,7 +56088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1576687489385780958}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56168,7 +56122,7 @@ GameObject:
   - component: {fileID: 3869385706042695761}
   - component: {fileID: 3670703933825334119}
   - component: {fileID: 3519040237226962576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56253,7 +56207,7 @@ GameObject:
   - component: {fileID: 6576079073506989458}
   - component: {fileID: 1271895845522900043}
   - component: {fileID: 1429418835013974070}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56338,7 +56292,7 @@ GameObject:
   - component: {fileID: 8299601859817350089}
   - component: {fileID: 6656584509737044361}
   - component: {fileID: 8344085055991012221}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Right
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -56405,7 +56359,7 @@ GameObject:
   - component: {fileID: 3490925654186461488}
   - component: {fileID: 3380465189125232357}
   - component: {fileID: 8620232119636388925}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61295,7 +61249,7 @@ GameObject:
   - component: {fileID: 4981328971650009283}
   - component: {fileID: 6078498912073393192}
   - component: {fileID: 7580736427033983976}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61574,7 +61528,7 @@ GameObject:
   - component: {fileID: 8140223340581961142}
   - component: {fileID: 1467146279548104222}
   - component: {fileID: 6176648100349156661}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61657,7 +61611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3940479330985867626}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61694,7 +61648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6422586758521620138}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61728,7 +61682,7 @@ GameObject:
   - component: {fileID: 7234045638687092262}
   - component: {fileID: 5769720752159004972}
   - component: {fileID: 3058383643202112910}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -61918,6 +61872,8 @@ MonoBehaviour:
   magazineSize: 10
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 9143250733823787552}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 2001088363458048465}
   isBlocked: 0
@@ -62160,7 +62116,7 @@ GameObject:
   - component: {fileID: 2864831876844850778}
   - component: {fileID: 3093915425803285537}
   - component: {fileID: 2889406529798311913}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62245,7 +62201,7 @@ GameObject:
   - component: {fileID: 2625611202343265251}
   - component: {fileID: 4846547781527000853}
   - component: {fileID: 6687890181995180845}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -62310,7 +62266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5598077906710735365}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62344,7 +62300,7 @@ GameObject:
   - component: {fileID: 6149827261234923156}
   - component: {fileID: 551402336597602926}
   - component: {fileID: 6983752532082155522}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62430,7 +62386,7 @@ GameObject:
   - component: {fileID: 1186864450343370237}
   - component: {fileID: 5216266195034903976}
   - component: {fileID: 9003876146482644304}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62724,7 +62680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838397293836011909}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62759,7 +62715,7 @@ GameObject:
   - component: {fileID: 4283088076448256102}
   - component: {fileID: 4920214121688120090}
   - component: {fileID: 7058445650726466900}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63039,7 +62995,7 @@ GameObject:
   - component: {fileID: 6838885056442103240}
   - component: {fileID: 4286694366066096299}
   - component: {fileID: 8986581774395421161}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -63143,7 +63099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4355196500654411470}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63178,7 +63134,7 @@ GameObject:
   - component: {fileID: 1260195179984445357}
   - component: {fileID: 4113603218664524206}
   - component: {fileID: 6522684200321407730}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -63243,7 +63199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3176456839477770129}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63279,7 +63235,7 @@ GameObject:
   - component: {fileID: 5193864975872589319}
   - component: {fileID: 2418890182353718122}
   - component: {fileID: 9197511816750543857}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63364,7 +63320,7 @@ GameObject:
   - component: {fileID: 1796063330300041882}
   - component: {fileID: 6900995016990537358}
   - component: {fileID: 6329160409647585009}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63447,7 +63403,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2784434772567321896}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63482,7 +63438,7 @@ GameObject:
   - component: {fileID: 3376856965149086708}
   - component: {fileID: 6541186027126641569}
   - component: {fileID: 3618147039676580945}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63567,7 +63523,7 @@ GameObject:
   - component: {fileID: 4210003205583985984}
   - component: {fileID: 7453436036234595052}
   - component: {fileID: 7068050541430501211}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63634,7 +63590,7 @@ GameObject:
   - component: {fileID: 6023243597203300088}
   - component: {fileID: 1839266937668289571}
   - component: {fileID: 1676581089139323024}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63719,7 +63675,7 @@ GameObject:
   - component: {fileID: 5857479757830569221}
   - component: {fileID: 7593346824473104853}
   - component: {fileID: 4597639451548285521}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -63784,7 +63740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2058403778104613803}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shoot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63816,7 +63772,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5504638279352388271}
   - component: {fileID: 3419191221978882099}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TopArmAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63904,7 +63860,7 @@ GameObject:
   - component: {fileID: 6894571494016534120}
   - component: {fileID: 2489920618976867250}
   - component: {fileID: 8181588812249374578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63989,7 +63945,7 @@ GameObject:
   - component: {fileID: 6055334698563649432}
   - component: {fileID: 7871197099017838273}
   - component: {fileID: 8531993446504385790}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64074,7 +64030,7 @@ GameObject:
   - component: {fileID: 6495103715650520529}
   - component: {fileID: 3281542199222154446}
   - component: {fileID: 3424010363302955684}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -64141,7 +64097,7 @@ GameObject:
   - component: {fileID: 958279670156031142}
   - component: {fileID: 8720463958366559133}
   - component: {fileID: 961966618370164547}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -64209,7 +64165,7 @@ GameObject:
   - component: {fileID: 5371307905050028157}
   - component: {fileID: 4203611793169686111}
   - component: {fileID: 7408636219754581252}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64316,7 +64272,7 @@ GameObject:
   - component: {fileID: 1284051152349933763}
   - component: {fileID: 891331531816282436}
   - component: {fileID: 6674475941058415230}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64401,7 +64357,7 @@ GameObject:
   - component: {fileID: 6339716048421404532}
   - component: {fileID: 9117443948384084263}
   - component: {fileID: 8400310771569564762}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -64468,7 +64424,7 @@ GameObject:
   - component: {fileID: 4112937862781692511}
   - component: {fileID: 6450808573358832390}
   - component: {fileID: 2354483802100224339}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64553,7 +64509,7 @@ GameObject:
   - component: {fileID: 4141011260178681010}
   - component: {fileID: 5030372567034775134}
   - component: {fileID: 2167365116927801915}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64638,7 +64594,7 @@ GameObject:
   - component: {fileID: 4310313717380351608}
   - component: {fileID: 5982868922226294797}
   - component: {fileID: 4512268415631412570}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -64705,7 +64661,7 @@ GameObject:
   - component: {fileID: 8457469270284271362}
   - component: {fileID: 1886227454954685172}
   - component: {fileID: 7516004010929466551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64790,7 +64746,7 @@ GameObject:
   - component: {fileID: 7690493720689795452}
   - component: {fileID: 7362706293534824519}
   - component: {fileID: 7014097202582164713}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64873,7 +64829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6760031240807864910}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64907,7 +64863,7 @@ GameObject:
   - component: {fileID: 3614887198592597139}
   - component: {fileID: 3312643987839109887}
   - component: {fileID: 427871452062264728}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65134,7 +65090,7 @@ GameObject:
   - component: {fileID: 321812424292932187}
   - component: {fileID: 1318730701029509833}
   - component: {fileID: 6014789395898241120}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -65201,7 +65157,7 @@ GameObject:
   - component: {fileID: 2979000266900485465}
   - component: {fileID: 6981754692225841188}
   - component: {fileID: 5047570431653460085}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65286,7 +65242,7 @@ GameObject:
   - component: {fileID: 4271865950325995233}
   - component: {fileID: 895727267552091299}
   - component: {fileID: 4656457258733832888}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -65537,7 +65493,7 @@ GameObject:
   - component: {fileID: 2213464629681654589}
   - component: {fileID: 5998580838853302470}
   - component: {fileID: 1744323009312373840}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -65743,7 +65699,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2207872830832283545}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65778,7 +65734,7 @@ GameObject:
   - component: {fileID: 6037828393142545676}
   - component: {fileID: 3523652476035295030}
   - component: {fileID: 299804169268718793}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65863,7 +65819,7 @@ GameObject:
   - component: {fileID: 6314400723083573383}
   - component: {fileID: 6686508427755058019}
   - component: {fileID: 6490250966800175771}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -65930,7 +65886,7 @@ GameObject:
   - component: {fileID: 976973852485448535}
   - component: {fileID: 2599454473191110014}
   - component: {fileID: 6839634982635250822}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66019,7 +65975,7 @@ GameObject:
   - component: {fileID: 28709360029992383}
   - component: {fileID: 3260106256000982728}
   - component: {fileID: 6432814805160519825}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -66086,7 +66042,7 @@ GameObject:
   - component: {fileID: 7799425178649085475}
   - component: {fileID: 5155647738114494098}
   - component: {fileID: 6168411168829464840}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66171,7 +66127,7 @@ GameObject:
   - component: {fileID: 5182555486531804052}
   - component: {fileID: 7731858099090424121}
   - component: {fileID: 8962104512334272758}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66256,7 +66212,7 @@ GameObject:
   - component: {fileID: 2378446431319810860}
   - component: {fileID: 4087616927224459499}
   - component: {fileID: 232621187838572916}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66341,7 +66297,7 @@ GameObject:
   - component: {fileID: 3388453990491581562}
   - component: {fileID: 2449519701557864581}
   - component: {fileID: 6850676449941305547}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -66408,7 +66364,7 @@ GameObject:
   - component: {fileID: 7943756904871034185}
   - component: {fileID: 7834655772176802442}
   - component: {fileID: 4581729784006721272}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66491,7 +66447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4420526631800305300}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: probe_core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66531,7 +66487,7 @@ GameObject:
   - component: {fileID: 8154070097245561663}
   - component: {fileID: 5899815783204329569}
   - component: {fileID: 553891435813152642}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -66598,7 +66554,7 @@ GameObject:
   - component: {fileID: 832804895677047384}
   - component: {fileID: 2533795788374322315}
   - component: {fileID: 3828967787940120244}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66683,7 +66639,7 @@ GameObject:
   - component: {fileID: 8076791705060484045}
   - component: {fileID: 7105554032703995412}
   - component: {fileID: 4018006628198179651}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66768,7 +66724,7 @@ GameObject:
   - component: {fileID: 6269088591335811805}
   - component: {fileID: 7512439197655478120}
   - component: {fileID: 1844820749129474014}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71658,7 +71614,7 @@ GameObject:
   - component: {fileID: 2680851573834968211}
   - component: {fileID: 1570480471182796996}
   - component: {fileID: 8419625585321996448}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -71855,6 +71811,7 @@ MonoBehaviour:
   boostForceMagnitude: 3
   boostParticles: {fileID: 0}
   energyConsumptionPerSecond: 5
+  audioSource: {fileID: 0}
 --- !u!138 &6717530758697456118
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -71882,7 +71839,7 @@ GameObject:
   - component: {fileID: 3968031003108167103}
   - component: {fileID: 8806378410134879933}
   - component: {fileID: 4672271371555213726}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -71949,7 +71906,7 @@ GameObject:
   - component: {fileID: 4159888335636612042}
   - component: {fileID: 277846237557840302}
   - component: {fileID: 4406524187081768219}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72157,6 +72114,8 @@ MonoBehaviour:
   magazineSize: 10
   muzzleFlash: {fileID: 0}
   muzzleSpark: {fileID: 8317511239839730796}
+  gunAudioSource: {fileID: 0}
+  gunShotClip: {fileID: 0}
   checkDistance: 100
   blockedLine: {fileID: 3130924307264240292}
   isBlocked: 0
@@ -72399,7 +72358,7 @@ GameObject:
   - component: {fileID: 5009744264472373216}
   - component: {fileID: 2317056237347235429}
   - component: {fileID: 7756142532571640377}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72484,7 +72443,7 @@ GameObject:
   - component: {fileID: 2211171667325381318}
   - component: {fileID: 6692174943654201827}
   - component: {fileID: 8091925752246116108}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Front
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -72549,7 +72508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6657265521683141844}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Top Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72586,7 +72545,7 @@ GameObject:
   - component: {fileID: 6431673499613597567}
   - component: {fileID: 8277191399179355880}
   - component: {fileID: 5238046957049352554}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -72692,7 +72651,7 @@ GameObject:
   - component: {fileID: 4812613997870039510}
   - component: {fileID: 346399089006315474}
   - component: {fileID: 6219265259567983779}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Left
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -72757,7 +72716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7077905857319783584}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72791,7 +72750,7 @@ GameObject:
   - component: {fileID: 1429072070164954091}
   - component: {fileID: 8304557797008632323}
   - component: {fileID: 1775488952525193047}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77681,7 +77640,7 @@ GameObject:
   - component: {fileID: 5541284741568304099}
   - component: {fileID: 1966312875383297552}
   - component: {fileID: 2209514466243426830}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Back
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -77748,7 +77707,7 @@ GameObject:
   - component: {fileID: 2607677473020424092}
   - component: {fileID: 1528225657879536806}
   - component: {fileID: 3763941368843090671}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Top
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -77815,7 +77774,7 @@ GameObject:
   - component: {fileID: 74759377480706685}
   - component: {fileID: 3652884452269710896}
   - component: {fileID: 8798637304714369342}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77900,7 +77859,7 @@ GameObject:
   - component: {fileID: 5627043674641380907}
   - component: {fileID: 8043545858584605113}
   - component: {fileID: 8588298211749927320}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Support beams
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77984,7 +77943,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4165873938116489046}
   - component: {fileID: 7743730433704164375}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78073,7 +78032,7 @@ GameObject:
   - component: {fileID: 1528232489574945821}
   - component: {fileID: 1538377409642539371}
   - component: {fileID: 5173200808234230241}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78180,7 +78139,7 @@ GameObject:
   - component: {fileID: 3919179588062244355}
   - component: {fileID: 2850894264888227768}
   - component: {fileID: 386430340284784518}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Cylinder.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78264,7 +78223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113861717669931585}
   - component: {fileID: 874781959578988148}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BaseAim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78352,7 +78311,7 @@ GameObject:
   - component: {fileID: 1023940621993655062}
   - component: {fileID: 1474843305961742749}
   - component: {fileID: 1695361982883784144}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78825,7 +78784,7 @@ GameObject:
   - component: {fileID: 6628501018129245871}
   - component: {fileID: 1605626736617010166}
   - component: {fileID: 4573072954491716864}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: ConnectionPoint_Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78892,7 +78851,7 @@ GameObject:
   - component: {fileID: 404904520926523898}
   - component: {fileID: 5437895771387928503}
   - component: {fileID: 7085892795362558437}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78977,7 +78936,7 @@ GameObject:
   - component: {fileID: 7388730265126460416}
   - component: {fileID: 8656200159186234781}
   - component: {fileID: 2169989236480015401}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79060,7 +79019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7744907706558968671}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ConnectionPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79095,7 +79054,7 @@ GameObject:
   - component: {fileID: 4578118708774612285}
   - component: {fileID: 2181157380979019993}
   - component: {fileID: 1656945284176321618}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79203,7 +79162,7 @@ GameObject:
   - component: {fileID: 8294485879081968535}
   - component: {fileID: 3388742222693274865}
   - component: {fileID: 5746657141743425613}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: Cube
   m_TagString: ConnectionPoint
   m_Icon: {fileID: 0}
@@ -79308,7 +79267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4114427977902600318}
   - component: {fileID: 1625863778315388538}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79371,7 +79330,7 @@ GameObject:
   - component: {fileID: 5085465429825325562}
   - component: {fileID: 3848678781650847487}
   - component: {fileID: 3256963058547972512}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79510,7 +79469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5797898211151972243}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79543,7 +79502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8639402152620891526}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: just_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
