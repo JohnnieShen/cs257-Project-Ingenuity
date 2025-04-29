@@ -147,7 +147,7 @@ public class FreeCameraLook : Pivot {
 		base.Update();
 
 		HandleRotationMovement();
-		HandleZoom();
+		HandleZoom2();
 		UpdateTarget();
 		// if (lockCursor && Input.GetMouseButtonUp (0))
 		// {
@@ -307,6 +307,27 @@ public class FreeCameraLook : Pivot {
 			currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 			desiredLocalPos = new Vector3(0f, 2f, -currentZoom);
 		}
+		cam.localPosition = Vector3.Lerp(cam.localPosition, desiredLocalPos, Time.deltaTime * zoomSmoothFactor);
+	}
+
+	void HandleZoom2()
+	{
+		currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomSmoothFactor);
+		Vector3 desiredLocalPos = new Vector3(0f, 0f, -currentZoom);
+		Vector3 desiredWorldPos = pivot.TransformPoint(desiredLocalPos);
+
+		Vector3 direction = (desiredWorldPos - pivot.position).normalized;
+		float distance = Vector3.Distance(pivot.position, desiredWorldPos);
+
+		RaycastHit hit;
+		if (Physics.Raycast(pivot.position, direction, out hit, distance * terrainDetectionRangeMultiplyer, terrainLayerMask))
+		{
+			// Add a small offset to prevent clipping into the terrain
+			float safeDistance = Mathf.Max(hit.distance - 0.5f, minZoom);
+			currentZoom = Mathf.Min(safeDistance, targetZoom);
+			desiredLocalPos = new Vector3(0f, 0f, -currentZoom);
+		}
+
 		cam.localPosition = Vector3.Lerp(cam.localPosition, desiredLocalPos, Time.deltaTime * zoomSmoothFactor);
 	}
 
