@@ -24,6 +24,8 @@ public class ModeSwitcher : MonoBehaviour
     public GameObject buildUI;
     public GameObject driveUI;
     public GameObject craftUI;
+    public GameObject cursorUI;
+    public GameObject winUI;
     public float buildModeHeight = 5f;
     public float elevateDuration = 1f;
     public bool canManuallySwitchMode = true;
@@ -252,5 +254,14 @@ public class ModeSwitcher : MonoBehaviour
 
         vehicleRoot.position = endPos;
         vehicleRoot.localRotation = endRot;
+    }
+
+    public void hideAllUI()
+    {
+        if (buildUI != null) buildUI.SetActive(false);
+        if (driveUI != null) driveUI.SetActive(false);
+        if (craftUI != null) craftUI.SetActive(false);
+        if (cursorUI != null) cursorUI.SetActive(false);
+        if (winUI != null) winUI.SetActive(false);
     }
 }

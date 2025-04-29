@@ -54924,7 +54924,7 @@ MonoBehaviour:
       MaxStack: 99
   - columns:
     - Block: {fileID: 11400000, guid: 23a850e552c9ef243b0025b0c265a944, type: 2}
-      CurrentCount: 0
+      CurrentCount: 1
       MaxStack: 99
     - Block: {fileID: 0}
       CurrentCount: 0
@@ -56106,6 +56106,8 @@ MonoBehaviour:
   buildUI: {fileID: 1927781931}
   driveUI: {fileID: 1817219748}
   craftUI: {fileID: 65199746}
+  cursorUI: {fileID: 1596752693}
+  winUI: {fileID: 2012867627}
   buildModeHeight: 5
   elevateDuration: 0.5
   canManuallySwitchMode: 1

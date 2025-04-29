@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         if (_currentCore == null){
             SpawnCore();
+            if(coreParent == null) return;
             coreParent.position = blockParentPos;
             if (ModeSwitcher.instance != null)
             {
@@ -62,11 +63,7 @@ public class GameManager : MonoBehaviour
 
     private void SpawnCore()
     {
-        if (corePrefab == null || coreParent == null)
-        {
-            Debug.LogError("GameManager: Core prefab or parent is not assigned!");
-            return;
-        }
+        if (corePrefab == null || coreParent == null) return;
 
         _currentCore = Instantiate(corePrefab, coreParent);
         _currentCore.transform.localPosition = Vector3.zero;
@@ -175,18 +172,20 @@ public class GameManager : MonoBehaviour
         StartCoroutine(HandleWinDelay());
     }
     private IEnumerator HandleWinDelay()
-{
-    float delay = 5f;
+    {
+        float delay = 5f;
 
-    if (pauseOnWin)
-        yield return new WaitForSecondsRealtime(delay);
-    else
-        yield return new WaitForSeconds(delay);
+        if (pauseOnWin)
+            yield return new WaitForSecondsRealtime(delay);
+        else
+            yield return new WaitForSeconds(delay);
 
-    Time.timeScale = 1f;
-
-    UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
-}
+        Time.timeScale = 1f;
+        ModeSwitcher.instance.hideAllUI();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+    }
     private IEnumerator FadeCanvasGroup(CanvasGroup cg,
                                         float from, float to, float duration)
     {
