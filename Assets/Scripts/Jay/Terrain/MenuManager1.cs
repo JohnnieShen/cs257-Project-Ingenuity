@@ -21,6 +21,16 @@ public class MenuManager1 : MonoBehaviour
         SceneManager.LoadScene("Mission Ingenuity 2"); 
     }
 
+    public void quitGame()
+    {
+        #if UNITY_STANDALONE
+            Application.Quit();
+        #endif
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         var ms = FindObjectOfType<ModeSwitcher>();
