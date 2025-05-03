@@ -205,7 +205,7 @@ Since we have completed most of the mechanics of the game, we would focus on pol
 
 ## Development
 
-### Project Checkpoint 1-2
+### Project Part 1
 
 #### Initial Vehicle Building Systems and Physics
 
@@ -263,15 +263,20 @@ An early-stage procedural world generation was also created utilizing an icosahe
 As per the comments made for the last submission, we have started working on this submission with the intention of it being a proof of concept for the vehicle building system. We only started adding in features after having a MVP for the building mechanic and physics simulation, just as we are told to do. As for the advice of not integrating assets into the the game and to use proxies when starting, we started by using proxies in the prototyping stage, as shown in the first picture of this segment. However, we switched to using actual assets once we have gone past that stage, the justification being that the effort of replacing proxies with actual assets might outweigh the effort we could save by not doing it. We also thought that it would be a good idea to start making some assets as a way to visually prototype what the game would look like once developed, and work on the art direction along the way. The last justification would be that the assets we are currently using are all fairly simple, and some of the elements (e.g. base plate aka. the connector of blocks) could be and need to be reused in future assets to ensure standardization, so it would be beneficial to make it as early as possible. As for the procedual generation of the world, we are currently working on it as a way to explore whether the option would be feasible, and we will either use it or drop it in the future. 
 
 ### Project Part 2:
-We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game. 
-![Primitive Laser](Images/terrainpreview.png)
-Assets:
-Fantasy Skybox - https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353 
+We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game.
 
-Low Poly Assets - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052 
+![Primitive Laser](Images/terrainpreview.png)
+
+#### Assets:
+
+[Render Knight - Fantasy Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
+
+[Polytope Studio - Lowpoly Environment](https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052)
 
 Wanting to develop our weapons systems further and improve upon the fundamentals taught in the textbook, we work with both Visual Effects and Shading crafts (and the associated scripting) in order to add some VFX for the turrets. An initial particle system was created for the base turret, adding a small explosion / muzzle flash to enhance the look and feel of the shooting systems. Another more advanced particle system we are working to implement is for the energy turret, to get a highly stylized laser which requires some external art/modeling softwares (primitive version shown below).
+
 ![](Images/shootfx.png)
+
 ![](Images/primitivelaser.png)
 
 AI:
@@ -279,14 +284,13 @@ AI:
 As outlined above, we have implemented the first iteration of the enemy AI system and have tuned it to a point where it feels good for now. The AI will use the same block structure as the player and behave similarly. We still need to tune the AI to make it fun and fresh to fight every time.
 
 ![](Images/aipreview.png)
-Gizmos showing the AI controller and different ranges for detection, attack etc.
 
 Shader and post effects:
 For a stylized almost cartoonish look, we have implemented a shader graph for a toon effect and a post processing pass for an outline effect. The result looks something like the following. For now, the main issue is the aliasing we have seen with the outline effect, which we might need to solve somehow down the road.
 
 ![](Images/tooneffects.png)
 
-### Project Checkpoint 3
+### Project Part 3
 
 We implemented a more refined UI, following the cartoonish-style of the game by adding in 8-bit textures for the blocks as well as changing the default text. The menu can be opened by pressing TAB while in build mode. This allows the player to scroll through all available blocks. There is a recycle button to convert blocks to scraps and a build button to convert scraps to blocks. There is also an icon depicting how many scraps you currently have available. In the future, we hope to add an additional text box displaying how many blocks of a certain type are available.
 
@@ -296,7 +300,7 @@ In addition, we worked on a minimap to give the player additional information ab
 
 UI is a main focus of this checkpoint. The original UI looks horrid and makes us not want to work on the project when we see it. So we did an overhaul of it. 
 
-First step is making a background image for the panels, which I did in Aseprite and imported into Unity.
+First step is making a background image for the panels, which we did in Aseprite and imported into Unity.
 
 ![](Images/panelpixel.png)
 
@@ -311,6 +315,7 @@ The color palette choice is questionable but we did dig the kind of retro style 
 By creating a prefab for each UI entry and some short scripting and uses a vertical layout group, we managed the implement the UI (with a few issues, of course, what is game dev without the shenanigans?) 
 
 ![](Images/UIprefab.png)
+
 ![](Images/finishedcrafting.png)
 
 The background not displaying is a known issue and is under investigation, also the weird looking panel on top right.
@@ -318,34 +323,40 @@ The background not displaying is a known issue and is under investigation, also 
 As we talked about before, the reason we started with the crafting menu is that this menu is also important in a gameplay perspective, as it finishes the last piece of the gameplay loop: when the player takes off blocks from dead enemies, they will probably have a lot of blocks they don’t need and the rarer blocks will remain hard to find, so the players can scrap some unused blocks to craft some more needed ones, thus closing the shoot-loot-craft-build game loop.
 
 ![](Images/UI.png)
+
 (This version of the minimap is bugged, have since fixed this issue)
 
 In addition to all of the previous updates, we also added a minimap as pictured in the bottom right. This uses a two-camera system and uses an orthographic projection in order to achieve the pictured look. We had an artifact in which the shading for the player and the trees were not aligned with their physical object, and so the toon shader had to be slightly tweaked.
 
 We also added a tracker for ballistic and energy ammo, the current idea is that energy ammo will replenish when out of battle and ballistic ammo needs to be crafted with scraps.
 
-### Checkpoint 5
+### Project Part 4
 
 ### Polishing Gameplay Loop and Mechanics
 
-![](Images/bulletdeflection.png)
-![](Images/diffbullettrails.png)
+We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent.
 
-We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent. This took me a long long time to figure out, and I’m proud that I did.
+![](Images/rarities.png)
 
 We also added five different rarities to the game: common (gray), uncommon (green), rare (blue), epic (purple) and legendary (orange). So far, only the hull, wheel and turret blocks have different rarities. We plan to continue tweaking the stats of each rarity to feel distinct without feeling overpowered. Most importantly, the different block rarities have different physics properties which affects how large of a vehicle you can build. We also plan to have certain advanced blocks only available in higher rarities. Primarily the shield generator and rocket boosters will be rarer items. Having different block rarities allows us to create AI vehicles of varying strengths which will make the enemy progression much more interesting and dynamic.
 
+![](Images/battery_thruster_half.webp)
+
 We have also added more blocks to the game, namely the rocket booster, battery and half block. The rocket booster brings a new method of moving around for the player and complements the driving gameplay really well. Batteries are good for fleshing out the shooting gameplay, and half blocks are good for times where looks matter. Overall after creating an workflow for adding new blocks it become a lot easier to do so, and we would probably add more for next milestone. 
+
+![](Images/diffbullettrails.png)
 
 Another thing we did is that we added a lot of "juice" to the game. One thing would be the addition of bullet trails, which makes battles a lot more visually cool, combined with the "jitter" effect of blocks when hit and the sparks partical effect when hit, fighting feels a lot more rewarding and "juicy" now. Last but not least, to fully use the potential of bullet trails, we made it so that ballistic bullets that hit a enemy shield would be deflected instead of just absorbed, and it looked really cool.
 
-Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. Jay is also working on a script that would allow trees to fell when hit, which would be interesting.
+![](Images/bulletdeflection.png)
+
+Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. We are also working on a script that would allow trees to fell when hit, which would be interesting.
 
 Last but not least, we added a script for converting player vehicle to AI vehicles in the editor. Before we have to go through a long and convoluted process of creating AI vehicles, which is annoying and prone to errors. Now we can just make the vehicle in the game, apply the script to the block parent, and store the vehicle as a prefab.  
 
-### Second to last checkpoint
+### Project Part 5
 
-As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing I implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning so that when the player dies it would be respawned at the starting platform.
+As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing we implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning so that when the player dies it would be respawned at the starting platform.
 
 We also implemented a lot of UI elements for the new mechanics. Namely we added a checklist for build mode for all blocks needed to win the game, it would be created dynamically and managed dynamically, so no hard coding needed which is good for scaling into more levels. We also added a dark souls style health bar for the boss fight, which is fully functional and looks cool.
 

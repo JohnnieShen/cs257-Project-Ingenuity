@@ -112,6 +112,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Up",
+                    "type": "Button",
+                    "id": "b2283694-18c4-4357-8e24-5e740a07a7b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Down",
+                    "type": "Button",
+                    "id": "26eb3ca2-1eed-4611-b11e-492028d25f18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -371,7 +389,7 @@
                 {
                     "name": "",
                     "id": "336ffbd1-0131-4680-bfc1-63247449d059",
-                    "path": "<Keyboard>/b",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -431,6 +449,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Switch to Next Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8433c617-4bb4-4235-87a2-b4b34bb79cf9",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Scroll Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a994ed56-7723-4cb7-bc6b-a0a39b7aef44",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Scroll Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -728,7 +768,7 @@
                 {
                     "name": "",
                     "id": "7e886a3f-73fc-429b-8f38-4df882060018",
-                    "path": "<Keyboard>/b",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -762,6 +802,17 @@
                     "name": "",
                     "id": "8926fea2-996c-4238-a466-47b45d1d27bd",
                     "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bd5a0bc-ff34-4974-acbe-86412296b91d",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

@@ -38,7 +38,10 @@ public class Hull : MonoBehaviour
         {
             return;
         }
-        
+        if (transform.parent == null)
+        {
+            return;
+        }
         isAIVehicle = transform.parent.GetComponentInChildren<EnemyMovement>() != null;
         if (!gameObject.CompareTag("EnemyBlock"))
         {

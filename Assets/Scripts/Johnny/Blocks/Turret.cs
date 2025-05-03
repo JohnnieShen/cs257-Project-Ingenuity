@@ -64,7 +64,11 @@ public class Turret : MonoBehaviour
     {
         // aimTarget = FreeCameraLook.instance?.aimTarget;
 
-        
+        if (gameObject.GetComponent<Hull>() != null)
+        {
+            if (gameObject.GetComponent<Hull>().canPickup)
+                return;
+        }
         EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
          if (enemyAI != null && enemyAI.aimTransform != null)
         {

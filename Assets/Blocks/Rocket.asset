@@ -27,3 +27,9 @@ MonoBehaviour:
   uiSprite: {fileID: 21300000, guid: 19a75cd8e9d281a41b8a948ffe121036, type: 3}
   onlyInlinePlacement: 0
   connectionStrength: 500
+  description: 'Provide temporary boost in speed
+
+    Consumes (5) energy per second
+
+    Press
+    "Shift" to boost'

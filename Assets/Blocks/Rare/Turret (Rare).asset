@@ -27,3 +27,13 @@ MonoBehaviour:
   uiSprite: {fileID: 21300000, guid: 2ebdd6a02252ef94cbda1b63b31410d8, type: 3}
   onlyInlinePlacement: 0
   connectionStrength: 1500
+  description: 'weight (3)
+
+    health (30)
+
+    connection strength (1500)
+
+    fire
+    rate (15)
+
+    damage (3)'

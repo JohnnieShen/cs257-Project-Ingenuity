@@ -66,6 +66,10 @@ public class Wheel : MonoBehaviour
                 invertSteering = true;
             }
         }
+        if (commandModuleTransform == null)
+        {
+            return;
+        }
         isLeftSide = (commandModuleTransform.InverseTransformPoint(transform.position).x < 0f);
     }
 
