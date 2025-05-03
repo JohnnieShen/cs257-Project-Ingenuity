@@ -266,9 +266,9 @@ As per the comments made for the last submission, we have started working on thi
 We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game. 
 ![Primitive Laser](Images/terrainpreview.png)
 #### Assets:
-Render Knight - Fantasy Skybox: https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353 
+[Render Knight - Fantasy Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
-Polytope Studio - Lowpoly Environment: https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052 
+[Polytope Studio - Lowpoly Environment](https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052)
 
 Wanting to develop our weapons systems further and improve upon the fundamentals taught in the textbook, we work with both Visual Effects and Shading crafts (and the associated scripting) in order to add some VFX for the turrets. An initial particle system was created for the base turret, adding a small explosion / muzzle flash to enhance the look and feel of the shooting systems. Another more advanced particle system we are working to implement is for the energy turret, to get a highly stylized laser which requires some external art/modeling softwares (primitive version shown below).
 ![](Images/shootfx.png)
