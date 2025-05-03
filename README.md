@@ -263,15 +263,20 @@ An early-stage procedural world generation was also created utilizing an icosahe
 As per the comments made for the last submission, we have started working on this submission with the intention of it being a proof of concept for the vehicle building system. We only started adding in features after having a MVP for the building mechanic and physics simulation, just as we are told to do. As for the advice of not integrating assets into the the game and to use proxies when starting, we started by using proxies in the prototyping stage, as shown in the first picture of this segment. However, we switched to using actual assets once we have gone past that stage, the justification being that the effort of replacing proxies with actual assets might outweigh the effort we could save by not doing it. We also thought that it would be a good idea to start making some assets as a way to visually prototype what the game would look like once developed, and work on the art direction along the way. The last justification would be that the assets we are currently using are all fairly simple, and some of the elements (e.g. base plate aka. the connector of blocks) could be and need to be reused in future assets to ensure standardization, so it would be beneficial to make it as early as possible. As for the procedual generation of the world, we are currently working on it as a way to explore whether the option would be feasible, and we will either use it or drop it in the future. 
 
 ### Project Part 2:
-We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game. 
+We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game.
+
 ![Primitive Laser](Images/terrainpreview.png)
+
 #### Assets:
+
 [Render Knight - Fantasy Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
 [Polytope Studio - Lowpoly Environment](https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052)
 
 Wanting to develop our weapons systems further and improve upon the fundamentals taught in the textbook, we work with both Visual Effects and Shading crafts (and the associated scripting) in order to add some VFX for the turrets. An initial particle system was created for the base turret, adding a small explosion / muzzle flash to enhance the look and feel of the shooting systems. Another more advanced particle system we are working to implement is for the energy turret, to get a highly stylized laser which requires some external art/modeling softwares (primitive version shown below).
+
 ![](Images/shootfx.png)
+
 ![](Images/primitivelaser.png)
 
 AI:
@@ -279,7 +284,6 @@ AI:
 As outlined above, we have implemented the first iteration of the enemy AI system and have tuned it to a point where it feels good for now. The AI will use the same block structure as the player and behave similarly. We still need to tune the AI to make it fun and fresh to fight every time.
 
 ![](Images/aipreview.png)
-Gizmos showing the AI controller and different ranges for detection, attack etc.
 
 Shader and post effects:
 For a stylized almost cartoonish look, we have implemented a shader graph for a toon effect and a post processing pass for an outline effect. The result looks something like the following. For now, the main issue is the aliasing we have seen with the outline effect, which we might need to solve somehow down the road.
@@ -311,6 +315,7 @@ The color palette choice is questionable but we did dig the kind of retro style 
 By creating a prefab for each UI entry and some short scripting and uses a vertical layout group, we managed the implement the UI (with a few issues, of course, what is game dev without the shenanigans?) 
 
 ![](Images/UIprefab.png)
+
 ![](Images/finishedcrafting.png)
 
 The background not displaying is a known issue and is under investigation, also the weird looking panel on top right.
@@ -318,6 +323,7 @@ The background not displaying is a known issue and is under investigation, also 
 As we talked about before, the reason we started with the crafting menu is that this menu is also important in a gameplay perspective, as it finishes the last piece of the gameplay loop: when the player takes off blocks from dead enemies, they will probably have a lot of blocks they don’t need and the rarer blocks will remain hard to find, so the players can scrap some unused blocks to craft some more needed ones, thus closing the shoot-loot-craft-build game loop.
 
 ![](Images/UI.png)
+
 (This version of the minimap is bugged, have since fixed this issue)
 
 In addition to all of the previous updates, we also added a minimap as pictured in the bottom right. This uses a two-camera system and uses an orthographic projection in order to achieve the pictured look. We had an artifact in which the shading for the player and the trees were not aligned with their physical object, and so the toon shader had to be slightly tweaked.
