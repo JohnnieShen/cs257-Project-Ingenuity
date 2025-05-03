@@ -265,10 +265,10 @@ As per the comments made for the last submission, we have started working on thi
 ### Project Part 2:
 We transitioned from the base testing scenes into a more developed and fleshed-out scenery which would better represent our vision for the final product. Working with the terrain tools, we created a mountainous woodland terrain. We utilized the ProBuilder tool in unity to add on a couple of additional structures. A handful of assets were imported, including trees, rocks, and general woodland assets in addition to a custom nighttime sky for ambiance. Many of our assets were designed for the Build-In shading system contrary to our URP system, and so many of the materials had to be custom made with appropriate shading and details. Lighting systems were also experimented with, adding custom directional light as well as fog settings to both mask details to allow for computational efficiency as well as add to the visual appeal of the game. 
 ![Primitive Laser](Images/terrainpreview.png)
-Assets:
-Fantasy Skybox - https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353 
+#### Assets:
+[Render Knight - Fantasy Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353)
 
-Low Poly Assets - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052 
+[Polytope Studio - Lowpoly Environment](https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052)
 
 Wanting to develop our weapons systems further and improve upon the fundamentals taught in the textbook, we work with both Visual Effects and Shading crafts (and the associated scripting) in order to add some VFX for the turrets. An initial particle system was created for the base turret, adding a small explosion / muzzle flash to enhance the look and feel of the shooting systems. Another more advanced particle system we are working to implement is for the energy turret, to get a highly stylized laser which requires some external art/modeling softwares (primitive version shown below).
 ![](Images/shootfx.png)
@@ -328,18 +328,19 @@ We also added a tracker for ballistic and energy ammo, the current idea is that 
 
 ### Polishing Gameplay Loop and Mechanics
 
-![](Images/bulletdeflection.png)
-![](Images/diffbullettrails.png)
-
-We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent. This took us a long long time to figure out, and I’m proud that we did.
+We managed to iron out some very major bugs that were blockers to getting a lot of things done. Mainly the issue that happens when building the vehicle on a slope. Before it didn’t work because the vehicle is not properly aligned to the grid, more specifically the local coordinate grid relevant to the parent. Before the hierarchy change the parent that all blocks refer to was the command module, which moved along with the vehicle so that no matter the initial alignment the building system worked. However, after the hierarchy change (for people unfamiliar with that it was when we made it so that all blocks share a single parent that is just an empty game object), since the local coordinates as relative to the new parent is not reliable anymore, we had to rewrite the entire building system around the new hierarchy. Now, we keep another reference transform that share the position and rotation of the command module, and when we go into build mode we transfer all blocks to under the new reference transform, effectively zeroing out the local position and rotations, then we could rotate the new reference object to identity rotation and transfer all blocks back to the old block parent.
 
 We also added five different rarities to the game: common (gray), uncommon (green), rare (blue), epic (purple) and legendary (orange). So far, only the hull, wheel and turret blocks have different rarities. We plan to continue tweaking the stats of each rarity to feel distinct without feeling overpowered. Most importantly, the different block rarities have different physics properties which affects how large of a vehicle you can build. We also plan to have certain advanced blocks only available in higher rarities. Primarily the shield generator and rocket boosters will be rarer items. Having different block rarities allows us to create AI vehicles of varying strengths which will make the enemy progression much more interesting and dynamic.
 
 We have also added more blocks to the game, namely the rocket booster, battery and half block. The rocket booster brings a new method of moving around for the player and complements the driving gameplay really well. Batteries are good for fleshing out the shooting gameplay, and half blocks are good for times where looks matter. Overall after creating an workflow for adding new blocks it become a lot easier to do so, and we would probably add more for next milestone. 
 
+![](Images/diffbullettrails.png)
+
 Another thing we did is that we added a lot of "juice" to the game. One thing would be the addition of bullet trails, which makes battles a lot more visually cool, combined with the "jitter" effect of blocks when hit and the sparks partical effect when hit, fighting feels a lot more rewarding and "juicy" now. Last but not least, to fully use the potential of bullet trails, we made it so that ballistic bullets that hit a enemy shield would be deflected instead of just absorbed, and it looked really cool.
 
-Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. Jay is also working on a script that would allow trees to fell when hit, which would be interesting.
+![](Images/bulletdeflection.png)
+
+Another things would be that we have implemented a much bigger map into the game, it is currently still a bit empty, so we will be adding more POIs to it. We did fix the issue where the tree billboards are much larger than the models themselves, which is cool. We are also working on a script that would allow trees to fell when hit, which would be interesting.
 
 Last but not least, we added a script for converting player vehicle to AI vehicles in the editor. Before we have to go through a long and convoluted process of creating AI vehicles, which is annoying and prone to errors. Now we can just make the vehicle in the game, apply the script to the block parent, and store the vehicle as a prefab.  
 
