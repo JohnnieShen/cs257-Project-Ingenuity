@@ -104,14 +104,14 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Additions
 
-- Visual Effects
-  - We implemented a shader for achieving a toon-style shading effect, and also a post processing script for highlighting the edges of objects to give the game a more stylized look. We are currently experimenting with the visual designs and may scrap or change this in the future.
-- Better blocks management
-  - We implemented a connectivity system for checking if a block is still attached to the core, and if not we mark it as fallen off, it is then disabled and the player can pick it up.
-- Arena gamemode
-  - Since our main game loop is not fleshed out yet, we have implemented an arena game mode, where the player has to fight waves of enemies, upgrade their vehicle and survive the longest. We made this to be a testing ground for tuning the enemy AI and combat feels in general, but this is also fully playable and customizable.
-- Particle Effects
-  - Working with Unity’s Particle Systems, as well as the Shader and Visual Effects Graphs to bring together a more cohesive and visually appealing shooting system. By adding a muzzle flash / explosion for the base turret as well as a laser gun (in progress) for the energy turret, we aimed to strengthen the visual quality of our game.
+~~- Visual Effects~~
+  ~~- We implemented a shader for achieving a toon-style shading effect, and also a post processing script for highlighting the edges of objects to give the game a more stylized look. We are currently experimenting with the visual designs and may scrap or change this in the future.~~
+~~- Better blocks management~~
+  ~~- We implemented a connectivity system for checking if a block is still attached to the core, and if not we mark it as fallen off, it is then disabled and the player can pick it up.~~
+~~- Arena gamemode~~
+  ~~- Since our main game loop is not fleshed out yet, we have implemented an arena game mode, where the player has to fight waves of enemies, upgrade their vehicle and survive the longest. We made this to be a testing ground for tuning the enemy AI and combat feels in general, but this is also fully playable and customizable.~~
+~~- Particle Effects~~
+  ~~- Working with Unity’s Particle Systems, as well as the Shader and Visual Effects Graphs to bring together a more cohesive and visually appealing shooting system. By adding a muzzle flash / explosion for the base turret as well as a laser gun (in progress) for the energy turret, we aimed to strengthen the visual quality of our game.~~
 
 ### Project Part 3: Visual Effects
 
@@ -155,26 +155,26 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 - ~~More blocks, add-on blocks~~
 - ~~More AI prefabs, AI prefab builder (Tentative: not completely necessary as the normal workflow is not terrible), bring AI system up to date with overhauled vehicle representation~~
-- ~~More level design work,~~ tutorial level with corresponding mechanics (out of scope), ~~bigger map in first world, script for spawning in enemies dynamically, more POIs~~
-- Sounds (did not get around to do)
+- ~~More level design work, tutorial level with corresponding mechanics (out of scope), bigger map in first world, script for spawning in enemies dynamically, more POIs~~
+- ~~Sounds (did not get around to do)~~
 
 ### Additions:
-- AI Converter
-   - Implemented a script to allow for developers to construct vehicles of their own design in the Build Mode, apply the AI converter script, and that prefab can be saved as an AI
-   - Vastly improved efficiency and usability for creating new enemy types
-- Block Types
-   - Different rarities for our blocks were added (common, uncommon, rare, epic and legendary) and with each increasing rank, a proportional increase in stats is attached.
-- Terrain Size
-   - The terrain was modified to be 16x larger than our original (1000x1000 → 4000x4000), Added a couple of structural components, a centralized boss base, and more, Randomized AI spawn on the terrain
-- Main Menu
-   - Added a start screen with a custom background, buttons for the main gameplay loop, tutorial, settings, and quitting (only main gameplay is interactive at the moment), a menu that follows around the player’s cursor, and then some particle effects to give it extra flair
-- Tree Breaker
-   - Unity’s terrain tree system doesn’t actually place trees as game objects, which means the player can’t easily interact with them as you would with a traditional game object. First, a script had to be created to where any terrain tree within a certain radius of the player’s vehicle would have an associated tree prefab spawned in. Then, another script had to be added to the tree prefab to allow for the deletion of both the prefab and terrain counterpart when colliding with the player.
-- Bullet/Rocket Booster Effects
-   - Bullet trails were added for both the standard and energy turret. In addition to changing the bullet projectiles themselves, colors were used to differentiate between the two, orange for original and blue for energy. An added interaction was put into place with the energy shield, where the standard turret bullets will deflect off of energy shields, while the energy bullets will be absorbed.
-   - A rocket booster was added to make the game feel more alive for the player, the block allows for acceleration when the player presses shift. An associated particle effect was created for it.
-- Boss Fight
-   - A more advanced AI was created to simulate a boss fight which lives in the boss base, a script was attached to where anytime a player comes within a certain distance, a large health bar will appear towards the top of the screen
+~~- AI Converter~~
+   ~~- Implemented a script to allow for developers to construct vehicles of their own design in the Build Mode, apply the AI converter script, and that prefab can be saved as an AI~~
+   ~~- Vastly improved efficiency and usability for creating new enemy types~~
+~~- Block Types~~
+   ~~- Different rarities for our blocks were added (common, uncommon, rare, epic and legendary) and with each increasing rank, a proportional increase in stats is attached.~~
+~~- Terrain Size~~
+   ~~- The terrain was modified to be 16x larger than our original (1000x1000 → 4000x4000), Added a couple of structural components, a centralized boss base, and more, Randomized AI spawn on the terrain~~
+~~- Main Menu~~
+   ~~- Added a start screen with a custom background, buttons for the main gameplay loop, tutorial, settings, and quitting (only main gameplay is interactive at the moment), a menu that follows around the player’s cursor, and then some particle effects to give it extra flair~~
+~~- Tree Breaker~~
+   ~~- Unity’s terrain tree system doesn’t actually place trees as game objects, which means the player can’t easily interact with them as you would with a traditional game object. First, a script had to be created to where any terrain tree within a certain radius of the player’s vehicle would have an associated tree prefab spawned in. Then, another script had to be added to the tree prefab to allow for the deletion of both the prefab and terrain counterpart when colliding with the player.~~
+~~- Bullet/Rocket Booster Effects~~
+   ~~- Bullet trails were added for both the standard and energy turret. In addition to changing the bullet projectiles themselves, colors were used to differentiate between the two, orange for original and blue for energy. An added interaction was put into place with the energy shield, where the standard turret bullets will deflect off of energy shields, while the energy bullets will be absorbed.~~
+   ~~- A rocket booster was added to make the game feel more alive for the player, the block allows for acceleration when the player presses shift. An associated particle effect was created for it.~~
+~~- Boss Fight~~
+   ~~- A more advanced AI was created to simulate a boss fight which lives in the boss base, a script was attached to where anytime a player comes within a certain distance, a large health bar will appear towards the top of the screen~~
 
 ### Next milestone:
 
@@ -192,7 +192,7 @@ Control-wise, the game will feature control schemes similar to other arcade-styl
 
 ### Additions
 
-- Completed game loop: We added respawning and an endgame condition to the game. the player would need to attach certain blocks to the vehicle to win the game.
+~~- Completed game loop: We added respawning and an endgame condition to the game. the player would need to attach certain blocks to the vehicle to win the game.~~
 
 ### Next milestone
 
