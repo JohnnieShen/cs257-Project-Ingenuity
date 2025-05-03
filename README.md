@@ -205,7 +205,7 @@ Since we have completed most of the mechanics of the game, we would focus on pol
 
 ## Development
 
-### Project Checkpoint 1-2
+### Project Part 1
 
 #### Initial Vehicle Building Systems and Physics
 
@@ -286,7 +286,7 @@ For a stylized almost cartoonish look, we have implemented a shader graph for a 
 
 ![](Images/tooneffects.png)
 
-### Project Checkpoint 3
+### Project Part 3
 
 We implemented a more refined UI, following the cartoonish-style of the game by adding in 8-bit textures for the blocks as well as changing the default text. The menu can be opened by pressing TAB while in build mode. This allows the player to scroll through all available blocks. There is a recycle button to convert blocks to scraps and a build button to convert scraps to blocks. There is also an icon depicting how many scraps you currently have available. In the future, we hope to add an additional text box displaying how many blocks of a certain type are available.
 
@@ -324,7 +324,7 @@ In addition to all of the previous updates, we also added a minimap as pictured 
 
 We also added a tracker for ballistic and energy ammo, the current idea is that energy ammo will replenish when out of battle and ballistic ammo needs to be crafted with scraps.
 
-### Checkpoint 5
+### Project Part 4
 
 ### Polishing Gameplay Loop and Mechanics
 
@@ -346,7 +346,7 @@ Another things would be that we have implemented a much bigger map into the game
 
 Last but not least, we added a script for converting player vehicle to AI vehicles in the editor. Before we have to go through a long and convoluted process of creating AI vehicles, which is annoying and prone to errors. Now we can just make the vehicle in the game, apply the script to the block parent, and store the vehicle as a prefab.  
 
-### Second to last checkpoint
+### Project Part 5
 
 As we promised before, we did a lot of polishing for the gameplay loop and the player experiences in general. One major thing we implemented is a win condition, which in this case is that the player would need to have **an avionics nose cone, a battery and a rocket booster** on their vehicle, which would mean that they have all the parts needed to leave the planet, and in the gameplay sense finish the game. To get the crafting recipe for the avionics, the player would need to beat a boss for the first level, which is current undesigned (waiting for design from team) and unnamed (we have a rudimentary design that doesn't use the new level based block system). We also implemented respawning so that when the player dies it would be respawned at the starting platform.
 
