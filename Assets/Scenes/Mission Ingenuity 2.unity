@@ -81646,6 +81646,10 @@ PrefabInstance:
       propertyPath: sphere
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3839370899715933317, guid: 9ff66b38af6e0d84d9e036066db7e1a3, type: 3}
+      propertyPath: coreTransform
+      value: 
+      objectReference: {fileID: 1737559191}
     - target: {fileID: 6406704573741046514, guid: 9ff66b38af6e0d84d9e036066db7e1a3, type: 3}
       propertyPath: energyAmmoSlider
       value: 

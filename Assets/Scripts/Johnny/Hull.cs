@@ -35,9 +35,16 @@ public class Hull : MonoBehaviour
         }
         
         isAIVehicle = transform.parent.GetComponentInChildren<EnemyMovement>() != null;
+        if (!gameObject.CompareTag("EnemyBlock"))
+        {
+            coreTransform = transform.parent.GetComponentInChildren<VehicleResourceManager>().transform;
+        }
         if (!isAIVehicle && BlockManager.instance != null)
         {
-            Vector3Int gridPos = Vector3Int.RoundToInt(transform.localPosition);
+            Vector3 worldPos = transform.position;
+            Vector3 localPos = coreTransform.InverseTransformPoint(worldPos);
+            Vector3Int gridPos = Vector3Int.RoundToInt(localPos);
+
             Rigidbody rb = GetComponent<Rigidbody>();
             if(rb != null)
             {
