@@ -72,6 +72,6 @@ public class TerrainBlockSpawner : MonoBehaviour
             spawned++;
         }
 
-        Debug.Log($"TerrainBlockSpawner: Spawned {spawned}/{numberOfBlocks} blocks after {attempts} attempts.");
+        //Debug.Log($"TerrainBlockSpawner: Spawned {spawned}/{numberOfBlocks} blocks after {attempts} attempts.");
     }
 }
