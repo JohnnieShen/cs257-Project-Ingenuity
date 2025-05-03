@@ -51,6 +51,15 @@ public class ShieldGenerator : MonoBehaviour
         shieldCollider = shieldObject.AddComponent<SphereCollider>();
         shieldCollider.radius = 1f;
         shieldCollider.isTrigger = true;
+        shieldRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        shieldRenderer.receiveShadows = false;
+
+        shieldObject.layer = LayerMask.NameToLayer("Shield");
+        shieldRenderer.material = shieldMaterial;
+        if (transform.parent == null)
+        {
+            return;
+        }
         EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
         if (enemyAI != null)
         {
@@ -60,14 +69,6 @@ public class ShieldGenerator : MonoBehaviour
         {
             shieldRenderer.material = aiShieldMaterial;
         }
-        else
-        {
-            shieldRenderer.material = shieldMaterial;
-        }
-        shieldRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-        shieldRenderer.receiveShadows = false;
-
-        shieldObject.layer = LayerMask.NameToLayer("Shield");
     }
 
     /* Updates shield regeneration and visuals every frame.

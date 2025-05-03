@@ -24,6 +24,10 @@ public class Battery : MonoBehaviour
         {
             Debug.LogError("BatteryBlock: Hull component not found on battery block.");
         }
+        if (transform.parent == null)
+        {
+            return;
+        }
         EnemyAI enemyAI = transform.parent.GetComponentInChildren<EnemyAI>();
         if (enemyAI != null)
         {
