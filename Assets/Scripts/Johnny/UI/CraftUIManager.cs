@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.UI;
+
 public class CraftUIManager : MonoBehaviour
 {
     /* 
@@ -30,7 +31,7 @@ public class CraftUIManager : MonoBehaviour
 
     /* Start is called before the first frame update.
     * It populates the crafting UI with available blocks and sets up listeners for scrap count changes.
-    * It also updates the scrap text to reflect the current scrap count.
+    * It also updates the scrap text to reflect the current scrap count and refreshes all UI entries.
     */
     private void Start()
     {
@@ -40,16 +41,19 @@ public class CraftUIManager : MonoBehaviour
             VehicleResourceManager.Instance.onScrapChanged.AddListener(UpdateScrapText);
             UpdateScrapText(VehicleResourceManager.Instance.scrapCount);
         }
+        // Ensure all entries display correct counts on start
+        RefreshAllEntries();
     }
 
     private void OnEnable()
     {
-        // PopulateCraftUI();
         if (VehicleResourceManager.Instance != null)
         {
             VehicleResourceManager.Instance.onScrapChanged.AddListener(UpdateScrapText);
             UpdateScrapText(VehicleResourceManager.Instance.scrapCount);
         }
+        // Refresh all entries whenever the UI is enabled
+        RefreshAllEntries();
     }
 
     /* It goes through the available building blocks in the BlockInventoryManager and creates a UI entry for each craftable block.
@@ -81,6 +85,15 @@ public class CraftUIManager : MonoBehaviour
             }
         }
         StartCoroutine(RebuildNextFrame());
+    }
+
+    /* Refreshes all UI entries to display the current block counts. */
+    public void RefreshAllEntries()
+    {
+        foreach (var kvp in entryLookup)
+        {
+            RefreshEntry(kvp.Key);
+        }
     }
 
     /* It handles the crafting action when the craft button is clicked.
@@ -143,7 +156,6 @@ public class CraftUIManager : MonoBehaviour
     */
     private void UpdateScrapText(int newValue)
     {
-        // Just update the text so the UI shows the current scrapCount
         if (ScrapText != null)
         {
             ScrapText.text = newValue.ToString();
@@ -162,6 +174,7 @@ public class CraftUIManager : MonoBehaviour
             entry.UpdateCount(newCount);
         }
     }
+
     public void TryAddCraftableBlock(Block block)
     {
         if (block == null || !block.isCraftable) return;
@@ -178,6 +191,7 @@ public class CraftUIManager : MonoBehaviour
         RefreshEntry(block);
         StartCoroutine(RebuildNextFrame());
     }
+
     IEnumerator RebuildNextFrame()
     {
         yield return null;

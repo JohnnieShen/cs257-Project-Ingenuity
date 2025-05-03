@@ -112,6 +112,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Up",
+                    "type": "Button",
+                    "id": "b2283694-18c4-4357-8e24-5e740a07a7b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Scroll Down",
+                    "type": "Button",
+                    "id": "26eb3ca2-1eed-4611-b11e-492028d25f18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -431,6 +449,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Switch to Next Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8433c617-4bb4-4235-87a2-b4b34bb79cf9",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Scroll Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a994ed56-7723-4cb7-bc6b-a0a39b7aef44",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Scroll Down",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
