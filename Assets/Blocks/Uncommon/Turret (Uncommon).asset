@@ -26,7 +26,7 @@ MonoBehaviour:
   blockHealth: 20
   uiSprite: {fileID: 21300000, guid: 76bf254398c5d7c4c9f42cf6b6f607ad, type: 3}
   onlyInlinePlacement: 0
-  connectionStrength: 1000
+  connectionStrength: 4000
   description: 'weight (2)
 
     health (20)
