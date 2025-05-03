@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
     public void OnSwitch(InputValue value)
     {
         index = Helper.Mod(index + 1, prefabs.Length);
+        print(index);
     }
 
     public GameObject GetPrefab()
