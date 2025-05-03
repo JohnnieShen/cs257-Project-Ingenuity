@@ -20,6 +20,8 @@ public class BuildSystem : MonoBehaviour
  
     Block currentBlock;
     public TMP_Text blockNameText;
+    public TMP_Text blockDescriptionText;
+
     public Image blockUIImage;
     public int breakForce;
  
@@ -360,18 +362,26 @@ public class BuildSystem : MonoBehaviour
         if (blockNameText != null && currentBlock != null)
         {
             int currentCount = BlockInventoryManager.instance.GetBlockCount(currentBlock);
-
             blockNameText.text = $"{currentBlock.BlockName} ({currentCount})\n";
             if (blockUIImage != null)
                 blockUIImage.sprite = currentBlock.uiSprite;
+
+            if (blockDescriptionText != null)
+                blockDescriptionText.text = 
+                    !string.IsNullOrEmpty(currentBlock.description)
+                    ? currentBlock.description
+                    : "";
         }
         else if (blockNameText != null)
         {
             blockNameText.text = "No Block Selected";
             if (blockUIImage != null)
                 blockUIImage.sprite = null;
+            if (blockDescriptionText != null)
+                blockDescriptionText.text = "";
         }
     }
+
     // void ChangeCurrentBlock()
     // {
     //     float scroll = Input.mouseScrollDelta.y;

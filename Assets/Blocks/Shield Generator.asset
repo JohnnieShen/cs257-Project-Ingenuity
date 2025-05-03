@@ -27,3 +27,7 @@ MonoBehaviour:
   uiSprite: {fileID: 21300000, guid: aa6509d481eec444b93398e2ad1a706d, type: 3}
   onlyInlinePlacement: 0
   connectionStrength: 500
+  description: 'Generates a shield with (30) health
+
+    Recharges (10) seconds after
+    disabled'

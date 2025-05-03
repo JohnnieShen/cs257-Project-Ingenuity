@@ -33,5 +33,6 @@ public class Block : ScriptableObject
     public Sprite uiSprite;
     public bool onlyInlinePlacement = false;
     public int connectionStrength = 0;
+    [Multiline]
     public string description;
 }

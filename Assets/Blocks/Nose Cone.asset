@@ -19,7 +19,7 @@ MonoBehaviour:
   isSideMountable: 1
   isBottomMountable: 1
   isRotatable: 0
-  isCraftable: 0
+  isCraftable: 1
   cost: 30
   recycleBonus: 10
   attachDirection: {x: 0, y: 1, z: 0}
@@ -27,3 +27,4 @@ MonoBehaviour:
   uiSprite: {fileID: 21300000, guid: 66b98d9a75da2594297714d638345fa5, type: 3}
   onlyInlinePlacement: 0
   connectionStrength: 500
+  description: Avionics for a makeshift rocket
