@@ -222,7 +222,7 @@ public class FreeCameraLook : Pivot {
 		RaycastHit hit;
 		if (Physics.Raycast(forwardRay, out hit, 1000f, LayerMask.GetMask("Terrain", "EnemyBlock"), QueryTriggerInteraction.Collide))
 		{
-			Debug.Log("Hit: " + hit.transform.name + " tag: " + hit.transform.tag);
+			//Debug.Log("Hit: " + hit.transform.name + " tag: " + hit.transform.tag);
 			aimTarget.position = Vector3.Lerp(aimTarget.position, hit.point, Time.deltaTime * 10f);
 		}
 		else

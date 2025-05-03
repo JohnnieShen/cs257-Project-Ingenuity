@@ -48,11 +48,11 @@ public class HealthSystem : MonoBehaviour
         foreach (BlockHealth healthComp in transform.parent.GetComponentsInChildren<BlockHealth>())
         {
             if (healthComp == null) continue;
-            Debug.Log("Current object: " + healthComp.gameObject.name);
+            //Debug.Log("Current object: " + healthComp.gameObject.name);
             if (healthComp == null) continue;
             if (healthComp.transform.GetComponent<Hull>() != null && healthComp.transform.GetComponent<Hull>().canPickup) continue;
             total += healthComp.currentHealth;
-            Debug.Log("Current health: " + healthComp.currentHealth+" / " + total);
+            //Debug.Log("Current health: " + healthComp.currentHealth+" / " + total);
             
         }
         return total;

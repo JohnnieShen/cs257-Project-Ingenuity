@@ -263,7 +263,7 @@ public class Turret : MonoBehaviour
             muzzleSpark.transform.rotation = shootPoint.rotation;
             muzzleSpark.Play();
         }
-        Debug.Log("Shoot called");
+        //Debug.Log("Shoot called");
         if (gunAudioSource != null && gunShotClip != null) {
             gunAudioSource.PlayOneShot(gunShotClip);
         }
