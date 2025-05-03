@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Hull : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class Hull : MonoBehaviour
     public Block sourceBlock;
     public bool isPreview = false;
     private Transform commandModule;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip audioClip;
 
     /* Start is called before the first frame update.
     * It checks if the hull is a preview or an AI vehicle. If it's not, it registers the block with the BlockManager or EnemyBlockManager.
@@ -145,7 +150,9 @@ public class Hull : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(DelayedRecalculate());   
+        StartCoroutine(DelayedRecalculate());
+
+        audioSource.PlayOneShot(audioClip);
     }
 
     /* DelayedRecalculate is a coroutine that waits for one frame and then recalculates the connections of the vehicle.

@@ -167,6 +167,10 @@ PrefabInstance:
       value: Core
       objectReference: {fileID: 0}
     - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
+      propertyPath: coreTransform
+      value: 
+      objectReference: {fileID: 7447210512807996651}
+    - target: {fileID: 6933359860844020431, guid: e7664b2e638ceda4aafc070abf3551cf, type: 3}
       propertyPath: connectionPoints.Array.size
       value: 0
       objectReference: {fileID: 0}
