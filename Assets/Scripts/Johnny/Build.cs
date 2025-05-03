@@ -70,6 +70,8 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildRemoveAction().performed += OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed += OnScrollPerformed;
             InputManager.instance.GetBuildRotateAction().performed += OnRotatePerformed;
+            InputManager.instance.GetBuildScrollUpAction().performed += OnScrollUpPerformed;
+            InputManager.instance.GetBuildScrollDownAction().performed += OnScrollDownPerformed;
             var prev = InputManager.instance.GetBuildSwitchToLastAction();
             var next = InputManager.instance.GetBuildSwitchToNextAction();
             onPrevLevel = ctx => ChangeColumn(-1);
@@ -99,6 +101,8 @@ public class BuildSystem : MonoBehaviour
             InputManager.instance.GetBuildRemoveAction().performed -= OnRemovePerformed;
             InputManager.instance.GetBuildScrollAction().performed -= OnScrollPerformed;
             InputManager.instance.GetBuildRotateAction().performed -= OnRotatePerformed;
+            InputManager.instance.GetBuildScrollUpAction().performed -= OnScrollUpPerformed;
+            InputManager.instance.GetBuildScrollDownAction().performed -= OnScrollDownPerformed;
             var prev = InputManager.instance.GetBuildSwitchToLastAction();
             var next = InputManager.instance.GetBuildSwitchToNextAction();
             if (prev != null && onPrevLevel != null) prev.performed -= onPrevLevel;
@@ -256,6 +260,51 @@ public class BuildSystem : MonoBehaviour
         SetText();
         destroyPreviewBlock();
     }
+
+    private void OnScrollUpPerformed(InputAction.CallbackContext ctx)
+    {
+        var matrix = BlockInventoryManager.instance.inventoryMatrix;
+        if (matrix == null || matrix.rowsCount == 0) return;
+
+        currentRow = (currentRow + 1) % matrix.rowsCount;
+        currentColumn = Mathf.Clamp(currentColumn, 0, matrix.columnsCount - 1);
+
+        int startCol = currentColumn;
+        do
+        {
+            var bi = matrix.rows[currentRow].columns[currentColumn];
+            if (bi != null && bi.Block != null) break;
+            currentColumn = (currentColumn + 1) % matrix.columnsCount;
+        }
+        while (currentColumn != startCol);
+
+        UpdateCurrentBlockFromMatrix();
+        SetText();
+        destroyPreviewBlock();
+    }
+
+    private void OnScrollDownPerformed(InputAction.CallbackContext ctx)
+    {
+        var matrix = BlockInventoryManager.instance.inventoryMatrix;
+        if (matrix == null || matrix.rowsCount == 0) return;
+
+        currentRow = (currentRow - 1 + matrix.rowsCount) % matrix.rowsCount;
+        currentColumn = Mathf.Clamp(currentColumn, 0, matrix.columnsCount - 1);
+
+        int startCol = currentColumn;
+        do
+        {
+            var bi = matrix.rows[currentRow].columns[currentColumn];
+            if (bi != null && bi.Block != null) break;
+            currentColumn = (currentColumn + 1) % matrix.columnsCount;
+        }
+        while (currentColumn != startCol);
+
+        UpdateCurrentBlockFromMatrix();
+        SetText();
+        destroyPreviewBlock();
+    }
+
     private void ChangeColumn(int dir)
     {
         var matrix = BlockInventoryManager.instance.inventoryMatrix;
