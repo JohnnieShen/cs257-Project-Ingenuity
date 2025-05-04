@@ -128,8 +128,9 @@ MonoBehaviour:
   timeToDestroy: 30
   impactEffect: {fileID: 3211406693315425797, guid: 7f571abd5c899314b88418dcfc95b159, type: 3}
   jitterDuration: 0.3
-  jitterMagnitude: 0.05
+  jitterMagnitude: 0
   isEnergy: 1
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!96 &9018039506457866781
 TrailRenderer:
   serializedVersion: 3
