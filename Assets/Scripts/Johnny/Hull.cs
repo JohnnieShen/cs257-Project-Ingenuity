@@ -121,15 +121,21 @@ public class Hull : MonoBehaviour
         }
         if (!isAIVehicle && BlockManager.instance != null)
         {
-            // BlockManager.instance.ValidateStructure();
-            Vector3Int gridPos = Vector3Int.RoundToInt(transform.localPosition);
+            // use coreTransform to compute the local grid position
+            if (transform == null) {
+                return;
+            }
+            Vector3 worldPos = transform.position;
+            Vector3 localPos = coreTransform.InverseTransformPoint(worldPos);
+            Vector3Int gridPos = Vector3Int.RoundToInt(localPos);
+
             BlockManager.instance.RemoveBlock(gridPos);
             BlockManager.instance.RemoveConnections(gridPos);
-            // BlockManager.instance.CleanupBrokenJoints();
-            // BlockManager.instance.recalculateConnections();
-            
-            BlockManager.instance.StartCoroutine(BlockManager.instance.DelayedRecalculateConnections());
+            BlockManager.instance.StartCoroutine(
+                BlockManager.instance.DelayedRecalculateConnections()
+            );
         }
+
         if (parentAI != null)
         {
             // Debug.Log("Removing block from AI vehicle: " + parentAI.name);
