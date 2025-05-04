@@ -79,7 +79,7 @@ PrefabInstance:
     - target: {fileID: 4109396432888090641, guid: 594ddaf2e0152be4ab8043e1a064ec58, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -7387706064836869012, guid: 20c468df414cc5e4c8d81d6f0aea6533, type: 3}
+      objectReference: {fileID: -7387706064836869012, guid: 594ddaf2e0152be4ab8043e1a064ec58, type: 3}
     - target: {fileID: 7071182760956848314, guid: 594ddaf2e0152be4ab8043e1a064ec58, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -159,6 +159,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!54 &3454023956459096670
 Rigidbody:
   m_ObjectHideFlags: 0
