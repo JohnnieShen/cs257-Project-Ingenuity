@@ -64,6 +64,7 @@ public class ConvertToAI : MonoBehaviour
             }
         }
         int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
+        int shieldLayerIndex = LayerMask.NameToLayer("Shield");
         foreach (Transform t in transform.GetComponentsInChildren<Transform>(true))
         {
             t.gameObject.layer = enemyBlockLayer;
@@ -85,7 +86,7 @@ public class ConvertToAI : MonoBehaviour
         enemyAI.enemyMovement = enemyMovement;
         enemyAI.healthSystem = healthSystem;
         // int enemyBlockLayer = LayerMask.NameToLayer("EnemyBlock");
-        enemyAI.enemyLayer = 1 << enemyBlockLayer;
+        enemyAI.enemyLayer = (1 << enemyBlockLayer) | (1 << shieldLayerIndex);
 
         // Remove AimSphere and VehicleResourceManager scripts which are only used by the player vehicle
         Destroy(commandModule.GetComponent<AimSphere>());

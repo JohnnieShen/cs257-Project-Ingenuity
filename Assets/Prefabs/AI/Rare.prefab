@@ -51881,6 +51881,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
+  shieldLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   aimTransform: {fileID: 2825071658654468911}
   aimDispersionMultiplier: 1
   aiSpreadAngle: 2

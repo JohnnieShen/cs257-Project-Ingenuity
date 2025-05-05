@@ -37,6 +37,7 @@ public class EnemyAI : MonoBehaviour
     private float patrolTimer;
     private GameObject patrolTargetObject;
     public LayerMask enemyLayer;
+    public LayerMask shieldLayer;
     public Transform aimTransform;
     public float aimDispersionMultiplier = 1f;
     public float aiSpreadAngle = 2f;
@@ -295,8 +296,8 @@ public class EnemyAI : MonoBehaviour
         // }
 
         Vector3 direction = (playerTarget.position - transform.position).normalized; // Calculate the direction to the player.
-        LayerMask mask = ~enemyLayer; // Create a layer mask to ignore the enemy layer, so that it doesn't hit the enemy's blocks.
-
+        LayerMask combinedIgnore = enemyLayer | shieldLayer;
+        LayerMask mask = ~combinedIgnore;
         // Debug.Log("Raycasting from " + transform.position + " towards " + playerTarget.position + " with direction " + direction);
         RaycastHit hit;
         bool hitDetected = Physics.Raycast(transform.position, direction, out hit, detectionRange, mask);

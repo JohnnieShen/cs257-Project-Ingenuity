@@ -337,6 +337,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!54 &4695389406753413245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1921,6 +1923,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5aee37cc39aa6fdf0988b4e9dec9e07d, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &992343743383927956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17117,6 +17121,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &1809536934789756770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19227,6 +19233,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &1329631542500320475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19776,6 +19784,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!54 &2728317069201091910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20802,6 +20812,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &8012734174278579532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21431,6 +21443,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 38e2441e80e2dc37c9bcadd2b16fab09, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!65 &5732627480251181756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22052,6 +22066,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &5566454697198087298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22712,6 +22728,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0e86bc37753825136ac29b0b1070f5ff, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &2140434581294365991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28142,6 +28160,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &5821480126332753646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29665,6 +29685,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 38e2441e80e2dc37c9bcadd2b16fab09, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!65 &6969687806662287641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30268,6 +30290,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &3995131280024399564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31371,6 +31395,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5aee37cc39aa6fdf0988b4e9dec9e07d, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &5645596967816415297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33770,6 +33796,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &7053437182112981208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34670,6 +34698,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff4bf12086312ad2f8b9d69cb83fdc74, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &4298807606177807212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34765,6 +34795,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 4096
+  shieldLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   aimTransform: {fileID: 4797472427027352494}
   aimDispersionMultiplier: 1
   aiSpreadAngle: 2
@@ -35952,6 +35985,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!135 &3448743264085542942
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -42158,6 +42193,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &4252496055022313110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42914,6 +42951,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &7954303533803394583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49438,6 +49477,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5aee37cc39aa6fdf0988b4e9dec9e07d, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &7049811459215877730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51702,6 +51743,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!135 &3039528730784130598
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -52653,6 +52696,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &3563743988730619208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58517,6 +58562,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &931417604174489906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58797,6 +58844,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &4433775435144726077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58994,6 +59043,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &353657960927969159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59812,6 +59863,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!54 &826181637274418063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -60307,6 +60360,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0e86bc37753825136ac29b0b1070f5ff, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &3422297476939730585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65391,6 +65446,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5aee37cc39aa6fdf0988b4e9dec9e07d, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &3024127957577130201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66047,6 +66104,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &5803588177911708423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66498,6 +66557,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &6172685204293306484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78660,6 +78721,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!135 &1229846634309415405
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -79005,6 +79068,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &2954793830793250651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79553,6 +79618,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0e86bc37753825136ac29b0b1070f5ff, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &4442203581272562156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79855,6 +79922,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &6423102926852956882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86230,6 +86299,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &7002915248129258359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86649,6 +86720,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5181871b62d022d77a881b201d466216, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!65 &6028605874237277820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87243,6 +87316,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 0e86bc37753825136ac29b0b1070f5ff, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &582356817379566083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87755,6 +87830,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &2841433674077610640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88197,6 +88274,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!54 &7637354200929914888
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88489,6 +88568,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &713199028966965352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94356,6 +94437,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 5181871b62d022d77a881b201d466216, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!65 &4449969822090210952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95716,6 +95799,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &2405863506912226729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96289,6 +96374,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: f1ec90aa4f5d6cb56a08bc352c0b76f8, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!114 &5674354379256880977
 MonoBehaviour:
   m_ObjectHideFlags: 0

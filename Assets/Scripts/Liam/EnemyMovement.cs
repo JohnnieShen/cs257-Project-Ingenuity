@@ -1,5 +1,6 @@
 using UnityEngine;
-
+using System.Collections;
+using System.Collections.Generic;
 
 /**
     * This script is responsible for the movement of the enemy.
@@ -31,6 +32,33 @@ public class EnemyMovement : MonoBehaviour
     public float currentSteerInput;
     
     // TODO bool for if movement is enabled
+
+    private EnemyAI enemyAI;
+
+    void Awake()
+    {
+        enemyAI = GetComponent<EnemyAI>();
+        if (enemyAI == null) return;
+
+        if (!enemyAI.enabled)
+        {
+            enemyAI.enabled = true;
+            if (!enemyAI.enabled)
+            {
+                StartCoroutine(ReEnableAfterDelay(5f));
+            }
+        }
+    }
+
+    private IEnumerator ReEnableAfterDelay(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+
+        if (enemyAI != null && !enemyAI.enabled)
+        {
+            enemyAI.enabled = true;
+        }
+    }
 
     /* FixedUpdate is called every fixed framerate frame, if the MonoBehaviour is enabled.
     * In this case, it is used to calculate the movement of the enemy vehicle towards the target position.
