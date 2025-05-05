@@ -23,7 +23,8 @@ MonoBehaviour:
   cost: 0
   recycleBonus: 0
   attachDirection: {x: 0, y: -1, z: 0}
-  blockHealth: 50
+  blockHealth: 10
   uiSprite: {fileID: 0}
   onlyInlinePlacement: 0
   connectionStrength: 0
+  description: 

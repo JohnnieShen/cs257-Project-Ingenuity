@@ -27,6 +27,12 @@ public class BlockHealth : MonoBehaviour
         {
             Debug.Log("Block destroyed "+gameObject.name);
             Destroy(gameObject);
+
+            // Reward player with scraps when an enemy core is destroyed
+            if (blockType.BlockName == "Core" && tag == "EnemyBlock")
+            {
+                GameObject.Find("/BlockParent/CommandModule").GetComponent<VehicleResourceManager>().scrapCount += 100;
+            }
         }
     }
 }
