@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: accelForce
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1413105304710145244, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
+      propertyPath: tireGripFactor
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1719701304185983027, guid: 8729b33e0a273f4479bbcfe06bc524cc, type: 3}
       propertyPath: blockType
       value: 
