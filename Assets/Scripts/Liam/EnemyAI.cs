@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -158,12 +159,14 @@ public class EnemyAI : MonoBehaviour
                 break;
 
             case AIState.Attack:
-                if (distanceToPlayer > attackRange || !hasLineOfSight)
+                if (enemyTurrets.Count == 0)
+                    currentState = AIState.Flee;
+                else if (distanceToPlayer > attackRange || !hasLineOfSight)
                     currentState = AIState.Chase;
                 break;
 
             case AIState.Flee:
-                if (healthSystem.GetHealthPercentage() > fleeHealthThreshold)
+                if (healthSystem.GetHealthPercentage() > fleeHealthThreshold && enemyTurrets.Count > 0)
                     currentState = AIState.Patrol;
                 break;
         }
@@ -240,7 +243,9 @@ public class EnemyAI : MonoBehaviour
         // enemyMovement.targetPosition.position = playerTarget.position;
 
         foreach (Turret t in enemyTurrets)
-            if (t != null && t.isActiveAndEnabled && !t.isBlocked)
+            if (t == null)
+                enemyTurrets.Remove(t);
+            else if (t.isActiveAndEnabled && !t.isBlocked)
                 t.HandleFireEvent();
     }
 
