@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Events;
+using System;
+using System.Linq;
 
 public class AreaSpawner : MonoBehaviour
 {
@@ -9,6 +12,7 @@ public class AreaSpawner : MonoBehaviour
     Author: Liam
     Summary: This script spawns enemies in a square region around the spawn point with side length 2 * range.
     */
+    public static event Action OnSpawnCompleted;
     [SerializeField] float range;
     [SerializeField] GameObject[] prefabs;
     [SerializeField] int numberEnemies;
@@ -26,12 +30,13 @@ public class AreaSpawner : MonoBehaviour
         // Spawn enemies
         for (int i = 0; i < numberEnemies; i++)
         {
-            var position = transform.position + new Vector3(Random.Range(-range, range), 0, Random.Range(-range, range));
+            var position = transform.position + new Vector3(UnityEngine.Random.Range(-range, range), 0, UnityEngine.Random.Range(-range, range));
             position.y = Terrain.activeTerrain.SampleHeight(position) + 5;
-            Instantiate(prefabs[Random.Range(0, prefabs.Length)], position, Quaternion.identity);
+            Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length)], position, Quaternion.identity);
         }
 
         // Set spawned to true to prevent triggering more than once
         spawned = true;
+        OnSpawnCompleted?.Invoke();
     }
 }

@@ -32,6 +32,16 @@ public class EnemyBlockManager : MonoBehaviour
         InitializeAllAIVehicles();
     }
 
+    private void OnEnable()
+    {
+        AreaSpawner.OnSpawnCompleted += InitializeAllAIVehicles;
+    }
+
+    private void OnDisable()
+    {
+        AreaSpawner.OnSpawnCompleted -= InitializeAllAIVehicles;
+    }
+
     /* RegisterBlock is called to register a block for a specific vehicle at a given local position.
     * It checks if the vehicle already has a structure and adds the block to the structure if it doesn't exist.
     * The block is stored in a dictionary with the local position as the key and the Rigidbody as the value.
@@ -59,7 +69,7 @@ public class EnemyBlockManager : MonoBehaviour
         {
             if (!vehicles.ContainsKey(enemy))
             {
-                //Debug.Log("Initializing vehicle structure for: " + enemy.transform.parent.gameObject.name);
+                Debug.Log("Initializing vehicle structure for: " + enemy.transform.parent.gameObject.name);
                 vehicles.Add(enemy, new EnemyVehicleStructure());
                 enemy.InitializeVehicleStructure();
             }

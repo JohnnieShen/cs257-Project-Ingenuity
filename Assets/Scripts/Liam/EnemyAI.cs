@@ -340,11 +340,11 @@ public class EnemyAI : MonoBehaviour
         Hull[] blocks = transform.parent.GetComponentsInChildren<Hull>();
         foreach (Hull block in blocks)
         {
-            // Debug.Log("Registering block: " + block.name);
+            Debug.Log("Registering block: " + block.name);
             Vector3Int localPos = Vector3Int.RoundToInt(
                 transform.InverseTransformPoint(block.transform.position)
             );
-            // Debug.Log("Local position: " + localPos);
+            Debug.Log("Local position: " + localPos);
             EnemyBlockManager.instance.RegisterBlock(this, localPos, block.GetComponent<Rigidbody>());
         }
         BuildConnectionGraph();
