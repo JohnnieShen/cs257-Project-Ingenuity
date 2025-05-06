@@ -372,7 +372,7 @@ Additionally, another small bug fix was updating bullet physics. In previous ver
 We worked on closing up any loose ends, doing intensive bug fixes based on feedback from a wide variety of play testers. Many bugs regarding build mode, such as scroll wheel issues, block hierarchy edge cases, etc. were addressed. The entire gameplay loop from start to finish, from Main Menu --> Gameplay --> Win/lose --> Main Menu was put into place. In order to make the final boss fight feel more impactful, a door was added to the boss' base, as well as a cutscene animation triggered when the player has fought their way to the final area. Long-time bug where player camera could phase through the terrain in an unintended manner was fixed as well.
 
 ### Member Contributions
-- Johnny:
+- Johnny: Art (modelling, pixel art), build system and block management (for player and AI), enemy AI and sub-scripts. Toon and outline shader. Crafting and building UI. Game manager and end game conditions. Arena mode.
 - Liam:
 - Jay: Level/terrain configuration, ProBuilder to add some geometric objects into the scene, particle FX (turret, rocket booster), sound design (ambient, background etc.), main menu UI/artwork, cutscene animation
 
@@ -414,6 +414,8 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 - https://pixabay.com/sound-effects/metal-clang-sound-81634/
 - https://pixabay.com/sound-effects/crash-6711/
 - https://pixabay.com/sound-effects/engine-61234/
+- https://pixabay.com/sound-effects/rocket-launch-sfx-253937/
+- ameye.dev/notes/edge-detection-outlines/
 
 ### Play Test Video
 [![Watch the video](Images/MImainmenu.png)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
