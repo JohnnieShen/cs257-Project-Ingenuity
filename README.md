@@ -371,7 +371,7 @@ Additionally, another small bug fix was updating bullet physics. In previous ver
 ### Final Project Submission Updates
 We worked on closing up any loose ends, doing intensive bug fixes based on feedback from a wide variety of play testers. Many bugs regarding build mode, such as scroll wheel issues, block hierarchy edge cases, etc. were addressed. The entire gameplay loop from start to finish, from Main Menu --> Gameplay --> Win/lose --> Main Menu was put into place. In order to make the final boss fight feel more impactful, a door was added to the boss' base, as well as a cutscene animation triggered when the player has fought their way to the final area. Long-time bug where player camera could phase through the terrain in an unintended manner was fixed as well.
 
-[![Watch the video](https://raw.githubusercontent.com/jaykim2022/cs257-Project-Ingenuity/main/Images/MImainmenu.jpg)](https://raw.githubusercontent.com/jaykim2022/cs257-Project-Ingenuity/main/Images/doorcutscene.mp4)
+![](Images/cutsceneImg.png)
 ### Member Contributions
 - Johnny: Art (modelling, pixel art), build system and block management (for player and AI), enemy AI and sub-scripts. Toon and outline shader. Crafting and building UI. Game manager and end game conditions. Arena mode.
 - Liam: Wheel physics, building system, player controller for build mode, rarities, game balance, AI converter script, AI spawner, level design, AI enemy prefab design
