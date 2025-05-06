@@ -360,7 +360,7 @@ As we promised before, we did a lot of polishing for the gameplay loop and the p
 
 We also implemented a lot of UI elements for the new mechanics. Namely we added a checklist for build mode for all blocks needed to win the game, it would be created dynamically and managed dynamically, so no hard coding needed which is good for scaling into more levels. We also added a dark souls style health bar for the boss fight, which is fully functional and looks cool.
 
-![](Images/coolui)
+![](Images/coolui.png)
 
 We have also fleshed out the AI converter script and have fixed a lot of bugs in the previous implementation, it should be fully functioning correctly and should make the workflow of creating AI enemies a lot easier.
 
