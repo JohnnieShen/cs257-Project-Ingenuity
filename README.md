@@ -403,6 +403,9 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 - https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
 - https://assetstore.unity.com/packages/essentials/ui-samples-25468
 - https://assetstore.unity.com/packages/audio/sound-fx/sci-fi-guns-sfx-pack-181144
+- https://pixabay.com/sound-effects/metal-clang-sound-81634/
+- https://pixabay.com/sound-effects/crash-6711/
+- https://pixabay.com/sound-effects/engine-61234/
 
 ### Play Test Video
 [![Watch the video](Images/MImainmenu.png)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
