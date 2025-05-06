@@ -370,26 +370,44 @@ As an update to block rarities, the force required to break a joint now scales w
 
 Additionally, another small bug fix was updating bullet physics. In previous versions, the bullet moved in a straight line at a fixed speed no matter when it was fired. In this version, the bullet now calculates a new velocity for itself based on the relative world space velocity of the turret it was fired from. This makes combat much more exciting and higher paced when driving at increased speeds. In previous versions, the bullets would move very slowly relative to the turret which fired it leading to self collisions that were not desirable.
 
+![](Images/highspeedchase.png)
+
+High speed chases are no possible!
+
 ### Final Project Submission Updates
 We worked on closing up any loose ends, doing intensive bug fixes based on feedback from a wide variety of play testers. Many bugs regarding build mode, such as scroll wheel issues, block hierarchy edge cases, etc. were addressed. The entire gameplay loop from start to finish, from Main Menu --> Gameplay --> Win/lose --> Main Menu was put into place. In order to make the final boss fight feel more impactful, a door was added to the boss' base, as well as a cutscene animation triggered when the player has fought their way to the final area. Long-time bug where player camera could phase through the terrain in an unintended manner was fixed as well.
 
 ![](Images/cutsceneSC.png)
-
-### Member Contributions
-- Johnny: Art (modelling, pixel art), build system and block management (for player and AI), enemy AI and sub-scripts. Toon and outline shader. Crafting and building UI. Game manager and end game conditions. Arena mode.
-- Liam: Wheel physics, building system, player controller for build mode, rarities, game balance, AI converter script, AI spawner, level design, AI enemy prefab design
-- Jay: Level/terrain configuration, ProBuilder to add some geometric objects into the scene, particle FX (turret, rocket booster), sound design (ambient, background etc.), main menu UI/artwork, cutscene animation
 
 ### Instructions for Testing the Project
 _Instructions for Base Game_
 
 After launching the Mission Ingenuity scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
 
-You can access the menu by pressing TAB while in build mode. You can click the green recycle button or the hammer build button to convert any block into 10 scraps or 30 scraps into any block (for now). Beware! The conversions are lossy!
+You can access the menu by pressing TAB while in build mode. You can click the green recycle button or the hammer build button to convert any block into scraps or scraps into any block. Beware! The conversions are lossy!
 
 ![](Images/terraintoonfx.png)
 
-Once you’ve built a vehicle that you are satisfied with, you can press “B”. This will shift from “Build Mode” to “Play Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
+Once you’ve built a vehicle that you are satisfied with, you can press “Enter”. This will shift from “Build Mode” to “Drive Mode”. The POV will then shift to a vehicle-centric third person view. Here, WASD can be used to control the vehicle, and the mouse will be used to rotate around the vehicle and also used for aiming. If you have selected a turret build, left mouse click will be used for shooting.
+
+### Build Mode Controls
+WASD - move
+Space - up
+Shift - down
+Scroll or Up/Down - cycle block
+R - rotate block
+Left click - place block
+Right click - destroy block
+Q/E - change rarity
+Tab - shop
+Enter - switch to drive mode
+
+### Drive Mode Controls
+WASD - drive
+Shift - rocket (when attached)
+Left click - shoot
+Right click - collect block
+Enter - switch to build mode
 
 _Instructions for Arena Gamemode CURRENTLY UNSUPPORTED IN CHECKPOINT 3_
 
@@ -415,8 +433,11 @@ _Instructions for Arena Gamemode CURRENTLY UNSUPPORTED IN CHECKPOINT 3_
 - https://pixabay.com/sound-effects/rocket-launch-sfx-253937/
 - ameye.dev/notes/edge-detection-outlines/
 
-### Play Test Video
+### Demo
 [![Watch the video](Images/MImainmenu.png)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
+
+### Download
+https://johnnieshen.itch.io/mission-ingenuity
 
 ### Future work
 
@@ -428,4 +449,8 @@ We plan on expanding the game after the presentation. Aspects we could expand on
 - Better building and block size standardization. Now the block sizes are all over the place and there is no representation for if a block would need to take up a 2 * 2 * 2 instead of 1 * 1 * 1. Reworking the models might also be necessary.
 - Better UI and handling. Some playtesters have said that the building, especially the handling for selecting blocks feels unintuitive, so we might need to rework the build mode completely. Current ideas include having the vehicle stay the middle of the screen and unlocking the cursor and allowing the player to build by clicking and select blocks in a inventory type system. 
 
+### Member Contributions
+- Johnny: Art (modelling, pixel art), build system and block management (for player and AI), enemy AI and sub-scripts. Toon and outline shader. Crafting and building UI. Game manager and end game conditions. Arena mode.
+- Liam: Wheel physics, building system, player controller for build mode, rarities, game balance, AI converter script, AI spawner, level design, AI enemy prefab design
+- Jay: Level/terrain configuration, ProBuilder to add some geometric objects into the scene, particle FX (turret, rocket booster), sound design (ambient, background etc.), main menu UI/artwork, cutscene animation
 
