@@ -35,20 +35,23 @@ public class EnemyMovement : MonoBehaviour
 
     private EnemyAI enemyAI;
 
-    void Awake()
-    {
-        enemyAI = GetComponent<EnemyAI>();
-        if (enemyAI == null) return;
+    // void Awake()
+    // {
+    //     enemyAI = GetComponent<EnemyAI>();
+    //     if (enemyAI == null) {
+    //         Debug.LogError("EnemyAI component not found on this GameObject. Please add it to the same GameObject as EnemyMovement.");
+    //         return;
+    //     }
 
-        if (!enemyAI.enabled)
-        {
-            enemyAI.enabled = true;
-            if (!enemyAI.enabled)
-            {
-                StartCoroutine(ReEnableAfterDelay(5f));
-            }
-        }
-    }
+    //     if (!enemyAI.enabled)
+    //     {
+    //         enemyAI.enabled = true;
+    //         if (!enemyAI.enabled)
+    //         {
+    //             StartCoroutine(ReEnableAfterDelay(5f));
+    //         }
+    //     }
+    // }
 
     private IEnumerator ReEnableAfterDelay(float delaySeconds)
     {
@@ -56,6 +59,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (enemyAI != null && !enemyAI.enabled)
         {
+            Debug.Log("Re-enabling enemy AI after delay.");
             enemyAI.enabled = true;
         }
     }

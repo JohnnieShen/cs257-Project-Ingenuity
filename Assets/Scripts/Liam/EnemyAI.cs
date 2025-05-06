@@ -48,6 +48,17 @@ public class EnemyAI : MonoBehaviour
     * It sets the maximum total health and initializes the enemy turrets.
     * It also sets the AI spread angle for the turrets.
     */
+
+    // void OnEnable()
+    // {
+    //     Debug.Log($"[{name}] EnemyAI enabled");
+    // }
+
+    // void OnDisable()
+    // {
+    //     Debug.LogWarning($"[{name}] EnemyAI disabled");
+    // }
+
     void Start()
     {
         if (playerTarget == null)
