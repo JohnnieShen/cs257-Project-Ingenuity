@@ -127,8 +127,8 @@ MonoBehaviour:
   energyDamage: 100
   timeToDestroy: 30
   impactEffect: {fileID: 3211406693315425797, guid: 7f571abd5c899314b88418dcfc95b159, type: 3}
-  jitterDuration: 0.3
-  jitterMagnitude: 0
+  jitterDuration: 0.02
+  jitterMagnitude: 0.01
   isEnergy: 1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!96 &9018039506457866781

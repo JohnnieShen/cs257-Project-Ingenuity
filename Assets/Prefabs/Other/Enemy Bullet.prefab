@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
+      propertyPath: isEnergy
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: ballisticDamage
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: jitterMagnitude
-      value: 0
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 4128075961110800830, guid: 1d3b4cb9e56d61146a4e618303895ccd, type: 3}
       propertyPath: IsEnemyProjectile
