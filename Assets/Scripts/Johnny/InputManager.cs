@@ -54,7 +54,7 @@ public class InputManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject); // breaks respawning
 
         buildMap = inputActions.FindActionMap("Build");
         driveMap = inputActions.FindActionMap("Drive");

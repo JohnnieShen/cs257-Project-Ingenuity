@@ -126,6 +126,7 @@ public class Hull : MonoBehaviour
                 return;
             }
             Vector3 worldPos = transform.position;
+            if (coreTransform == null) return;
             Vector3 localPos = coreTransform.InverseTransformPoint(worldPos);
             Vector3Int gridPos = Vector3Int.RoundToInt(localPos);
 

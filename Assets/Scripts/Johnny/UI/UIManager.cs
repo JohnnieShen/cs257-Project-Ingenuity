@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject); // breaks respawning
     }
 
 
@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
             return null;
         }
 
+        if (!gameObject.scene.isLoaded) return null;
         GameObject popupInstance = Instantiate(popupDialoguePrefab, UIContainer);
         PopupDialogue popupScript = popupInstance.GetComponent<PopupDialogue>();
         if (popupScript != null)

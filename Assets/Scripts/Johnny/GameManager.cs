@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject); // breaks respawning
     }
 
     void Start()
@@ -51,13 +52,14 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (_currentCore == null){
-            SpawnCore();
-            if(coreParent == null) return;
-            coreParent.position = blockParentPos;
-            if (ModeSwitcher.instance != null)
-            {
-                ModeSwitcher.instance.SetMode(ModeSwitcher.Mode.Build);
-            }
+            SceneManager.LoadScene("Main Menu"); // respawning breaks game, so just send player back to main menu
+            //SpawnCore();
+            //if (coreParent == null) return;
+            //coreParent.position = blockParentPos;
+            //if (ModeSwitcher.instance != null)
+            //{
+            //    ModeSwitcher.instance.SetMode(ModeSwitcher.Mode.Build);
+            //}
         }
     }
 
@@ -73,7 +75,6 @@ public class GameManager : MonoBehaviour
         _currentCore.name = corePrefab.name;
 
         RegisterCore(_currentCore);
-        
     }
 
     private void RegisterCore(GameObject core) {
@@ -184,7 +185,7 @@ public class GameManager : MonoBehaviour
         ModeSwitcher.instance.hideAllUI();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Main Menu");
     }
     private IEnumerator FadeCanvasGroup(CanvasGroup cg,
                                         float from, float to, float duration)

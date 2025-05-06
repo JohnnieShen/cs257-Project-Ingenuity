@@ -25,7 +25,7 @@ public class BlockHealth : MonoBehaviour
         OnDamaged?.Invoke();
         if (currentHealth <= 0)
         {
-            Debug.Log("Block destroyed "+gameObject.name);
+            //Debug.Log("Block destroyed "+gameObject.name);
             Destroy(gameObject);
 
             // Reward player with scraps when an enemy core is destroyed
