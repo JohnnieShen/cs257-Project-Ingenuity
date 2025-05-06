@@ -406,3 +406,17 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 
 ### Play Test Video
 - https://www.youtube.com/watch?v=Z0fQY1dj6ME
+
+[![Watch the video](Images/MImainmenu.jpg)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
+
+### Future work
+
+We plan on expanding the game after the presentation. Aspects we could expand on include
+
+- More worlds, flesh out existing world with more POI and bosses (current idea include a bot factory that constantly spawn enemies and need to be destroyed by shooting out batteries, and a boss that has rockets and physical weapons strapped on and attacks by ramming you)
+- More blocks, improve and work upon the rarity system, armor stat for projectile and blocks (can have special armored blocks that can deflect shots if the projectile's armor penetration is lower, at the cost of being heavier and more expensive)
+- More weapons, physics based weapon, e.g. a wrecking ball, a drill etc.
+- Better building and block size standardization. Now the block sizes are all over the place and there is no representation for if a block would need to take up a 2 * 2 * 2 instead of 1 * 1 * 1. Reworking the models might also be necessary.
+- Better UI and handling. Some playtesters have said that the building, especially the handling for selecting blocks feels unintuitive, so we might need to rework the build mode completely. Current ideas include having the vehicle stay the middle of the screen and unlocking the cursor and allowing the player to build by clicking and select blocks in a inventory type system. 
+
+
