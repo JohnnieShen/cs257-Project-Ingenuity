@@ -368,6 +368,14 @@ As an update to block rarities, the force required to break a joint now scales w
 
 Additionally, another small bug fix was updating bullet physics. In previous versions, the bullet moved in a straight line at a fixed speed no matter when it was fired. In this version, the bullet now calculates a new velocity for itself based on the relative world space velocity of the turret it was fired from. This makes combat much more exciting and higher paced when driving at increased speeds. In previous versions, the bullets would move very slowly relative to the turret which fired it leading to self collisions that were not desirable.
 
+### Final Project Submission Updates
+We worked on closing up any loose ends, doing intensive bug fixes based on feedback from a wide variety of play testers. Many bugs regarding build mode, such as scroll wheel issues, block hierarchy edge cases, etc. were addressed. The entire gameplay loop from start to finish, from Main Menu --> Gameplay --> Win/lose --> Main Menu was put into place. In order to make the final boss fight feel more impactful, a door was added to the boss' base, as well as a cutscene animation triggered when the player has fought their way to the final area. Long-time bug where player camera could phase through the terrain in an unintended manner was fixed as well.
+
+### Member Contributions
+- Johnny:
+- Liam:
+- Jay: Level/terrain configuration, ProBuilder to add some geometric objects into the scene, particle FX (turret, rocket booster), sound design (ambient, background etc.), main menu UI/artwork, cutscene animation
+
 ### Instructions for Testing the Project
 _Instructions for Base Game_
 
