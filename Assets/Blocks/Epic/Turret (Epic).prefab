@@ -82,11 +82,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8889157127468059480, guid: 97c135f4b444c474c890a56b5de9c0bc, type: 3}
       propertyPath: fireRate
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8889157127468059480, guid: 97c135f4b444c474c890a56b5de9c0bc, type: 3}
       propertyPath: ballisticDamage
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

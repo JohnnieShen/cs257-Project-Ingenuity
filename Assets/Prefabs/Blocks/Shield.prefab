@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7b9a90acf59da45468e341b25ea7ac0f, type: 2}
     - target: {fileID: 919132149155446097, guid: 11378a0c861259e47a83f7fdbdc35436, type: 3}
       propertyPath: m_Name
-      value: Shield Generator
+      value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 11378a0c861259e47a83f7fdbdc35436, type: 3}
       propertyPath: m_TagString
@@ -200,6 +200,8 @@ MonoBehaviour:
   canPickup: 0
   sourceBlock: {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
   isPreview: 0
+  audioSource: {fileID: 0}
+  audioClip: {fileID: 0}
 --- !u!135 &1912481191328375882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,11 +235,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0875f6624d2dd042a14f4c1186b267c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxShieldHealth: 30
-  currentShieldHealth: 30
+  maxShieldHealth: 100
+  currentShieldHealth: 100
   shieldRegenRate: 5
   shieldRegenDelay: 10
   shieldRadius: 5
   shieldMaterial: {fileID: 2100000, guid: 60679e777415f2147863eadb9b869432, type: 2}
   aiShieldMaterial: {fileID: 2100000, guid: a356800be4ca2d9478f71a53d9a1ead6, type: 2}
   isAI: 0
+  shieldCollider: {fileID: 0}
+  shieldRenderer: {fileID: 0}
