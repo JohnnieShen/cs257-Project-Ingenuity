@@ -140,19 +140,20 @@ public class ShieldGenerator : MonoBehaviour
                 if (projectile.energyDamage > 0)
                 {
                     currentShieldHealth = Mathf.Max(currentShieldHealth - projectile.energyDamage, 0);
-                    // Debug.Log("Shield took damage: " + projectile.energyDamage + " Current Shield Health: " + currentShieldHealth);
+                    Debug.Log("Shield took damage: " + projectile.energyDamage + " Current Shield Health: " + currentShieldHealth);
                     regenerationTimer = 0f;
                     isRegenerating = false;
                     lastDamageTime = Time.time;
+                    if (currentShieldHealth <= 0)
+                    {
+                        DeactivateShield();
+                        return;
+                    }
                     if (projectile.isEnergy){
                         Destroy(projectile.gameObject);
                     }
                     else {
                         DeflectProjectile(projectile, other);
-                    }
-                    if (currentShieldHealth <= 0)
-                    {
-                        DeactivateShield();
                     }
                 }
             }

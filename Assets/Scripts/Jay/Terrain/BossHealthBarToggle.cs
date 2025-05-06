@@ -65,4 +65,15 @@ public class BossHealthBarToggle : MonoBehaviour
             yield return WaitHalfSecond;
         }
     }
+    #if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Debug.Log("Debug-kill: 'U' pressed - destroying boss object.");
+            Destroy(gameObject);
+        }
+    }
+    #endif
+
 }

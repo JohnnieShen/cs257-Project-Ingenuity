@@ -23302,6 +23302,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1101232865434273623, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
+      propertyPath: ballisticDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1214872835318916364, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -23353,6 +23357,10 @@ PrefabInstance:
     - target: {fileID: 2738025490357453933, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804009094766241996, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
+      propertyPath: ballisticDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2880788794836056477, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
@@ -36382,6 +36390,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1101232865434273623, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
+      propertyPath: ballisticDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1214872835318916364, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
       value: 12
@@ -36433,6 +36445,10 @@ PrefabInstance:
     - target: {fileID: 2738025490357453933, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804009094766241996, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
+      propertyPath: ballisticDamage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2880788794836056477, guid: 9c617cf20d106994c9b2e2572475ec71, type: 3}
       propertyPath: m_Layer
@@ -58146,6 +58162,7 @@ MonoBehaviour:
   fadeDuration: 5
   fadeOutOverlay: {fileID: 0}
   fadeOutDuration: 1.5
+  unlockableBlock: {fileID: 11400000, guid: 23a850e552c9ef243b0025b0c265a944, type: 2}
 --- !u!82 &1329152616
 AudioSource:
   m_ObjectHideFlags: 0
@@ -84051,9 +84068,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: CommandModule
       objectReference: {fileID: 0}
+    - target: {fileID: 2711514778842179141, guid: 9ff66b38af6e0d84d9e036066db7e1a3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6406704573741046514, guid: 9ff66b38af6e0d84d9e036066db7e1a3, type: 3}
       propertyPath: scrapCount
-      value: 0
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 6406704573741046514, guid: 9ff66b38af6e0d84d9e036066db7e1a3, type: 3}
       propertyPath: energyAmmoSlider

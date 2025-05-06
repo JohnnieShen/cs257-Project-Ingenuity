@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Min(0.1f)] private float fadeDuration = 1.5f;
     [SerializeField] private CanvasGroup fadeOutOverlay;
     [SerializeField] private float fadeOutDuration = 1.5f;
-
+    [SerializeField] private Block unlockableBlock;
     void Awake()
     {
         if (Instance == null) Instance = this;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("GameManager: no initialCore assigned; will only spawn on first death.");
         }
+        CheckBossStatus();
     }
 
     void Update()
@@ -220,5 +221,20 @@ public class GameManager : MonoBehaviour
                 hull.canPickup = true;
             }
         }
+    }
+    private void CheckBossStatus()
+    {
+        bool bossAlive = FindObjectOfType<BossHealthBarToggle>() != null;
+
+        if (unlockableBlock == null)
+        {
+            Debug.LogWarning("GameManager: unlockableBlock is not assigned.");
+            return;
+        }
+
+        unlockableBlock.isCraftable = !bossAlive;
+
+        Debug.Log($"Boss {(bossAlive ? "alive" : "dead")} at scene start - " +
+                  $"unlockable block \"{unlockableBlock.BlockName}\" craftable = {unlockableBlock.isCraftable}");
     }
 }
