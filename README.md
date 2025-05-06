@@ -6,11 +6,11 @@
 
 ## Game Summary
 
-You are a command module of a defunct rover and you found yourself powering on in the middle of nowhere on an alien planet with no parts attached to you. You need to scavenge for parts scattered around and upgrade your rover, fight hostile enemies of various kinds and build a rocket that will get you out of here to continue your quest for exploration.
+You are the command module of a defunct rover and you find yourself booting up in the middle of nowhere on an alien planet with no parts attached to you. You need to scavenge for parts scattered around, upgrade your rover, fight hostile enemies of various kinds and build a rocket that will get you out of here to continue your quest for exploration.
 
 ## Genres
 
-This game will be a TPS game with characteristics taken from rogue-lite games. It will also feature a handcrafted openworld that allows the player to explore freely, but the overall game structure will still be linear.
+This game will be a third person shooter game with characteristics taken from rogue-lite games. It will also feature a handcrafted openworld that allows the player to explore freely, but the overall game structure will still be linear.
 
 ## Inspiration games
 
@@ -374,15 +374,13 @@ We worked on closing up any loose ends, doing intensive bug fixes based on feedb
 [![Watch the video](https://raw.githubusercontent.com/jaykim2022/cs257-Project-Ingenuity/main/Images/MImainmenu.jpg)](https://raw.githubusercontent.com/jaykim2022/cs257-Project-Ingenuity/main/Images/doorcutscene.mp4)
 ### Member Contributions
 - Johnny: Art (modelling, pixel art), build system and block management (for player and AI), enemy AI and sub-scripts. Toon and outline shader. Crafting and building UI. Game manager and end game conditions. Arena mode.
-- Liam:
+- Liam: Wheel physics, building system, player controller for build mode, rarities, game balance, AI converter script, AI spawner, level design, AI enemy prefab design
 - Jay: Level/terrain configuration, ProBuilder to add some geometric objects into the scene, particle FX (turret, rocket booster), sound design (ambient, background etc.), main menu UI/artwork, cutscene animation
 
 ### Instructions for Testing the Project
 _Instructions for Base Game_
 
-Load into the ~~Terrain~~ Mission Ingenuity 2 scene.
-
-In the ~~Terrain~~ Mission Ingenuity 2 scene, after launching the scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
+After launching the Mission Ingenuity scene you will see a floating Command Module block which serves as the central point for the vehicle build. At this point you will be in “Build Mode”. The controls follow a basic first person WASD control scheme with the mouse to move your perspective. Space and shift can be used to fly up and down respectively. You will additionally see a basic UI in the upper left hand side, indicating the current selected block as well as the amount available of that type. To cycle through the different block types, you can use the scroll wheel.
 
 You can access the menu by pressing TAB while in build mode. You can click the green recycle button or the hammer build button to convert any block into 10 scraps or 30 scraps into any block (for now). Beware! The conversions are lossy!
 
@@ -398,11 +396,7 @@ _Instructions for Arena Gamemode CURRENTLY UNSUPPORTED IN CHECKPOINT 3_
 
 ~~When launching the game, you will be put into build mode, where you need to build up a vehicle that you would use to beat the enemies. Once ready, you could press Enter and go into battle. A certain number of enemies will be spawned around you and in the same control scheme as above you need to defeat them, once done you will be put back into build mode automatically. Once back into build mode, you can pick up the reward blocks that spawned around using right mouse click while aiming at it. There will be a timer for you to upgrade the vehicle and once the timer runs out you will be spawned into battle again. You can also press Enter again to skip the timer.~~
 
-Currently arena mode is not updated up to date with new UI, since combat is not part of the focus for checkpoint 3 (whatever number for april 2nd)
-
 ### Known bugs
-~~- When some noncore block on AI vehicle gets destroys, the strucural validation calculation is faulty, causing the AI to fall apart.~~
-
 - Crafting UI entries missing background
 - Tree breaking doesn't have particle effect
 - Trees are sometimes off the ground
