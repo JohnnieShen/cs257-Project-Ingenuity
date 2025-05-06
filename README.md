@@ -397,4 +397,9 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 - Crafting UI entries missing background
 - Tree breaking doesn't have particle effect
 - Trees are sometimes off the ground
-- Block selection in build mode doesn't feel the best, pending QOL fix
+
+### Assets
+- https://assetstore.unity.com/packages/2d/textures-materials/sky/fantasy-skybox-free-18353
+- https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
+- https://assetstore.unity.com/packages/essentials/ui-samples-25468
+- https://assetstore.unity.com/packages/audio/sound-fx/sci-fi-guns-sfx-pack-181144
