@@ -405,8 +405,6 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 - https://assetstore.unity.com/packages/audio/sound-fx/sci-fi-guns-sfx-pack-181144
 
 ### Play Test Video
-- https://www.youtube.com/watch?v=Z0fQY1dj6ME
-
 [![Watch the video](Images/MImainmenu.png)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
 
 ### Future work
