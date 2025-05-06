@@ -407,4 +407,4 @@ Currently arena mode is not updated up to date with new UI, since combat is not 
 ### Play Test Video
 - https://www.youtube.com/watch?v=Z0fQY1dj6ME
 
-[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
+[![Watch the video](https://img.youtube.com/vi/_5tFXJQIzi4/0.jpg)](https://www.youtube.com/watch?v=Z0fQY1dj6ME&ab_channel=JayKim)
