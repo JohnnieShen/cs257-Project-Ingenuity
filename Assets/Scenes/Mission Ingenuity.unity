@@ -3126,6 +3126,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -16022,6 +16026,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -23875,6 +23883,10 @@ PrefabInstance:
       propertyPath: range
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
@@ -36885,6 +36897,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -37097,6 +37113,10 @@ PrefabInstance:
       propertyPath: range
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
@@ -56905,6 +56925,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -57311,6 +57335,10 @@ PrefabInstance:
       propertyPath: range
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
@@ -57739,6 +57767,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -57993,6 +58025,8 @@ GameObject:
   - component: {fileID: 1329152611}
   - component: {fileID: 1329152615}
   - component: {fileID: 1329152616}
+  - component: {fileID: 1329152618}
+  - component: {fileID: 1329152617}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -58209,6 +58243,79 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1329152617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329152610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95436bdc8b08aa940b2217d5687c56a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockPrefabs:
+  - {fileID: 11400000, guid: 4aff471f1d9cd7e4b96eecf9f3ec2404, type: 2}
+  - {fileID: 11400000, guid: 775b0da0a6287c94e99bb3e02faef859, type: 2}
+  - {fileID: 11400000, guid: 340f47db992718547a25f03c218311db, type: 2}
+  - {fileID: 11400000, guid: ff2b16ac1446f3ff78e9a16a4850a3a3, type: 2}
+  - {fileID: 11400000, guid: 5181871b62d022d77a881b201d466216, type: 2}
+  - {fileID: 11400000, guid: ffb5e21c026d4dea8891a917bb58535a, type: 2}
+  - {fileID: 11400000, guid: 1162fd1e7143f50cfa4ea1c5c5bc6560, type: 2}
+  - {fileID: 11400000, guid: 2789e11fb193b317cb748ab96d09f975, type: 2}
+  - {fileID: 11400000, guid: cd5833a9455d368d1a25ee689cbf9480, type: 2}
+  - {fileID: 11400000, guid: 5c1e29ee64d8cae4c915e52b5ddb4261, type: 2}
+  - {fileID: 11400000, guid: 1c1c286becc170f4abee75cf8097abb4, type: 2}
+  - {fileID: 11400000, guid: 11348218776e5bd43b6ec3a0bc313d27, type: 2}
+  - {fileID: 11400000, guid: 093337a3580ab044a944597e03a78d79, type: 2}
+  - {fileID: 11400000, guid: 9a685942db39e494681153557376b378, type: 2}
+  numberOfBlocks: 100
+  targetTerrain: {fileID: 1841847010}
+  heightOffset: 1
+  maxSpawnAttempts: 50
+  exclusionCenter: {fileID: 856457731}
+  exclusionRadius: 20
+--- !u!218 &1329152618
+Terrain:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329152610}
+  m_Enabled: 0
+  serializedVersion: 6
+  m_TerrainData: {fileID: 0}
+  m_TreeDistance: 5000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMinimumLODSimplification: 0
+  m_HeightmapMaximumLOD: 0
+  m_ShadowCastingMode: 2
+  m_DrawHeightmap: 1
+  m_DrawInstanced: 0
+  m_DrawTreesAndFoliage: 1
+  m_StaticShadowCaster: 0
+  m_IgnoreQualitySettings: 0
+  m_ReflectionProbeUsage: 1
+  m_MaterialTemplate: {fileID: 0}
+  m_BakeLightProbesForTrees: 1
+  m_PreserveTreePrototypeLayers: 0
+  m_DeringLightProbesForTrees: 1
+  m_ReceiveGI: 1
+  m_ScaleInLightmap: 1
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+  m_GroupingID: 0
+  m_RenderingLayerMask: 1
+  m_AllowAutoConnect: 0
+  m_EnableHeightmapRayTracing: 1
+  m_EnableTreesAndDetailsRayTracing: 0
+  m_TreeMotionVectorModeOverride: 3
 --- !u!1 &1369968232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3638504164888052890, guid: 01d957f864c1038aea6081c3809c0281, type: 3}
@@ -83446,6 +83553,10 @@ PrefabInstance:
       propertyPath: range
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
+      propertyPath: terrain
+      value: 
+      objectReference: {fileID: 1841847010}
     - target: {fileID: 5475908308852793405, guid: 6fad9df0192da5d44a2d5e90187b6450, type: 3}
       propertyPath: prefabs.Array.size
       value: 1

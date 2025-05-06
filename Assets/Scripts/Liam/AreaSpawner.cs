@@ -12,6 +12,7 @@ public class AreaSpawner : MonoBehaviour
     Author: Liam
     Summary: This script spawns enemies in a square region around the spawn point with side length 2 * range.
     */
+    [SerializeField] private Terrain terrain;
     public static event Action OnSpawnCompleted;
     [SerializeField] float range;
     [SerializeField] GameObject[] prefabs;
@@ -31,7 +32,19 @@ public class AreaSpawner : MonoBehaviour
         for (int i = 0; i < numberEnemies; i++)
         {
             var position = transform.position + new Vector3(UnityEngine.Random.Range(-range, range), 0, UnityEngine.Random.Range(-range, range));
-            position.y = Terrain.activeTerrain.SampleHeight(position) + 5;
+            var terrain = Terrain.activeTerrain;
+
+            if (terrain != null && terrain.terrainData != null)
+            {
+                float terrainHeight = terrain.SampleHeight(position) + terrain.transform.position.y;
+                position.y = terrainHeight + 5f;
+            }
+            else
+            {
+                Debug.LogWarning("No valid active terrain — skipping height sample.");
+                position.y = 10f;
+            }
+
             Instantiate(prefabs[UnityEngine.Random.Range(0, prefabs.Length)], position, Quaternion.identity);
         }
 
