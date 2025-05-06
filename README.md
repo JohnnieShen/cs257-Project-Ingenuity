@@ -360,6 +360,8 @@ As we promised before, we did a lot of polishing for the gameplay loop and the p
 
 We also implemented a lot of UI elements for the new mechanics. Namely we added a checklist for build mode for all blocks needed to win the game, it would be created dynamically and managed dynamically, so no hard coding needed which is good for scaling into more levels. We also added a dark souls style health bar for the boss fight, which is fully functional and looks cool.
 
+![](Images/Screenshot2025-05-065.41.01PM.png)
+
 We have also fleshed out the AI converter script and have fixed a lot of bugs in the previous implementation, it should be fully functioning correctly and should make the workflow of creating AI enemies a lot easier.
 
 Another thing we did for this patch would be that we added some sound effects to the game, namely a ambiance sound track, sound effects for the two types of cannons, and a rocket take off sound effect for the win game screen.
